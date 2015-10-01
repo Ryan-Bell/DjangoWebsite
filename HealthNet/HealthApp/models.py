@@ -5,7 +5,7 @@ from abc import ABCMeta, abstractclassmethod
 class Patient(AbstractBaseUser):
     #user = models.OneToOneField(User)
     MAX_LENGTH = 50
-    identfier = models.CharField(max_length=MAX_LENGTH, unique=True)
+    identifier = models.CharField(max_length=MAX_LENGTH, unique=True)
     USERNAME_FIELD = 'identifier'
 
     firstName = models.CharField(max_length=MAX_LENGTH)

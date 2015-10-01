@@ -34,8 +34,8 @@ class PatientRegisterForm(forms.Form):
 class PatientProfileForm(forms.Form):
     def __init__(self, *args, **kwargs):
         nameArg = kwargs.pop('nameArg')
-        self.fields['name'].initial = nameArg
-        super(PatientRegisterForm, self).__init__(*args, **kwargs)
+        self.fields['nameArg'].initial = nameArg
+        super(PatientProfileForm, self).__init__(*args, **kwargs)
     MAX_LENGTH = 50
     try:
         user = User.objects.get(username='nameArg')
@@ -43,3 +43,5 @@ class PatientProfileForm(forms.Form):
         user = None
     if (user != None):
         fname = forms.CharField(max_length=MAX_LENGTH, default=user.firstName, editable=False)
+    #else:
+        #fname = forms.CharField(max_length=MAX_LENGTH, default=user.firstName, editable=False)

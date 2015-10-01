@@ -14,6 +14,7 @@ def loginPage(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             try:
+                user =
                 user = User.objects.get(username=form.cleaned_data['username'])
                 if(user.check_password(form.cleaned_data['password']) == False):
                     return HttpResponse("Invalid Password")
@@ -42,6 +43,7 @@ def patientRegister(request):
 
 @csrf_exempt
 def patientProfile(request, username):
-    form = PatientProfileForm(nameArg='username')
+    #return HttpResponse(username)
+    form = PatientProfileForm(request.GET, nameArg='username')
     return render(request, 'patientProfile.html', {'PatientProfileForm': form})
 
