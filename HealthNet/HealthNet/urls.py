@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^$', loginPage),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/$', loginPage),
+    #url(r'^createPatient/$', createPatient),
 ]
