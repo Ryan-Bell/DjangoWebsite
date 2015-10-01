@@ -10,7 +10,7 @@ def loginPage(request):
 #    html = t.render(Context({'username':name}))
 #    return HttpResponse(html)
     if request.method == 'POST':
-        print("Enter post")
+
         form = LoginForm(request.POST)
         if form.is_valid():
             #need to check if user is in the database here
