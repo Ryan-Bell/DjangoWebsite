@@ -32,9 +32,10 @@ class PatientRegisterForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput, label="Password", max_length=MAX_LENGTH)
 
 class PatientProfileForm(forms.Form):
+
     def __init__(self, *args, **kwargs):
         nameArg = kwargs.pop('nameArg')
-        self.fields['nameArg'].initial = nameArg
+        #self.fields['nameArg'].initial = nameArg
         super(PatientProfileForm, self).__init__(*args, **kwargs)
     MAX_LENGTH = 50
     try:
@@ -44,4 +45,4 @@ class PatientProfileForm(forms.Form):
     if (user != None):
         fname = forms.CharField(max_length=MAX_LENGTH, default=user.firstName, editable=False)
     #else:
-        #fname = forms.CharField(max_length=MAX_LENGTH, default=user.firstName, editable=False)
+     #   fname = forms.CharField(max_length=MAX_LENGTH, default=user.firstName, editable=False)

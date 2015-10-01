@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8d57b71b-fe97-4998-86ae-7c206bd4fbc1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/db.sqlite3" afterPath="$PROJECT_DIR$/HealthNet/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/HealthApp/models.py" afterPath="$PROJECT_DIR$/HealthNet/HealthApp/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/HealthApp/forms.py" afterPath="$PROJECT_DIR$/HealthNet/HealthApp/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/HealthApp/views.py" afterPath="$PROJECT_DIR$/HealthNet/HealthApp/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DjangoWebsite.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,8 +60,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8817035">
-              <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.45583597">
+              <caret line="24" column="74" selection-start-line="24" selection-start-column="74" selection-end-line="24" selection-end-column="74" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -104,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="99" selection-start-line="31" selection-start-column="99" selection-end-line="31" selection-end-column="99" />
+              <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -150,8 +149,8 @@
         <option value="$PROJECT_DIR$/HealthNet/HealthNet/html/patientProfile.html" />
         <option value="$PROJECT_DIR$/HealthNet/HealthNet/html/patientRegistration.html" />
         <option value="$PROJECT_DIR$/HealthNet/HealthApp/models.py" />
-        <option value="$PROJECT_DIR$/HealthNet/HealthApp/forms.py" />
         <option value="$PROJECT_DIR$/HealthNet/HealthApp/views.py" />
+        <option value="$PROJECT_DIR$/HealthNet/HealthApp/forms.py" />
       </list>
     </option>
   </component>
@@ -534,7 +533,7 @@
     <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="99" selection-start-line="31" selection-start-column="99" selection-end-line="31" selection-end-column="99" />
+          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
@@ -543,8 +542,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8817035">
-          <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.45583597">
+          <caret line="24" column="74" selection-start-line="24" selection-start-column="74" selection-end-line="24" selection-end-column="74" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

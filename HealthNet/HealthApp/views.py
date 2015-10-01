@@ -17,14 +17,19 @@ def loginPage(request):
                 #user = Group.objects.get_by_natural_key(form.cleaned_data['username'])
                 #user = Patient._check_id_field(form.username)#User.objects.get(username=form.cleaned_data['username'])
                 #all_Patients =
-                return HttpResponse(Patient.check_password(form.cleaned_data['password']))
+                #return HttpResponse(Patient.check_password(form.cleaned_data['password']))
                 #if(user.check_password(form.cleaned_data['password']) == False):
-                if(Patient.check_password(form.cleaned_data['password']) == False):
-                    return HttpResponse("Invalid Password")
+                data = form.cleaned_data
+                #return HttpResponse(Patient.objects.all())
+                #return HttpResponse(Patient.objects.filter(identifier=data['username']))
+                user = Patient.objects.filter(identifier=data['username'])
+                #return HttpResponse(user)
+                #if(user.check_password(data['password']) == False):
+                #    return HttpResponse("Invalid Password")
             except: #User.DoesNotExist:
                 user = None
             if(user != None):
-                return HttpResponseRedirect('/patientProfile/' + form.cleaned_data['username'])
+                return HttpResponseRedirect('/patientProfile/' + data['username'])
             else:
                 return HttpResponse("User shown as not existing")
     else:
