@@ -12,12 +12,12 @@ class PatientRegisterForm(forms.Form):
     middleName = forms.CharField(label="Middle Name", max_length=MAX_LENGTH)
     lastName = forms.CharField(label="Last Name", max_length=MAX_LENGTH)
 
-    MALE = 'M'
-    FEMALE = 'F'
-    GENDER_CHOICES = (
-        (MALE, 'Male'),
-        (FEMALE, 'Female'),
-    )
+    #MALE = 'M'
+    #FEMALE = 'F'
+    #GENDER_CHOICES = (
+    #    (MALE, 'Male'),
+    #    (FEMALE, 'Female'),
+    #)
     #gender = forms.CharField(label="Gender", max_length=2, choices=GENDER_CHOICES, default=MALE)
     #dateBirth = forms.DateField(label="Date of Birth", verbose_name="Date of Birth")
     phonePrimary = forms.CharField(label="Primary Phone", max_length=MAX_LENGTH)
@@ -29,6 +29,8 @@ class PatientRegisterForm(forms.Form):
     contactICERelationship = forms.CharField(label="Emergency Contact Relationship", max_length=MAX_LENGTH)
     contactICEPhone = forms.CharField(label="Emergency Contact Phone", max_length=MAX_LENGTH)
     provider = forms.CharField(label="Insurance Provider", max_length=MAX_LENGTH)
-
+    password = forms.CharField(widget=forms.PasswordInput, label="Password", max_length=MAX_LENGTH)
 #class PatientProfileForm(forms.Form):
-
+#    firstName =
+#    middleName =
+#    lastName =
