@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import Context
 from django.template.loader import get_template
-from .forms import LoginForm
+from .forms import LoginForm, PatientRegisterForm
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt  #workaround temp
 def loginPage(request):
 #    name = "Ryan"
 #    t = get_template('loginPage.html')
@@ -16,11 +18,24 @@ def loginPage(request):
             #need to check if user is in the database here
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            return HttpResponseRedirect('/tempProfilePage')
+            if(username == "Ryan"):
+                return HttpResponseRedirect('/tempProfilePage')
+            else:
+                return HttpResponseRedirect('/invalidUsername')
     else:
         form = LoginForm()
+        #return HttpResponseRedirect('./tempProfilePage2')
 
     return render(request, 'loginPage.html', {'LoginForm': form})
 
+@csrf_exempt #workaround temp
+def patientRegister(request):
+    if request.method == 'POST':
+        form = PatientRegisterForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/NewPatientCreated')
+            #enter info into new patient object and insert into database
+    else:
+        form = PatientRegisterForm()
 
-#def createPatient(request):
+    return render(request, 'patientRegistration.html', {'PatientRegisterForm': form})

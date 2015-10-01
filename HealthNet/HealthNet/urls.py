@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from HealthApp.views import loginPage
+from HealthApp.views import loginPage, patientRegister
 
 urlpatterns = [
     url(r'^$', loginPage),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/$', loginPage),
-    #url(r'^createPatient/$', createPatient),
+    url(r'^patientRegistration/$', patientRegister),
 ]
