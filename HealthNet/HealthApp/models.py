@@ -21,7 +21,7 @@ class Patient(AbstractBaseUser):
     #gender = models.CharField(max_length=2,
     #                                  choices=GENDER_CHOICES,
     #                                  default=MALE)
-    dateBirth = models.DateField(verbose_name="Date of Birth")
+    #dateBirth = models.DateField(verbose_name="Date of Birth")
     phonePrimary = models.CharField(max_length=MAX_LENGTH)
     phoneSecondary = models.CharField(max_length=MAX_LENGTH)
     email = models.EmailField(max_length=MAX_LENGTH)
@@ -35,4 +35,4 @@ class Patient(AbstractBaseUser):
        #cannot use imageField because pillow is not installed
     #disease Names and allergies w/ bool fields go here
 
-    REQUIRED_FIELDS = [firstName,lastName,dateBirth,phonePrimary,email,country,address,provider]
+    REQUIRED_FIELDS = [firstName,lastName,phonePrimary,email,country,address,provider]

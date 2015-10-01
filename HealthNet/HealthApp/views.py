@@ -16,7 +16,7 @@ def loginPage(request):
             try:
                 #user = Group.objects.get_by_natural_key(form.cleaned_data['username'])
                 #user = Patient._check_id_field(form.username)#User.objects.get(username=form.cleaned_data['username'])
-                all_Patients = 
+                #all_Patients =
                 return HttpResponse(Patient.check_password(form.cleaned_data['password']))
                 #if(user.check_password(form.cleaned_data['password']) == False):
                 if(Patient.check_password(form.cleaned_data['password']) == False):
@@ -36,8 +36,29 @@ def patientRegister(request):
     if request.method == 'POST':
         form = PatientRegisterForm(request.POST)
         if form.is_valid():
-            user = User.objects._create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'], False, False)
-            user.save()
+            patient = Patient()
+            #return HttpResponse(form.cleaned_data['username'])
+            data = form.cleaned_data
+            #return HttpResponse(data['password'])
+            patient.password = data['password']
+            patient.identifier = data['username']
+            patient.address = data['address']
+            patient.contactICEName = data['contactICEName']
+            patient.contactICEPhone = data['contactICEPhone']
+            patient.contactICERelationship = data['contactICERelationship']
+            patient.country = data['country']
+            #patient.dateBirth = form.
+            patient.email = data['email']
+            patient.firstName = data['firstName']
+            patient.middleName = data['middleName']
+            patient.lastName = data['lastName']
+            patient.phonePrimary = data['phonePrimary']
+            patient.phoneSecondary = data['phoneSecondary']
+            patient.save()
+            #user = Patient.
+            #user = User.objects._create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'], False, False)
+            #user.save()
+
             return HttpResponse("New Patient Created")
     else:
         form = PatientRegisterForm()
