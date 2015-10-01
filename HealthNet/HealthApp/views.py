@@ -15,12 +15,14 @@ def loginPage(request):
         if form.is_valid():
             try:
                 user = User.objects.get(username=form.cleaned_data['username'])
+                if(user.check_password(form.cleaned_data['password']) == False):
+                    return HttpResponse("Invalid Password")
             except User.DoesNotExist:
                 user = None
             if(user != None):
                 return HttpResponseRedirect('/patientProfile/' + form.cleaned_data['username'])
             else:
-                return HttpResponseRedirect('/invalidUsername')
+                return HttpResponse("Invalid Username")
     else:
         form = LoginForm()
     return render(request, 'loginPage.html', {'LoginForm': form})
