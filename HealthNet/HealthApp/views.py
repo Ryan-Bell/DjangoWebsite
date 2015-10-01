@@ -19,7 +19,7 @@ def loginPage(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             if(username == "Ryan"):
-                return HttpResponseRedirect('/tempProfilePage')
+                return HttpResponseRedirect('/patientProfile/' + username)
             else:
                 return HttpResponseRedirect('/invalidUsername')
     else:
@@ -39,3 +39,8 @@ def patientRegister(request):
         form = PatientRegisterForm()
 
     return render(request, 'patientRegistration.html', {'PatientRegisterForm': form})
+
+@csrf_exempt
+def patientProfile(request, username):
+    #make sure the username is valid
+    return HttpResponse("You have reached the profile page of " + username)

@@ -30,3 +30,5 @@ class PatientRegisterForm(forms.Form):
     contactICEPhone = forms.CharField(label="Emergency Contact Phone", max_length=MAX_LENGTH)
     provider = forms.CharField(label="Insurance Provider", max_length=MAX_LENGTH)
 
+#class PatientProfileForm(forms.Form):
+

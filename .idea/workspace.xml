@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d57b71b-fe97-4998-86ae-7c206bd4fbc1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HealthNet/HealthNet/html/patientRegistration.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/HealthApp/forms.py" afterPath="$PROJECT_DIR$/HealthNet/HealthApp/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/HealthNet/html/loginPage.html" afterPath="$PROJECT_DIR$/HealthNet/HealthNet/html/loginPage.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/HealthNet/urls.py" afterPath="$PROJECT_DIR$/HealthNet/HealthNet/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/HealthApp/views.py" afterPath="$PROJECT_DIR$/HealthNet/HealthApp/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -32,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
               <folding>
                 <element signature="e#618#659#0" expanded="true" />
               </folding>
@@ -66,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+              <caret line="45" column="74" selection-start-line="45" selection-start-column="74" selection-end-line="45" selection-end-column="74" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -74,11 +72,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="patientProfile.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/patientProfile.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.25">
+              <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.7570978">
+              <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -87,18 +95,18 @@
       <file leaf-file-name="loginPage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/loginPage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0">
-              <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="patientRegistration.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="patientRegistration.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/patientRegistration.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19672132">
-              <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -135,11 +143,12 @@
         <option value="$PROJECT_DIR$/HealthNet/HealthApp/html/loginPage.html" />
         <option value="$PROJECT_DIR$/HealthNet/HealthNet/settings.py" />
         <option value="$PROJECT_DIR$/HealthNet/HealthApp/models.py" />
-        <option value="$PROJECT_DIR$/HealthNet/HealthNet/urls.py" />
-        <option value="$PROJECT_DIR$/HealthNet/HealthApp/forms.py" />
-        <option value="$PROJECT_DIR$/HealthNet/HealthApp/views.py" />
         <option value="$PROJECT_DIR$/HealthNet/HealthNet/html/loginPage.html" />
         <option value="$PROJECT_DIR$/HealthNet/HealthNet/html/patientRegistration.html" />
+        <option value="$PROJECT_DIR$/HealthNet/HealthNet/urls.py" />
+        <option value="$PROJECT_DIR$/HealthNet/HealthNet/html/patientProfile.html" />
+        <option value="$PROJECT_DIR$/HealthNet/HealthApp/views.py" />
+        <option value="$PROJECT_DIR$/HealthNet/HealthApp/forms.py" />
       </list>
     </option>
   </component>
@@ -485,46 +494,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/patientRegistration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/loginPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/patientProfile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.25">
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
           <folding>
             <element signature="e#618#659#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <caret line="45" column="74" selection-start-line="45" selection-start-column="74" selection-end-line="45" selection-end-column="74" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/loginPage.html">
+    <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/patientRegistration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19672132">
-          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.7570978">
+          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
           <folding />
         </state>
       </provider>
