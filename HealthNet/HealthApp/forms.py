@@ -7,7 +7,6 @@ class LoginForm(forms.Form):
 class PatientRegisterForm(forms.Form):
     MAX_LENGTH = 50
 
-    #Basic Info
     firstName = forms.CharField(label="First Name", max_length=MAX_LENGTH)
     middleName = forms.CharField(label="Middle Name", max_length=MAX_LENGTH)
     lastName = forms.CharField(label="Last Name", max_length=MAX_LENGTH)
@@ -30,6 +29,7 @@ class PatientRegisterForm(forms.Form):
     contactICEPhone = forms.CharField(label="Emergency Contact Phone", max_length=MAX_LENGTH)
     provider = forms.CharField(label="Insurance Provider", max_length=MAX_LENGTH)
     password = forms.CharField(widget=forms.PasswordInput, label="Password", max_length=MAX_LENGTH)
+
 #class PatientProfileForm(forms.Form):
 #    firstName =
 #    middleName =

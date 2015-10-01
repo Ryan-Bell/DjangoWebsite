@@ -1,30 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User, AbstractBaseUser
 from abc import ABCMeta, abstractclassmethod
-# Create your models here.
-
-#class BaseUser(models.Model):
-    #user = models.OneToOneField(User)
-#    __metaclass__ = ABCMeta
-
-#    @abstractclassmethod
-#    def createAppointment(self): pass
-
-#    @abstractclassmethod
-#    def updateAppointment(self): pass
-
-#    @abstractclassmethod
-#    def cancelAppointment(self): pass
-
-#    @abstractclassmethod
-#    def updateUserInfo(self): pass
 
 class Patient(AbstractBaseUser):
     #user = models.OneToOneField(User)
     MAX_LENGTH = 50
     identfier = models.CharField(max_length=MAX_LENGTH, unique=True)
     USERNAME_FIELD = 'identifier'
-    #password = models.CharField(max_length=MAX_LENGTH)
 
     firstName = models.CharField(max_length=MAX_LENGTH)
     middleName = models.CharField(max_length=MAX_LENGTH)
