@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import User
 
 class LoginForm(forms.Form):
     username = forms.CharField(label="Username", max_length=50)
@@ -6,7 +7,7 @@ class LoginForm(forms.Form):
 
 class PatientRegisterForm(forms.Form):
     MAX_LENGTH = 50
-
+    username = forms.CharField(label="Username", max_length=MAX_LENGTH)
     firstName = forms.CharField(label="First Name", max_length=MAX_LENGTH)
     middleName = forms.CharField(label="Middle Name", max_length=MAX_LENGTH)
     lastName = forms.CharField(label="Last Name", max_length=MAX_LENGTH)
@@ -30,7 +31,15 @@ class PatientRegisterForm(forms.Form):
     provider = forms.CharField(label="Insurance Provider", max_length=MAX_LENGTH)
     password = forms.CharField(widget=forms.PasswordInput, label="Password", max_length=MAX_LENGTH)
 
-#class PatientProfileForm(forms.Form):
-#    firstName =
-#    middleName =
-#    lastName =
+class PatientProfileForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        nameArg = kwargs.pop('nameArg')
+        self.fields['name'].initial = nameArg
+        super(PatientRegisterForm, self).__init__(*args, **kwargs)
+    MAX_LENGTH = 50
+    try:
+        user = User.objects.get(username='nameArg')
+    except:
+        user = None
+    if (user != None):
+        fname = forms.CharField(max_length=MAX_LENGTH, default=user.firstName, editable=False)

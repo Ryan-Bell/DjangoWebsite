@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import Context
 from django.template.loader import get_template
-from .forms import LoginForm, PatientRegisterForm
+from .forms import LoginForm, PatientRegisterForm, PatientProfileForm
 from django.views.decorators.csrf import csrf_exempt
 from .models import Patient
 from django.contrib.auth.models import User
@@ -32,15 +32,16 @@ def patientRegister(request):
     if request.method == 'POST':
         form = PatientRegisterForm(request.POST)
         if form.is_valid():
-            user = User.objects._create_user(form.cleaned_data['firstName'], form.cleaned_data['email'], form.cleaned_data['password'], False, False)
+            user = User.objects._create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'], False, False)
             user.save()
-            return HttpResponseRedirect('/NewPatientCreated')
+            return HttpResponse("New Patient Created")
     else:
         form = PatientRegisterForm()
 
     return render(request, 'patientRegistration.html', {'PatientRegisterForm': form})
 
-#@csrf_exempt
-#def patientProfile(request, username):
-    #make sure the username is valid
-    #return HttpResponse("You have reached the profile page of " + username)
+@csrf_exempt
+def patientProfile(request, username):
+    form = PatientProfileForm(nameArg='username')
+    return render(request, 'patientProfile.html', {'PatientProfileForm': form})
+
