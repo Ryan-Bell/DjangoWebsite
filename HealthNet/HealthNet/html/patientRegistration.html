@@ -7,10 +7,74 @@
     </head>
     <body>
         <div class="RegisterDiv">
-             <form name="PatientRegisterForm" method="post" action="">
-                {{ PatientRegisterForm }}
+             <form method="post" action="/patientRegister/">
+                {% csrf_token %}
+                 <div class="form-inline">
+				    <label for="identifier" class="col-sm-2 control-label">Email Address</label>
+				    <div class="col-sm10">
+					<input value="{{identifier}}" maxlength="25" size="25" class="form-control" name="identifier" id="identifier">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="firstName" class="col-sm-2 control-label">First Name</label>
+				    <div class="col-sm10">
+					<input value="{{firstName}}" maxlength="25" size="25" class="form-control" name="firstName" id="firstName">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="middleName" class="col-sm-2 control-label">Middle Name</label>
+				    <div class="col-sm10">
+					<input value="{{middleName}}" maxlength="25" size="25" class="form-control" name="middleName" id="middleName">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="lastName" class="col-sm-2 control-label">Last Name</label>
+				    <div class="col-sm10">
+					<input value="{{lastName}}" maxlength="25" size="25" class="form-control" name="lastName" id="lastName">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="addressNumber" class="col-sm-2 control-label">Street Number</label>
+				    <div class="col-sm10">
+					<input value="{{addressNumber}}" maxlength="25" size="25" class="form-control" name="addressNumber" id="addressNumber">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="addressStreet" class="col-sm-2 control-label">Street Name</label>
+				    <div class="col-sm10">
+					<input value="{{addressStreet}}" maxlength="25" size="25" class="form-control" name="addressStreet" id="addressStreet">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="addressCity" class="col-sm-2 control-label">City</label>
+				    <div class="col-sm10">
+					<input value="{{addressCity}}" maxlength="25" size="25" class="form-control" name="addressCity" id="addressCity">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="addressState" class="col-sm-2 control-label">State</label>
+				    <div class="col-sm10">
+					<input value="{{addressState}}" maxlength="25" size="25" class="form-control" name="addressState" id="addressState">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="addressZip" class="col-sm-2 control-label">Zip Code</label>
+				    <div class="col-sm10">
+					<input value="{{addressZip}}" maxlength="25" size="25" class="form-control" name="addressZip" id="addressZip">
+				    </div>
+                 </div>
+                 <br>
                 <input type="submit" value="Submit" />
             </form>
         </div>
     </body>
 </html>
+
