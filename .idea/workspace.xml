@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d57b71b-fe97-4998-86ae-7c206bd4fbc1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/HealthNet/html/patientRegistration.html" afterPath="$PROJECT_DIR$/HealthNet/HealthNet/html/patientRegistration.html" />
-    </list>
+    <list default="true" id="8d57b71b-fe97-4998-86ae-7c206bd4fbc1" name="Default" comment="" />
     <ignored path="DjangoWebsite.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -112,8 +110,8 @@
       <file leaf-file-name="patientRegistration.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/patientRegistration.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.85294116">
-              <caret line="227" column="126" selection-start-line="227" selection-start-column="126" selection-end-line="227" selection-end-column="126" />
+            <state vertical-scroll-proportion="0.7058824">
+              <caret line="165" column="26" selection-start-line="165" selection-start-column="26" selection-end-line="165" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -589,8 +587,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/patientRegistration.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.85294116">
-          <caret line="227" column="126" selection-start-line="227" selection-start-column="126" selection-end-line="227" selection-end-column="126" />
+        <state vertical-scroll-proportion="0.7058824">
+          <caret line="165" column="26" selection-start-line="165" selection-start-column="26" selection-end-line="165" selection-end-column="26" />
           <folding />
         </state>
       </provider>
