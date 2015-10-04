@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <title>"Welcome to HealthNet"</title>
         <!-- <link href="../css/styles.css" rel="stylesheet" /> -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     </head>
     <body>
         <div class="RegisterDiv">
@@ -96,21 +98,57 @@
                  <div class="form-inline">
 				    <label for="contactName" class="col-sm-2 control-label">Emergency Contact Name</label>
 				    <div class="col-sm10">
-					<input value="{{contactName}}" maxlength="25" size="25" class="form-control" name="contactName" id="contactName">
+					<input value="{{contactName}}" maxlength="25" size="25" class="form-control" name="contactName" id="contactName" required pattern="^[A-Z][a-z]*">
 				    </div>
                  </div>
                  <br>
                  <div class="form-inline">
 				    <label for="contactRelationship" class="col-sm-2 control-label">Emergency Contact Relationship</label>
 				    <div class="col-sm10">
-					<input value="{{contactRelationship}}" maxlength="25" size="25" class="form-control" name="contactRelationship" id="contactRelationship">
+					<input value="{{contactRelationship}}" maxlength="25" size="25" class="form-control" name="contactRelationship" id="contactRelationship" required pattern="^[A-Z][a-z]*">
 				    </div>
                  </div>
                  <br>
                  <div class="form-inline">
 				    <label for="contactPhone" class="col-sm-2 control-label">Emergency Contact Phone Number</label>
 				    <div class="col-sm10">
-					<input value="{{contactPhone}}" maxlength="25" size="25" class="form-control" name="contactPhone" id="contactPhone">
+					<input value="{{contactPhone}}" maxlength="25" size="25" class="form-control" name="contactPhone" id="contactPhone" required pattern="^[0-9]+">
+				    </div>
+                 </div>
+                 <br>
+
+                 <div class="form-inline">
+				    <label for="tuberculosis" class="col-sm-2 control-label">Tuberculosis</label>
+				    <div class="col-sm10">
+					<input value="{{tuberculosis}}" maxlength="25" size="25" type="checkbox" class="form-control" name="tuberculosis" id="tuberculosis">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="influenza" class="col-sm-2 control-label">Influenza</label>
+				    <div class="col-sm10">
+					<input value="{{influenza}}" maxlength="25" size="25" type="checkbox" class="form-control" name="influenza" id="influenza">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="rheumatic" class="col-sm-2 control-label">Rheumatic</label>
+				    <div class="col-sm10">
+					<input value="{{rheumatic}}" maxlength="25" size="25" type="checkbox" class="form-control" name="rheumatic" id="rheumatic">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="whoopingCough" class="col-sm-2 control-label">Whooping Cough</label>
+				    <div class="col-sm10">
+					<input value="{{whoopingCough}}" maxlength="25" size="25" type="checkbox" class="form-control" name="whoopingCough" id="whoopingCough">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="tonsillitis" class="col-sm-2 control-label">Tonsillitis</label>
+				    <div class="col-sm10">
+					<input value="{{rheumatic}}" maxlength="25" size="25" type="checkbox" class="form-control" name="tonsillitis" id="tonsillitis">
 				    </div>
                  </div>
                  <br>
