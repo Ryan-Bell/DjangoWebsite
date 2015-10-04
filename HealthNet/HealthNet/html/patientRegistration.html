@@ -12,63 +12,105 @@
                  <div class="form-inline">
 				    <label for="identifier" class="col-sm-2 control-label">Email Address</label>
 				    <div class="col-sm10">
-					<input value="{{identifier}}" maxlength="25" size="25" class="form-control" name="identifier" id="identifier">
+					<input value="{{identifier}}" maxlength="25" size="25" type="email" class="form-control" name="identifier" id="identifier">
 				    </div>
                  </div>
                  <br>
                  <div class="form-inline">
 				    <label for="firstName" class="col-sm-2 control-label">First Name</label>
 				    <div class="col-sm10">
-					<input value="{{firstName}}" maxlength="25" size="25" class="form-control" name="firstName" id="firstName">
+					<input value="{{firstName}}" maxlength="25" size="25" class="form-control" name="firstName" id="firstName" required pattern="^[A-Z][a-z]*">
 				    </div>
                  </div>
                  <br>
                  <div class="form-inline">
 				    <label for="middleName" class="col-sm-2 control-label">Middle Name</label>
 				    <div class="col-sm10">
-					<input value="{{middleName}}" maxlength="25" size="25" class="form-control" name="middleName" id="middleName">
+					<input value="{{middleName}}" maxlength="25" size="25" class="form-control" name="middleName" id="middleName" required pattern="^[A-Z][a-z]*">
 				    </div>
                  </div>
                  <br>
                  <div class="form-inline">
 				    <label for="lastName" class="col-sm-2 control-label">Last Name</label>
 				    <div class="col-sm10">
-					<input value="{{lastName}}" maxlength="25" size="25" class="form-control" name="lastName" id="lastName">
+					<input value="{{lastName}}" maxlength="25" size="25" class="form-control" name="lastName" id="lastName" required pattern="^[A-Z][a-z]*">
 				    </div>
                  </div>
                  <br>
                  <div class="form-inline">
 				    <label for="addressNumber" class="col-sm-2 control-label">Street Number</label>
 				    <div class="col-sm10">
-					<input value="{{addressNumber}}" maxlength="25" size="25" class="form-control" name="addressNumber" id="addressNumber">
+					<input value="{{addressNumber}}" maxlength="25" size="25" class="form-control" ame="addressNumber" id="addressNumber" required pattern="^[0-9]+">
 				    </div>
                  </div>
                  <br>
                  <div class="form-inline">
 				    <label for="addressStreet" class="col-sm-2 control-label">Street Name</label>
 				    <div class="col-sm10">
-					<input value="{{addressStreet}}" maxlength="25" size="25" class="form-control" name="addressStreet" id="addressStreet">
+					<input value="{{addressStreet}}" maxlength="25" size="25" class="form-control" name="addressStreet" id="addressStreet" required pattern="^[A-Z][a-z]*">
 				    </div>
                  </div>
                  <br>
                  <div class="form-inline">
 				    <label for="addressCity" class="col-sm-2 control-label">City</label>
 				    <div class="col-sm10">
-					<input value="{{addressCity}}" maxlength="25" size="25" class="form-control" name="addressCity" id="addressCity">
+					<input value="{{addressCity}}" maxlength="25" size="25" class="form-control" name="addressCity" id="addressCity" required pattern="^[A-Z][a-z]*">
 				    </div>
                  </div>
                  <br>
                  <div class="form-inline">
 				    <label for="addressState" class="col-sm-2 control-label">State</label>
 				    <div class="col-sm10">
-					<input value="{{addressState}}" maxlength="25" size="25" class="form-control" name="addressState" id="addressState">
+					<input value="{{addressState}}" maxlength="25" size="25" class="form-control" name="addressState" id="addressState" required pattern="^[A-Z][a-z]*">
 				    </div>
                  </div>
                  <br>
                  <div class="form-inline">
 				    <label for="addressZip" class="col-sm-2 control-label">Zip Code</label>
 				    <div class="col-sm10">
-					<input value="{{addressZip}}" maxlength="25" size="25" class="form-control" name="addressZip" id="addressZip">
+					<input value="{{addressZip}}" maxlength="25" size="25" class="form-control" name="addressZip" id="addressZip" required pattern="^[0-9]+">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="phone" class="col-sm-2 control-label">Phone Number</label>
+				    <div class="col-sm10">
+					<input value="{{phone}}" maxlength="25" size="25" class="form-control" name="phone" id="phone" required pattern="^[0-9]+">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="dob" class="col-sm-2 control-label">Date of Birth</label>
+				    <div class="col-sm10">
+					<input value="{{dob}}" type="date" name="dob" id="dob">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="sex" class="col-sm-2 control-label">Sex</label>
+				    <div class="col-sm10">
+					<input value="{{sex}}" maxlength="25" size="25" class="form-control" name="sex" id="sex">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="contactName" class="col-sm-2 control-label">Emergency Contact Name</label>
+				    <div class="col-sm10">
+					<input value="{{contactName}}" maxlength="25" size="25" class="form-control" name="contactName" id="contactName">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="contactRelationship" class="col-sm-2 control-label">Emergency Contact Relationship</label>
+				    <div class="col-sm10">
+					<input value="{{contactRelationship}}" maxlength="25" size="25" class="form-control" name="contactRelationship" id="contactRelationship">
+				    </div>
+                 </div>
+                 <br>
+                 <div class="form-inline">
+				    <label for="contactPhone" class="col-sm-2 control-label">Emergency Contact Phone Number</label>
+				    <div class="col-sm10">
+					<input value="{{contactPhone}}" maxlength="25" size="25" class="form-control" name="contactPhone" id="contactPhone">
 				    </div>
                  </div>
                  <br>

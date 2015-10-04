@@ -8,7 +8,6 @@ class Patient(AbstractBaseUser):
     MAX_LENGTH = 50
     identifier = models.EmailField(max_length=MAX_LENGTH, unique=True)
     USERNAME_FIELD = 'identifier'
-
     firstName = models.CharField(max_length=MAX_LENGTH)
     middleName = models.CharField(max_length=MAX_LENGTH)
     lastName = models.CharField(max_length=MAX_LENGTH)
