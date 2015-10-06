@@ -76,18 +76,28 @@ def userLogin(request):
                 login(request, user)
                 auth = 0
                 #return HttpResponseRedirect(reverse('home'))
+                #return HttpResponse("You are logged in!")
                 return HttpResponseRedirect(reverse('profile'))
             else:
                 auth = 1
                 return HttpResponse("Your healthnet account is innactive")
         else:
-            print("Invalid login: {0}, {1}".format(username, password))
+            #print("Invalid login: {0}, {1}".format(username, password))
             auth = 2
+            return HttpResponse("Invalid Login")
             return render(request, 'login.html', {'authenticated': auth})
     else:
         return render(request, "login.html", {'authenticated':auth})
 
 def userLogout(request):
+    #try:
+        #if logout(request) != "":
+    #        return HttpResponse("You have been logged out")
+    #except:
+    #    return HttpResponse("You have been logged out")
+    #return HttpResponse("You have been logged out")
+    #return HttpResponseRedirect('/')
+
     logout(request)
     return HttpResponseRedirect('/')
 

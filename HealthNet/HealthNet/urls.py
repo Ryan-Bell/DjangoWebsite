@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^$', views.userLogin, name='login'),
     url(r'^login/$', views.userLogin, name='login'),
     url(r'^register/$', views.register, name='register'),
-    url(r'^logout/$', views.logout, name='logout'),
+    url(r'^logout/$', views.userLogout, name='logout'),
     url(r'^home/$', views.home, name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^(?P<username>\w+)/profile/$', views.profile, name='profile')

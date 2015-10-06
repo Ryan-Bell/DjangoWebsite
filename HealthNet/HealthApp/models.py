@@ -56,7 +56,8 @@ class Patient(AbstractBaseUser):
     email = models.EmailField(max_length=MAX_LENGTH)
     country = models.CharField(max_length=MAX_LENGTH)
     address = models.CharField(max_length=MAX_LENGTH)
-    contactICEName = models.CharField(max_length=MAX_LENGTH)
+    contactICEName = models.CharField(max
+    length=MAX_LENGTH)
     contactICERelationship = models.CharField(max_length=MAX_LENGTH)
     contactICEPhone = models.CharField(max_length=MAX_LENGTH)
     provider = models.CharField(max_length=MAX_LENGTH)
