@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Register{% endblock %}
+
+{% block body_block %}
+
+    <div class="page-header">
+        <h1>Welcome to HealthNet</h1>
+    </div>
+    <div>
+        {% if registered %}
+            <div class="alert alert-success" role="alert">Your account has been registered</div>
+        {%else %}
+            <div class="container-fluid">
+                <div class="row">
+                    <form role="form" method="post" action="." style="max-width: 600px; padding: 15px">
+                        {% csrf_token %}
+
+                        <h2 class="form-signin-heading">Register</h2>
+                        {% if userForm.errors or profileForm.errors or patientForm.errors %}
+                            <div class="alert-danger">
+                                {{ userForm.errors }}
+                                {{ profileForm.errors }}
+                                {{ patientForm.errors }}
+                            </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <p class="required"><label for="id_username">Username:</label>
+                                <input class="form-control" id="id_username" maxlength="30" name="username" type="text" placeholder="Enter username" required></p>
+                        </div>
+                        <div class="form-group">
+                            <p class="required"><label for="id_password1">Password:</label>
+                                <input class="form-control" id="id_password1" maxlength="30" name="password" type="text" placeholder="Enter password" required></p>
+                        </div>
+                        <div class="form-group">
+                            <p class="required"><label for="id_password2">Confirm Password:</label>
+                                <input class="form-control" id="id_password2" maxlength="30" name="password" type="text" placeholder="Enter password" required></p>
+                        </div>
+                        <div class="form-group">
+                            <p class="required"><label for="id_email">Email:</label>
+                                <input class="form-control" id="id_email" maxlength="30" name="email" type="email" placeholder="Enter email" required></p>
+                        </div>
+                        <div class="form-group">
+                            <p class="required"><label for="id_address">Address:</label>
+                                <input class="form-control" id="id_address" maxlength="30" name="address" type="text" placeholder="Enter address" required></p>
+                        </div>
+                        <div class="form-group">
+                            <p class="required"><label for="id_firstName">First Name:</label>
+                                <input class="form-control" id="id_firstName" maxlength="30" name="firstName" type="text" placeholder="Enter First Name" required></p>
+                        </div>
+                        <div class="form-group">
+                            <p class="optional"><label for="id_middleName">Middle Name:</label>
+                                <input class="form-control" id="id_middleName" maxlength="30" name="middleName" type="text" placeholder="Enter Middle Name"></p>
+                        </div>
+                        <div class="form-group">
+                            <p class="required"><label for="id_lastName">Last Name:</label>
+                                <input class="form-control" id="id_lastName" maxlength="30" name="lastName" type="text" placeholder="Enter Last Name" required></p>
+                        </div>
+                        <div class="form-group">
+                            <p class="required"><label for="id_dateOfBirth">Date of Birth:</label>
+                                <input class="form-control" id="id_dateOfBirth" maxlength="30" name="dateOfBirth" type="date" placeholder="Enter Birthdate" required></p>
+                        </div>
+                        <div class="form-group">
+                            <p class="required"><label for="id_phoneNumber">Phone:</label>
+                                <input class="form-control" id="id_phoneNumber" maxlength="30" name="phoneNumber" type="text" placeholder="Enter Phone Number" required></p>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+</html>

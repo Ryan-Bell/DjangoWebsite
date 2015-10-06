@@ -13,10 +13,27 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+from django.conf.urls import include, url, patterns
 from django.contrib import admin
-from HealthApp.views import loginPage, patientRegister, patientProfile
+from HealthApp import views
+from django.conf.urls.static import static
+from django.conf import settings
 
+
+urlpatterns = [
+    url(r'^$', views.userLogin, name='login'),
+    url(r'^login/$', views.userLogin, name='login'),
+    url(r'^register/$', views.register, name='register'),
+    url(r'^logout/$', views.logout, name='logout'),
+    url(r'^home/$', views.home, name='home'),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^(?P<username>\w+)/profile/$', views.profile, name='profile')
+]
+
+
+
+
+'''
 urlpatterns = [
     url(r'^$', loginPage),
     url(r'^admin/', include(admin.site.urls)),
@@ -24,3 +41,4 @@ urlpatterns = [
     url(r'^patientRegistration/$', patientRegister),
     url(r'^patientProfile/(?P<username>\w{0,50})/$', patientProfile),
 ]
+'''

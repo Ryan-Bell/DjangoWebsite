@@ -1,10 +1,39 @@
 from django import forms
 from django.contrib.auth.forms import User
+from .models import Profile, PatientProfile
+
 
 class LoginForm(forms.Form):
     username = forms.CharField(label="Username", max_length=50)
     password = forms.CharField(label="Password", max_length=50, widget=forms.PasswordInput)
 
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ('username', 'password')
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = (
+            'firstName',
+            'middleName',
+            'lastName',
+            'email',
+            'phoneNumber',
+        )
+
+class PatientProfileForm(forms.ModelForm):
+    class Meta:
+        model = PatientProfile
+        fields = (
+            'dateOfBirth',
+            'address',
+        )
+
+"""
 class PatientRegisterForm(forms.Form):
     MAX_LENGTH = 50
     username = forms.CharField(label="Username", max_length=MAX_LENGTH)
@@ -46,3 +75,4 @@ class PatientProfileForm(forms.Form):
         fname = forms.CharField(max_length=MAX_LENGTH, default=user.firstName, editable=False)
     #else:
      #   fname = forms.CharField(max_length=MAX_LENGTH, default=user.firstName, editable=False)
+"""""
