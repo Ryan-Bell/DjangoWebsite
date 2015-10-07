@@ -6,6 +6,7 @@
 {% block side_block %}
 {% endblock %}
 {% block body_block %}
+    {% csrf_token %}
     <div class="container-fluid">
         {% if user.is_authenticated %}
         <div class="row">

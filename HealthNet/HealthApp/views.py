@@ -9,10 +9,11 @@ from django.template.loader import get_template
 from .models import Profile, PatientProfile
 from .forms import UserForm, ProfileForm, PatientProfileForm
 #from .forms import LoginForm, PatientRegisterForm, PatientProfileForm
-#from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 #from .models import Patient
 #from django.contrib.auth.models import User, Group
 
+@csrf_exempt
 def home(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('login'))
@@ -23,7 +24,7 @@ def home(request):
         else:
             name = activeUser.username
         return render(request, 'HealthNet/html/home.html', {'name': name})
-
+@csrf_exempt
 def profile(request, username):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('login'))
@@ -34,7 +35,7 @@ def profile(request, username):
         else:
             name = activeUser.username
         return render(request, 'patientProfile.html', {'name': name, 'user':activeUser})
-
+@csrf_exempt
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -62,7 +63,7 @@ def register(request):
         profileForm = ProfileForm()
         patientProfileForm = PatientProfileForm()
     return render(request, 'register.html', {'userForm':userForm, 'profileForm': profileForm, 'patientProfileForm':patientProfileForm, 'registered': registered})
-
+@csrf_exempt
 def userLogin(request):
     auth = 3
     if request.method == 'POST':
@@ -77,7 +78,7 @@ def userLogin(request):
                 auth = 0
                 #return HttpResponseRedirect(reverse('home'))
                 #return HttpResponse("You are logged in!")
-                return HttpResponseRedirect(reverse('profile'))
+                return HttpResponseRedirect('/%s/profile' % username)
             else:
                 auth = 1
                 return HttpResponse("Your healthnet account is innactive")
@@ -88,7 +89,7 @@ def userLogin(request):
             return render(request, 'login.html', {'authenticated': auth})
     else:
         return render(request, "login.html", {'authenticated':auth})
-
+@csrf_exempt
 def userLogout(request):
     #try:
         #if logout(request) != "":
