@@ -11,12 +11,32 @@
         {% if user.is_authenticated %}
         <div class="row">
             <div class="col-md-10">
+
+            <script>
+                $(document).ready(function () {
+                    $('#calendar').fullCalendar({
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,basicWeek,basicDay'
+                        },
+                        dayClick: function (date, jsEvent, view) {
+                            $('#fullCalDayModal').modal();
+                        },
+                        weekends:false,
+                        fixedWeekCount: false,
+                        aspectRation: 2,
+                    });
+                });
+            </script>
+
                 <div class="page-header" style="">
                     <h1>Welcome to your page, {{ user.profile.getName }}</h1>
                 </div>
                 <div class="profile-tabs">
                     <ul class="nav nav-tabs" style="">
                         <li role="presentation" class="active"><a href="{% url 'profile' username=user.username %}">User Details</a> </li>
+                        <li role="presentation" class="active"><a href="{% url 'calendar' username=user.username %}">Appointments</a> </li>
                     </ul>
                     <div class="panel panel-default">
                         <div class="panel-heading">

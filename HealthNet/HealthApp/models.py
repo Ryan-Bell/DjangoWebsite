@@ -20,7 +20,9 @@ class Profile(models.Model):
     lastName = models.CharField(max_length=MAX_LENGTH)
     email = models.EmailField(blank=False)
     phoneNumber = models.CharField(max_length=14)
-
+    dateOfBirth = models.DateField(blank=True)
+    address = models.CharField(max_length=MAX_LENGTH, blank=True)
+	
     def __str__(self):
         return self.user.username
 
@@ -31,15 +33,19 @@ class Profile(models.Model):
         return self.type
 
 class PatientProfile(models.Model):
-   profile = models.OneToOneField(Profile)
-   dateOfBirth = models.DateField()
-   address = models.CharField(max_length=MAX_LENGTH)
+	profile = models.OneToOneField(Profile)
+	dateOfBirth = models.DateField()
+	address = models.CharField(max_length=MAX_LENGTH)
 
-   def __str__(self):
-       return self.profile.user.username
+	def __str__(self):
+		return self.profile.user.username
 
-   def getName(self):
-       return self.profile.firstName + " " + self.profile.lastName
+	def getName(self):
+		return self.profile.firstName + " " + self.profile.lastName
+	   
+class LogItem(models.Model):
+	user = models.OneToOneField(User)
+	username = models.CharField(max_length=MAX_LENGTH)
 
 """
 class Patient(AbstractBaseUser):

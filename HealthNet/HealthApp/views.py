@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.template import Context
 from django.template.loader import get_template
 from .models import Profile, PatientProfile
-from .forms import UserForm, ProfileForm, PatientProfileForm
+from .forms import UserForm, ProfileForm, PatientProfileForm, LogItemForm
 #from .forms import LoginForm, PatientRegisterForm, PatientProfileForm
 from django.views.decorators.csrf import csrf_exempt
 #from .models import Patient
@@ -36,18 +36,35 @@ def profile(request, username):
             name = activeUser.username
         return render(request, 'patientProfile.html', {'name': name, 'user':activeUser})
 @csrf_exempt
+def profileAppointments(request, username):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        activeUser = request.user
+        if activeUser.profile.type == 'Patient':
+            name = activeUser.profile.getName()
+        else:
+            name = activeUser.username
+        return render(request, 'patientAppointment.html', {'name': name, 'user':activeUser})
+		
+@csrf_exempt
 def register(request):
     registered = False
     if request.method == 'POST':
         userForm = UserForm(data=request.POST)
         profileForm = ProfileForm(data=request.POST)
         patientProfileForm = PatientProfileForm(data=request.POST)
+        itemLogForm = LogItemForm(data=request.POST)
 
         if userForm.is_valid() and profileForm.is_valid() and patientProfileForm.is_valid():
             user = userForm.save()
             user.set_password(user.password)
             user.save()
 
+            item = itemLogForm.save(commit=False)
+            item.user = user
+            item.username = user.username
+            item.save()
             standardProfile = profileForm.save(commit=False)
             standardProfile.user = user
             standardProfile.type = 'Patient'
