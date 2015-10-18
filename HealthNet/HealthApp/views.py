@@ -58,7 +58,7 @@ def profileAppointments(request, username):
             name = activeUser.username
         return render(request, 'patientAppointment.html', {'name': name, 'user':activeUser})
 @csrf_exempt
-def profileAppointments(request, username):
+def profileMedicalInfo(request, username):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('login'))
     else:
