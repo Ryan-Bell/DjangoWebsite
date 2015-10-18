@@ -44,5 +44,6 @@ urlpatterns = [
     url(r'^home/$', views.home, name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^(?P<username>\w+)/profile/$', views.profile, name='profile'),
-    url(r'^(?P<username>\w+)/profile/Appointments$', views.profileAppointments, name='calendar')
+    url(r'^(?P<username>\w+)/profile/Appointments$', views.profileAppointments, name='calendar'),
+    url(r'^(?P<username>\w+)/profile/MedicalInfo$', views.profileMedicalInfo, name='medical')
 ]
