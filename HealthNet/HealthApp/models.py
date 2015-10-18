@@ -46,27 +46,3 @@ class PatientProfile(models.Model):
 class LogItem(models.Model):
 	user = models.OneToOneField(User)
 	username = models.CharField(max_length=MAX_LENGTH)
-
-"""
-class Patient(AbstractBaseUser):
-    user = models.OneToOneField(User)
-    MAX_LENGTH = 50
-    identifier = models.CharField(max_length=MAX_LENGTH, unique=True)
-    USERNAME_FIELD = 'identifier'
-
-    firstName = models.CharField(max_length=MAX_LENGTH)
-    middleName = models.CharField(max_length=MAX_LENGTH)
-    lastName = models.CharField(max_length=MAX_LENGTH)
-    phonePrimary = models.CharField(max_length=MAX_LENGTH)
-    phoneSecondary = models.CharField(max_length=MAX_LENGTH)
-    email = models.EmailField(max_length=MAX_LENGTH)
-    country = models.CharField(max_length=MAX_LENGTH)
-    address = models.CharField(max_length=MAX_LENGTH)
-    contactICEName = models.CharField(max
-    length=MAX_LENGTH)
-    contactICERelationship = models.CharField(max_length=MAX_LENGTH)
-    contactICEPhone = models.CharField(max_length=MAX_LENGTH)
-    provider = models.CharField(max_length=MAX_LENGTH)
-
-    REQUIRED_FIELDS = [firstName,lastName,phonePrimary,email,country,address,provider]
-"""
