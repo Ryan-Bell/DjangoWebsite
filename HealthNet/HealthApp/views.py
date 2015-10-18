@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template import Context
 from django.template.loader import get_template
-from .models import Profile, PatientProfile
-from .forms import UserForm, ProfileForm, PatientProfileForm, LogItemForm
+from .models import Patient
+from .forms import UserForm, PatientForm, LogItemForm
 from django.views.decorators.csrf import csrf_exempt
 
 """
@@ -39,10 +39,7 @@ def profile(request, username):
         #capture the user object and run checks on the account type to determine where to send them
         #In the future we may need to check for doctors and nurses and send them elsewhere.
         activeUser = request.user
-        if activeUser.profile.type == 'Patient':
-            name = activeUser.profile.getName()
-        else:
-            name = activeUser.username
+        name = activeUser.first_name
         #show the user a rendered html page patientProfile.html and pass in the user object and name.
         #The parameters are passed in to the html page with the name 'name' and 'user'.
         return render(request, 'patientProfile.html', {'name': name, 'user':activeUser})
@@ -52,10 +49,7 @@ def profileAppointments(request, username):
         return HttpResponseRedirect(reverse('login'))
     else:
         activeUser = request.user
-        if activeUser.profile.type == 'Patient':
-            name = activeUser.profile.getName()
-        else:
-            name = activeUser.username
+        name = activeUser.first_name
         return render(request, 'patientAppointment.html', {'name': name, 'user':activeUser})
 @csrf_exempt
 def profileMedicalInfo(request, username):
@@ -63,10 +57,7 @@ def profileMedicalInfo(request, username):
         return HttpResponseRedirect(reverse('login'))
     else:
         activeUser = request.user
-        if activeUser.profile.type == 'Patient':
-            name = activeUser.profile.getName()
-        else:
-            name = activeUser.username
+        name = activeUser.first_name
         return render(request, 'patientMedicalInfo.html', {'name': name, 'user':activeUser})
 
 @csrf_exempt
@@ -76,14 +67,14 @@ def register(request):
         #this is where all of the data the user input is gathered. Forms are filled out with
         #the entered data.
         userForm = UserForm(data=request.POST)
-        profileForm = ProfileForm(data=request.POST)
-        patientProfileForm = PatientProfileForm(data=request.POST)
+        patientForm = PatientForm(data=request.POST)
         itemLogForm = LogItemForm(data=request.POST)
         #The forms are checked to determine if they are valid. This is where required fields are checked.
         #This is bulid into django and the else statement easily displays to the user the location of their folly.
-        if userForm.is_valid() and profileForm.is_valid() and patientProfileForm.is_valid():
+        if userForm.is_valid()and patientForm.is_valid():
             #creating the user object
             user = userForm.save()
+
             user.set_password(user.password)
             #all adjusted values must be followed by a save call.
             user.save()
@@ -92,24 +83,21 @@ def register(request):
             item.user = user
             item.username = user.username
             item.save()
-            #Create and save the generic profile info
-            standardProfile = profileForm.save(commit=False)
-            standardProfile.user = user
-            standardProfile.type = 'Patient'
-            standardProfile.save()
             #create and save the patient profile
-            patientProfile = patientProfileForm.save(commit=False)
-            patientProfile.profile = standardProfile
+            patientProfile = patientForm.save(commit=False)
+            patientProfile.user = user
             patientProfile.save()
+            user.first_name = patientProfile.firstName
+            user.last_name = patientProfile.lastName
+            user.save()
             registered = True
         else:
-            print(userForm.errors, profileForm.errors, patientProfileForm.errors)
+            print(userForm.errors, patientForm.errors)
     else:
         #if the request is get, show blank forms.
         userForm = UserForm()
-        profileForm = ProfileForm()
-        patientProfileForm = PatientProfileForm()
-    return render(request, 'register.html', {'userForm':userForm, 'profileForm': profileForm, 'patientProfileForm':patientProfileForm, 'registered': registered})
+        patientForm = PatientForm()
+    return render(request, 'register.html', {'userForm':userForm, 'patientForm':patientForm, 'registered': registered})
 @csrf_exempt
 def userLogin(request):
     auth = 3

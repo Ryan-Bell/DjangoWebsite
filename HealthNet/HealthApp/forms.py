@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import User
-from .models import Profile, PatientProfile, LogItem
+from .models import Patient, LogItem
 
 
 class LoginForm(forms.Form):
@@ -19,9 +19,9 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'password')
 
-class ProfileForm(forms.ModelForm):
+class PatientForm(forms.ModelForm):
     class Meta:
-        model = Profile
+        model = Patient
         fields = (
             'firstName',
             'middleName',
@@ -29,13 +29,5 @@ class ProfileForm(forms.ModelForm):
             'email',
             'phoneNumber',
 			'dateOfBirth',
-            'address',
-        )
-
-class PatientProfileForm(forms.ModelForm):
-    class Meta:
-        model = PatientProfile
-        fields = (
-            'dateOfBirth',
             'address',
         )

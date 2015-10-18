@@ -22,7 +22,7 @@ TYPES = (
 #This is used to limit the entry boxes to 50 characters
 MAX_LENGTH = 50
 
-class Profile(models.Model):
+class Patient(models.Model):
     user = models.OneToOneField(User)
     #type = models.CharField(max_length=10, types=TYPES)
     type = models.CharField(max_length=10)
@@ -43,17 +43,6 @@ class Profile(models.Model):
 
     def getType(self):
         return self.type
-
-class PatientProfile(models.Model):
-	profile = models.OneToOneField(Profile)
-	dateOfBirth = models.DateField()
-	address = models.CharField(max_length=MAX_LENGTH)
-
-	def __str__(self):
-		return self.profile.user.username
-
-	def getName(self):
-		return self.profile.firstName + " " + self.profile.lastName
 	   
 class LogItem(models.Model):
 	user = models.OneToOneField(User)
