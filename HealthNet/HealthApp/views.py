@@ -8,32 +8,43 @@ from django.template import Context
 from django.template.loader import get_template
 from .models import Profile, PatientProfile
 from .forms import UserForm, ProfileForm, PatientProfileForm, LogItemForm
-#from .forms import LoginForm, PatientRegisterForm, PatientProfileForm
 from django.views.decorators.csrf import csrf_exempt
-#from .models import Patient
-#from django.contrib.auth.models import User, Group
 
-@csrf_exempt
-def home(request):
-    if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('login'))
-    else:
-        activeUser = request.user
-        if activeUser.profile.type == 'Patient':
-            name = activeUser.profile.getName()
-        else:
-            name = activeUser.username
-        return render(request, 'HealthNet/html/home.html', {'name': name})
+"""
+The views are essentially the intermediary step between the logic of the models and
+database and the front facing html pages. These are what is being called in the urls.py
+page. The format of each is fairly simple: At a minimum, the method needs to take a request,
+however, as seen in the methods dealing with the patient, optional additional parameters can
+be passed in through the urls.py page.
+There are two types of request; GET and POST. Get is when the user is pulling the page and
+Post is when they have entered some information and are submitting it to our side. When
+dealing with a page that requires the user to input information, the general flow is to first
+check what method the request is, displaying the blank forms if it is get, or pulling in the data
+and using it somehow.
+
+These @csrf_exempt lines above each view is a workaround solution for csrf missing token
+errors. The error has something to do with a csrf tag not being placed properly in the
+html files. I have tried multiple arrangements but ended up using this workaround in the
+interest of time. These csrf(cross-site request forgery) tokens are used for security
+purposes and will most likely not play a huge role in this class assignment.
+"""
 @csrf_exempt
 def profile(request, username):
+    #check that the user is actually logged in so they can't access someone's profile just
+    #by knowing the url. If they aren't authenticated they get redirected to the login page
+    #using the reverse lookup which searches the urls in urls.py for a name of 'login'
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('login'))
     else:
+        #capture the user object and run checks on the account type to determine where to send them
+        #In the future we may need to check for doctors and nurses and send them elsewhere.
         activeUser = request.user
         if activeUser.profile.type == 'Patient':
             name = activeUser.profile.getName()
         else:
             name = activeUser.username
+        #show the user a rendered html page patientProfile.html and pass in the user object and name.
+        #The parameters are passed in to the html page with the name 'name' and 'user'.
         return render(request, 'patientProfile.html', {'name': name, 'user':activeUser})
 @csrf_exempt
 def profileAppointments(request, username):
@@ -51,24 +62,31 @@ def profileAppointments(request, username):
 def register(request):
     registered = False
     if request.method == 'POST':
+        #this is where all of the data the user input is gathered. Forms are filled out with
+        #the entered data.
         userForm = UserForm(data=request.POST)
         profileForm = ProfileForm(data=request.POST)
         patientProfileForm = PatientProfileForm(data=request.POST)
         itemLogForm = LogItemForm(data=request.POST)
-
+        #The forms are checked to determine if they are valid. This is where required fields are checked.
+        #This is bulid into django and the else statement easily displays to the user the location of their folly.
         if userForm.is_valid() and profileForm.is_valid() and patientProfileForm.is_valid():
+            #creating the user object
             user = userForm.save()
             user.set_password(user.password)
+            #all adjusted values must be followed by a save call.
             user.save()
-
+            #Create the log item object and save it
             item = itemLogForm.save(commit=False)
             item.user = user
             item.username = user.username
             item.save()
+            #Create and save the generic profile info
             standardProfile = profileForm.save(commit=False)
             standardProfile.user = user
             standardProfile.type = 'Patient'
             standardProfile.save()
+            #create and save the patient profile
             patientProfile = patientProfileForm.save(commit=False)
             patientProfile.profile = standardProfile
             patientProfile.save()
@@ -76,6 +94,7 @@ def register(request):
         else:
             print(userForm.errors, profileForm.errors, patientProfileForm.errors)
     else:
+        #if the request is get, show blank forms.
         userForm = UserForm()
         profileForm = ProfileForm()
         patientProfileForm = PatientProfileForm()
@@ -84,123 +103,31 @@ def register(request):
 def userLogin(request):
     auth = 3
     if request.method == 'POST':
+        #This is how data can be pulled from a post request. The 'username' and 'password' are assigned names for
+        #the fields in the html page.
         username = request.POST.get('username')
         password = request.POST.get('password')
-
+        #authenticate returns true or false based on whether the username and password match in the database
         user = authenticate(username=username, password=password)
 
         if user:
             if user.is_active:
                 login(request, user)
                 auth = 0
-                #return HttpResponseRedirect(reverse('home'))
-                #return HttpResponse("You are logged in!")
                 return HttpResponseRedirect('/%s/profile' % username)
             else:
                 auth = 1
+                #all users have a is_valid field that can be toggled for expiration or transfers or whatever else we want in the future.
                 return HttpResponse("Your healthnet account is innactive")
         else:
-            #print("Invalid login: {0}, {1}".format(username, password))
             auth = 2
+            #currently, an invlaid login will display a blank page with only the text "Invlaid login"
+            #the line below it would return them to the login page.
             return HttpResponse("Invalid Login")
             return render(request, 'login.html', {'authenticated': auth})
     else:
         return render(request, "login.html", {'authenticated':auth})
 @csrf_exempt
 def userLogout(request):
-    #try:
-        #if logout(request) != "":
-    #        return HttpResponse("You have been logged out")
-    #except:
-    #    return HttpResponse("You have been logged out")
-    #return HttpResponse("You have been logged out")
-    #return HttpResponseRedirect('/')
-
     logout(request)
     return HttpResponseRedirect('/')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""
-#@csrf_exempt  #workaround temp
-def loginPage(request):
-    if request.method == 'POST':
-
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            try:
-                #user = Group.objects.get_by_natural_key(form.cleaned_data['username'])
-                #user = Patient._check_id_field(form.username)#User.objects.get(username=form.cleaned_data['username'])
-                #all_Patients =
-                #return HttpResponse(Patient.check_password(form.cleaned_data['password']))
-                #if(user.check_password(form.cleaned_data['password']) == False):
-                data = form.cleaned_data
-                #return HttpResponse(Patient.objects.all())
-                #return HttpResponse(Patient.objects.filter(identifier=data['username']))
-                user = Patient.objects.filter(identifier=data['username'])
-                #return HttpResponse(user)
-                #if(user.check_password(data['password']) == False):
-                #    return HttpResponse("Invalid Password")
-            except: #User.DoesNotExist:
-                user = None
-            if(user != None):
-                return HttpResponseRedirect('/patientProfile/' + data['username'])
-            else:
-                return HttpResponse("User shown as not existing")
-    else:
-        form = LoginForm()
-    return render(request, 'loginPage.html', {'LoginForm': form})
-
-#@csrf_exempt #workaround temp
-def patientRegister(request):
-    if request.method == 'POST':
-        form = PatientRegisterForm(request.POST)
-        if form.is_valid():
-            patient = Patient()
-            #return HttpResponse(form.cleaned_data['username'])
-            data = form.cleaned_data
-            #return HttpResponse(data['password'])
-            patient.password = data['password']
-            patient.identifier = data['username']
-            patient.address = data['address']
-            patient.contactICEName = data['contactICEName']
-            patient.contactICEPhone = data['contactICEPhone']
-            patient.contactICERelationship = data['contactICERelationship']
-            patient.country = data['country']
-            #patient.dateBirth = form.
-            patient.email = data['email']
-            patient.firstName = data['firstName']
-            patient.middleName = data['middleName']
-            patient.lastName = data['lastName']
-            patient.phonePrimary = data['phonePrimary']
-            patient.phoneSecondary = data['phoneSecondary']
-            patient.save()
-            #user = Patient.
-            #user = User.objects._create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'], False, False)
-            #user.save()
-
-            return HttpResponse("New Patient Created")
-    else:
-        form = PatientRegisterForm()
-
-    return render(request, 'patientRegistration.html', {'PatientRegisterForm': form})
-
-#@csrf_exempt
-def patientProfile(request, username):
-    #return HttpResponse(username)
-    form = PatientProfileForm(request.GET, nameArg='username')
-    return render(request, 'patientProfile.html', {'PatientProfileForm': form})
-
-"""
