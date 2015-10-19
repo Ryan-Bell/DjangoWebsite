@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import User
-from .models import Patient, LogItem
+from .models import Patient, LogItem, MedicalInfo
 
 
 class LoginForm(forms.Form):
@@ -30,4 +30,37 @@ class PatientForm(forms.ModelForm):
             'phoneNumber',
 			'dateOfBirth',
             'address',
+        )
+
+class MedicalForm(forms.ModelForm):
+    class Meta:
+        model = MedicalInfo
+        fields = (
+            'tuberculosis',
+            'influenza',
+            'rheumatic',
+            'whoopingCough',
+            'tonsillitis',
+            'measles',
+            'mumps',
+            'frequentColds',
+            'germanMeasles',
+            'scarletFever',
+            'scarlatina',
+            'diphtheria',
+            'polio',
+            'chickenpox',
+            'coxsackie',
+            'pneumonia',
+            'highBloodPressure',
+            'migraine',
+            'strokes',
+            'kidneyDisease',
+            'arthritis',
+            'allergy',
+            'bleeding',
+            'syphilis',
+            'anemia',
+            'obesity',
+            'epilepsy',
         )

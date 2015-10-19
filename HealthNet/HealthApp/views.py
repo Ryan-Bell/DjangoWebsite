@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.template import Context
 from django.template.loader import get_template
 from .models import Patient
-from .forms import UserForm, PatientForm, LogItemForm
+from .forms import UserForm, PatientForm, LogItemForm, MedicalForm
 from django.views.decorators.csrf import csrf_exempt
 
 """
@@ -91,6 +91,10 @@ def register(request):
             user.last_name = patientProfile.lastName
             user.save()
             registered = True
+            #redirect to medical portion of registration
+
+            return registerMedical(request, user)
+            return HttpResponseRedirect(reverse('registerMedical'))
         else:
             print(userForm.errors, patientForm.errors)
     else:
@@ -98,6 +102,29 @@ def register(request):
         userForm = UserForm()
         patientForm = PatientForm()
     return render(request, 'register.html', {'userForm':userForm, 'patientForm':patientForm, 'registered': registered})
+@csrf_exempt
+def registerMedical(request, user):
+    registered = False
+
+    if request.method == 'POST':
+        medicalForm = MedicalForm(data=request.POST)
+        #authenticate returns true or false based on whether the username and password match in the database
+        authenticate(username=user.username, password=user.password)
+        if medicalForm.is_valid():
+
+
+            print(user.username)
+            medicalInfo = medicalForm.save(commit=False)
+            medicalInfo.save()
+            user.patient.medicalInfo = medicalInfo
+            user.patient.save()
+            registered = True
+            HttpResponseRedirect(reverse('login'))
+        #else:
+        #    print(medicalForm.errors)
+    else:
+        medicalForm = MedicalForm()
+    return render(request, 'registerMedical.html', {'medicalForm':medicalForm})
 @csrf_exempt
 def userLogin(request):
     auth = 3
