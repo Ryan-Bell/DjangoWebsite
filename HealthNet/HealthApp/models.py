@@ -14,7 +14,7 @@ OneToMany, and ManyToMany are also other types of multiplicities allowed. These 
 #decided not to delete it for now.
 TYPES = (
     ('Patient', 'Patient'),
-    ('Doctor', 'Nurse'),
+    ('Doctor', 'Doctor'),
     ('Nurse', 'Nurse'),
     ('Admin', 'Admin')
 )
@@ -52,10 +52,12 @@ class MedicalInfo(models.Model):
     obesity = models.BooleanField(default=False)
     epilepsy = models.BooleanField(default=False)
 
+class Profile(models.Model):
 
 class Patient(models.Model):
     user = models.OneToOneField(User)
     medicalInfo = models.OneToOneField(MedicalInfo, null=True)
+    doctor = models.ForeignKey(Doctor)
     #type = models.CharField(max_length=10, types=TYPES)
     type = models.CharField(max_length=10)
     firstName = models.CharField(max_length=MAX_LENGTH)
@@ -66,7 +68,7 @@ class Patient(models.Model):
     phoneNumber = models.CharField(max_length=14)
     dateOfBirth = models.DateField(blank=True)
     address = models.CharField(max_length=MAX_LENGTH, blank=True)
-	
+
     def __str__(self):
         return self.user.username
     #custom methods can be defined
@@ -75,6 +77,25 @@ class Patient(models.Model):
 
     def getType(self):
         return self.type
+
+
+class Doctor(models.Model):
+    user = models.OneToOneField(User)
+
+class Nurse(models.Model):
+    user = models.OneToOneField(User)
+
+class Admin(models.Model):
+    user = models.OneToOneField(User)
+
+class Hospital(models.Model):
+    #rooms list - possibly a room model with basic information
+
+#class Perscription??
+
+#class Logmanager? with many methods?
+#the logmanager would also keep track of the statistics
+#and viewing/sorting as well as making pretty graphs
 
 class LogItem(models.Model):
 	user = models.OneToOneField(User)
