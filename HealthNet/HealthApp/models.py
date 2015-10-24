@@ -9,16 +9,6 @@ of input field. Many of the models have a OneToOne link to another model. ManyTo
 OneToMany, and ManyToMany are also other types of multiplicities allowed. These link the models.
 """
 
-#I don't exactly remember what this is for or why  past-Ryan created it and never
-#used it. Nonetheless, I remember thinking it was a good idea at the time so I
-#decided not to delete it for now.
-#TYPES = (
-#    ('Patient', 'Patient'),
-#    ('Doctor', 'Doctor'),
-#   ('Nurse', 'Nurse'),
-#   ('Admin', 'Admin')
-#)
-
 STATE_CHOICES = (
     ('AL', 'Alabama'),
     ('AK', 'Alaska'),
@@ -76,6 +66,8 @@ STATE_CHOICES = (
 SUPPORTED_INSURANCE = (
     ('ExampleKey', 'ExampleValue')
 )
+
+MEDICINE_CATEGORIES = ()
 
 #This is used to limit the entry boxes to 50 characters
 MAX_LENGTH = 50
@@ -151,9 +143,9 @@ class Patient(models.Model):
     profileInfo = models.OneToOneField(Profile, null=True)
     insuranceInfo = models.OneToOneField(InsuranceInfo, null=True)
     medicalInfo = models.OneToOneField(MedicalInfo, null=True)
+    preferredHospital = models.ForeignKey(Hospital)
+    prescriptions = models.ForeignKey(Prescription)
     doctor = models.ForeignKey(Doctor)
-    #type = models.CharField(max_length=10, types=TYPES)
-    #type = models.CharField(max_length=10)
     #setting blank to true means this field will not be required
 
 
@@ -170,22 +162,45 @@ class Patient(models.Model):
 class Doctor(models.Model):
     user = models.OneToOneField(User)
     profileInfo = models.OneToOneField(Profile, null=True)
+    #Pertanint Methods here
 
 class Nurse(models.Model):
     user = models.OneToOneField(User)
     profileInfo = models.OneToOneField(Profile, null=True)
+    #Pertanint Methods here
 
 class Admin(models.Model):
     user = models.OneToOneField(User)
     profileInfo = models.OneToOneField(Profile, null=True)
+    #Pertanint Methods here
 
 class Hospital(models.Model):
-    #rooms list - possibly a room model with basic information
-    #method for adding room
-    #method for removing room
+    name = models.CharField(max_length=MAX_LENGTH)
+    address = models.CharField(max_length=MAX_LENGTH)
+    city = models.CharField(max_length=MAX_LENGTH)
+    state = models.CharField(max_length=2, choices=STATE_CHOICES)
+    zipcode = models.CharField(max_length=5)
+
+class Prescription:
+    #medication
+    medicationCategory = models.ForeignKey(choices=MEDICINE_CATEGORIES)
+    medication = models.CharField(choices=medicationCategory.choices)
+    #strength
+    strength = models.CharField(choices=)
+    #amount
+    amount = models.CharField(choices=)
+    #frequnecy
+    frequency = models.CharField(choices=)
+    #purpose (treatment for?)
+    purpose = models.TextField()
+    #directions
+    directions = models.TextField()
+    #comments
+    comments = models.TextField()
+
+#class for medication categories that each hold a list of medications
 
 
-#class Perscription??
 
 #class Logmanager? with many methods?
     #the logmanager would also keep track of the statistics
