@@ -245,7 +245,18 @@ class Z_amylin_analogs(models.Model):
     SPECIFICS = (('pramlintide', 'pramlintide'))
 
 class Z_analgesics(models.Model):
-    SPECIFICS = (('methysergide', 'methysergide'), )
+    SPECIFICS = (('methysergide', 'methysergide'), ('frovatriptan', 'frovatriptan'), ('naxproxen', 'naxproxen'), ('naratriptan', 'naratriptan'), ('almotriptan', 'almotriptan'), ('caffeine', 'caffeine'),
+                 ('ergotamine', 'ergotamine'), ('rizatriptan', 'rizatriptan'), ('eletriptan', 'eletriptan'), ('acetaminophen', 'acetaminophen'), ('dichloralphenazone', 'dichloralphenazone'), ('isometheptene', 'isometheptene'),
+                 ('sumatriptan', 'sumatriptan'), ('zolmitriptan', 'zolmaitriptan'), ('dihydroergotamine', 'dihydroergotamine'),
+
+                 ('valdecoxib', 'valdecoxib'), ('rofecoxib', 'rofecoxib'), ('celecoxib', 'celecoxib'),
+
+                 ('ziconotide', 'ziconotide'), ('levorphanol', 'levorphanol'), ('meperidine', 'meperidine'), ('butorphanol', 'butorphanol'), ('methadone', 'methadone'), ('hydromorphone', 'hydromorphone'),
+                 ('oxycodone', 'oxycodone'), ('opium', 'opium'), ('fentanyl', 'fentanyl'), ('buprenorphine', 'buprenorphine'), ('oxymorphone', 'oxymorphone'), ('codeine', 'codeine'), ('morphine', 'morphine'),
+                 ('nalbuphine', 'nalbuphine'), ('hydrocodone', 'hydrocodone'), ('propoxyphene', 'propoxyphene'), ('tramadol', 'tramadol'), ('tapentadol', 'tapentadol'), ('pentazocine', 'pentazoncine'), ('alfentanil', 'alfentanil'),
+                 ('levomethadyl', 'levomethadyl'), ('remifentanil', 'remifentanil'), ('sufentanil', 'sufentanil'),
+
+                 ('magnesium-salicylate', 'magnesium-salicylate'), ('aspirin', 'aspirin'), ('diflunisal','diflunisal'), ('salsalate', 'salsalate'))
 
 
 
