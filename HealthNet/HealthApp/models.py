@@ -67,7 +67,7 @@ SUPPORTED_INSURANCE = (
     ('ExampleKey', 'ExampleValue')
 )
 
-MEDICINE_CATEGORIES = ()
+
 
 #This is used to limit the entry boxes to 50 characters
 MAX_LENGTH = 50
@@ -199,7 +199,62 @@ class Prescription:
     comments = models.TextField()
 
 #class for medication categories that each hold a list of medications
+class Z_adamantane_antivirals(models.Model):
+    SPECIFICS = (('amantadine', 'amantadine'),('rimantadine', 'rimantadine'))
 
+class Z_adrenal_cortical_steroids(models.Model):
+    SPECIFICS = (('corticotropin', 'corticotropin'), ('corticorelin', 'corticorelin'), ('cosyntropin', 'corsyntropin'),
+
+                 ('triamcinolone', 'triamcinolone'), ('methylprednisolone', 'methylprednisolone'), ('betamethasone', 'betamethasone'),
+                 ('prednisone', 'prednisone'), ('hydrocortisone', 'hydrocortisone'), ('budesonide', 'budesonide'),
+                 ('prednisolone', 'prednisolone'), ('dexamethasone', 'dexamethasone'), ('cortisone', 'cortisone'),
+
+                 ('fludrocortisone', 'fludrocortisone'))
+
+class Z_adrenal_corticosteroid_inhibitors(models.Model):
+    SPECIFICS = (('aminoglutethimide', 'aminoglutethimide'), ('metyrapone', 'metyrapone'))
+
+class Z_adrenergic_bronchodilators(models.Model):
+    SPECIFICS = (('isoproterenol', 'isoproterenol'), ('levalbuterol', 'levalbuterol'), ('arformoterol', 'arformoterol'),
+                 ('epinephrine', 'epinephrine'), ('metaproterenol', 'metaproterenol'), ('terbutaline', 'terbutaline'),
+                 ('formoterol', 'formoterol'), ('pirbuterol', 'pirbuterol'), ('racepinephrine', 'racepinephrine'), ('albuterol', 'albuterol'),
+                 ('salmeterol', 'salmeterol'), ('bitolterol', 'bitolterol'), ('indacaterol', 'indacaterol'), ('isoetharine', 'isoetharine'), ('olodaterol', 'olodaterol'))
+
+class Z_aldosterone_receptor_agents(models.Model):
+    SPECIFICS = (('eplerenone', 'eplerenone'), ('spironolactone', 'spironolactone'))
+
+class Z_alkylating_agents(models.Model):
+    SPECIFICS = (('chlorambucil', 'chlorambucil'), ('bendamustine', 'bendamustine'), ('carboplatin', 'carboplatin'), ('cyclophosphamide', 'cyclophosphamide'), ('cisplatin', 'cisplatin'),
+                 ('temozolomide', 'temozolomide'), ('busulfan', 'busulfan'), ('oxaliplatin', 'oxaliplatin'), ('melphalan', 'melphalan'), ('carmustine', 'carmustine'), ('dacarbazine', 'dacarbazine'),
+                 ('isosfamide', 'isosfamide'), ('lomustine', 'lomustine'), ('mechlorethamine', 'mechlorethamine'), ('streptozocin', 'streptozocin'), ('thiotepa', 'thiotepa'))
+
+class Z_alphaglucosidase_inhibitors(models.Model):
+    SPECIFICS = (('miglitol', 'miglitol'), ('acarbose', 'acarbose'))
+
+class Z_amebicides(models.Model):
+    SPECIFICS = (('chloroquine', 'chloroquine'), ('nitazoxanide', 'nitazoxanide'), ('metronidazole', 'metronidazole'), ('tinidazole', 'tinidazole'), ('paromomycin', 'paromomycin'), ('iodoquinol', 'iodoquinol'))
+
+class Z_aminoglycosides(models.Model):
+    SPECIFICS = (('tobramycin', 'tobramycin'), ('paromomycin', 'paromomycin'), ('gentamicin', 'gentamicin'), ('amikacin', 'amikacin'),
+                 ('kanamycin', 'kanamycin'), ('neomycin', 'neomycin'), ('streptomycin', 'streptomycin'))
+
+class Z_aminopenicillins(models.Model):
+    SPECIFICS = (('ampicillin', 'ampicillin'), ('amoxicillin', 'amoxicillin'), ('bacampicillin', 'bacampicillin'))
+
+class Z_amylin_analogs(models.Model):
+    SPECIFICS = (('pramlintide', 'pramlintide'))
+
+class Z_analgesics(models.Model):
+    SPECIFICS = (('methysergide', 'methysergide'), )
+
+
+
+
+
+
+
+
+MEDICINE_CATEGORIES = ()
 
 
 #class Logmanager? with many methods?
