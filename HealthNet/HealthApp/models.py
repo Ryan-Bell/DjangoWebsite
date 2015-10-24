@@ -258,10 +258,20 @@ class Z_analgesics(models.Model):
 
                  ('magnesium-salicylate', 'magnesium-salicylate'), ('aspirin', 'aspirin'), ('diflunisal','diflunisal'), ('salsalate', 'salsalate'))
 
+class Z_anabolic_steroids(models.Model):
+    SPECIFICS = (('methyltestosterone', 'methyltestosterone'), ('oxymetholone', 'oxymetholone'), ('testosterone', 'testosterone'), ('stanozolol', 'stanozolol'),
+                 ('fluoxymesterone', 'fluoxymesterone'), ('nandrolone', 'nandrolone'), ('oxandrolone', 'oxandrolone'))
 
+class Z_angiotensin_converting_enzyme_inhibitors(models.Model):
+    SPECIFICS = (('captopril', 'captopril'), ('fosinopril', 'fosinopril'), ('moexipril', 'moexipril'), ('benazepril', 'benazepril'), ('ramipril', 'ramipril'), ('quinapril', 'quinapril'), ('enalapril', 'enalapril'),
+                 ('perindopril', 'perindopril'), ('trandolapril', 'trandolapril'), ('lisinopril', 'lisinopril'))
 
+class Z_anorexiants(models.Model):
+    SPECIFICS = (('mazindol', 'mazindol'), ('diethylpropion', 'diethylpropion'), ('methamphetamine', 'methamphetamine'), ('phentermine', 'phentermine'), ('lorcaserin', 'lorcaserin'),('phendimetrazine', 'phendimetrazine'),
+                 ('benzphetamine', 'benzphetamine'), ('sibutramine', 'sibutramine'), ('bupropion', 'bupropion'), ('phentermine', 'phentermine'))
 
-
+class Z_anthelmintics(models.Model):
+    SPECIFICS = (())
 
 
 
