@@ -300,6 +300,27 @@ class Z_antidepressants(models.Model):
                  ('desvenlafaxine', 'desvenlafaxine'), ('venlafaxine', 'venlafaxine'), ('duloxetine', 'duloxetine'), ('milnacipran', 'milnacipran'), ('levomilnacipran', 'levomilnacipran'), ('maprotiline', 'maprotiline'), ('mirtazapine', 'mirtazapine'),
                  ('amoxapine', 'amoxapine'), ('desipramine', 'desipramine'), ('clomipramine', 'clomipramine'), ('trimipramine', 'trimipramine'), ('amitriptyline', 'amitriptyline'), ('nortriptyline', 'nortriptyline'), ('imipramine', 'imipramine'),('doxepin', 'doxepin'))
 
+
+class Z_antidiabetic(models.Model):
+    SPECIFICS = (('miglitol', 'miglitol'), ('acarbose', 'acarbose'), ('pramlintide', 'pramlintide'), ('liraglutide', 'liraglutide'), ('exenatide', 'exenatide'), ('dulaglutide', 'dulaglutide'), ('albiglutide', 'albiglutide'),
+                 ('insulin', 'insulin'), ('repaglinide', 'repaglinide'), ('nateglinide', 'nateglinide'), ('chlorpropamide', 'chlorpropamide'), ('glimepiride', 'glimepiride'), ('glipizide', 'glipizide'), ('glyburide', 'glyburide'),
+                 ('tolazamide', 'tolazamide'), ('acetohexamide', 'acetohexamide'), ('tolbutamide', 'tolbutamide'), ('rosiglitazone', 'roziglitazone'), ('pioglitazone', 'pioglitazone'), ('troglitazone', 'troglitazone'))
+
+class Z_antidiarrheals(models.Model):
+    SPECIFICS = (('atropine', 'atropine'), ('attapulgite', 'attapulgite'), ('saccharomyces-boulardii-lyo', 'saccharomyces-boulardii-lyo'), ('loperamide', 'loperamide'), ('bismuth-subsalicylate', 'bismuth-subsalicylate'), ('lactobacillius', 'lactobacillius'),
+                 ('crofelemer', 'crofelemer'), ('kaolin', 'kaolin'), ('loperamide', 'loperamide'))
+
+
+class Z_antidiuretics(models.Model):
+    SPECIFICS = (('desmopressin', 'desmopressin'), ('vasopressin', 'vasopressin'))
+
+
+class Z_antidotes(models.Model):
+    SPECIFICS = (('prussian-blue', 'prussian-blue'), ('naloxone', 'naloxone'), ('pralidoxime', 'pralidoxime'), ('acetylcysteine', 'acetylcysteine'), ('naltrexone', 'naltrexone'), ('charcoal', 'charcoal'), ('atropine', 'atropine'),
+                 ('deferiprone', 'deferiprone'), ('deferoxamine', 'deferoxamine'), ('digoxin', 'digoxin'), ('dimercaprol', 'dimercaprol'), ('edetate-calcium-disodium', 'edetate-calcium-disodium'), ('flumazenil', 'flumazenil'),
+                 ('fomepizole', 'fomepizole'), ('glucarpidase', 'glucarpidase'), ('ipecac', 'ipecac'), ('leucovorin', 'leucovorin'), ('methylene-blue', 'methylene-blue'), ('nalmefene', 'nalmefene'), ('sodium-nirtate', 'sodium-nitrate'))
+
+
 MEDICINE_CATEGORIES = ()
 
 
