@@ -368,9 +368,17 @@ class Z_antirheumatics(models.Model):
                  ('hyroxychloroquine', 'hydroxychloroquine'), ('tofacitinib', 'tofacitinib'), ('apremilast', 'apremilast'), ('leflunomide', 'leflunomide'), ('azathioprine', 'azathioprine'), ('abatacept', 'abatacept'), ('aurothioglucose', 'aurothioglucose'))
 
 
-class Z_(models.Model):
-    SPECIFICS = (())
-    
+class Z_antiseptics(models.Model):
+    SPECIFICS = (('hexachlorophene', 'hexachlorophene'), ('sodium-hypochlorite', 'sodium-hypochlorite'), ('chlorhexidine', 'chlorhexidine'), ('benalkonium', 'benalkonium'), ('iodine-topical', 'iodine-topical'), ('isopropanol', 'isopropanol'), ('povidone-iodine', 'povidone-iodine'))
+
+
+class Z_antithyroid(models.Model):
+    SPECIFICS = (('potassium-iodide', 'potassium-iodide'), ('propylthiouracil', 'propylthiouracil'), ('methimazole', 'methimazole'))
+
+
+class Z_bacterial_vaccines(models.Model):
+    SPECIFICS = ((''))
+
 MEDICINE_CATEGORIES = ()
 
 

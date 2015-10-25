@@ -102,8 +102,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8947368">
-              <caret line="372" column="4" selection-start-line="372" selection-start-column="4" selection-end-line="372" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.92105263">
+              <caret line="378" column="5" selection-start-line="378" selection-start-column="5" selection-end-line="378" selection-end-column="5" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -822,8 +822,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8947368">
-          <caret line="372" column="4" selection-start-line="372" selection-start-column="4" selection-end-line="372" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.92105263">
+          <caret line="378" column="5" selection-start-line="378" selection-start-column="5" selection-end-line="378" selection-end-column="5" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
