@@ -294,8 +294,11 @@ class Z_anticonvulsants(models.Model):
                  ('lamotrigine', 'lamotrigine'))
 
 
-class Z_(models.Model):
-    SPECIFICS = (())
+class Z_antidepressants(models.Model):
+    SPECIFICS = (('bupropion', 'bupropion'), ('vilazodone', 'vilazodone'), ('vortioxetine', 'vortioxetine'), ('isocarboxazid', 'isocarboxazid'), ('tranycypromine', 'tranycypromine'), ('selegiline', 'selegiline'), ('phenelzine', 'phenelzine'),
+                 ('nefazodone', 'nefazodone'), ('trazodone', 'trazodone'), ('escitalopram', 'excitalopram'), ('fluoxetine', 'fluoxetine'), ('citalopram', 'citalopram'), ('sertraline', 'sertraline'), ('paroxetine', 'paroxetine'), ('fluvoxamine', 'fluvoxamine'),
+                 ('desvenlafaxine', 'desvenlafaxine'), ('venlafaxine', 'venlafaxine'), ('duloxetine', 'duloxetine'), ('milnacipran', 'milnacipran'), ('levomilnacipran', 'levomilnacipran'), ('maprotiline', 'maprotiline'), ('mirtazapine', 'mirtazapine'),
+                 ('amoxapine', 'amoxapine'), ('desipramine', 'desipramine'), ('clomipramine', 'clomipramine'), ('trimipramine', 'trimipramine'), ('amitriptyline', 'amitriptyline'), ('nortriptyline', 'nortriptyline'), ('imipramine', 'imipramine'),('doxepin', 'doxepin'))
 
 MEDICINE_CATEGORIES = ()
 
