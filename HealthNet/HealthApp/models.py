@@ -271,9 +271,31 @@ class Z_anorexiants(models.Model):
                  ('benzphetamine', 'benzphetamine'), ('sibutramine', 'sibutramine'), ('bupropion', 'bupropion'), ('phentermine', 'phentermine'))
 
 class Z_anthelmintics(models.Model):
+    SPECIFICS = (('albendazole', 'albendazole'), ('ivermectin', 'ivermectin'), ('praziquantel', 'praziquantel'), ('pyrantel', 'pyrantel'), ('mebendazole', 'mebendazole'), ('miltefosine', 'miltefosine'), ('niclosamide', 'niclosamide'),
+                 ('oxamniquine', 'oxamniquine'), ('piperazine', 'piperazine'), ('thiabendazole', 'thiabendazole'))
+
+class Z_antiandrogens(models.Model):
+    SPECIFICS = (('bicalutamide', 'bicalutamide'), ('enzalutamide', 'enzalutamide'), ('flutamide', 'flutamide'), ('nilutamide', 'nilutamide'))
+
+class Z_antianginal(models.Model):
+    SPECIFICS = (('ranolazine', 'ranolazine'), ('nitroglycerin', 'nitroglycerin'), ('isosorbide-mononitrate', 'isosorbide-mononitrate'), ('isosorbide-dinitrate', 'isosorbide-dinitrate'), ('amyl-nitrite', 'amyl-nitrate'))
+
+class Z_anticoagulants(models.Model):
+    SPECIFICS = (('warfarin', 'warfarin'), ('fondaparinux', 'fondaparinux'), ('rivaroxban', 'rivaroxban'), ('apixaban', 'apixaban'), ('edoxaban', 'edoxaban'), ('dalteparin', 'dalteparin'), ('tinzaparin', 'tinzaparin'),
+                 ('enoxaparin', 'enoxaparin'), ('heparin', 'heparin'), ('ardeparin', 'ardeparin'), ('danaparoid', 'danaparoid'),
+                 ('bivalirudin', 'bivalirudin'), ('dabigatran', 'dabigatron'), ('argatroban', 'argatroban'), ('desirudin', 'desirudin'), ('lepirudin', 'lepirudin'))
+
+class Z_anticonvulsants(models.Model):
+    SPECIFICS = (('mephobarbital', 'mephobarbital'), ('primidone', 'primidone'), ('phenobarbital', 'phenobarbital'), ('clobazam', 'clobazam'), ('clonazepam', 'clonazepam'), ('diazepam', 'diazepam'), ('lorazepam', 'lorazepam'),
+                 ('felbatol', 'felbatol'), ('acetazolamide', 'acetazolamide'), ('zonisamide', 'zonisamide'), ('topiramate', 'topiramate'), ('rufinamide', 'rufinamide'), ('oxcarbazepine', 'oxcarbazepine'), ('eslicrabazepinr', 'eslicarbazepine'),
+                 ('carbamazepine', 'carbamazepine'), ('valproic-acid', 'valproic-acid'), ('divalproex-sodium', 'divalproex-sodium'), ('pregabalin', 'pregabalin'), ('vigabatrin', 'vigabatrin'), ('tiagabine', 'tiagabine'), ('phenytoin', 'phenytoin'),
+                 ('ethotoin', 'ethotoin'), ('fosphenytoin', 'fosphenytoin'), ('mephenytoin', 'mephenytoin'), ('magnesium-sulfate', 'magnesium-sulfate'), ('lacosamide', 'lacosamide'), ('ezogabine', 'ezogabine'),
+                 ('paramethadione', 'paramethadione'), ('trimethadione', 'trimethadione'), ('levetiracetam', 'levetiracetam'), ('ethosuximide', 'ethosuximide'), ('methsuximide', 'methsuximide'),
+                 ('lamotrigine', 'lamotrigine'))
+
+
+class Z_(models.Model):
     SPECIFICS = (())
-
-
 
 MEDICINE_CATEGORIES = ()
 
