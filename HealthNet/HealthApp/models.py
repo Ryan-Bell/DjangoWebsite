@@ -579,29 +579,92 @@ class Z_vasodilators(models.Model):
     SPECIFICS = (('nitroglycerin', 'nitroglycerin'), ('alprostadil', 'alprostadil'), ('hydralazine', 'hydralazine'), ('minoxidil', 'minoxidil'), ('nesiritide', 'nesiritide'), ('nitroprusside', 'nitroprusside'), ('riociguat', 'riociguat'))
 
 
-class Z_(models.Model):
-    SPECIFICS = (())
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-MEDICINE_CATEGORIES = ()
+MEDICINE_CATEGORIES = (('adrenal_cortical_steroids', Z_adrenal_cortical_steroids),
+                       ('adrenal_corticosteroid_inhibitors', Z_adrenal_corticosteroid_inhibitors),
+                       ('adrenergic_bronchodilators', Z_adrenergic_bronchodilators),
+                       ('aldosterone_receptor_agents', Z_aldosterone_receptor_agents),
+                       ('alkylating_agents', Z_alkylating_agents),
+                       ('alphaglucosidase_inhibitors', Z_alphaglucosidase_inhibitors),
+                       ('amebicides', Z_amebicides),
+                       ('aminoglycosides', Z_aminoglycosides),
+                       ('aminopenicillins', Z_aminopenicillins),
+                       ('amylin_analogs', Z_amylin_analogs),
+                       ('analgesics', Z_analgesics),
+                       ('anabolic_steroids', Z_anabolic_steroids),
+                       ('angiotensin_converting_enzyme_inhibitors', Z_angiotensin_converting_enzyme_inhibitors),
+                       ('anorexiants', Z_anorexiants),
+                       ('anthelmintics', Z_anthelmintics),
+                       ('antiandrogens', Z_antiandrogens),
+                       ('antianginal', Z_antianginal),
+                       ('anticoagulants', Z_anticoagulants),
+                       ('anticonvulsants', Z_anticonvulsants),
+                       ('antidepressants', Z_antidepressants),
+                       ('antidiabetic', Z_antidiabetic),
+                       ('antidiarrheals', Z_antidiarrheals),
+                       ('antidiuretics', Z_antidiuretics),
+                       ('antidotes', Z_antidotes),
+                       ('antifungals', Z_antifungals),
+                       ('antigonadotropic', Z_antigonadotropic),
+                       ('antigout', Z_antigout),
+                       ('antihistamines', Z_antihistamines),
+                       ('antimalarial', Z_antimalarial),
+                       ('antimetabolites', Z_antimetabolites),
+                       ('anitmigraine', Z_anitmigraine),
+                       ('antiparkinson_agents', Z_antiparkinson_agents),
+                       ('antipsoriatics', Z_antipsoriatics),
+                       ('antirheumatics', Z_antirheumatics),
+                       ('antiseptics', Z_antiseptics),
+                       ('antithyroid', Z_antithyroid),
+                       ('barbiturates', Z_barbiturates),
+                       ('benzodiazepines', Z_benzodiazepines),
+                       ('bisphosphonates', Z_bisphosphonates),
+                       ('calcineurin_inhibitors', Z_calcineurin_inhibitors),
+                       ('calcitonin', Z_calcitonin),
+                       ('carbapenems', Z_carbapenems),
+                       ('cardiac_stressing_agents', Z_cardiac_stressing_agents),
+                       ('catecholamines', Z_catecholamines),
+                       ('cerumenolytics', Z_cerumenolytics),
+                       ('chelating_agents', Z_chelating_agents),
+                       ('cholinergic_muscle_stimulants', Z_cholinergic_muscle_stimulants),
+                       ('cholinesterase_inhibitors', Z_cholinesterase_inhibitors),
+                       ('contraceptives', Z_contraceptives),
+                       ('decongestants', Z_decongestants),
+                       ('digestive_enzymes', Z_digestive_enzymes),
+                       ('echinocandins', Z_echinocandins),
+                       ('estrogens', Z_estrogens),
+                       ('expectorants', Z_expectorants),
+                       ('fibric_acid_derivatives', Z_fibric_acid_derivatives),
+                       ('gallstone_solubilizing_agents', Z_gallstone_solubilizing_agents),
+                       ('general_anesthetics', Z_general_anesthetics),
+                       ('gi_stimulants', Z_gi_stimulants),
+                       ('growth_hormones', Z_growth_hormones),
+                       ('impotence_agents', Z_impotence_agents),
+                       ('inhaled_antiinfectives', Z_inhaled_antiinfectives),
+                       ('inhaled_corticosteroids', Z_inhaled_corticosteroids),
+                       ('inotropic_agents', Z_inotropic_agents),
+                       ('interleukins', Z_interleukins),
+                       ('ketolides', Z_ketolides),
+                       ('laxatives', Z_laxatives),
+                       ('leprostatics', Z_leprostatics),
+                       ('lincomycin_derivatives', Z_lincomycin_derivatives),
+                       ('loop_diuretics', Z_loop_diuretics),
+                       ('lung_surfactants', Z_lung_surfactants),
+                       ('lysosomal_enzymes', Z_lysosomal_enzymes),
+                       ('macrolides', Z_macrolides),
+                       ('methylxanthines', Z_methylxanthines),
+                       ('mitotic_inhibitors', Z_mitotic_inhibitors),
+                       ('mydriatics', Z_mydriatics),
+                       ('nasal_steroids', Z_nasal_steroids),
+                       ('phosphate_binders', Z_phosphate_binders),
+                       ('probiotics', Z_probiotics),
+                       ('progestins', Z_progestins),
+                       ('purine_nucleosides', Z_purine_nucleosides),
+                       ('quinolones', Z_quinolones),
+                       ('sclerosing_agents', Z_sclerosing_agents),
+                       ('thrombolytics', Z_thrombolytics),
+                       ('uterotonic_agents', Z_uterotonic_agents),
+                       ('vasodilators', Z_vasodilators))
 
 
 #class Logmanager? with many methods?
