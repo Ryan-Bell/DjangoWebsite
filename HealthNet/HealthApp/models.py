@@ -525,8 +525,44 @@ class Z_macrolides(models.Model):
     SPECIFICS = (('dirithromycin', 'dirithromycin'), ('fidaxomicin', 'fidazomicin'), ('azithromycin', 'azithromycin'), ('clarithromycin', 'clarithromycin'), ('erythromycin', 'erythromycin'), ('troleandomycin', 'troleandomycin'))
 
 
+class Z_methylxanthines(models.Model):
+    SPECIFICS = (('oxtriphylline', 'oxtriphylline'), ('theophylline', 'theophylline'), ('aminophylline', 'aminophylline'), ('dyphylline', 'dyphylline'))
+
+
+class Z_mitotic_inhibitors(models.Model):
+    SPECIFICS = (('eribulin', 'eribulin'), ('paclitaxel', 'paclitaxel'), ('vincristine', 'vincristine'), ('paclitaxel', 'paclitaxel'), ('etoposide', 'etoposide'), ('docetaxel', 'docetaxel'), ('cabazitaxel', 'cabazitazel'), ('estramustine', 'estramustine'),
+                 ('ixabepilone', 'ixabepilone'), ('teniposide', 'teniposide'), (' vinblastine', 'vinblastine'), ('vincristine', 'vincristine'), ('vinorelbine', 'vinorelbine'))
+
+
+class Z_mydriatics(models.Model):
+    SPECIFICS = (('cyclopentolate', 'cyclopentolate'), ('tropicamide', 'tropicamide'), ('atropine', 'atropine'), ('homatropine', 'homatropine'), ('hydroxyamphetamine', 'hydroxyamphetamine'), ('phenylephrine', 'phenylephrine'), ('scopolamine', 'scopolamine'))
+
+
+class Z_nasal_steroids(models.Model):
+    SPECIFICS = (('flunisolide', 'flunisolide'), ('budesonide', 'budesonide'), ('beclomehtasone', 'beclomethasone'), ('ciclesonide', 'ciclesonide'), ('mometasone', 'mometasone'), ('azelastine', 'azelastine'), ('fluticasone', 'fluticasone'), ('triamcinolone', 'triamcinolone'))
+
+
+class Z_phosphate_binders(models.Model):
+    SPECIFICS = (('sucroferric-oxyhydroxide', 'sucroferric-oxyhydroxide'), ('sevelamer', 'sevelamer'), ('aluminum-hydroxide', 'aluminum-hydroxide'), ('lanthanum-carbonate', 'lanthanum-carbonate'), ('calcium-acetate', 'calcium-acetate'), ('ferric-citrate', 'ferric-citrate'))
+
+
+class Z_probiotics(models.Model):
+    SPECIFICS = (('saccharomyces-boulardii-lyo', 'saccharomyces-boulardii-lyo'), ('bifidobacterium-infantis', 'bifidobacterium-infantis'), ('lactobacillus', 'lactobacillus'))
+
+
+class Z_progestins(models.Model):
+    SPECIFICS = (('hydroxyprogesterone', 'hydroxyprogesterone'), ('megestrol', 'megestrol'), ('levonorgestrel', 'levonorgestrel'), ('progesterone', 'progesterone'), ('etonogestrel','etonogestrel'), ('norethindrone', 'norethindrone'))
+
+
 class Z_(models.Model):
     SPECIFICS = (())
+
+
+
+
+
+
+
 
 
 
