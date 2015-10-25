@@ -554,8 +554,39 @@ class Z_progestins(models.Model):
     SPECIFICS = (('hydroxyprogesterone', 'hydroxyprogesterone'), ('megestrol', 'megestrol'), ('levonorgestrel', 'levonorgestrel'), ('progesterone', 'progesterone'), ('etonogestrel','etonogestrel'), ('norethindrone', 'norethindrone'))
 
 
+class Z_purine_nucleosides(models.Model):
+    SPECIFICS = (('ganciclovir', 'ganciclovir'), ('valacyclovir', 'valacyclovir'), ('famciclovir', 'famciclovir'), ('acyclovir', 'acyclovir'), ('ribavirin', 'ribavirin'), ('cidofovir', 'cidofovir'), ('valganciclovir', 'valganciclovir'))
+
+
+class Z_quinolones(models.Model):
+    SPECIFICS = (('lomefloxacin', 'lomefloxacin'), ('norfloxacin', 'norfloxacin'), ('ofloxacin', 'ofloxacin'), ('gatifloxacin', 'gatifloxacin'), ('moxifloxacin', 'moxifloxacin'), ('ciprofloxacin', 'ciprofloxacin'), ('levofloxacin', 'levofloxacin'),
+                 ('gemifloxacin', 'gemifloxacin'), ('cinoxacin', 'cinoxacin'), ('enoxacin', 'enoxacin'), ('grepafloxacin', 'grepafloxacin'), ('nalidixic', 'nalidixic'), ('sparfloxacin', 'sparfloxacin'), ('trovafloxacin', 'trovafloxacin'))
+
+
+class Z_sclerosing_agents(models.Model):
+    SPECIFICS = (('ethanolamine-oleate', 'ethanolamine-oleate'), ('morrhuate', 'morrhuate'), ('polidocanol', 'polidocanol'), ('sodium-tetradecyl-sulfate', 'sodium-tetradecyl-sulfate'))
+
+
+class Z_thrombolytics(models.Model):
+    SPECIFICS = (('alteplase', 'alteplase'), ('streptokinase', 'streptokinase'), ('reteplase', 'reteplase'), ('tenecteplase', 'tenecteplase'), ('urokinase', 'urokinase'))
+
+
+class Z_uterotonic_agents(models.Model):
+    SPECIFICS = (('carboprost', 'carboprost'), ('mifepristone', 'mifepristone'), ('methylergonovine', 'methylergonovine'), ('oxytocin', 'oxytocin'), ('dinoprostone', 'dinoprostone'), ('ergonovine', 'ergonovine'))
+
+
+class Z_vasodilators(models.Model):
+    SPECIFICS = (('nitroglycerin', 'nitroglycerin'), ('alprostadil', 'alprostadil'), ('hydralazine', 'hydralazine'), ('minoxidil', 'minoxidil'), ('nesiritide', 'nesiritide'), ('nitroprusside', 'nitroprusside'), ('riociguat', 'riociguat'))
+
+
 class Z_(models.Model):
     SPECIFICS = (())
+
+
+
+
+
+
 
 
 
