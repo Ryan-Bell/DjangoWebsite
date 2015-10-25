@@ -344,9 +344,33 @@ class Z_antimalarial(models.Model):
     SPECIFICS = (('chloroquine', 'chloroquine'), ('quinine', 'quinine'), ('hydroxychloroquine', 'hydroxychloroquine'), ('mefloquine', 'mefloquine'), ('primaquine', 'primaquine'), ('proguanil', 'proguanil'), ('doxycycline', 'doxycycline'), ('halofantrine', 'halofantrine'))
 
 
+class Z_antimetabolites(models.Model):
+    SPECIFICS = (('fluorouracil', 'fluorouracil'), ('cladribine', 'cladribine'), ('capecitabine', 'capecitabine'), ('methotrexate', 'methotrexate'), ('premetrexed', 'premetrexed'), ('mercaptopurine', 'mercaptopurine'), ('hydroxyurea', 'hydroxyurea'),
+                 ('fludarabine', 'fludarabine'), ('gemcitabine', 'gemcitabine'), ('clofarabine', 'clofarabine'), ('cytarabine', 'cytarabine'), ('decitabine', 'decitabine'), ('floxuridine', 'floxuridine'), ('nelarabine', 'nelarabine'), ('pralatrexate', 'pralatrexate'))
+
+
+class Z_anitmigraine(models.Model):
+    SPECIFICS = (('methysergide', 'methysergide'), ('frovatriptan', 'frovatriptan'), ('naxproxen', 'naxproxen'), ('naratriptan', 'naratriptan'), ('almotriptan', 'almotriptan'), ('caffeine', 'caffeine'),
+                 ('ergotamine', 'ergotamine'), ('rizatriptan', 'rizatriptan'), ('eletriptan', 'eletriptan'), ('acetaminophen', 'acetaminophen'), ('dichloralphenazone', 'dichloralphenazone'), ('isometheptene', 'isometheptene'),
+                 ('sumatriptan', 'sumatriptan'), ('zolmitriptan', 'zolmaitriptan'), ('dihydroergotamine', 'dihydroergotamine'))
+
+class Z_antiparkinson_agents(models.Model):
+    SPECIFICS = (('benztropine', 'benztropine'), ('diphenhydramine', 'diphenhydramine'), ('trihexyphenidyl', 'trihexyphenidyl'), ('procyclidine', 'procyclidine'), ('biperiden', 'biperiden'))
+
+
+
+class Z_antipsoriatics(models.Model):
+    SPECIFICS = (('methotrexate', 'methotrexate'), ('acitretin', 'acitretin'))
+
+
+class Z_antirheumatics(models.Model):
+    SPECIFICS = (('auranofin', 'auranofin'), ('anakinra', 'anakinra'), ('infliximab', 'infliximab'), ('etanercept', 'etanercept'), ('rituximab', 'rituximab'), ('adalimumab', 'adalimumab'), ('penicillamine', 'penicillamine'), ('methotrexate', 'methotrexate'),
+                 ('hyroxychloroquine', 'hydroxychloroquine'), ('tofacitinib', 'tofacitinib'), ('apremilast', 'apremilast'), ('leflunomide', 'leflunomide'), ('azathioprine', 'azathioprine'), ('abatacept', 'abatacept'), ('aurothioglucose', 'aurothioglucose'))
+
+
 class Z_(models.Model):
     SPECIFICS = (())
-
+    
 MEDICINE_CATEGORIES = ()
 
 
