@@ -409,6 +409,42 @@ class Z_catecholamines(models.Model):
     SPECIFICS = (('isoproterenol', 'isoproterenol'), ('epinephrine', 'epinephrine'), ('norepinephrine', 'norepinephrine'), ('dobutamine', 'dobutamine'), ('dopamine', 'dopamine'))
 
 
+class Z_cerumenolytics(models.Model):
+    SPECIFICS = (('carbamide-peroxide', 'carbamide-peroxide'), ('trithanolamine-polypeptide-oleate', 'trithanolamine-polypeptide-oleate'))
+
+
+class Z_chelating_agents(models.Model):
+    SPECIFICS = (('deferasirox', 'deferasirox'), ('deferiprone', 'deferiprone'), ('deferoxamine', 'deferoxamine'), ('succimer', 'succimer'), ('trientine', 'trientine'))
+
+
+class Z_cholinergic_muscle_stimulants(models.Model):
+    SPECIFICS = (('dalfampridine', 'dalfampridine'), ('neostigmine', 'neostigmine'), ('pyridostigmine', 'pyridostigmine'), ('ambenonium', 'ambenonium'), ('atropine', 'atropine'), ('edrophonium', 'edrophonium'), ('guanidine', 'guanidine'))
+
+
+class Z_cholinesterase_inhibitors(models.Model):
+    SPECIFICS = (('tacrine', 'tacrine'), ('galantamine', 'galantamine'), ('rivastigmine', 'rivastigmine'), ('donepezil', 'donepezil'))
+
+
+class Z_contraceptives(models.Model):
+    SPECIFICS = (('ethinyl-estradiol', 'ethinyl-estradiol'), ('levonorgestrel', 'levonorgestrel'), ('dienogest', 'dienogest'), ('mestranol', 'mestranol'), ('drospirenone', 'drospirenone'), ('desogestrel', 'desogestrel'))
+
+
+class Z_decongestants(models.Model):
+    SPECIFICS = (('phenylpropanolamine', 'phenylpropanolamine'), ('pseudoephedrine', 'pseudoephedrine'), ('ephedrine', 'ephedrine'), ('phenylephrine', 'phenylephrine'))
+
+
+class Z_digestive_enzymes(models.Model):
+    SPECIFICS = (('pancrelipase', 'pancrelipase'), ('pancreatin', 'pancreatin'), ('lactase', 'lactase'), ('amylase', 'amylase'), ('cholic-acid', 'cholic-acid'), ('sacrosidase', 'sacrosidase'))
+
+
+class Z_echinocandins(models.Model):
+    SPECIFICS = (('caspofungin', 'caspofungin'), ('anidulafungin', 'anidulafungin'), ('micfungin', 'micafungin'))
+
+
+class Z_estrogens(models.Model):
+    SPECIFICS = (('estropipate', 'estropipate'), ('esterified', 'esterified'), ('estadiol', 'estradiol'), ('chlorotrianisene', 'chlorotrianisene'))
+
+
 class Z_(models.Model):
     SPECIFICS = (())
 
