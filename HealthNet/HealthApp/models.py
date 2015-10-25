@@ -376,8 +376,41 @@ class Z_antithyroid(models.Model):
     SPECIFICS = (('potassium-iodide', 'potassium-iodide'), ('propylthiouracil', 'propylthiouracil'), ('methimazole', 'methimazole'))
 
 
-class Z_bacterial_vaccines(models.Model):
-    SPECIFICS = ((''))
+class Z_barbiturates(models.Model):
+    SPECIFICS = (('secobarbital', 'secobarbital'), ('mephobarbital', 'mephobarbital'), ('pentobarbital', 'pentobarbital'), ('phenobarbital', 'phenobarbital'), ('butabarbital', 'butabarbital'), ('amobarbital', 'amobarbital'))
+
+
+class Z_benzodiazepines(models.Model):
+    SPECIFICS = (('quazepam', 'quazepam'), ('estazolam', 'estazolam'), ('clobazam', 'clobazam'), ('alphrazolam', 'alphrazolam'), ('flurazepam', 'flurazepam'), ('oxazepam', 'oxazepam'), ('chlordiazepoxide', 'chlordiazepoxide'), ('clonazepam', 'cloneazapam'),
+                 ('diazepam', 'diazepam'), ('lorazepam', 'lorazepam'), ('clorazepate', 'clorazepate'), ('triazolam', 'triazolam'), ('midazolam', 'midazolam'), ('temazepam', 'temazepam'), ('halazepam', 'halazepam'))
+
+
+class Z_bisphosphonates(models.Model):
+    SPECIFICS = (('alendronate', 'alendronate'), ('etidronate', 'etidronate'), ('zoledronic-acid', 'zoledronic-acid'), ('ibandronate', 'ibandronate'), ('alendronate', 'alendronate'), ('risedronate', 'risedronate'), ('pamidronate', 'pamidronate'), ('tiludronate', 'tiludronate'))
+
+
+class Z_calcineurin_inhibitors(models.Model):
+    SPECIFICS = (('cyclosporine', 'cyclosporine'), ('tacrolimus', 'tacrolimus'))
+
+
+class Z_calcitonin(models.Model):
+    SPECIFICS = (('calcitonin', 'calcitonin'))
+
+
+class Z_carbapenems(models.Model):
+    SPECIFICS = (('doripenem', 'doripenem'), ('meropenem', 'meropenem'), ('cilastatin', 'cilastatin'), ('ertapenem', 'ertapenem'))
+
+
+class Z_cardiac_stressing_agents(models.Model):
+    SPECIFICS = (('adenosine', 'adenosine'), ('regadensoson', 'regadensoson'), ('dobutamine', 'dobutamine'), ('dipyridamole', 'dipyridamole'))
+
+
+class Z_catecholamines(models.Model):
+    SPECIFICS = (('isoproterenol', 'isoproterenol'), ('epinephrine', 'epinephrine'), ('norepinephrine', 'norepinephrine'), ('dobutamine', 'dobutamine'), ('dopamine', 'dopamine'))
+
+
+class Z_(models.Model):
+    SPECIFICS = (())
 
 MEDICINE_CATEGORIES = ()
 
