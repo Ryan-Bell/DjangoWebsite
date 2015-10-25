@@ -321,6 +321,32 @@ class Z_antidotes(models.Model):
                  ('fomepizole', 'fomepizole'), ('glucarpidase', 'glucarpidase'), ('ipecac', 'ipecac'), ('leucovorin', 'leucovorin'), ('methylene-blue', 'methylene-blue'), ('nalmefene', 'nalmefene'), ('sodium-nirtate', 'sodium-nitrate'))
 
 
+class Z_antifungals(models.Model):
+    SPECIFICS = (('itraconazole', 'itroconazole'), ('posaconazole', 'posaconazole'), ('fluconazole', 'fluconazole'), ('ketoconazole', 'ketoconazole'), ('clotrimazole', 'clotrimazole'), ('isavuconazonium', 'isavuconazonium'), ('miconazole', 'miconazole'),
+                 ('voriconazole', 'voriconazole'), ('anidulafungin', 'anidulafungin'), ('caspofungin', 'caspofungin'), ('micafungin', 'micafungin'), ('terbinafine', 'terbinafine'), ('griseofulvin', 'griseofulvin'), ('flucytosine', 'flucytosine'), ('hydroxypropyl-chitosan', 'hydroxypropyl-chitosan'))
+
+class Z_antigonadotropic(models.Model):
+    SPECIFICS = (('danazol', 'danazol'))
+
+
+class Z_antigout(models.Model):
+    SPECIFICS = (('probenecid','probenecid'), ('sulfinpyrazone', 'sulfinpyrazone'), ('allopurinol', 'allopurinol'), ('colchicine', 'colchicine'))
+
+
+class Z_antihistamines(models.Model):
+    SPECIFICS = (('dexchlorpheniramine', 'dexchlorpheniramine'), ('phenindamine', 'phenindamine'), ('terfenadine', 'terfenadine'), ('triprolidine', 'triprolidine'), ('carbinoxamine', 'carbinoxamine'), ('brompheniramine', 'brompheniramine'),
+                 ('chlorpheniramine', 'chlorpheniramine'), ('cyproheptadine', 'cyproheptadine'), ('promethazine', 'promethazine'), ('levocetirizine', 'levocetirizine'), ('fexofenadine', 'fexofenadine'), ('clemastine', 'clemastine'), ('cetirizine', 'cetirizine'),
+                 ('diphenhydramine', 'diphenhydramine'), ('desloratadine', 'desloratadine'), ('hydroxyzine', 'hydroxyzine'), ('loratadine', 'loratadine'), ('astemizole', 'astemizole'), ('azatadine', 'azatadine'), ('dexbrompheniramine', 'dexbrompheniramine'),
+                 ('pheniramine', 'pheniramine'), ('pyrilamine', 'pyrilamine'), ('tripelennamine', 'tripelennamine'))
+
+
+class Z_antimalarial(models.Model):
+    SPECIFICS = (('chloroquine', 'chloroquine'), ('quinine', 'quinine'), ('hydroxychloroquine', 'hydroxychloroquine'), ('mefloquine', 'mefloquine'), ('primaquine', 'primaquine'), ('proguanil', 'proguanil'), ('doxycycline', 'doxycycline'), ('halofantrine', 'halofantrine'))
+
+
+class Z_(models.Model):
+    SPECIFICS = (())
+
 MEDICINE_CATEGORIES = ()
 
 
