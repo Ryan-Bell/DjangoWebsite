@@ -500,8 +500,39 @@ class Z_laxatives(models.Model):
                  ('magnesium-sulfate', 'magnesium-sulfate'), ('methylcellulose', 'methylcellulose'), ('docusate', 'docusate'), ('bisacodyl', 'bisacodyl'), ('senna', 'senna'), ('castor-oil', 'castor-oil'),
                  ('guar-gum', 'guar-gum'), ('hydrocortisone', 'hydrocortisone'), ('inulin', 'inulin'), ('magnesium-sulfate', 'magnesium-sulfate'), ('mineral-oil', 'mineral-oil'), ('sorbitol', 'sorbitol'))
 
+class Z_leprostatics(models.Model):
+    SPECIFICS = (('clofazimine', 'clofazimine'), ('thalidomide', 'thalidomide'))
+
+
+class Z_lincomycin_derivatives(models.Model):
+    SPECIFICS = (('lincomycin', 'lincomycin'), ('clindamycin', 'clindamycin'))
+
+
+class Z_loop_diuretics(models.Model):
+    SPECIFICS = (('bumetanide', 'bumetanide'), ('ethacrynic-acid', 'ethacrynic-acid'), ('furosemide', 'furosemide'), ('torsemide', 'torsemide'))
+
+
+class Z_lung_surfactants(models.Model):
+    SPECIFICS = (('poractant', 'poractant'), ('lucinactant', 'lucinactant'), ('beractant', 'beractant'), ('calfactant', 'calfactant'))
+
+
+class Z_lysosomal_enzymes(models.Model):
+    SPECIFICS = (('imiglucerase', 'imiglucerase'), ('alglucosidase', 'alglucosidase'), ('alglucerase', 'alglucerase'), ('elosulfase', 'elosulfase'), ('galsulfase', 'galsulfase'), ('idursulfase', 'idursulfase'), ('laronidase', 'laronidase'),
+                 ('taliglucerase', 'taliglucerase'), ('velaglucerase', 'velaglucerase'))
+
+
+class Z_macrolides(models.Model):
+    SPECIFICS = (('dirithromycin', 'dirithromycin'), ('fidaxomicin', 'fidazomicin'), ('azithromycin', 'azithromycin'), ('clarithromycin', 'clarithromycin'), ('erythromycin', 'erythromycin'), ('troleandomycin', 'troleandomycin'))
+
+
 class Z_(models.Model):
     SPECIFICS = (())
+
+
+
+
+
+
 
 MEDICINE_CATEGORIES = ()
 
