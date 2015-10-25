@@ -445,6 +445,61 @@ class Z_estrogens(models.Model):
     SPECIFICS = (('estropipate', 'estropipate'), ('esterified', 'esterified'), ('estadiol', 'estradiol'), ('chlorotrianisene', 'chlorotrianisene'))
 
 
+class Z_expectorants(models.Model):
+    SPECIFICS = (('potassium-iodide', 'potassium-iodide'), ('guaifenesin', 'guaifenesin'), ('carbocysteine', 'carbocysteine'), ('potassium-guaiacolsulfonate', 'potassium-guaiacolsulfonate'))
+
+
+class Z_fibric_acid_derivatives(models.Model):
+    SPECIFICS = (('gemfibrozil', 'gemfibrozil'), ('fenofibrate', 'fenofibrate'), ('clofibrate', 'clofibrate'))
+
+
+class Z_gallstone_solubilizing_agents(models.Model):
+    SPECIFICS = (('ursodiol', 'ursodiol'), ('chenodeoxycholic-acid', 'chenodeoxycholic-acid'), ('monoctanoin', 'monoctanoin'))
+
+
+class Z_general_anesthetics(models.Model):
+    SPECIFICS = (('propofol', 'propofol'), ('thiopental', 'thiopental'), ('ketamine', 'ketamine'), ('desflurane', 'desflurane'), ('droperidol', 'droperidol'), ('enflurane', 'enflurane'), ('etomidate', 'etomidate'), ('fospropofol', 'forpropofol'), ('halothane', 'halothane'),
+                 ('isoflurane', 'isoflurane'), ('methohexital', 'methohexital'), ('nitrous-oxide', 'nitrous-oxide'), ('sevoflurane', 'sevoflurane'))
+
+
+class Z_gi_stimulants(models.Model):
+    SPECIFICS = (('metoclopramide', 'metoclopramide'), ('cisapride', 'cisapride'), ('choline-bitartrate', 'choline-bitartrate'))
+
+
+class Z_growth_hormones(models.Model):
+    SPECIFICS = (('somatropin', 'somatropin'), ('tesamorelin', 'tesamorelin'), ('serorelin', 'sermorelin'))
+
+
+class Z_impotence_agents(models.Model):
+    SPECIFICS = (('tadalafil', 'tadalafil'), ('sildenafil', 'sildenafil'), ('vardenafil', 'vardenafil'), ('alprostadil', 'alprostadil'), ('avanafil', 'avanafil'), ('yohimbine', 'yohimbine'))
+
+
+class Z_inhaled_antiinfectives(models.Model):
+    SPECIFICS = (('tobramycin', 'tobramycin'), ('zanamivir', 'zanamivir'), ('ribavirin', 'ribavirin'), ('pentamidine', 'pentamidine'))
+
+
+class Z_inhaled_corticosteroids(models.Model):
+    SPECIFICS = (('flunisolide', 'flunisolide'), ('fluticasone', 'fluticasone'), ('ciclesonide', 'ciclesonide'), ('beclomethasone', 'beclomethasone'), ('budesonide', 'budesonide'), ('mometasone', 'mometasone'))
+
+
+class Z_inotropic_agents(models.Model):
+    SPECIFICS = (('digoxin', 'digoxin'), ('dobutamine', 'dobutamine'), ('dopamine', 'dopamine'), ('inamrinone', 'inamrinone'), ('milrinone', 'milrinone'))
+
+
+class Z_interleukins(models.Model):
+    SPECIFICS = (('proleukin', 'proleukin'), ('neumega', 'neumega'))
+
+
+class Z_ketolides(models.Model):
+    SPECIFICS = (('telithromycin', 'telithromycin'))
+
+
+class Z_laxatives(models.Model):
+    SPECIFICS = (('magnesium-citrate', 'magnesium-citrate'), ('lactulose', 'lactulose'), ('cascara-sagrada', 'cascara-sagrada'), ('polycarbophil', 'polycarbophil'), ('magnesium-hydroxide', 'magnesium-hydroxide'),
+                 ('glycerin', 'glycerin'), ('polyethylene-glycol-3350', 'polythylene-glycol-3350'), ('sodium-biphosphate', 'sodium-biphosphate'), ('docusate', 'docusate'), ('psyllium', 'psyllium'),
+                 ('magnesium-sulfate', 'magnesium-sulfate'), ('methylcellulose', 'methylcellulose'), ('docusate', 'docusate'), ('bisacodyl', 'bisacodyl'), ('senna', 'senna'), ('castor-oil', 'castor-oil'),
+                 ('guar-gum', 'guar-gum'), ('hydrocortisone', 'hydrocortisone'), ('inulin', 'inulin'), ('magnesium-sulfate', 'magnesium-sulfate'), ('mineral-oil', 'mineral-oil'), ('sorbitol', 'sorbitol'))
+
 class Z_(models.Model):
     SPECIFICS = (())
 
