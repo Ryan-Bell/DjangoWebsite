@@ -180,7 +180,7 @@ class Hospital(models.Model):
     city = models.CharField(max_length=MAX_LENGTH)
     state = models.CharField(max_length=2, choices=STATE_CHOICES)
     zipcode = models.CharField(max_length=5)
-
+'''
 class Prescription:
     #medication
     medicationCategory = models.ForeignKey(choices=MEDICINE_CATEGORIES)
@@ -197,7 +197,7 @@ class Prescription:
     directions = models.TextField()
     #comments
     comments = models.TextField()
-
+'''
 #class for medication categories that each hold a list of medications
 class Z_adamantane_antivirals(models.Model):
     SPECIFICS = (('amantadine', 'amantadine'),('rimantadine', 'rimantadine'))
