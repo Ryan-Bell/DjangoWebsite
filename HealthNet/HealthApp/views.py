@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.template import Context
 from django.template.loader import get_template
 from .models import Patient
-from .forms import UserForm, PatientForm, LogItemForm, MedicalForm
+from .forms import UserForm, LogItemForm, MedicalForm, InsuranceForm, ProfileForm
 from django.views.decorators.csrf import csrf_exempt
 
 """

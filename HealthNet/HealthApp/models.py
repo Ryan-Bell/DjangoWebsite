@@ -124,11 +124,11 @@ class Profile(models.Model):
     dateOfBirth = models.DateField(blank=True)
     MALE = 'M'
     FEMALE = 'F'
-    SEX_CHOICES = ((MALE,'Male'),(FEMALE,'Female'),)
+    SEX_CHOICES = ((MALE,'Male'),(FEMALE,'Female'))
     sex = models.CharField(max_length=1, choices=SEX_CHOICES,default=MALE)
     address = models.CharField(max_length=MAX_LENGTH)
     city = models.CharField(max_length=MAX_LENGTH)
-    state = models.CharField(max_length=2, choices=STATE_CHOICES)
+    state = models.CharField(max_length=2, choices=STATE_CHOICES, blank=True)
     zipcode = models.CharField(max_length=5)
     phoneNumber = models.CharField(max_length=14)
 

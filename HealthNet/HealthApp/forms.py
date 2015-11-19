@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import User
-from .models import Patient, LogItem, MedicalInfo
+from .models import Patient, LogItem, MedicalInfo, InsuranceInfo, Profile
 
 
 class LoginForm(forms.Form):
@@ -19,17 +19,36 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'password')
 
-class PatientForm(forms.ModelForm):
+class ProfileForm(forms.ModelForm):
     class Meta:
-        model = Patient
+        model = Profile
         fields = (
             'firstName',
             'middleName',
+            'middleInitial',
             'lastName',
+            'socialSecurity',
+            'citizen',
+            'sex',
             'email',
             'phoneNumber',
 			'dateOfBirth',
             'address',
+            'city',
+            'state',
+            'zipcode',
+        )
+
+class InsuranceForm(forms.ModelForm):
+    class Meta:
+        model = InsuranceInfo
+        fields = (
+            'provider',
+            'policyNumber',
+            'groupNumber',
+            'policyExpirationDate',
+            'premiumAmount',
+            'policyType',
         )
 
 class MedicalForm(forms.ModelForm):
@@ -64,3 +83,4 @@ class MedicalForm(forms.ModelForm):
             'obesity',
             'epilepsy',
         )
+
