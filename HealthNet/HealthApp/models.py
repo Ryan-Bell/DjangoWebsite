@@ -143,9 +143,9 @@ class Patient(models.Model):
     profileInfo = models.OneToOneField(Profile, null=True)
     insuranceInfo = models.OneToOneField(InsuranceInfo, null=True)
     medicalInfo = models.OneToOneField(MedicalInfo, null=True)
-    preferredHospital = models.ForeignKey(Hospital)
-    prescriptions = models.ForeignKey(Prescription)
-    doctor = models.ForeignKey(Doctor)
+    #preferredHospital = models.ForeignKey(Hospital)
+    #prescriptions = models.ForeignKey(Prescription)
+    #doctor = models.ForeignKey(Doctor)
     #setting blank to true means this field will not be required
 
 
