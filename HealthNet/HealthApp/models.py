@@ -64,7 +64,8 @@ STATE_CHOICES = (
 )
 
 SUPPORTED_INSURANCE = (
-    ('ExampleKey', 'ExampleValue')
+    ('ExampleKey', 'ExampleValue'),
+    ('OtherExample', 'OtherValue')
 )
 
 
@@ -73,13 +74,13 @@ SUPPORTED_INSURANCE = (
 MAX_LENGTH = 50
 
 class InsuranceInfo(models.Model):
-    provider = models.CharField(choices=SUPPORTED_INSURANCE)
+    provider = models.CharField(choices=SUPPORTED_INSURANCE, max_length=MAX_LENGTH)
     policyNumber = models.CharField(max_length=MAX_LENGTH)
     groupNumber = models.CharField(max_length=MAX_LENGTH)
     policyExpirationDate = models.DateField()
     premiumAmount = models.CharField(max_length=MAX_LENGTH)
     POLICY_TYPE = (('Primary', 'Primary'),('Secondary','Secondary'))
-    policyType = models.CharField(choices=POLICY_TYPE)
+    policyType = models.CharField(choices=POLICY_TYPE, max_length=MAX_LENGTH)
 
 class MedicalInfo(models.Model):
     tuberculosis = models.BooleanField(default=False)
@@ -114,10 +115,10 @@ class MedicalInfo(models.Model):
     #possible fields such as last checkup etc.
 
 class Profile(models.Model):
-    firstName = models.CharField()
-    middleName = models.CharField(blank=True)
+    firstName = models.CharField(max_length=MAX_LENGTH)
+    middleName = models.CharField(blank=True, max_length=MAX_LENGTH)
     middleInitial = models.CharField(max_length=1)
-    lastName = models.CharField()
+    lastName = models.CharField(max_length=MAX_LENGTH)
     socialSecurity = models.CharField(max_length=9)
     citizen = models.BooleanField(default=True)
     dateOfBirth = models.DateField(blank=True)
