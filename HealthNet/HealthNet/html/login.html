@@ -1,0 +1,30 @@
+<!-- Server Side Includes to pull in head html file -->
+{% include 'head.html' %}
+  <div class="row">
+    <div class="col s12 m6 l3">
+      <div class="card ">
+        <!--TODO fill in the action for the form which should post to views -->
+        <!--TODO vertically algin and center the login form -->
+        <!--TODO add option to register instead -->
+        <form class="col z-depth-4 grey lighten-5">
+          <div class="card-content ">
+            <span class="card-title">Login</span>
+            <!--form goes here-->
+            <div class="input-field col">
+              <input placeholder="Username" id="username" type="text" class="validate">
+            </div>
+            <div class="input-field col">
+              <input placeholder="password" id="password" type="password" class="validate">
+            </div>
+          </div>
+          <div class="card-action">
+            <!-- submit button goes here -->
+            <a class="waves-effect waves-light btn">Submit</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<!-- Close the tags opened in head.html -->
+</body>
+</html>
