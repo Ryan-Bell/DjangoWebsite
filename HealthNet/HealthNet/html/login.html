@@ -6,7 +6,6 @@
         {% csrf_token %}
         <div class="card z-depth-4 grey lighten-5 ">
           <!--TODO vertically align the login form -->
-          <!--TODO retain field text after unsuccessful login-->
           <!--TODO adjust placement and style of error message and color fields-->
           <!--TODO change the color of the button and button text -->
             <div class="card-content ">
@@ -19,10 +18,10 @@
                 {% endif %}
               <!--form goes here-->
               <div class="input-field col s12">
-                <input placeholder="Username" id="username" type="text" class="validate">
+                <input placeholder="Username" name="username" type="text" {% if authenticated == 2 or authenticated == 1 %} value="{{ username }}" {% endif %}  class="validate">
               </div>
               <div class="input-field col s12">
-                <input placeholder="Password" id="password" type="password" class="validate">
+                <input placeholder="Password" name="password" type="password" {% if authenticated == 2 or authenticated == 1 %} value="{{ password }}" {% endif %}  class="validate">
               </div>
             </div>
             <div class="card-action">

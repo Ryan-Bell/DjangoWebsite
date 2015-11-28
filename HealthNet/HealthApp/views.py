@@ -143,14 +143,11 @@ def userLogin(request):
                 return HttpResponseRedirect('/%s/profile' % username)
             else:
                 auth = 1
-                #all users have a is_valid field that can be toggled for expiration or transfers or whatever else we want in the future.
+                #all users have a is_valid field that can be toggled for expiration or transfers etc.
                 return HttpResponse("Your healthnet account is innactive")
         else:
             auth = 2
-            #currently, an invlaid login will display a blank page with only the text "Invlaid login"
-            #the line below it would return them to the login page.
-            #return HttpResponse("Invalid Login")
-            return render(request, 'login.html', {'authenticated': auth})
+            return render(request, 'login.html', {'authenticated': auth , 'username' : username, 'password' : password})
     else:
         return render(request, "login.html", {'authenticated':auth})
 @csrf_exempt
