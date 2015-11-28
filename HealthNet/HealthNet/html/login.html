@@ -2,28 +2,36 @@
 {% include 'head.html' %}
   <div class="row">
     <div class="col s12 m8 l4 push-m2 push-l4">
-      <form class="col transparent">
-      <div class="card z-depth-4 grey lighten-5 ">
-        <!--TODO fill in the action for the form which should post to views -->
-        <!--TODO vertically align the login form -->
-        <!--TODO change the color of the button and button text -->
-          <div class="card-content ">
-            <span class="card-title">Login</span>
-            <!--form goes here-->
-            <div class="input-field col s12">
-              <input placeholder="Username" id="username" type="text" class="validate">
+      <form class="col transparent " method="post" action=".">
+        {% csrf_token %}
+        <div class="card z-depth-4 grey lighten-5 ">
+          <!--TODO vertically align the login form -->
+          <!--TODO retain field text after unsuccessful login-->
+          <!--TODO adjust placement and style of error message and color fields-->
+          <!--TODO change the color of the button and button text -->
+            <div class="card-content ">
+              <span class="card-title">Login</span>
+                <!--If statements that check the auth code returned from views -->
+                {% if authenticated == 2 %}
+                    <span class="red-text right">Invalid Login</span>
+                {% elif authenticated == 1 %}
+                    <span class="red-text right">Account Inactive</span>
+                {% endif %}
+              <!--form goes here-->
+              <div class="input-field col s12">
+                <input placeholder="Username" id="username" type="text" class="validate">
+              </div>
+              <div class="input-field col s12">
+                <input placeholder="Password" id="password" type="password" class="validate">
+              </div>
             </div>
-            <div class="input-field col s12">
-              <input placeholder="Password" id="password" type="password" class="validate">
+            <div class="card-action">
+              <!-- submit button goes here -->
+              <button class="btn waves-effect waves-light black-text blue lighten-2" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+              <a class="btn-flat waves-effect waves-dark right">Register</a>
             </div>
-          </div>
-          <div class="card-action">
-            <!-- submit button goes here -->
-            <button class="btn waves-effect waves-light black-text blue lighten-2" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
-            <a class="btn-flat waves-effect waves-dark right">Register</a>
-          </div>
-      </div>
-        </form>
+        </div>
+      </form>
     </div>
   </div>
 <!-- Close the tags opened in head.html -->

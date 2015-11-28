@@ -149,7 +149,7 @@ def userLogin(request):
             auth = 2
             #currently, an invlaid login will display a blank page with only the text "Invlaid login"
             #the line below it would return them to the login page.
-            return HttpResponse("Invalid Login")
+            #return HttpResponse("Invalid Login")
             return render(request, 'login.html', {'authenticated': auth})
     else:
         return render(request, "login.html", {'authenticated':auth})
