@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template import Context
 from django.template.loader import get_template
-from .models import Patient
-from .forms import UserForm, LogItemForm, MedicalForm, InsuranceForm, ProfileForm
+from .models import Patient, Profile, MedicalInfo, InsuranceInfo
+from .forms import UserForm, ProfileForm, MedicalForm, InsuranceForm
 from django.views.decorators.csrf import csrf_exempt
 
 """
@@ -24,10 +24,50 @@ and using it somehow.
 
 These @csrf_exempt lines above each view is a workaround solution for csrf missing token
 errors. The error has something to do with a csrf tag not being placed properly in the
-html files. I have tried multiple arrangements but ended up using this workaround in the
-interest of time. These csrf(cross-site request forgery) tokens are used for security
-purposes and will most likely not play a huge role in this class assignment.
+html files.
 """
+
+@csrf_exempt
+def userLogin(request):
+    auth = 3
+    if request.method == 'POST':
+        #This is how data can be pulled from a post request. The 'username' and 'password' are assigned names for
+        #the fields in the html page.
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        #authenticate returns true or false based on whether the username and password match in the database
+        user = authenticate(username=username, password=password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                auth = 0
+                return HttpResponseRedirect('/%s/profile' % username)
+            else:
+                auth = 1
+                #all users have a is_valid field that can be toggled for expiration or transfers etc.
+                return render(request, 'login.html', {'authenticated': auth , 'username' : username, 'password' : password})
+        else:
+            auth = 2
+            return render(request, 'login.html', {'authenticated': auth , 'username' : username, 'password' : password})
+    else:
+        return render(request, "login.html", {'authenticated':auth})
+
+@csrf_exempt
+def userLogout(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+#TODO adjust the entire register method so that it works witht the new html page
+def register(request):
+    return render(request, 'registration.html')
+
+
+"""
+LEGACY BELOW
+
+
+
 @csrf_exempt
 def profile(request, username):
     #check that the user is actually logged in so they can't access someone's profile just
@@ -71,10 +111,9 @@ def register(request):
         itemLogForm = LogItemForm(data=request.POST)
         #The forms are checked to determine if they are valid. This is where required fields are checked.
         #This is bulid into django and the else statement easily displays to the user the location of their folly.
-        if userForm.is_valid()and patientForm.is_valid():
+        if userForm.is_valid() and patientForm.is_valid():
             #creating the user object
             user = userForm.save()
-
             user.set_password(user.password)
             #all adjusted values must be followed by a save call.
             user.save()
@@ -120,37 +159,8 @@ def registerMedical(request, user):
             user.patient.save()
             registered = True
             HttpResponseRedirect(reverse('login'))
-        #else:
-        #    print(medicalForm.errors)
     else:
         medicalForm = MedicalForm()
     return render(request, 'registerMedical.html', {'medicalForm':medicalForm})
-@csrf_exempt
-def userLogin(request):
-    auth = 3
-    if request.method == 'POST':
-        #This is how data can be pulled from a post request. The 'username' and 'password' are assigned names for
-        #the fields in the html page.
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        #authenticate returns true or false based on whether the username and password match in the database
-        user = authenticate(username=username, password=password)
 
-        if user:
-            if user.is_active:
-                login(request, user)
-                auth = 0
-                return HttpResponseRedirect('/%s/profile' % username)
-            else:
-                auth = 1
-                #all users have a is_valid field that can be toggled for expiration or transfers etc.
-                return HttpResponse("Your healthnet account is innactive")
-        else:
-            auth = 2
-            return render(request, 'login.html', {'authenticated': auth , 'username' : username, 'password' : password})
-    else:
-        return render(request, "login.html", {'authenticated':auth})
-@csrf_exempt
-def userLogout(request):
-    logout(request)
-    return HttpResponseRedirect('/')
+"""

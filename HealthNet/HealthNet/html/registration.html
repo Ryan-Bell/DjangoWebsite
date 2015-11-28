@@ -1,10 +1,22 @@
 <!-- Server Side Includes to pull in head html file -->
 {% include 'head.html' %}
 
-
-
-
-
+<div class="container grey lighten-4" style="height: 100%;">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#UserInfo" class="active">Account Info</a></li>
+                <li class="tab col s3"><a href="#ProfileInfo">Profile</a></li>
+                <li class="tab col s3"><a href="#InsuranceInfo">Insurance</a></li>
+                <li class="tab col s3"><a href="#MedicalInfo">Medical</a></li>
+            </ul>
+        </div>
+        <div id="UserInfo" class="col s12"></div>
+        <div id="ProfileInfo" class="col s12"></div>
+        <div id="InsuranceInfo" class="col s12"></div>
+        <div id="MedicalInfo" class="col s12"></div>
+    </div>
+</div>
 <!-- Close the tags opened in head.html -->
 </body>
 </html>

@@ -1,11 +1,10 @@
 <!-- Server Side Includes to pull in head html file -->
 {% include 'head.html' %}
-  <div class="row">
-    <div class="col s12 m8 l4 push-m2 push-l4">
+  <div class="row valign-wrapper" style="height: 100%;">
+    <div class="col s12 m8 l4 push-m2 push-l4 valign">
       <form class="col transparent " method="post" action=".">
         {% csrf_token %}
         <div class="card z-depth-4 grey lighten-5 ">
-          <!--TODO vertically align the login form -->
           <!--TODO adjust placement and style of error message and color fields-->
           <!--TODO change the color of the button and button text -->
             <div class="card-content ">
