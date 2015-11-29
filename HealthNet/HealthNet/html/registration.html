@@ -162,37 +162,18 @@
                 <div id="hospitalMap" style="width:500px; height:500px;" class="z-depth-1 valign"></div>
             </div>
             <div id="ProfileInfo" class="col s12">
-                <!--
-                firstName = models.CharField(max_length=MAX_LENGTH)
-                middleName = models.CharField(blank=True, max_length=MAX_LENGTH)
-                lastName = models.CharField(max_length=MAX_LENGTH)
-                socialSecurity = models.CharField(max_length=9)
-                citizen = models.BooleanField(default=True)
-                dateOfBirth = models.DateField(blank=True)
-                MALE = 'M'
-                FEMALE = 'F'
-                SEX_CHOICES = ((MALE,'Male'),(FEMALE,'Female'))
-                sex = models.CharField(max_length=1, choices=SEX_CHOICES,default=MALE)
-                address = models.CharField(max_length=MAX_LENGTH)
-                city = models.CharField(max_length=MAX_LENGTH)
-                state = models.CharField(max_length=2, choices=STATE_CHOICES, blank=True)
-                zipcode = models.CharField(max_length=5)
-                phoneNumber = models.CharField(max_length=14)
-                email = models.EmailField(blank=False)
-                #switch to email based login
-                #choice of preferred hospital
-                #choice of emergency contact info (linked to other patient if already in system)
-                -->
+                <!-- TODO add regex restrictions on the input fields
+                     The validation should match the regex-->
 
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <input id="first_name" type="text" class="validate">
                     <label for="first_name">First Name</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <input id="middle_name" type="text" class="validate">
                     <label for="middle_name">Middle Name</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <input id="last_name" type="text" class="validate">
                     <label for="last_name">Last Name</label>
                 </div>
@@ -202,83 +183,79 @@
                     <label for="socialSecurity">Social Security</label>
                 </div>
                 -->
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <input id="address" type="text" class="validate">
                     <label for="address">Street Address</label>
                 </div>
-                <!-- TODO state selector here -->
-                    <div class="input-field col s4">
-                        <select>
-                            <option value="" disabled selected>Choose your state</option>
-                            <option value="1">Alabama</option>
-                            <option value="2">Alaska</option>
-                            <option value="3">Arizona</option>
-                            <option value="3">Arkansas</option>
-                            <option value="3">California</option>
-                            <option value="3">Colorado</option>
-                            <option value="3">Connecticut</option>
-                            <option value="3">Delaware</option>
-                            <option value="3">District of Columbia</option>
-                            <option value="3">Florida</option>
-                            <option value="3">Georgia</option>
-                            <option value="3">Hawaii</option>
-                            <option value="3">Idaho</option>
-                            <option value="3">Illinois</option>
-                            <option value="3">Indiana</option>
-                            <option value="3">Iowa</option>
-                            <option value="3">Kansas</option>
-                            <option value="3">Kentucky</option>
-                            <option value="3">Louisiana</option>
-                            <option value="3">Maine</option>
-                            <option value="3">Maryland</option>
-                            <option value="3">Massachusetts</option>
-                            <option value="3">Michigan</option>
-                            <option value="3">Minnesota</option>
-                            <option value="3">Mississippi</option>
-                            <option value="3">Missouri</option>
-                            <option value="3">Montana</option>
-                            <option value="3">Nebraska</option>
-                            <option value="3">Nevada</option>
-                            <option value="3">New Hampshire</option>
-                            <option value="3">New Jersey</option>
-                            <option value="3">New Mexico</option>
-                            <option value="3">New York</option>
-                            <option value="3">North Carolina</option>
-                            <option value="3">North Dakota</option>
-                            <option value="3">Ohio</option>
-                            <option value="3">Oklahoma</option>
-                            <option value="3">Oregon</option>
-                            <option value="3">Pennsylvannia</option>
-                            <option value="3">Rhode Island</option>
-                            <option value="3">South Carolina</option>
-                            <option value="3">South Dakota</option>
-                            <option value="3">Tennessee</option>
-                            <option value="3">Texas</option>
-                            <option value="3">Utah</option>
-                            <option value="3">Vermont</option>
-                            <option value="3">Virginia</option>
-                            <option value="3">Washington</option>
-                            <option value="3">West Virginia</option>
-                            <option value="3">Wisconsin</option>
-                            <option value="3">Wyoming</option>
-                        </select>
-                        <label>State Selection</label>
-                    </div>
-
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
+                    <select>
+                        <option value="" disabled selected>Choose your state:</option>
+                        <option value="1">Alabama</option>
+                        <option value="2">Alaska</option>
+                        <option value="3">Arizona</option>
+                        <option value="3">Arkansas</option>
+                        <option value="3">California</option>
+                        <option value="3">Colorado</option>
+                        <option value="3">Connecticut</option>
+                        <option value="3">Delaware</option>
+                        <option value="3">District of Columbia</option>
+                        <option value="3">Florida</option>
+                        <option value="3">Georgia</option>
+                        <option value="3">Hawaii</option>
+                        <option value="3">Idaho</option>
+                        <option value="3">Illinois</option>
+                        <option value="3">Indiana</option>
+                        <option value="3">Iowa</option>
+                        <option value="3">Kansas</option>
+                        <option value="3">Kentucky</option>
+                        <option value="3">Louisiana</option>
+                        <option value="3">Maine</option>
+                        <option value="3">Maryland</option>
+                        <option value="3">Massachusetts</option>
+                        <option value="3">Michigan</option>
+                        <option value="3">Minnesota</option>
+                        <option value="3">Mississippi</option>
+                        <option value="3">Missouri</option>
+                        <option value="3">Montana</option>
+                        <option value="3">Nebraska</option>
+                        <option value="3">Nevada</option>
+                        <option value="3">New Hampshire</option>
+                        <option value="3">New Jersey</option>
+                        <option value="3">New Mexico</option>
+                        <option value="3">New York</option>
+                        <option value="3">North Carolina</option>
+                        <option value="3">North Dakota</option>
+                        <option value="3">Ohio</option>
+                        <option value="3">Oklahoma</option>
+                        <option value="3">Oregon</option>
+                        <option value="3">Pennsylvannia</option>
+                        <option value="3">Rhode Island</option>
+                        <option value="3">South Carolina</option>
+                        <option value="3">South Dakota</option>
+                        <option value="3">Tennessee</option>
+                        <option value="3">Texas</option>
+                        <option value="3">Utah</option>
+                        <option value="3">Vermont</option>
+                        <option value="3">Virginia</option>
+                        <option value="3">Washington</option>
+                        <option value="3">West Virginia</option>
+                        <option value="3">Wisconsin</option>
+                        <option value="3">Wyoming</option>
+                    </select>
+                    <label>State Selection</label>
+                </div>
+                <div class="input-field col s12 m6">
                     <input id="zipcode" type="text" class="validate">
                     <label for="zipcode">Zipcode</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <input id="phoneNumber" type="text" class="validate">
                     <label for="phoneNumber">Phone Number</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <input id="email" type="email" class="validate">
                     <label for="email">Email Address</label>
                 </div>
-
-
             </div>
             <div id="InsuranceInfo" class="col s12">
                 <!--
@@ -290,7 +267,6 @@
                 POLICY_TYPE = (('Primary', 'Primary'),('Secondary','Secondary'))
                 policyType = models.CharField(choices=POLICY_TYPE, max_length=MAX_LENGTH)\
                 -->
-
             </div>
             <div id="MedicalInfo" class="col s12 center-align">
                 <!--
@@ -433,11 +409,11 @@
                             <label for="epilepsy">Epilepsy</label>
                         </p>
                         <p>
-                            <input type="checkbox" id="other" onchange="hideOther();" />
+                            <input type="checkbox" id="other" onchange="hideOther();"  />
                             <label for="other">Other</label>
                         </p>
                     </div>
-                    <div class="input-field col s6 right" id="otherField">
+                    <div class="input-field col s6 right" id="otherField" style="display: none;">
                         <input placeholder="Please type the condition" id="otherText" type="text" class="validate" >
                         <label for="otherText">Please Specify:</label>
                     </div>
