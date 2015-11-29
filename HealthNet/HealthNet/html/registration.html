@@ -3,7 +3,6 @@
 
 <script>
     function initMap(){
-        console.log("initcalled");
         var mapcenter = {lat: 43.1856307, lng: -77.6865509};
         var map = new google.maps.Map(document.getElementById('hospitalMap'), {
             zoom: 12,
@@ -16,6 +15,7 @@
         var hospitalLocationRochesterGeneral = {lat: 43.153636, lng: -77.560190};
         var hospitalLocationUnity = {lat: 43.193421, lng: -77.705872};
 
+        //TODO adjust the content for each of the hospitals below. A small tumbnail picture would also be nice
         var contentHighland =   '<div id="content">' +
                                 '<div id="siteNotice">' +
                                 '</div>' +
@@ -25,7 +25,6 @@
                                 'is clicked</p>' +
                                 '</div>' +
                                 '</div>';
-        //TODO fill in the content for the following hospitals and adjust the one above.
         var contentHighlandFamily = '<div id="content">' +
                                     '<div id="siteNotice">' +
                                     '</div>' +
@@ -63,6 +62,9 @@
             title: 'Highland General'
         });
         markerHighland.addListener('click', function() {
+            infoWindowHighlandFamily.close();
+            infoWindowRochesterGeneral.close();
+            infoWindowUnity.close();
             infoWindowHighland.open(map, markerHighland);
         });
 
@@ -75,6 +77,9 @@
             title: 'Highland Family'
         });
         markerHighlandFamily.addListener('click', function() {
+            infoWindowHighland.close();
+            infoWindowRochesterGeneral.close();
+            infoWindowUnity.close();
             infoWindowHighlandFamily.open(map, markerHighlandFamily);
         });
 
@@ -87,6 +92,9 @@
             title: 'Rochester General'
         });
         markerRochesterGeneral.addListener('click', function() {
+            infoWindowHighland.close();
+            infoWindowHighlandFamily.close();
+            infoWindowUnity.close();
             infoWindowRochesterGeneral.open(map, markerRochesterGeneral);
         });
 
@@ -99,7 +107,17 @@
             title: 'Unity'
         });
         markerUnity.addListener('click', function() {
+            infoWindowHighland.close();
+            infoWindowHighlandFamily.close();
+            infoWindowRochesterGeneral.close();
             infoWindowUnity.open(map, markerUnity);
+        });
+
+        map.addListener('click', function() {
+            infoWindowHighland.close();
+            infoWindowHighlandFamily.close();
+            infoWindowRochesterGeneral.close();
+            infoWindowUnity.close();
         });
     }
 </script>
