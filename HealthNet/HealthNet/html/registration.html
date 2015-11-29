@@ -1,6 +1,28 @@
 <!-- Server Side Includes to pull in head html file -->
 {% include 'head.html' %}
 
+<script>
+    function initMap(){
+        var mapcenter = {lat: 43.1856307, lng: -77.6865509};
+        var map = new google.maps.Map(document.getElementById('map'),{
+            zoom: 12;
+            center: mapcenter
+        });
+
+        var hospitalLocationHighland = {lat: 43.135475, lng: -77.606110};
+        var hospitalLocationHighlandFamily = {lat: 43.142106, lng: -77.599179};
+        var hospitalLocationRochesterGeneral = {lat: 43.153636, lng: -77.560190};
+        var hospitalLocationUnity = {lat: 43.193421, lng: -77.705872};
+
+        var contentHighland =
+        var contentHighlandFamily =
+        var contentRochesterGeneral =
+        var contentUnity =
+
+
+    }
+</script>
+
 <div class="container white z-depth-2 " style="height: 100%;">
     <div class="row" style="padding: 0px; margin: 0px;">
         <form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
@@ -12,8 +34,9 @@
                     <li class="tab col s3"><a href="#MedicalInfo">Medical</a></li>
                 </ul>
             </div>
-            <div id="UserInfo" class="col s12">
-
+            <div id="UserInfo" class="col s12 valign-wrapper" style="width:100%;">
+               <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d186184.78449374167!2d-77.756589069744!3d43.1856307445314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b3059614b353%3A0x5a001ffc4125e61e!2sRochester%2C+NY!5e0!3m2!1sen!2sus!4v1448757401272" width="600" height="450" frameborder="0" style="border:0; margin: auto;" class="z-depth-1 valign" id="hospitalMap"></iframe>-->
+                <div id="hospitalMap" style="border:0; margin: auto;" class="z-depth-1 valign"></div>
             </div>
             <div id="ProfileInfo" class="col s12">
 
