@@ -26,14 +26,37 @@
                                 '</div>' +
                                 '</div>';
         //TODO fill in the content for the following hospitals and adjust the one above.
-        //var contentHighlandFamily =
-        //var contentRochesterGeneral =
-        //var contentUnity =
+        var contentHighlandFamily = '<div id="content">' +
+                                    '<div id="siteNotice">' +
+                                    '</div>' +
+                                    '<h3 id="firstHeading" class="firstHeading">Highland Family Hospital</h3>'+
+                                    '<div id="bodyContent">' +
+                                    '<p>This is information about the hospital that will appear when the marker ' +
+                                    'is clicked</p>' +
+                                    '</div>' +
+                                    '</div>';
+        var contentRochesterGeneral =  '<div id="content">' +
+                                        '<div id="siteNotice">' +
+                                        '</div>' +
+                                        '<h3 id="firstHeading" class="firstHeading">Rochester General Hospital</h3>'+
+                                        '<div id="bodyContent">' +
+                                        '<p>This is information about the hospital that will appear when the marker ' +
+                                        'is clicked</p>' +
+                                        '</div>' +
+                                        '</div>';
+        var contentUnity = '<div id="content">' +
+                            '<div id="siteNotice">' +
+                            '</div>' +
+                            '<h3 id="firstHeading" class="firstHeading">Unity Hospital</h3>'+
+                            '<div id="bodyContent">' +
+                            '<p>This is information about the hospital that will appear when the marker ' +
+                            'is clicked</p>' +
+                            '</div>' +
+                            '</div>';
 
         var infoWindowHighland = new google.maps.InfoWindow({
             content: contentHighland
         });
-
         var markerHighland = new google.maps.Marker({
             position: hospitalLocationHighland,
             map: map,
@@ -42,8 +65,43 @@
         markerHighland.addListener('click', function() {
             infoWindowHighland.open(map, markerHighland);
         });
+
+        var infoWindowHighlandFamily = new google.maps.InfoWindow({
+            content: contentHighlandFamily
+        });
+        var markerHighlandFamily = new google.maps.Marker({
+            position: hospitalLocationHighlandFamily,
+            map: map,
+            title: 'Highland Family'
+        });
+        markerHighlandFamily.addListener('click', function() {
+            infoWindowHighlandFamily.open(map, markerHighlandFamily);
+        });
+
+        var infoWindowRochesterGeneral = new google.maps.InfoWindow({
+            content: contentRochesterGeneral
+        });
+        var markerRochesterGeneral = new google.maps.Marker({
+            position: hospitalLocationRochesterGeneral,
+            map: map,
+            title: 'Rochester General'
+        });
+        markerRochesterGeneral.addListener('click', function() {
+            infoWindowRochesterGeneral.open(map, markerRochesterGeneral);
+        });
+
+        var infoWindowUnity = new google.maps.InfoWindow({
+            content: contentUnity
+        });
+        var markerUnity = new google.maps.Marker({
+            position: hospitalLocationUnity,
+            map: map,
+            title: 'Unity'
+        });
+        markerUnity.addListener('click', function() {
+            infoWindowUnity.open(map, markerUnity);
+        });
     }
-    //window.onload = initMap;
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAxZ5sO9tX-mrFU1gH3I5p__VSGO0wjKs&signed_in=true&callback=initMap">
