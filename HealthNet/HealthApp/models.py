@@ -68,8 +68,6 @@ SUPPORTED_INSURANCE = (
     ('OtherExample', 'OtherValue')
 )
 
-
-
 #This is used to limit the entry boxes to 50 characters
 MAX_LENGTH = 50
 

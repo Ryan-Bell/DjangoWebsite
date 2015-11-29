@@ -145,7 +145,6 @@
             document.getElementById('otherField').style.display = "none";
         }
     }
-
 </script>
 
 <div class="container white z-depth-2 " style="height: 100%;">
@@ -214,6 +213,21 @@
                             <input type="checkbox" id="germanMeasles" />
                             <label for="germanMeasles">German Measles</label>
                         </p>
+                        <div class="input-field col s4">
+                            <select multiple>
+                                <option value="1"  selected>None</option>
+                                <option value="2">Skin</option>
+                                <option value="3">Lung</option>
+                                <option value="4">Prostate</option>
+                                <option value="5">Breast</option>
+                                <option value="6">Colorectal</option>
+                                <option value="7">Kidney</option>
+                                <option value="8">Bladder</option>
+                                <option value="9">Thyroid</option>
+                                <option value="10">Other</option>
+                            </select>
+                            <label>Cancer</label>
+                        </div>
                     </div>
                     <div class="col s6 m4">
                         <p>
@@ -252,6 +266,14 @@
                             <input type="checkbox" id="migraine" />
                             <label for="migraine">Migraines</label>
                         </p>
+                        <div class="input-field col s4">
+                            <select >
+                                <option value="1"  selected>None</option>
+                                <option value="2">Type 1</option>
+                                <option value="3">Type 2</option>
+                            </select>
+                            <label>Diabetes</label>
+                        </div>
                     </div>
                     <div class="col s6 m4">
                         <p>
@@ -295,6 +317,7 @@
                         <input placeholder="Please type the condition" id="otherText" type="text" class="validate" >
                         <label for="otherText">Please Specify:</label>
                     </div>
+
                 </div>
                 <!--TODO add cancer and diabetes here -->
             </div>
