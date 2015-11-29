@@ -159,13 +159,79 @@
                 </ul>
             </div>
             <div id="UserInfo" class="col s12 valign-wrapper" style="width:100%;">
-               <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d186184.78449374167!2d-77.756589069744!3d43.1856307445314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b3059614b353%3A0x5a001ffc4125e61e!2sRochester%2C+NY!5e0!3m2!1sen!2sus!4v1448757401272" width="600" height="450" frameborder="0" style="border:0; margin: auto;" class="z-depth-1 valign" id="hospitalMap"></iframe>-->
                 <div id="hospitalMap" style="width:500px; height:500px;" class="z-depth-1 valign"></div>
             </div>
             <div id="ProfileInfo" class="col s12">
+                <!--
+                firstName = models.CharField(max_length=MAX_LENGTH)
+                middleName = models.CharField(blank=True, max_length=MAX_LENGTH)
+                lastName = models.CharField(max_length=MAX_LENGTH)
+                socialSecurity = models.CharField(max_length=9)
+                citizen = models.BooleanField(default=True)
+                dateOfBirth = models.DateField(blank=True)
+                MALE = 'M'
+                FEMALE = 'F'
+                SEX_CHOICES = ((MALE,'Male'),(FEMALE,'Female'))
+                sex = models.CharField(max_length=1, choices=SEX_CHOICES,default=MALE)
+                address = models.CharField(max_length=MAX_LENGTH)
+                city = models.CharField(max_length=MAX_LENGTH)
+                state = models.CharField(max_length=2, choices=STATE_CHOICES, blank=True)
+                zipcode = models.CharField(max_length=5)
+                phoneNumber = models.CharField(max_length=14)
+                email = models.EmailField(blank=False)
+                #switch to email based login
+                #choice of preferred hospital
+                #choice of emergency contact info (linked to other patient if already in system)
+                -->
+
+                <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="middle_name" type="text" class="validate">
+                    <label for="middle_name">Middle Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                </div>
+                <!--
+                <div class="input-field col s6">
+                    <input id="socialSecurity" type="text" class="validate">
+                    <label for="socialSecurity">Social Security</label>
+                </div>
+                -->
+                <div class="input-field col s6">
+                    <input id="address" type="text" class="validate">
+                    <label for="address">Street Address</label>
+                </div>
+                <!-- TODO state selector here -->
+                <div class="input-field col s6">
+                    <input id="zipcode" type="text" class="validate">
+                    <label for="zipcode">Zipcode</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="phoneNumber" type="text" class="validate">
+                    <label for="phoneNumber">Phone Number</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email Address</label>
+                </div>
+
 
             </div>
             <div id="InsuranceInfo" class="col s12">
+                <!--
+                provider = models.CharField(choices=SUPPORTED_INSURANCE, max_length=MAX_LENGTH)
+                policyNumber = models.CharField(max_length=MAX_LENGTH)
+                groupNumber = models.CharField(max_length=MAX_LENGTH)
+                policyExpirationDate = models.DateField()
+                premiumAmount = models.CharField(max_length=MAX_LENGTH)
+                POLICY_TYPE = (('Primary', 'Primary'),('Secondary','Secondary'))
+                policyType = models.CharField(choices=POLICY_TYPE, max_length=MAX_LENGTH)\
+                -->
 
             </div>
             <div id="MedicalInfo" class="col s12 center-align">
