@@ -137,7 +137,16 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAxZ5sO9tX-mrFU1gH3I5p__VSGO0wjKs&signed_in=true&callback=initMap">
 </script>
+<script>
+    function hideOther(){
+        if(document.getElementById('other').checked){
+            document.getElementById('otherField').style.display = "block";
+        } else {
+            document.getElementById('otherField').style.display = "none";
+        }
+    }
 
+</script>
 
 <div class="container white z-depth-2 " style="height: 100%;">
     <div class="row" style="padding: 0px; margin: 0px;">
@@ -277,6 +286,14 @@
                             <input type="checkbox" id="epilepsy" />
                             <label for="epilepsy">Epilepsy</label>
                         </p>
+                        <p>
+                            <input type="checkbox" id="other" onchange="hideOther();" />
+                            <label for="other">Other</label>
+                        </p>
+                    </div>
+                    <div class="input-field col s6 right" id="otherField">
+                        <input placeholder="Please type the condition" id="otherText" type="text" class="validate" >
+                        <label for="otherText">Please Specify:</label>
                     </div>
                 </div>
                 <!--TODO add cancer and diabetes here -->
