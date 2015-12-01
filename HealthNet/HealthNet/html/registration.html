@@ -145,6 +145,11 @@
             document.getElementById('otherField').style.display = "none";
         }
     }
+
+    //The following function loads the javascript for materialize so various js functions work
+    $(document).ready(function() {
+        $('select').material_select();
+    });
 </script>
 
 <div class="container white z-depth-2 " style="height: 100%;">
@@ -162,9 +167,6 @@
                 <div id="hospitalMap" style="width:500px; height:500px;" class="z-depth-1 valign"></div>
             </div>
             <div id="ProfileInfo" class="col s12">
-                <!-- TODO add regex restrictions on the input fields
-                     The validation should match the regex-->
-
                 <div class="input-field col s12 m6">
                     <input id="first_name" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="first_name">First Name</label>
@@ -421,19 +423,6 @@
                 </div>
                 <!--TODO add cancer and diabetes here -->
             </div>
-
-            <!--
-            <div class="row">
-                <div class="input-field col s4">
-                    <select >
-                        <option value="1"  selected>None</option>
-                        <option value="2">Type 1</option>
-                        <option value="3">Type 2</option>
-                    </select>
-                    <label>Diabetes</label>
-                </div>
-            </div>
-            -->
         </form>
     </div>
 </div>
