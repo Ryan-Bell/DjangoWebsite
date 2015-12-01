@@ -166,15 +166,15 @@
                      The validation should match the regex-->
 
                 <div class="input-field col s12 m6">
-                    <input id="first_name" type="text" class="validate">
+                    <input id="first_name" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="first_name">First Name</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="middle_name" type="text" class="validate">
+                    <input id="middle_name" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="middle_name">Middle Name</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="last_name" type="text" class="validate">
+                    <input id="last_name" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="last_name">Last Name</label>
                 </div>
                 <!--
@@ -184,7 +184,7 @@
                 </div>
                 -->
                 <div class="input-field col s12 m6">
-                    <input id="address" type="text" class="validate">
+                    <input id="address" type="text" class="validate" pattern="[A-Za-z0-9 ]+">
                     <label for="address">Street Address</label>
                 </div>
                 <div class="input-field col s12 m6">
@@ -245,11 +245,11 @@
                     <label>State Selection</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="zipcode" type="text" class="validate">
+                    <input id="zipcode" type="text" class="validate" pattern="[0-9]{5}">
                     <label for="zipcode">Zipcode</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="phoneNumber" type="text" class="validate">
+                    <input id="phoneNumber" type="text" class="validate" pattern="[0-9]{7,10}">
                     <label for="phoneNumber">Phone Number</label>
                 </div>
                 <div class="input-field col s12 m6">
@@ -421,6 +421,19 @@
                 </div>
                 <!--TODO add cancer and diabetes here -->
             </div>
+
+            <!--
+            <div class="row">
+                <div class="input-field col s4">
+                    <select >
+                        <option value="1"  selected>None</option>
+                        <option value="2">Type 1</option>
+                        <option value="3">Type 2</option>
+                    </select>
+                    <label>Diabetes</label>
+                </div>
+            </div>
+            -->
         </form>
     </div>
 </div>
