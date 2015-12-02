@@ -16,6 +16,11 @@
         var hospitalLocationUnity = {lat: 43.193421, lng: -77.705872};
 
         //TODO adjust the content for each of the hospitals below. A small tumbnail picture would also be nice
+
+        //TODO add material css to the content html below
+
+        //The content for each hospital is the html that is injected in the window that pops up when the markers
+        //are clicked.
         var contentHighland =   '<div id="content">' +
                                 '<div id="siteNotice">' +
                                 '</div>' +
@@ -52,6 +57,8 @@
                             'is clicked</p>' +
                             '</div>' +
                             '</div>';
+
+
         //The following can be used to toggle a bounce animation on the markers
         //This may be useful for when the user is selecting the hospital from a
         //drop down menu.
@@ -61,16 +68,25 @@
         //    markerHighland.setAnimation(google.maps.Animation.BOUNCE);
         //}
 
+        //----------------------------------
+        //    content window, marker, and listener
+        //    for Highland General
+        //----------------------------------
 
+        //create content window and pass in content string
         var infoWindowHighland = new google.maps.InfoWindow({
             content: contentHighland
         });
+
+        //create marker
         var markerHighland = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: hospitalLocationHighland,
             map: map,
             title: 'Highland General'
         });
+
+        //add click listener that closes out of other windows opens correct content window
         markerHighland.addListener('click', function() {
             infoWindowHighlandFamily.close();
             infoWindowRochesterGeneral.close();
@@ -78,15 +94,25 @@
             infoWindowHighland.open(map, markerHighland);
         });
 
+        //----------------------------------
+        //    content window, marker, and listener
+        //    for Highland Family
+        //----------------------------------
+
+        //create content window and pass in content string
         var infoWindowHighlandFamily = new google.maps.InfoWindow({
             content: contentHighlandFamily
         });
+
+        //create marker
         var markerHighlandFamily = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: hospitalLocationHighlandFamily,
             map: map,
             title: 'Highland Family'
         });
+
+        //add click listener that closes out of other windows opens correct content window
         markerHighlandFamily.addListener('click', function() {
             infoWindowHighland.close();
             infoWindowRochesterGeneral.close();
@@ -94,15 +120,25 @@
             infoWindowHighlandFamily.open(map, markerHighlandFamily);
         });
 
+        //----------------------------------
+        //    content window, marker, and listener
+        //    for Rochester General
+        //----------------------------------
+
+        //create content window and pass in content string
         var infoWindowRochesterGeneral = new google.maps.InfoWindow({
             content: contentRochesterGeneral
         });
+
+        //create marker
         var markerRochesterGeneral = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: hospitalLocationRochesterGeneral,
             map: map,
             title: 'Rochester General'
         });
+
+        //add click listener that closes out of other windows opens correct content window
         markerRochesterGeneral.addListener('click', function() {
             infoWindowHighland.close();
             infoWindowHighlandFamily.close();
@@ -110,15 +146,25 @@
             infoWindowRochesterGeneral.open(map, markerRochesterGeneral);
         });
 
+        //----------------------------------
+        //    content window, marker, and listener
+        //    for Unity
+        //----------------------------------
+
+        //create content window and pass in content string
         var infoWindowUnity = new google.maps.InfoWindow({
             content: contentUnity
         });
+
+        //create marker
         var markerUnity = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: hospitalLocationUnity,
             map: map,
             title: 'Unity'
         });
+
+        //add click listener that closes out of other windows opens correct content window
         markerUnity.addListener('click', function() {
             infoWindowHighland.close();
             infoWindowHighlandFamily.close();
@@ -126,6 +172,7 @@
             infoWindowUnity.open(map, markerUnity);
         });
 
+        //add click listener to the map so that it closes all info windows
         map.addListener('click', function() {
             infoWindowHighland.close();
             infoWindowHighlandFamily.close();
@@ -138,6 +185,7 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAxZ5sO9tX-mrFU1gH3I5p__VSGO0wjKs&signed_in=true&callback=initMap">
 </script>
 <script>
+    //Handles toggling the visibility of the other field in medical information
     function hideOther(){
         if(document.getElementById('other').checked){
             document.getElementById('otherField').style.display = "block";
@@ -159,7 +207,6 @@
                 <ul class="tabs ">
                     <li class="tab col s3 "><a href="#UserInfo" class="active">Account Info</a></li>
                     <li class="tab col s3"><a href="#ProfileInfo">Profile</a></li>
-                    <!--<li class="tab col s3"><a href="#InsuranceInfo">Insurance</a></li>-->
                     <li class="tab col s3"><a href="#MedicalInfo">Medical</a></li>
                 </ul>
             </div>
@@ -282,11 +329,13 @@
                     <label for="email">Email Address</label>
                 </div>
             </div>
+            <!--
             <div id="InsuranceInfo" class="col s12">
 
 
 
             </div>
+            -->
             <div id="MedicalInfo" class="col s12 center-align">
                 <!--
                 #possible fields such as last checkup etc.
@@ -438,7 +487,6 @@
                     </div>
 
                 </div>
-                <!--TODO add cancer and diabetes here -->
             </div>
         </form>
     </div>
