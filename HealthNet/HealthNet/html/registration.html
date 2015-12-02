@@ -159,12 +159,41 @@
                 <ul class="tabs ">
                     <li class="tab col s3 "><a href="#UserInfo" class="active">Account Info</a></li>
                     <li class="tab col s3"><a href="#ProfileInfo">Profile</a></li>
-                    <li class="tab col s3"><a href="#InsuranceInfo">Insurance</a></li>
+                    <!--<li class="tab col s3"><a href="#InsuranceInfo">Insurance</a></li>-->
                     <li class="tab col s3"><a href="#MedicalInfo">Medical</a></li>
                 </ul>
             </div>
             <div id="UserInfo" class="col s12 valign-wrapper" style="width:100%;">
                 <div id="hospitalMap" style="width:500px; height:500px;" class="z-depth-1 valign"></div>
+                <div class="input-field col s12 m6">
+                    <input id="username" type="text" class="validate" pattern="[A-Za-z]+">
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="password" type="password" class="validate" >
+                    <label for="password">Password</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <select>
+                        <option value="" disabled selected>Choose hospital:</option>
+                        <option value="1">Highland General</option>
+                        <option value="1">Highland Family</option>
+                        <option value="1">Rochester General</option>
+                        <option value="1">Unity</option>
+                    </select>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="provider" type="text" class="validate" >
+                    <label for="provider">Provider</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="policyNumber" type="text" class="validate" >
+                    <label for="policyNumber">Policy Number</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="groupNumber" type="text" class="validate" >
+                    <label for="groupNumber">Group Number</label>
+                </div>
             </div>
             <div id="ProfileInfo" class="col s12">
                 <div class="input-field col s12 m6">
@@ -179,12 +208,6 @@
                     <input id="last_name" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="last_name">Last Name</label>
                 </div>
-                <!--
-                <div class="input-field col s6">
-                    <input id="socialSecurity" type="text" class="validate">
-                    <label for="socialSecurity">Social Security</label>
-                </div>
-                -->
                 <div class="input-field col s12 m6">
                     <input id="address" type="text" class="validate" pattern="[A-Za-z0-9 ]+">
                     <label for="address">Street Address</label>
@@ -260,15 +283,9 @@
                 </div>
             </div>
             <div id="InsuranceInfo" class="col s12">
-                <!--
-                provider = models.CharField(choices=SUPPORTED_INSURANCE, max_length=MAX_LENGTH)
-                policyNumber = models.CharField(max_length=MAX_LENGTH)
-                groupNumber = models.CharField(max_length=MAX_LENGTH)
-                policyExpirationDate = models.DateField()
-                premiumAmount = models.CharField(max_length=MAX_LENGTH)
-                POLICY_TYPE = (('Primary', 'Primary'),('Secondary','Secondary'))
-                policyType = models.CharField(choices=POLICY_TYPE, max_length=MAX_LENGTH)\
-                -->
+
+
+
             </div>
             <div id="MedicalInfo" class="col s12 center-align">
                 <!--
@@ -315,7 +332,7 @@
                             <input type="checkbox" id="germanMeasles" />
                             <label for="germanMeasles">German Measles</label>
                         </p>
-                        <div class="input-field col s4">
+                        <div class="input-field col s12 m6">
                             <select multiple>
                                 <option value="1"  selected>None</option>
                                 <option value="2">Skin</option>
@@ -368,7 +385,7 @@
                             <input type="checkbox" id="migraine" />
                             <label for="migraine">Migraines</label>
                         </p>
-                        <div class="input-field col s4">
+                        <div class="input-field col s12 m6">
                             <select >
                                 <option value="1"  selected>None</option>
                                 <option value="2">Type 1</option>
