@@ -203,23 +203,33 @@
 <div class="container white z-depth-2 " style="height: 100%;">
     <div class="row" style="padding: 0px; margin: 0px;">
         <form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
+
             <div class="col s12 z-depth-1" style="padding: 0px;">
+                <!-- Top bar nav links -->
                 <ul class="tabs ">
                     <li class="tab col s3 "><a href="#UserInfo" class="active">Account Info</a></li>
                     <li class="tab col s3"><a href="#ProfileInfo">Profile</a></li>
                     <li class="tab col s3"><a href="#MedicalInfo">Medical</a></li>
                 </ul>
             </div>
+
             <div id="UserInfo" class="col s12 valign-wrapper" style="width:100%;">
+
+                <!-- This div is used to place the map in. Adjusting width/height will change it's size-->
                 <div id="hospitalMap" style="width:500px; height:500px;" class="z-depth-1 valign"></div>
+
                 <div class="input-field col s12 m6">
                     <input id="username" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="username">Username</label>
                 </div>
+
                 <div class="input-field col s12 m6">
                     <input id="password" type="password" class="validate" >
                     <label for="password">Password</label>
                 </div>
+
+                <!-- Drop Down for hospital select -->
+                <!-- TODO make the map refocus on the hospital selected -->
                 <div class="input-field col s12 m6">
                     <select>
                         <option value="" disabled selected>Choose hospital:</option>
@@ -229,36 +239,45 @@
                         <option value="1">Unity</option>
                     </select>
                 </div>
+
                 <div class="input-field col s12 m6">
                     <input id="provider" type="text" class="validate" >
                     <label for="provider">Provider</label>
                 </div>
+
                 <div class="input-field col s12 m6">
                     <input id="policyNumber" type="text" class="validate" >
                     <label for="policyNumber">Policy Number</label>
                 </div>
+
                 <div class="input-field col s12 m6">
                     <input id="groupNumber" type="text" class="validate" >
                     <label for="groupNumber">Group Number</label>
                 </div>
             </div>
+
             <div id="ProfileInfo" class="col s12">
+
                 <div class="input-field col s12 m6">
                     <input id="first_name" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="first_name">First Name</label>
                 </div>
+
                 <div class="input-field col s12 m6">
                     <input id="middle_name" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="middle_name">Middle Name</label>
                 </div>
+
                 <div class="input-field col s12 m6">
                     <input id="last_name" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="last_name">Last Name</label>
                 </div>
+
                 <div class="input-field col s12 m6">
                     <input id="address" type="text" class="validate" pattern="[A-Za-z0-9 ]+">
                     <label for="address">Street Address</label>
                 </div>
+
                 <div class="input-field col s12 m6">
                     <select>
                         <option value="" disabled selected>Choose your state:</option>
@@ -316,34 +335,35 @@
                     </select>
                     <label>State Selection</label>
                 </div>
+
                 <div class="input-field col s12 m6">
                     <input id="zipcode" type="text" class="validate" pattern="[0-9]{5}">
                     <label for="zipcode">Zipcode</label>
                 </div>
+
                 <div class="input-field col s12 m6">
                     <input id="phoneNumber" type="text" class="validate" pattern="[0-9]{7,10}">
                     <label for="phoneNumber">Phone Number</label>
                 </div>
+
                 <div class="input-field col s12 m6">
                     <input id="email" type="email" class="validate">
                     <label for="email">Email Address</label>
                 </div>
             </div>
-            <!--
-            <div id="InsuranceInfo" class="col s12">
 
-
-
-            </div>
-            -->
             <div id="MedicalInfo" class="col s12 center-align">
                 <!--
                 #possible fields such as last checkup etc.
                 -->
                 <!--TODO make the list responsive for mobile devices -->
                 <div class="card-title" style="width:100%;"><h5>Please select any conditions you've had</h5></div>
+
                 <hr />
+
                 <div >
+
+                    <!-- The first of the 3 columns in medical info. It may be better not to have columns -->
                     <div class="col s6 m4 ">
                         <p>
                             <input type="checkbox" id="tuberculosis" />
@@ -381,6 +401,8 @@
                             <input type="checkbox" id="germanMeasles" />
                             <label for="germanMeasles">German Measles</label>
                         </p>
+
+                        <!-- Drop down multiple select for cancer -->
                         <div class="input-field col s12 m6">
                             <select multiple>
                                 <option value="1"  selected>None</option>
@@ -397,6 +419,8 @@
                             <label>Cancer</label>
                         </div>
                     </div>
+
+                    <!-- The second of the 3 columns in medical info. It may be better not to have columns -->
                     <div class="col s6 m4">
                         <p>
                             <input type="checkbox" id="scarletFever" />
@@ -434,6 +458,8 @@
                             <input type="checkbox" id="migraine" />
                             <label for="migraine">Migraines</label>
                         </p>
+
+                        <!-- Drop down single select for diabetes  -->
                         <div class="input-field col s12 m6">
                             <select >
                                 <option value="1"  selected>None</option>
@@ -443,6 +469,8 @@
                             <label>Diabetes</label>
                         </div>
                     </div>
+
+                    <!-- The third of the 3 columns in medical info. It may be better not to have columns -->
                     <div class="col s6 m4">
                         <p>
                             <input type="checkbox" id="strokes" />
@@ -481,6 +509,8 @@
                             <label for="other">Other</label>
                         </p>
                     </div>
+
+                    <!-- Other field that is visible if the other checkbox is checked. Not in a column-->
                     <div class="input-field col s6 right" id="otherField" style="display: none;">
                         <input placeholder="Please type the condition" id="otherText" type="text" class="validate" >
                         <label for="otherText">Please Specify:</label>
@@ -491,6 +521,7 @@
         </form>
     </div>
 </div>
+
 <!-- Close the tags opened in head.html -->
 </body>
 </html>
