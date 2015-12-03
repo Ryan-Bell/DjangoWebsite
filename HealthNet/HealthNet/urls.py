@@ -40,10 +40,12 @@ urlpatterns = [
     url(r'^$', views.userLogin, name='login'),
     url(r'^login/$', views.userLogin, name='login'),
     url(r'^register/$', views.register, name='register'),
-    #url(r'^registerMedical/$', views.registerMedical, name='registerMedical'),
+    #Temporary url to test the profile page
+    url(r'^profile/$', views.profile),
     url(r'^logout/$', views.userLogout, name='logout'),
     #TODO change the admin link to not use django's built in admin site
     #url(r'^admin/', include(admin.site.urls)),
+    #url(r'^registerMedical/$', views.registerMedical, name='registerMedical'),
     #url(r'^(?P<username>\w+)/profile/$', views.profile, name='profile'),
     #url(r'^(?P<username>\w+)/profile/Appointments$', views.profileAppointments, name='calendar'),
     #url(r'^(?P<username>\w+)/profile/MedicalInfo$', views.profileMedicalInfo, name='medical')
