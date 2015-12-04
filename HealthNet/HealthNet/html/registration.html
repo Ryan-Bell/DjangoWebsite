@@ -201,7 +201,7 @@
 </script>
 
 <div class="container white z-depth-2 " style="height: 100%;">
-    <div class="row" style="padding: 0px; margin: 0px;">
+    <div class="row" style="padding: 0px; margin: 0px;" >
         <form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
 
             <div class="col s12 z-depth-1" style="padding: 0px;">
@@ -213,10 +213,7 @@
                 </ul>
             </div>
 
-            <div id="UserInfo" class="col s12 valign-wrapper" style="width:100%;">
-
-                <!-- This div is used to place the map in. Adjusting width/height will change it's size-->
-                <div id="hospitalMap" style="width:500px; height:500px;" class="z-depth-1 valign"></div>
+            <div id="UserInfo" class="col s12" style="width:100%;">
 
                 <div class="input-field col s12 m6">
                     <input id="username" type="text" class="validate" pattern="[A-Za-z]+">
@@ -228,6 +225,16 @@
                     <label for="password">Password</label>
                 </div>
 
+                <div class="input-field col s12 m6">
+                    <input id="policyNumber" type="text" class="validate" >
+                    <label for="policyNumber">Policy Number</label>
+                </div>
+								
+                <div class="input-field col s12 m6">
+                    <input id="provider" type="text" class="validate" >
+                    <label for="provider">Provider</label>
+                </div>
+								
                 <!-- Drop Down for hospital select -->
                 <!-- TODO make the map refocus on the hospital selected -->
                 <div class="input-field col s12 m6">
@@ -240,20 +247,15 @@
                     </select>
                 </div>
 
-                <div class="input-field col s12 m6">
-                    <input id="provider" type="text" class="validate" >
-                    <label for="provider">Provider</label>
-                </div>
-
-                <div class="input-field col s12 m6">
-                    <input id="policyNumber" type="text" class="validate" >
-                    <label for="policyNumber">Policy Number</label>
-                </div>
 
                 <div class="input-field col s12 m6">
                     <input id="groupNumber" type="text" class="validate" >
                     <label for="groupNumber">Group Number</label>
                 </div>
+								
+                <!-- This div is used to place the map in. Adjusting width/height will change it's size-->
+                <div id="hospitalMap" style="width100%; height:300px;" class="col s12"></div>
+
             </div>
 
             <div id="ProfileInfo" class="col s12">
