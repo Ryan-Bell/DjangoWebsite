@@ -1,5 +1,6 @@
 <!-- Server Side Includes to pull in head html file -->
 {% include 'headExtra.html' %}
+
 <script>
     //The following function loads the javascript for materialize so various js functions work
     $(document).ready(function() {
@@ -10,6 +11,15 @@
     $('#calendar').fullCalendar({
 	    schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives'
     });
+
+
+    $(document).ready(function() {
+    // page is now ready, initialize the calendar...
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+    })
+
+});
 </script>
 
 <div class="container white z-depth-2 " style="height: 100%;">
@@ -19,22 +29,22 @@
             <div class="col s12 z-depth-1" style="padding: 0px;">
                 <!-- Top bar nav links -->
                 <ul class="tabs">
-                    <li class="tab col s3 "><a href="#personal" class="active">Personal Information</a></li>
-                    <li class="tab col s3"><a href="#medical">Medical Information</a></li>
-                    <li class="tab col s3"><a href="#calendar">Calendar</a></li>
+                    <li class="tab col s3 "><a href="#personalSection" class="active">Personal Information</a></li>
+                    <li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
+                    <li class="tab col s3"><a href="#calendarSection">Calendar</a></li>
                 </ul>
             </div>
 
-            <div id="personal" class="col s12 valign-wrapper" style="width:100%;">
+            <div id="personalSection" class="col s12 valign-wrapper" style="width:100%;">
 
             </div>
 
-            <div id="medical" class="col s12 valign-wrapper" style="width:100%;">
+            <div id="medicalSection" class="col s12 valign-wrapper" style="width:100%;">
 
             </div>
 
-            <div id="calendar" class="col s12 valign-wrapper" style="width:100%;">
-
+            <div id="calendarSection" class="col s12 valign-wrapper" style="width:100%;">
+                <div id="calendar"></div>
             </div>
 
         </form>
