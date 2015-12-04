@@ -198,6 +198,12 @@
     $(document).ready(function() {
         $('select').material_select();
     });
+
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+
 </script>
 
 <div class="container white z-depth-2 " style="height: 100%;">
@@ -252,11 +258,18 @@
                     <input id="groupNumber" type="text" class="validate" >
                     <label for="groupNumber">Group Number</label>
                 </div>
+<<<<<<< HEAD
 								
                 <!-- This div is used to place the map in. Adjusting width/height will change it's size-->
                 <div id="hospitalMap" style="width100%; height:300px;" class="col s12"></div>
+=======
+
+
+>>>>>>> origin/master
 
             </div>
+
+
 
             <div id="ProfileInfo" class="col s12">
 
@@ -352,7 +365,12 @@
                     <input id="email" type="email" class="validate">
                     <label for="email">Email Address</label>
                 </div>
+
+                <input type="date" class="datepicker">
+
             </div>
+
+
 
             <div id="MedicalInfo" class="col s12 center-align">
                 <!--
@@ -364,48 +382,11 @@
                 <hr />
 
                 <div >
-
-                    <!-- The first of the 3 columns in medical info. It may be better not to have columns -->
-                    <div class="col s6 m4 ">
-                        <p>
-                            <input type="checkbox" id="tuberculosis" />
-                            <label for="tuberculosis" class="center-align">Tuberculosis</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="influenza" />
-                            <label for="influenza">Influenza</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="rheumaticFever" />
-                            <label for="rheumaticFever">Rheumatic Fever</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="whoopingCough" />
-                            <label for="whoopingCough">Whooping Cough</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="tonsillitis" />
-                            <label for="tonsillitis">Tonsillitis</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="measles" />
-                            <label for="measles">Measles</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="mumps" />
-                            <label for="mumps">Mumps</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="frequentColds" />
-                            <label for="frequentColds">Frequent Colds</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="germanMeasles" />
-                            <label for="germanMeasles">German Measles</label>
-                        </p>
-
-                        <!-- Drop down multiple select for cancer -->
-                        <div class="input-field col s12 m6">
+				
+				<!-- Other field that is visible if the other checkbox is checked. Not in a column-->
+                    
+					
+					<div class="input-field col s12 m6">
                             <select multiple>
                                 <option value="1"  selected>None</option>
                                 <option value="2">Skin</option>
@@ -419,104 +400,213 @@
                                 <option value="10">Other</option>
                             </select>
                             <label>Cancer</label>
-                        </div>
                     </div>
-
-                    <!-- The second of the 3 columns in medical info. It may be better not to have columns -->
-                    <div class="col s6 m4">
-                        <p>
-                            <input type="checkbox" id="scarletFever" />
-                            <label for="scarletFever">Scarlet Fever</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="scarlatina" />
-                            <label for="scarlatina">Scarlatina</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="diphtheria" />
-                            <label for="diphtheria">Diphtheria</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="polio" />
-                            <label for="polio">Polio</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="chickenpox" />
-                            <label for="chickenpox">Chickenpox</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="coxsackie" />
-                            <label for="coxsackie">Coxsackie</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="pneumonia" />
-                            <label for="pneumonia">Pneumonia</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="highBloodPressure" />
-                            <label for="highBloodPressure">High Blood Pressure</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="migraine" />
-                            <label for="migraine">Migraines</label>
-                        </p>
-
-                        <!-- Drop down single select for diabetes  -->
-                        <div class="input-field col s12 m6">
+					
+					<div class="input-field col s12 m6">
                             <select >
                                 <option value="1"  selected>None</option>
                                 <option value="2">Type 1</option>
                                 <option value="3">Type 2</option>
                             </select>
                             <label>Diabetes</label>
-                        </div>
                     </div>
+					
+					
 
-                    <!-- The third of the 3 columns in medical info. It may be better not to have columns -->
-                    <div class="col s6 m4">
-                        <p>
-                            <input type="checkbox" id="strokes" />
-                            <label for="strokes">Strokes</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="kidneyDisease" />
-                            <label for="kidneyDisease">Kidney Disease</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="arthritis" />
-                            <label for="arthritis">Arthritis</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="allergy" />
-                            <label for="allergy">Allergies</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="syphilis" />
-                            <label for="syphilis">Syphilis</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="anemia" />
-                            <label for="anemia">Anemia</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="obesity" />
-                            <label for="obesity">Obesity</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" id="epilepsy" />
-                            <label for="epilepsy">Epilepsy</label>
-                        </p>
-                        <p>
+                    <div class="row">
+
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Allergies" />
+								<label for="Allergies">Allergies</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Arthritis" />
+								<label for="Arthritis">Arthritis</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Chickenpox" />
+								<label for="Chickenpox">Chickenpox</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Coxsackie" />
+								<label for="Coxsackie">Coxsackie</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Diphtheria" />
+								<label for="Diphtheria">Diphtheria</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Epilipsy" />
+								<label for="Epilipsy">Epilipsy</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Frequent Colds" />
+								<label for="Frequent Colds">Frequent Colds</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="German Measles" />
+								<label for="German Measles">German Measles</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="High Blood Pressure" />
+								<label for="High Blood Pressure">High Blood Pressure</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Influenza" />
+								<label for="Influenza">Influenza</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Kidney Disease" />
+								<label for="Kidney Disease">Kidney Disease</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Measles" />
+								<label for="Measles">Measles</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Migraines" />
+								<label for="Migraines">Migraines</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Mumps" />
+								<label for="Mumps">Mumps</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Obesity" />
+								<label for="Obesity">Obesity</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Pneumonia" />
+								<label for="Pneumonia">Pneumonia</label>
+							</p>
+						</div>
+						
+				
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Polio" />
+								<label for="Polio">Polio</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Rheumatic Fever" />
+								<label for="Rheumatic Fever">Rheumatic Fever</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Scarlatina" />
+								<label for="Scarlatina">Scarlatina</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Scarlet Fever" />
+								<label for="Scarlet Fever">Scarlet Fever</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Strokes" />
+								<label for="Strokes">Strokes</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Syphilis" />
+								<label for="Syphilis">Syphilis</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Tonsillitis" />
+								<label for="Tonsillitis">Tonsillitis</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Tuberculosis" />
+								<label for="Tuberculosis">Tuberculosis</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
+								<input type="checkbox" id="Whooping Cough" />
+								<label for="Whooping Cough">Whooping Cough</label>
+							</p>
+						</div>
+						
+						<div class="col s6 m4 l3">
+							<p>
                             <input type="checkbox" id="other" onchange="hideOther();"  />
                             <label for="other">Other</label>
                         </p>
-                    </div>
-
-                    <!-- Other field that is visible if the other checkbox is checked. Not in a column-->
-                    <div class="input-field col s6 right" id="otherField" style="display: none;">
+						</div>
+			
+                    
+					</div>
+                    
+					<div class="input-field s6 m4 l3" id="otherField" style="display: none;">
                         <input placeholder="Please type the condition" id="otherText" type="text" class="validate" >
                         <label for="otherText">Please Specify:</label>
-                    </div>
+					</div>	
+						
 
                 </div>
             </div>

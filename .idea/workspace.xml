@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d57b71b-fe97-4998-86ae-7c206bd4fbc1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HealthNet/HealthNet/html/ProfilePage.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HealthNet/HealthNet/html/headExtra.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/HealthNet/html/ProfilePage.html" afterPath="$PROJECT_DIR$/HealthNet/HealthNet/html/ProfilePage.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/HealthNet/html/registration.html" afterPath="$PROJECT_DIR$/HealthNet/HealthNet/html/registration.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/HealthNet/urls.py" afterPath="$PROJECT_DIR$/HealthNet/HealthNet/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HealthNet/HealthApp/views.py" afterPath="$PROJECT_DIR$/HealthNet/HealthApp/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DjangoWebsite.iws" />
@@ -52,8 +51,8 @@
       <file leaf-file-name="registration.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/registration.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.041666">
-              <caret line="216" column="0" selection-start-line="202" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
+            <state vertical-scroll-proportion="-13.125">
+              <caret line="209" column="0" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -68,26 +67,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfilePage.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="materialize.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthNet/static/materialize/js/materialize.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="220.07692">
+              <caret line="5122" column="12" selection-start-line="5122" selection-start-column="12" selection-end-line="5122" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfilePage.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/ProfilePage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.875">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.14754099">
+              <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="headExtra.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/headExtra.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.625">
+              <caret line="25" column="96" selection-start-line="25" selection-start-column="96" selection-end-line="25" selection-end-column="96" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65460527">
+            <state vertical-scroll-proportion="-15.307693">
               <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
               <folding>
                 <element signature="e#618#669#0" expanded="true" />
@@ -149,10 +170,11 @@
         <option value="$PROJECT_DIR$/HealthNet/HealthNet/html/login.html" />
         <option value="$PROJECT_DIR$/HealthNet/HealthApp/models.py" />
         <option value="$PROJECT_DIR$/HealthNet/HealthNet/html/head.html" />
-        <option value="$PROJECT_DIR$/HealthNet/HealthNet/html/registration.html" />
-        <option value="$PROJECT_DIR$/HealthNet/HealthNet/html/ProfilePage.html" />
         <option value="$PROJECT_DIR$/HealthNet/HealthApp/views.py" />
         <option value="$PROJECT_DIR$/HealthNet/HealthNet/urls.py" />
+        <option value="$PROJECT_DIR$/HealthNet/HealthNet/html/registration.html" />
+        <option value="$PROJECT_DIR$/HealthNet/HealthNet/html/headExtra.html" />
+        <option value="$PROJECT_DIR$/HealthNet/HealthNet/html/ProfilePage.html" />
       </list>
     </option>
   </component>
@@ -220,6 +242,72 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="HealthNet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DjangoWebsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DjangoWebsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HealthNet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DjangoWebsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DjangoWebsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HealthNet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar-scheduler-1.1.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DjangoWebsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DjangoWebsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HealthNet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar-scheduler-1.1.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -320,6 +408,9 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/HealthNet/HealthNet/html" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/HealthNet/HealthNet/html" />
       <recent name="$PROJECT_DIR$/HealthNet/HealthNet/html/LegacyHTML" />
@@ -513,23 +604,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/registration.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -880,10 +954,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6153846">
+          <caret line="58" column="36" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.307693">
+          <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+          <folding>
+            <element signature="e#618#669#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/registration.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.041666">
-          <caret line="216" column="0" selection-start-line="202" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
+        <state vertical-scroll-proportion="-13.125">
+          <caret line="209" column="0" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -897,34 +989,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HealthNet/static/materialize/js/materialize.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="220.07692">
+          <caret line="5122" column="12" selection-start-line="5122" selection-start-column="12" selection-end-line="5122" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/headExtra.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.625">
+          <caret line="25" column="96" selection-start-line="25" selection-start-column="96" selection-end-line="25" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/html/ProfilePage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.875">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.14754099">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthNet/HealthApp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.6153846">
-          <caret line="58" column="36" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HealthNet/HealthNet/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65460527">
-          <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
-          <folding>
-            <element signature="e#618#669#0" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
