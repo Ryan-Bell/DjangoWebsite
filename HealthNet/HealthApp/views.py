@@ -58,10 +58,12 @@ def userLogout(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-#TODO adjust the entire register method so that it works witht the new html page
+#TODO adjust the entire register method so that it works with the new html page
 def register(request):
     return render(request, 'registration.html')
 
+def profile(request):
+    return render(request, 'ProfilePage.html')
 
 """
 LEGACY BELOW

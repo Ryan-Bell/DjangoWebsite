@@ -1,0 +1,33 @@
+<!-- Server Side Includes to pull in head html file -->
+{% include 'head.html' %}
+<script>
+    //The following function loads the javascript for materialize so various js functions work
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>
+
+<div class="container white z-depth-2 " style="height: 100%;">
+    <div class="row" style="padding: 0px; margin: 0px;">
+        <form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
+
+            <div class="col s12 z-depth-1" style="padding: 0px;">
+                <!-- Top bar nav links -->
+                <ul class="tabs ">
+                    <li class="tab col s3 "><a href="#" class="active"></a></li>
+                    <li class="tab col s3"><a href="#"></a></li>
+                    <li class="tab col s3"><a href="#"></a></li>
+                </ul>
+            </div>
+
+            <div id="" class="col s12 valign-wrapper" style="width:100%;">
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- Close the tags opened in head.html -->
+</body>
+</html>
