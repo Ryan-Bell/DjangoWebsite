@@ -1,27 +1,16 @@
 <!-- Server Side Includes to pull in head html file -->
 {% include 'headExtra.html' %}
-
-<script>
+	<script>
     //The following function loads the javascript for materialize so various js functions work
-    $(document).ready(function() {
-        $('select').material_select();
-    });
+   // $(document).ready(function() {
+    //    $('select').material_select();
+    //});
 
     //remove licensing warning for fullCalendar schedular
     $('#calendar').fullCalendar({
-	    schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives'
     });
-
-
-    $(document).ready(function() {
-    // page is now ready, initialize the calendar...
-    $('#calendar').fullCalendar({
-        // put your options and callbacks here
-    })
-
-});
-</script>
-
+	</script>
+	
 <div class="container white z-depth-2 " style="height: 100%;">
     <div class="row" style="padding: 0px; margin: 0px;">
         <form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
@@ -40,11 +29,11 @@
             </div>
 
             <div id="medicalSection" class="col s12 valign-wrapper" style="width:100%;">
-
-            </div>
-
-            <div id="calendarSection" class="col s12 valign-wrapper" style="width:100%;">
-                <div id="calendar"></div>
+							
+						</div>
+						
+						<div id="calendarSection" class="col s12 valign-wrapper" style="width:100%;">
+							<div id='calendar' style="height:300px; width:300px"></div>
             </div>
 
         </form>
