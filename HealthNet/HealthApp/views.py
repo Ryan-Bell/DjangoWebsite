@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template import Context
 from django.template.loader import get_template
-from .models import Patient, Profile, MedicalInfo, InsuranceInfo
-from .forms import UserForm, ProfileForm, MedicalForm, InsuranceForm
+from .models import Patient, UserInfo, ProfileInfo, MedicalInfo
+from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm
 from django.views.decorators.csrf import csrf_exempt
 
 """

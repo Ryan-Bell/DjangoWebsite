@@ -44,7 +44,7 @@ urlpatterns = [
     url(r'^profile/$', views.profile),
     url(r'^logout/$', views.userLogout, name='logout'),
     #TODO change the admin link to not use django's built in admin site
-    #url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
     #url(r'^registerMedical/$', views.registerMedical, name='registerMedical'),
     #url(r'^(?P<username>\w+)/profile/$', views.profile, name='profile'),
     #url(r'^(?P<username>\w+)/profile/Appointments$', views.profileAppointments, name='calendar'),

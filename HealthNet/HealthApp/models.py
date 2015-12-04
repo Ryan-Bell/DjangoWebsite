@@ -63,100 +63,82 @@ STATE_CHOICES = (
     ('WY', 'Wyoming'),
 )
 
-SUPPORTED_INSURANCE = (
-    ('ExampleKey', 'ExampleValue'),
-    ('OtherExample', 'OtherValue')
-)
-
-#This is used to limit the entry boxes to 50 characters
+#This is used to limit the entry boxes
 MAX_LENGTH = 50
 
-class InsuranceInfo(models.Model):
-    provider = models.CharField(choices=SUPPORTED_INSURANCE, max_length=MAX_LENGTH)
+
+class UserInfo(models.Model):
+    #username
+    #password
     policyNumber = models.CharField(max_length=MAX_LENGTH)
+    provider = models.CharField(max_length=MAX_LENGTH)
     groupNumber = models.CharField(max_length=MAX_LENGTH)
-    policyExpirationDate = models.DateField()
-    premiumAmount = models.CharField(max_length=MAX_LENGTH)
-    POLICY_TYPE = (('Primary', 'Primary'),('Secondary','Secondary'))
-    policyType = models.CharField(choices=POLICY_TYPE, max_length=MAX_LENGTH)
+    #hospital will need id in html and should be charfield
 
-class MedicalInfo(models.Model):
-    tuberculosis = models.BooleanField(default=False)
-    influenza = models.BooleanField(default=False)
-    rheumatic = models.BooleanField(default=False)
-    whoopingCough = models.BooleanField(default=False)
-    tonsillitis = models.BooleanField(default=False)
-    measles = models.BooleanField(default=False)
-    mumps = models.BooleanField(default=False)
-    frequentColds = models.BooleanField(default=False)
-    germanMeasles = models.BooleanField(default=False)
-    scarletFever = models.BooleanField(default=False)
-    scarlatina = models.BooleanField(default=False)
-    diphtheria = models.BooleanField(default=False)
-    polio = models.BooleanField(default=False)
-    chickenpox = models.BooleanField(default=False)
-    coxsackie = models.BooleanField(default=False)
-    pneumonia = models.BooleanField(default=False)
-    highBloodPressure = models.BooleanField(default=False)
-    migraine = models.BooleanField(default=False)
-    strokes = models.BooleanField(default=False)
-    kidneyDisease = models.BooleanField(default=False)
-    arthritis = models.BooleanField(default=False)
-    allergy = models.BooleanField(default=False)
-    bleeding = models.BooleanField(default=False)
-    syphilis = models.BooleanField(default=False)
-    anemia = models.BooleanField(default=False)
-    obesity = models.BooleanField(default=False)
-    epilepsy = models.BooleanField(default=False)
-    #add cancer with multiple selector
-    #add diabetes with selector
-    #possible fields such as last checkup etc.
-
-class Profile(models.Model):
+class ProfileInfo(models.Model):
     firstName = models.CharField(max_length=MAX_LENGTH)
     middleName = models.CharField(blank=True, max_length=MAX_LENGTH)
-    middleInitial = models.CharField(max_length=1)
     lastName = models.CharField(max_length=MAX_LENGTH)
-    socialSecurity = models.CharField(max_length=9)
-    citizen = models.BooleanField(default=True)
-    dateOfBirth = models.DateField(blank=True)
-    MALE = 'M'
-    FEMALE = 'F'
-    SEX_CHOICES = ((MALE,'Male'),(FEMALE,'Female'))
-    sex = models.CharField(max_length=1, choices=SEX_CHOICES,default=MALE)
     address = models.CharField(max_length=MAX_LENGTH)
     city = models.CharField(max_length=MAX_LENGTH)
-    state = models.CharField(max_length=2, choices=STATE_CHOICES, blank=True)
+    #state will probably need an id in the html
+    state = models.CharField(max_length=MAX_LENGTH)
+    dateOfBirth = models.DateField(blank=True)
     zipcode = models.CharField(max_length=5)
     phoneNumber = models.CharField(max_length=14)
-
-
     email = models.EmailField(blank=False)
-    #switch to email based login
-    #choice of preferred hospital
-    #choice of emergency contact info (linked to other patient if already in system)
+    contactName = models.CharField(max_length=MAX_LENGTH)
+    contactPhoneNumber = models.CharField(max_length=MAX_LENGTH)
 
+class MedicalInfo(models.Model):
+    #add cancer
+    #add diabetes
+    allergies = models.BooleanField(default=False)
+    anemia = models.BooleanField(default=False)
+    arthritis = models.BooleanField(default=False)
+    chickenpox = models.BooleanField(default=False)
+    coxsackie = models.BooleanField(default=False)
+    diphtheria = models.BooleanField(default=False)
+    epilepsy = models.BooleanField(default=False)
+    frequentColds = models.BooleanField(default=False)
+    germanMeasles = models.BooleanField(default=False)
+    highBloodPressure = models.BooleanField(default=False)
+    influenza = models.BooleanField(default=False)
+    kidneyDisease = models.BooleanField(default=False)
+    measles = models.BooleanField(default=False)
+    migraines = models.BooleanField(default=False)
+    mumps = models.BooleanField(default=False)
+    obesity = models.BooleanField(default=False)
+    pneumonia = models.BooleanField(default=False)
+    polio = models.BooleanField(default=False)
+    rheumaticFever = models.BooleanField(default=False)
+    scarlatina = models.BooleanField(default=False)
+    scarletFever = models.BooleanField(default=False)
+    strokes = models.BooleanField(default=False)
+    syphilis = models.BooleanField(default=False)
+    tonsillitis = models.BooleanField(default=False)
+    tuberculosis = models.BooleanField(default=False)
+    whoopingCough = models.BooleanField(default=False)
+    #add other
 
 class Patient(models.Model):
     user = models.OneToOneField(User)
-    profileInfo = models.OneToOneField(Profile, null=True)
-    insuranceInfo = models.OneToOneField(InsuranceInfo, null=True)
+    userInfo = models.OneToOneField(UserInfo, null=True)
+    profileInfo = models.OneToOneField(ProfileInfo, null=True)
     medicalInfo = models.OneToOneField(MedicalInfo, null=True)
-    #preferredHospital = models.ForeignKey(Hospital)
     #prescriptions = models.ForeignKey(Prescription)
     #doctor = models.ForeignKey(Doctor)
-    #setting blank to true means this field will not be required
-
 
     def __str__(self):
         return self.user.username
+
     #custom methods can be defined
     def getName(self):
-        return self.profileInfo.firstName + " " + self.profileInfo.lastName
+        return self.userInfo.firstName + " " + self.userInfo.lastName
 
-    #def getType(self):
-    #    return self.type
+"""
 
+LEGACY CODE BELOW
 
 class Doctor(models.Model):
     user = models.OneToOneField(User)
@@ -197,6 +179,12 @@ class Prescription:
     #comments
     comments = models.TextField()
 '''
+
+END LEGACY CODE
+
+"""
+
+
 #class for medication categories that each hold a list of medications
 class Z_adamantane_antivirals(models.Model):
     SPECIFICS = (('amantadine', 'amantadine'),('rimantadine', 'rimantadine'))
