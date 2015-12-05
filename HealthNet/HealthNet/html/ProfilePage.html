@@ -10,6 +10,25 @@
     $('#calendar').fullCalendar({
     });
 	</script>
+
+    <script>
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay'
+                },
+                dayClick: function (date, jsEvent, view) {
+                    $('#fullCalDayModal').modal();
+                },
+                weekends:false,
+                fixedWeekCount: false,
+                aspectRatio: 2,
+            });
+        });
+    </script>
+
 	
 <div class="container white z-depth-2 " style="height: 100%;">
     <div class="row" style="padding: 0px; margin: 0px;">

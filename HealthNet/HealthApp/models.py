@@ -137,6 +137,24 @@ class Patient(models.Model):
     def getName(self):
         return self.userInfo.firstName + " " + self.userInfo.lastName
 
+
+
+#class Logmanager? with many methods?
+    #the logmanager would also keep track of the statistics
+    #and viewing/sorting as well as making pretty graphs
+    #methods for adding/retrieving logitems and sorting
+
+#classes for the various tests that can be preformed with appropriate fields
+#in addition, an accompaning form will need to be created
+#all tests classes can inherit from a base test class that the patient will hold
+#a list of
+
+class LogItem(models.Model):
+	user = models.OneToOneField(User)
+	username = models.CharField(max_length=MAX_LENGTH)
+
+
+
 """
 
 LEGACY CODE BELOW
@@ -654,17 +672,3 @@ MEDICINE_CATEGORIES = (('adrenal_cortical_steroids', Z_adrenal_cortical_steroids
                        ('uterotonic_agents', Z_uterotonic_agents),
                        ('vasodilators', Z_vasodilators))
 
-
-#class Logmanager? with many methods?
-    #the logmanager would also keep track of the statistics
-    #and viewing/sorting as well as making pretty graphs
-    #methods for adding/retrieving logitems and sorting
-
-#classes for the various tests that can be preformed with appropriate fields
-#in addition, an accompaning form will need to be created
-#all tests classes can inherit from a base test class that the patient will hold
-#a list of
-
-class LogItem(models.Model):
-	user = models.OneToOneField(User)
-	username = models.CharField(max_length=MAX_LENGTH)

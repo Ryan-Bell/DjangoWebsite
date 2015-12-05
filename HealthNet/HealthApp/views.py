@@ -114,7 +114,7 @@ def register(request):
             registered = True
 
             print("\nregister POST about to call profile")
-            return profile(request, patient)
+            return HttpResponseRedirect('/%s/profile' % patient.user.username)
         else:
             #these errors should be added into the registration.html so the user can see it
             print(baseUserForm.errors, userForm.errors, profileForm.errors, medicalForm.errors)
@@ -129,7 +129,7 @@ def register(request):
     return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered})
 
 
-def profile(request, patient):
+def profile(request, username):
     return render(request, 'ProfilePage.html')
 
 
@@ -170,68 +170,5 @@ def profileMedicalInfo(request, username):
         activeUser = request.user
         name = activeUser.first_name
         return render(request, 'patientMedicalInfo.html', {'name': name, 'user':activeUser})
-
-@csrf_exempt
-def register(request):
-    registered = False
-    if request.method == 'POST':
-        #this is where all of the data the user input is gathered. Forms are filled out with
-        #the entered data.
-        userForm = UserForm(data=request.POST)
-        patientForm = PatientForm(data=request.POST)
-        itemLogForm = LogItemForm(data=request.POST)
-        #The forms are checked to determine if they are valid. This is where required fields are checked.
-        #This is bulid into django and the else statement easily displays to the user the location of their folly.
-        if userForm.is_valid() and patientForm.is_valid():
-            #creating the user object
-            user = userForm.save()
-            user.set_password(user.password)
-            #all adjusted values must be followed by a save call.
-            user.save()
-            #Create the log item object and save it
-            item = itemLogForm.save(commit=False)
-            item.user = user
-            item.username = user.username
-            item.save()
-            #create and save the patient profile
-            patientProfile = patientForm.save(commit=False)
-            patientProfile.user = user
-            patientProfile.save()
-            user.first_name = patientProfile.firstName
-            user.last_name = patientProfile.lastName
-            user.save()
-            registered = True
-            #redirect to medical portion of registration
-
-            return registerMedical(request, user)
-            return HttpResponseRedirect(reverse('registerMedical'))
-        else:
-            print(userForm.errors, patientForm.errors)
-    else:
-        #if the request is get, show blank forms.
-        userForm = UserForm()
-        patientForm = PatientForm()
-    return render(request, 'register.html', {'userForm':userForm, 'patientForm':patientForm, 'registered': registered})
-@csrf_exempt
-def registerMedical(request, user):
-    registered = False
-
-    if request.method == 'POST':
-        medicalForm = MedicalForm(data=request.POST)
-        #authenticate returns true or false based on whether the username and password match in the database
-        authenticate(username=user.username, password=user.password)
-        if medicalForm.is_valid():
-
-
-            print(user.username)
-            medicalInfo = medicalForm.save(commit=False)
-            medicalInfo.save()
-            user.patient.medicalInfo = medicalInfo
-            user.patient.save()
-            registered = True
-            HttpResponseRedirect(reverse('login'))
-    else:
-        medicalForm = MedicalForm()
-    return render(request, 'registerMedical.html', {'medicalForm':medicalForm})
 
 """
