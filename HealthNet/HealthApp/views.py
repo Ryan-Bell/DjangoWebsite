@@ -130,6 +130,15 @@ def register(request):
 
 
 def profile(request, username):
+    #check that the user is actually logged in so they can't access someone's profile just
+    #by knowing the url. If they aren't authenticated they get redirected to the login page
+    #using the reverse lookup which searches the urls in urls.py for a name of 'login'
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        #capture the user object and run checks on the account type to determine where to send them
+        #In the future we may need to check for doctors and nurses and send them elsewhere.
+        activeUser = request.user
     return render(request, 'ProfilePage.html')
 
 
