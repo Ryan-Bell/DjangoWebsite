@@ -268,104 +268,131 @@
 
 
             <div id="ProfileInfo" class="col s12">
-
-                <div class="input-field col s12 m6">
+			
+			<div class="col s6">
+				
+				<div class="input-field col s12">
                     <input id="first_name" name="firstName" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="first_name">First Name</label>
                 </div>
 
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12">
                     <input id="middle_name" name="middleName" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="middle_name">Middle Name</label>
                 </div>
 
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12">
                     <input id="last_name" name="lastName" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="last_name">Last Name</label>
                 </div>
 
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12">
                     <input id="address" name="address" type="text" class="validate" pattern="[A-Za-z0-9 ]+">
                     <label for="address">Street Address</label>
                 </div>
-
-                <div class="input-field col s12 m6">
-                    <select>
-                        <option value="" disabled selected>Choose your state:</option>
-                        <option value="1">Alabama</option>
-                        <option value="2">Alaska</option>
-                        <option value="3">Arizona</option>
-                        <option value="3">Arkansas</option>
-                        <option value="3">California</option>
-                        <option value="3">Colorado</option>
-                        <option value="3">Connecticut</option>
-                        <option value="3">Delaware</option>
-                        <option value="3">District of Columbia</option>
-                        <option value="3">Florida</option>
-                        <option value="3">Georgia</option>
-                        <option value="3">Hawaii</option>
-                        <option value="3">Idaho</option>
-                        <option value="3">Illinois</option>
-                        <option value="3">Indiana</option>
-                        <option value="3">Iowa</option>
-                        <option value="3">Kansas</option>
-                        <option value="3">Kentucky</option>
-                        <option value="3">Louisiana</option>
-                        <option value="3">Maine</option>
-                        <option value="3">Maryland</option>
-                        <option value="3">Massachusetts</option>
-                        <option value="3">Michigan</option>
-                        <option value="3">Minnesota</option>
-                        <option value="3">Mississippi</option>
-                        <option value="3">Missouri</option>
-                        <option value="3">Montana</option>
-                        <option value="3">Nebraska</option>
-                        <option value="3">Nevada</option>
-                        <option value="3">New Hampshire</option>
-                        <option value="3">New Jersey</option>
-                        <option value="3">New Mexico</option>
-                        <option value="3">New York</option>
-                        <option value="3">North Carolina</option>
-                        <option value="3">North Dakota</option>
-                        <option value="3">Ohio</option>
-                        <option value="3">Oklahoma</option>
-                        <option value="3">Oregon</option>
-                        <option value="3">Pennsylvannia</option>
-                        <option value="3">Rhode Island</option>
-                        <option value="3">South Carolina</option>
-                        <option value="3">South Dakota</option>
-                        <option value="3">Tennessee</option>
-                        <option value="3">Texas</option>
-                        <option value="3">Utah</option>
-                        <option value="3">Vermont</option>
-                        <option value="3">Virginia</option>
-                        <option value="3">Washington</option>
-                        <option value="3">West Virginia</option>
-                        <option value="3">Wisconsin</option>
-                        <option value="3">Wyoming</option>
-                    </select>
-                    <label>State Selection</label>
-                </div>
-
-                <div class="input-field col s12 m6">
-                    <input id="zipcode" name="zipcode" type="text" class="validate" pattern="[0-9]{5}">
-                    <label for="zipcode">Zipcode</label>
-                </div>
-
-                <div class="input-field col s12 m6">
-                    <input id="phoneNumber" name="phoneNumber" type="text" class="validate" pattern="[0-9]{7,10}">
-                    <label for="phoneNumber">Phone Number</label>
-                </div>
-
-                <div class="input-field col s12 m6">
+				
+				<div class="input-field col s12">
                     <input id="email" name="email" type="email" class="validate">
                     <label for="email">Email Address</label>
                 </div>
-
-                <div class="input-field col s4">
+				
+			</div>
+			
+			<div class="col s6">
+				
+					<div class="input-field col s12">
+						<input id="address" type="text" class="validate" pattern="[A-Za-z0-9 ]+">
+						<label for="address">Street Address</label>
+					</div>
+					
+					<div class="input-field col s12">
+						<input id="city" type="text" class="cidy" pattern="[0-9]{7,10}">
+						<label for="city">City</label>
+					</div>
+					
+					<div class="col s6">
+					
+						<div class="input-field col s6">
+						<select>
+							<option value="" disabled selected>State:</option>
+							<option value="1">Alabama</option>
+							<option value="2">Alaska</option>
+							<option value="3">Arizona</option>
+							<option value="3">Arkansas</option>
+							<option value="3">California</option>
+							<option value="3">Colorado</option>
+							<option value="3">Connecticut</option>
+							<option value="3">Delaware</option>
+							<option value="3">District of Columbia</option>
+							<option value="3">Florida</option>
+							<option value="3">Georgia</option>
+							<option value="3">Hawaii</option>
+							<option value="3">Idaho</option>
+							<option value="3">Illinois</option>
+							<option value="3">Indiana</option>
+							<option value="3">Iowa</option>
+							<option value="3">Kansas</option>
+							<option value="3">Kentucky</option>
+							<option value="3">Louisiana</option>
+							<option value="3">Maine</option>
+							<option value="3">Maryland</option>
+							<option value="3">Massachusetts</option>
+							<option value="3">Michigan</option>
+							<option value="3">Minnesota</option>
+							<option value="3">Mississippi</option>
+							<option value="3">Missouri</option>
+							<option value="3">Montana</option>
+							<option value="3">Nebraska</option>
+							<option value="3">Nevada</option>
+							<option value="3">New Hampshire</option>
+							<option value="3">New Jersey</option>
+							<option value="3">New Mexico</option>
+							<option value="3">New York</option>
+							<option value="3">North Carolina</option>
+							<option value="3">North Dakota</option>
+							<option value="3">Ohio</option>
+							<option value="3">Oklahoma</option>
+							<option value="3">Oregon</option>
+							<option value="3">Pennsylvannia</option>
+							<option value="3">Rhode Island</option>
+							<option value="3">South Carolina</option>
+							<option value="3">South Dakota</option>
+							<option value="3">Tennessee</option>
+							<option value="3">Texas</option>
+							<option value="3">Utah</option>
+							<option value="3">Vermont</option>
+							<option value="3">Virginia</option>
+							<option value="3">Washington</option>
+							<option value="3">West Virginia</option>
+							<option value="3">Wisconsin</option>
+							<option value="3">Wyoming</option>
+							</select>
+							<label>State Selection</label>
+						</div>
+					
+						<div class="input-field col s6">
+							<input id="zipcode" name="zipcode" type="text" class="validate" pattern="[0-9]{5}">
+							<label for="zipcode">Zipcode</label>
+						</div>
+					
+					</div>
+					
+					<div class="input-field col s12">
+						<input id="phoneNumber" name="phoneNumber" type="text" class="validate" pattern="[0-9]{7,10}">
+						<label for="phoneNumber">Phone Number</label>
+					</div>
+					
+					<div class="input-field col s12">
                         <input id="dateOfBirth" name="dateOfBirth" type="datepicker">
                         <label for="dateOfBirth">Date of Birth</label>
-                </div>
+					</div>
+					
+				
+				</div>
+			
+
+
+                
 
             </div>
 
