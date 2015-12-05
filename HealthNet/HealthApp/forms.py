@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import User
 from .models import Patient, UserInfo, MedicalInfo, ProfileInfo
 
@@ -14,13 +15,13 @@ class LogItemForm(forms.ModelForm):
         fields = ('username',)
 """
 
-class BaseUserForm(forms.ModelForm):
+class BaseUserForm(ModelForm):
     class Meta:
         model = User
         fields = ('username', 'password')
 
 
-class UserForm(forms.ModelForm):
+class UserForm(ModelForm):
     class Meta:
         model = UserInfo
         fields = (
@@ -30,7 +31,7 @@ class UserForm(forms.ModelForm):
         )
 
 
-class ProfileForm(forms.ModelForm):
+class ProfileForm(ModelForm):
     class Meta:
         model = ProfileInfo
         fields = (
@@ -38,17 +39,17 @@ class ProfileForm(forms.ModelForm):
             'middleName',
             'lastName',
             'address',
-            'city',
-            'state',
-            'dateOfBirth',
+            #'city',
+            #'state',
+            #'dateOfBirth',
             'zipcode',
             'phoneNumber',
             'email',
-            'contactName',
-            'contactPhoneNumber',
+            #'contactName',
+            #'contactPhoneNumber',
         )
 
-class MedicalForm(forms.ModelForm):
+class MedicalForm(ModelForm):
     class Meta:
         model = MedicalInfo
         fields = (

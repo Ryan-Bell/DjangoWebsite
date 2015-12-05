@@ -59,10 +59,83 @@ def userLogout(request):
     return HttpResponseRedirect('/')
 
 #TODO adjust the entire register method so that it works with the new html page
+@csrf_exempt
 def register(request):
-    return render(request, 'registration.html')
+    registered = False
+    print("\nregister view entered")
+    if request.method == 'POST':
+        print("\nregister entered with POST")
+        #this is where all of the data the user input is gathered.
+        baseUserForm = BaseUserForm(data=request.POST)
+        print("\nregister POST baseUserFormCreated")
+        userForm = UserForm(data=request.POST)
+        print("\nregister POST userFormCreated")
+        profileForm = ProfileForm(data=request.POST)
+        print("\nregister POST profileFormCreated")
+        medicalForm = MedicalForm(data=request.POST)
+        print("\nregister POST medicalFormCreated")
 
-def profile(request):
+        print("\nregister POST outside is_valid if")
+        #The forms are checked to determine if they are valid. This is where required fields are checked.
+        if  userForm.is_valid() and profileForm.is_valid() and medicalForm.is_valid():
+            print("\nregister POST inside is_valid if")
+            #creating the user object
+            user = baseUserForm.save()
+            user.set_password(user.password)
+            #all adjusted values must be followed by a save call.
+            user.save()
+            print("\nregister POST user object created")
+
+
+
+            patientUserInfo = userForm.save()
+            patientProfileInfo = profileForm.save()
+            patientMedicalInfo = medicalForm.save()
+            print("\nregister POST 3 info objects created")
+
+            patient = Patient(user=user, userInfo = patientUserInfo, profileInfo=patientProfileInfo, medicalInfo=patientMedicalInfo)
+            print("\nregister POST patient created")
+
+            #patient.user = user
+            patient.user.save()
+
+
+
+            #patient.userInfo = patientUserInfo
+            patient.userInfo.save()
+
+            #patient.profileInfo = patientProfileInfo
+            patient.profileInfo.save()
+
+            #patient.medicalInfo = patientMedicalInfo
+            patient.medicalInfo.save()
+
+            patient.save()
+            print("\nregister POST patient info objects assigned")
+
+            #user.first_name = patientUserInfo.firstName
+            #user.last_name = patientUserInfo.lastName
+            #user.save()
+            #print("\nregister POST user first/last name updated")
+
+            registered = True
+
+            print("\nregister POST about to call profile")
+            return profile(request, patient)
+        else:
+            print(baseUserForm.errors, userForm.errors, profileForm.errors, medicalForm.errors)
+    else:
+        print("\nregister GET creating blank forms")
+        #if the request is get, show blank forms.
+        baseUserForm = BaseUserForm()
+        userForm = UserForm()
+        profileForm = ProfileForm()
+        medicalForm = MedicalForm()
+        print("\nregister GET blank forms created")
+    return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered})
+    #return render(request, 'registration.html')
+
+def profile(request, patient):
     return render(request, 'ProfilePage.html')
 
 """

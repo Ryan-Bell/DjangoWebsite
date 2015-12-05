@@ -80,15 +80,15 @@ class ProfileInfo(models.Model):
     middleName = models.CharField(blank=True, max_length=MAX_LENGTH)
     lastName = models.CharField(max_length=MAX_LENGTH)
     address = models.CharField(max_length=MAX_LENGTH)
-    city = models.CharField(max_length=MAX_LENGTH)
+    #city = models.CharField(max_length=MAX_LENGTH)
     #state will probably need an id in the html
-    state = models.CharField(max_length=MAX_LENGTH)
-    dateOfBirth = models.DateField(blank=True)
+    #state = models.CharField(max_length=MAX_LENGTH)
+    #dateOfBirth = models.DateField(blank=True)
     zipcode = models.CharField(max_length=5)
     phoneNumber = models.CharField(max_length=14)
     email = models.EmailField(blank=False)
-    contactName = models.CharField(max_length=MAX_LENGTH)
-    contactPhoneNumber = models.CharField(max_length=MAX_LENGTH)
+    #contactName = models.CharField(max_length=MAX_LENGTH)
+    #contactPhoneNumber = models.CharField(max_length=MAX_LENGTH)
 
 class MedicalInfo(models.Model):
     #add cancer
@@ -124,6 +124,7 @@ class MedicalInfo(models.Model):
 class Patient(models.Model):
     user = models.OneToOneField(User)
     userInfo = models.OneToOneField(UserInfo, null=True)
+    #userInfo = models.ForeignKey(UserInfo, null=True)
     profileInfo = models.OneToOneField(ProfileInfo, null=True)
     medicalInfo = models.OneToOneField(MedicalInfo, null=True)
     #prescriptions = models.ForeignKey(Prescription)
