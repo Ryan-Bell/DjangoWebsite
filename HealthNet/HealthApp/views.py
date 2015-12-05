@@ -78,15 +78,16 @@ def register(request):
         print("\nregister POST outside is_valid if")
         #The forms are checked to determine if they are valid. This is where required fields are checked.
         if  userForm.is_valid() and profileForm.is_valid() and medicalForm.is_valid():
+
             print("\nregister POST inside is_valid if")
+
             #creating the user object
             user = baseUserForm.save()
             user.set_password(user.password)
+
             #all adjusted values must be followed by a save call.
             user.save()
             print("\nregister POST user object created")
-
-
 
             patientUserInfo = userForm.save()
             patientProfileInfo = profileForm.save()
@@ -96,33 +97,26 @@ def register(request):
             patient = Patient(user=user, userInfo = patientUserInfo, profileInfo=patientProfileInfo, medicalInfo=patientMedicalInfo)
             print("\nregister POST patient created")
 
-            #patient.user = user
             patient.user.save()
-
-
-
-            #patient.userInfo = patientUserInfo
             patient.userInfo.save()
-
-            #patient.profileInfo = patientProfileInfo
             patient.profileInfo.save()
-
-            #patient.medicalInfo = patientMedicalInfo
             patient.medicalInfo.save()
 
             patient.save()
             print("\nregister POST patient info objects assigned")
 
-            #user.first_name = patientUserInfo.firstName
-            #user.last_name = patientUserInfo.lastName
-            #user.save()
-            #print("\nregister POST user first/last name updated")
+            patient.user.first_name = patient.profileInfo.firstName
+            patient.user.last_name = patient.profileInfo.lastName
+            patient.user.email = patient.profileInfo.email
+            patient.user.save()
+            print("\nregister POST user first/last name updated")
 
             registered = True
 
             print("\nregister POST about to call profile")
             return profile(request, patient)
         else:
+            #these errors should be added into the registration.html so the user can see it
             print(baseUserForm.errors, userForm.errors, profileForm.errors, medicalForm.errors)
     else:
         print("\nregister GET creating blank forms")
@@ -133,15 +127,17 @@ def register(request):
         medicalForm = MedicalForm()
         print("\nregister GET blank forms created")
     return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered})
-    #return render(request, 'registration.html')
+
 
 def profile(request, patient):
     return render(request, 'ProfilePage.html')
 
+
+
+
+
 """
 LEGACY BELOW
-
-
 
 @csrf_exempt
 def profile(request, username):
