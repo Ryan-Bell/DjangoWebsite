@@ -21,42 +21,54 @@
 
         //The content for each hospital is the html that is injected in the window that pops up when the markers
         //are clicked.
-        var contentHighland =   '<div id="content">' +
-                                '<div id="siteNotice">' +
-                                '</div>' +
-                                '<h3 id="firstHeading" class="firstHeading">Highland General Hospital</h3>'+
-                                '<div id="bodyContent">' +
-                                '<p>This is information about the hospital that will appear when the marker ' +
-                                'is clicked</p>' +
-                                '</div>' +
-                                '</div>';
-        var contentHighlandFamily = '<div id="content">' +
-                                    '<div id="siteNotice">' +
-                                    '</div>' +
-                                    '<h3 id="firstHeading" class="firstHeading">Highland Family Hospital</h3>'+
-                                    '<div id="bodyContent">' +
-                                    '<p>This is information about the hospital that will appear when the marker ' +
-                                    'is clicked</p>' +
-                                    '</div>' +
-                                    '</div>';
-        var contentRochesterGeneral =  '<div id="content">' +
-                                        '<div id="siteNotice">' +
-                                        '</div>' +
-                                        '<h3 id="firstHeading" class="firstHeading">Rochester General Hospital</h3>'+
-                                        '<div id="bodyContent">' +
-                                        '<p>This is information about the hospital that will appear when the marker ' +
-                                        'is clicked</p>' +
-                                        '</div>' +
-                                        '</div>';
-        var contentUnity = '<div id="content">' +
-                            '<div id="siteNotice">' +
-                            '</div>' +
-                            '<h3 id="firstHeading" class="firstHeading">Unity Hospital</h3>'+
-                            '<div id="bodyContent">' +
-                            '<p>This is information about the hospital that will appear when the marker ' +
-                            'is clicked</p>' +
-                            '</div>' +
-                            '</div>';
+				
+				//information for Highland General
+        var contentHighland =
+						'<div id="content">' +
+						'<div id="siteNotice">' +
+            '</div>' +
+            '<h5 id="firstHeading" class="firstHeading">Highland General Hospital</h3>'+
+            '<div id="bodyContent">' +
+            '<p>210 E Highland Dr, Rochester, NY 14610</p>' + 
+						'<p>(585) 244-958</p>' +
+            '</div>' +
+            '</div>';
+				
+				//information for Highland Family
+				var contentHighlandFamily =
+						'<div id="content">' +
+            '<div id="siteNotice">' +
+            '</div>' +
+            '<h5 id="firstHeading" class="firstHeading">Highland Family Hospital</h3>'+
+            '<div id="bodyContent">' +
+            '<p>777 S Clinton Ave, Rochester, NY 14620</p>' +
+						'<p>(585) 279-4800</p>' +
+            '</div>' +
+            '</div>';
+						
+				//information for Rochester General Hospital
+        var contentRochesterGeneral =
+						'<div id="content">' +
+            '<div id="siteNotice">' +
+            '</div>' +
+            '<h5 id="firstHeading" class="firstHeading">Rochester General Hospital</h3>'+
+            '<div id="bodyContent">' +
+            '<p>777 S Clinton Ave, Rochester, NY 14620</p>' + 
+						'<p> (585) 279-4800</p>' +
+            '</div>' +
+            '</div>';
+						
+				//information for Unity Hospital		
+        var contentUnity = 					
+						'<div id="content">' +
+						'<div id="siteNotice">' +
+						'</div>' +
+						'<h5 id="firstHeading" class="firstHeading">Unity Hospital</h3>'+
+						'<div id="bodyContent">' +
+						'<p>1555 Long Pond Road, Rochester, NY 14610</p>' + 
+						'<p>(585) 723-7000</p>' +
+            '</div>' +
+            '</div>';
 
 
         //The following can be used to toggle a bounce animation on the markers
@@ -266,31 +278,41 @@
             </div>
 
 
-
+						<!--Begin general information tab-->
             <div id="ProfileInfo" class="col s12">
 			
+			<!--Contatainer for left half of screen inputs-->
 			<div class="col s6">
 				
+				<!--Create input field for first name-->
 				<div class="input-field col s12">
                     <input id="first_name" name="firstName" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="first_name">First Name</label>
-                </div>
+        </div>
 
-                <div class="input-field col s12">
+				<!--Create input field for middle name-->
+        <div class="input-field col s12">
                     <input id="middle_name" name="middleName" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="middle_name">Middle Name</label>
-                </div>
+        </div>
 
-                <div class="input-field col s12">
+				<!--Create input field for last name-->
+        <div class="input-field col s12">
                     <input id="last_name" name="lastName" type="text" class="validate" pattern="[A-Za-z]+">
                     <label for="last_name">Last Name</label>
-                </div>
+        </div>
 
+				<!--Create input field for email address-->
 				<div class="input-field col s12">
                     <input id="email" name="email" type="email" class="validate">
                     <label for="email">Email Address</label>
-                </div>
+        </div>
 				
+				<!--Create input field for date of birth-->
+				<div class="input-field col s12">
+                   <input id="dateOfBirth" name="dateOfBirth" class="validate" pattern="[0-9]"
+                   <label for="dateOfBirth">Date of Birth</label>
+				</div>				
 			</div>
 			
 			<div class="col s6">
@@ -307,7 +329,7 @@
 					
 					<div class="col s6">
 					
-						<div class="input-field col s6">
+						<div class="input-field col s12">
 						<select>
 							<option value="" disabled selected>State:</option>
 							<option value="1">Alabama</option>
@@ -365,7 +387,7 @@
 							<label>State Selection</label>
 						</div>
 					
-						<div class="input-field col s6">
+						<div class="input-field col s12">
 							<input id="zipcode" name="zipcode" type="text" class="validate" pattern="[0-9]{5}">
 							<label for="zipcode">Zipcode</label>
 						</div>
@@ -376,11 +398,7 @@
 						<input id="phoneNumber" name="phoneNumber" type="text" class="validate" pattern="[0-9]{7,10}">
 						<label for="phoneNumber">Phone Number</label>
 					</div>
-					
-					<div class="input-field col s12">
-                        <input id="dateOfBirth" name="dateOfBirth" type="datepicker">
-                        <label for="dateOfBirth">Date of Birth</label>
-					</div>
+
 					
 				
 				</div>
