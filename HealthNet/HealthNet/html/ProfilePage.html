@@ -1,34 +1,37 @@
 <!-- Server Side Includes to pull in head html file -->
 {% include 'headExtra.html' %}
-	<script>
-    //The following function loads the javascript for materialize so various js functions work
-   // $(document).ready(function() {
-    //    $('select').material_select();
-    //});
 
-    //remove licensing warning for fullCalendar schedular
-    $('#calendar').fullCalendar({
+<!----------------------- OLD CODE __ ALL MOVED TO HEADER
+<script>
+$(document).ready(function () {
+		//initialize calendar
+		$('#calendar').fullCalendar({
+				//set header appearance
+				header: {
+            left: 'prev,today,next',
+						center: 'title',
+            right: 'month,basicWeek,basicDay'
+        },
+				
+				//set default view
+//				defaultView: 'agendaWeek'',
+				
+				//allow user to select datetime slots
+				selectable: true,
+//				selcertHelp: true,
+				
+        dayClick: function (date, jsEvent, view) {
+            $('#fullCalDayModal').modal();
+        },
+        weekends:false,
+				height: 100,
     });
-	</script>
-
-    <script>
-        $(document).ready(function () {
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,basicWeek,basicDay'
-                },
-                dayClick: function (date, jsEvent, view) {
-                    $('#fullCalDayModal').modal();
-                },
-                weekends:false,
-                fixedWeekCount: false,
-                aspectRatio: 2,
-            });
-        });
+    
+		//initialize material
+		$('#select').material_select();
+});
     </script>
-
+--------------------------------------------------------->
 	
 <div class="container white z-depth-2 " style="height: 100%;">
     <div class="row" style="padding: 0px; margin: 0px;">
@@ -51,8 +54,8 @@
 							
 						</div>
 						
-						<div id="calendarSection" class="col s12 valign-wrapper" style="width:100%;">
-							<div id='calendar' style="height:300px; width:300px"></div>
+						<div id="calendarSection" class="col s12">
+							<div id='calendar'></div>
             </div>
 
         </form>

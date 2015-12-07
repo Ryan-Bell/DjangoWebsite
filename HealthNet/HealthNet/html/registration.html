@@ -208,13 +208,15 @@
 
     //The following function loads the javascript for materialize so various js functions work
     $(document).ready(function() {
-        $('select').material_select();
-    });
-
-    $('.datepicker').pickadate({
+		 $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 15 // Creates a dropdown of 15 years to control year
     });
+		
+        $('select').material_select();
+    });
+
+   
 
 </script>
 
@@ -310,7 +312,7 @@
 				
 				<!--Create input field for date of birth-->
 				<div class="input-field col s12">
-                   <input id="dateOfBirth" name="dateOfBirth" class="validate" pattern="[0-9]"
+                   <input id="dateOfBirth" name="dateOfBirth" type="text" class="validate" pattern="[0-9]">
                    <label for="dateOfBirth">Date of Birth</label>
 				</div>				
 			</div>
