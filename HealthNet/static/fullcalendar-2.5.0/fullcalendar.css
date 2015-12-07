@@ -333,14 +333,14 @@ previous button's border...
 
 .fc-divider {
 	border-style: solid;
-	border-width: .5px;
+	border-width: 1px;
 }
 
 hr.fc-divider {
 	height: 0;
 	margin: 0;
 	padding: 0 0 2px; /* height is unreliable across browsers, so use padding */
-	border-width: .5px 0;
+	border-width: 1px 0;
 }
 
 .fc-clear {
@@ -363,7 +363,7 @@ hr.fc-divider {
 }
 
 .fc-bg table {
-	height: 50%; /* strech bg to bottom edge */
+	height: 100%; /* strech bg to bottom edge */
 }
 
 
