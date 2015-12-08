@@ -1,7 +1,37 @@
 <!-- Server Side Includes to pull in head html file -->
 {% include 'headExtra.html' %}
 
-<p>Test Test</p>
+
+<div class="container white z-depth-2 " style="height: 100%;">
+    <div class="row" style="padding: 0px; margin: 0px;">
+            <div class="col s12 z-depth-1" style="padding: 0px;">
+                <!-- Top bar nav links -->
+                <ul class="tabs">
+                    <li class="tab col s3 "><a href="#informationSection" class="active">Patient Profile</a></li>
+                    <li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
+                    <li class="tab col s3"><a href="#calendarSection">Calendar</a></li>
+                </ul>
+            </div>
+
+            <form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
+                <!-- TODO -->
+            </form>
+
+            <div id="informationSection" class="col s12 valign-wrapper" style="width:100%;">
+                {% if accountType == "Doctor" %}
+                    <p>DOCTOR!!!</p>
+                {% endif %}
+            </div>
+
+            <div id="medicalSection" class="col s12 valign-wrapper" style="width:100%;">
+
+            </div>
+
+            <div id="calendarSection">
+                <div id='calendar' ></div>
+            </div>
+    </div>
+</div>
 
 
 <!-- Close the tags opened in head.html -->

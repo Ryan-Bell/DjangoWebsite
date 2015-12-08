@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import User
-from .models import Patient, UserInfo, MedicalInfo, ProfileInfo
+from .models import Patient, UserInfo, MedicalInfo, ProfileInfo, Prescription
 
 
 class LoginForm(forms.Form):

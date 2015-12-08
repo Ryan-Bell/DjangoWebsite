@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template import Context
 from django.template.loader import get_template
-from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse
+from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest
 from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm
 from django.views.decorators.csrf import csrf_exempt
 
@@ -156,7 +156,9 @@ def staffProfile(request, username):
     else:
         #capture the user object and run checks on the account type to determine where to send them
         #In the future we may need to check for doctors and nurses and send them elsewhere.
+        accountType = "Doctor"
         activeUser = Doctor.objects.get(user=request.user)
         if not activeUser:
             activeUser = Nurse.objects.get(user=request.user)
-    return render(request, 'StaffProfile.html', {'user' : activeUser})
+            accountType = "Nurse"
+    return render(request, 'StaffProfile.html', {'user' : activeUser, 'accountType' : accountType})

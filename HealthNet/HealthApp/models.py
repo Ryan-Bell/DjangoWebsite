@@ -118,13 +118,41 @@ class MedicalInfo(models.Model):
     whoopingCough = models.BooleanField(default=False)
     otherText = models.CharField(max_length=MAX_LENGTH, null=True)
 
+class Doctor(models.Model):
+    user = models.OneToOneField(User)
+    profileInfo = models.OneToOneField(ProfileInfo, null=True)
+
+
+class Nurse(models.Model):
+    user = models.OneToOneField(User)
+    profileInfo = models.OneToOneField(ProfileInfo, null=True)
+
+class Hospital(models.Model):
+    name = models.CharField(max_length=MAX_LENGTH)
+
+class Prescription(models.Model):
+    medicationCategory = models.CharField(max_length=MAX_LENGTH)
+    medication = models.CharField(max_length=MAX_LENGTH)
+    dosage = models.CharField(max_length=MAX_LENGTH)
+    frequency = models.CharField(max_length=MAX_LENGTH)
+    directions = models.TextField(max_length=MAX_LENGTH)
+    comments = models.TextField(max_length=MAX_LENGTH)
+
+class MedTest(models.Model):
+    name = models.CharField(max_length=MAX_LENGTH)
+    doctor = models.ForeignKey(Doctor)
+    released = models.BooleanField(default = False)
+    dateIssued = models.DateField()
+    result = models.TextField()
+
 class Patient(models.Model):
     user = models.OneToOneField(User)
     userInfo = models.OneToOneField(UserInfo, null=True)
     profileInfo = models.OneToOneField(ProfileInfo, null=True)
     medicalInfo = models.OneToOneField(MedicalInfo, null=True)
-    #prescriptions = models.ForeignKey(Prescription)
-    #doctor = models.ForeignKey(Doctor)
+    prescriptions = models.ForeignKey(Prescription, null=True)
+    doctor = models.ForeignKey(Doctor, null=True)
+    hospital = models.ForeignKey(Hospital, null=True)
 
     def __str__(self):
         return self.user.username
@@ -133,83 +161,16 @@ class Patient(models.Model):
     def getName(self):
         return self.userInfo.firstName + " " + self.userInfo.lastName
 
-class Doctor(models.Model):
-    user = models.OneToOneField(User)
-    profileInfo = models.OneToOneField(ProfileInfo, null=True)
-
-
-class Nurse(models.Model):
-    user = models.OneToOneField(User)
-    profileInfo = models.OneToOneField(ProfileInfo, null=True)
 
 
 
 
 
-#class Logmanager? with many methods?
-    #the logmanager would also keep track of the statistics
-    #and viewing/sorting as well as making pretty graphs
-    #methods for adding/retrieving logitems and sorting
 
-#classes for the various tests that can be preformed with appropriate fields
-#in addition, an accompaning form will need to be created
-#all tests classes can inherit from a base test class that the patient will hold
-#a list of
 
 class LogItem(models.Model):
-	user = models.OneToOneField(User)
-	username = models.CharField(max_length=MAX_LENGTH)
-
-
-
-"""
-
-LEGACY CODE BELOW
-
-class Doctor(models.Model):
     user = models.OneToOneField(User)
-    profileInfo = models.OneToOneField(Profile, null=True)
-    #Pertanint Methods here
-
-class Nurse(models.Model):
-    user = models.OneToOneField(User)
-    profileInfo = models.OneToOneField(Profile, null=True)
-    #Pertanint Methods here
-
-class Admin(models.Model):
-    user = models.OneToOneField(User)
-    profileInfo = models.OneToOneField(Profile, null=True)
-    #Pertanint Methods here
-
-class Hospital(models.Model):
-    name = models.CharField(max_length=MAX_LENGTH)
-    address = models.CharField(max_length=MAX_LENGTH)
-    city = models.CharField(max_length=MAX_LENGTH)
-    state = models.CharField(max_length=2, choices=STATE_CHOICES)
-    zipcode = models.CharField(max_length=5)
-'''
-class Prescription:
-    #medication
-    medicationCategory = models.ForeignKey(choices=MEDICINE_CATEGORIES)
-    medication = models.CharField(choices=medicationCategory.choices)
-    #strength
-    strength = models.CharField(choices=)
-    #amount
-    amount = models.CharField(choices=)
-    #frequnecy
-    frequency = models.CharField(choices=)
-    #purpose (treatment for?)
-    purpose = models.TextField()
-    #directions
-    directions = models.TextField()
-    #comments
-    comments = models.TextField()
-'''
-
-END LEGACY CODE
-
-"""
-
+    username = models.CharField(max_length=MAX_LENGTH)
 
 #class for medication categories that each hold a list of medications
 class Z_adamantane_antivirals(models.Model):
