@@ -68,8 +68,6 @@ MAX_LENGTH = 50
 
 
 class UserInfo(models.Model):
-    #username
-    #password
     policyNumber = models.CharField(max_length=MAX_LENGTH)
     provider = models.CharField(max_length=MAX_LENGTH)
     groupNumber = models.CharField(max_length=MAX_LENGTH)

@@ -15,7 +15,65 @@
             </div>
 
             <div id="personalSection" class="col s12 valign-wrapper" style="width:100%;">
+                <div id="account">
 
+                    <!-- any non-required fields should have a if 'field' not null  block -->
+
+                    <p>{{ user.user.username }}</p>
+                    <p>{{ user.userInfo.policyNumber }}</p>
+                    <p>{{ user.userInfo.provider }}</p>
+                    <p>{{ user.userInfo.groupNumber }}</p>
+                    <!-- Placeholder for hospital -->
+
+                    <p>{{ user.profileInfo.firstName }}</p>
+                    <p>{{ user.profileInfo.middleName }}</p>
+                    <p>{{ user.profileInfo.lastName }}</p>
+                    <p>{{ user.profileInfo.address }}</p>
+                    <!-- placeHolder for city -->
+                    <!-- placeHolder for state -->
+                    <!-- placeHolder for dateOfBirth -->
+                    <p>{{ user.profileInfo.zipcode }}</p>
+                    <p>{{ user.profileInfo.phoneNumber }}</p>
+                    <p>{{ user.profileInfo.email }}</p>
+                    <!-- placeHolder for contactName -->
+                    <!-- placeHolder for contactPhoneNumber -->
+
+                    <p>{{ user.medicalInfo.allergies }}</p>
+                    <p>{{ user.medicalInfo.anemia }}</p>
+                    <p>{{ user.medicalInfo.arthritis }}</p>
+                    <p>{{ user.medicalInfo.chickenpox }}</p>
+                    <p>{{ user.medicalInfo.coxsackie }}</p>
+                    <p>{{ user.medicalInfo.diphtheria }}</p>
+                    <p>{{ user.medicalInfo.epilepsy }}</p>
+                    <p>{{ user.medicalInfo.frequentColds }}</p>
+                    <p>{{ user.medicalInfo.germanMeasles }}</p>
+                    <p>{{ user.medicalInfo.highBloodPressure }}</p>
+                    <p>{{ user.medicalInfo.influenza }}</p>
+                    <p>{{ user.medicalInfo.kidneyDisease }}</p>
+                    <p>{{ user.medicalInfo.measles }}</p>
+                    <p>{{ user.medicalInfo.migraines }}</p>
+                    <p>{{ user.medicalInfo.mumps }}</p>
+                    <p>{{ user.medicalInfo.obesity }}</p>
+                    <p>{{ user.medicalInfo.pneumonia }}</p>
+                    <p>{{ user.medicalInfo.polio }}</p>
+                    <p>{{ user.medicalInfo.rheumaticFever }}</p>
+                    <p>{{ user.medicalInfo.scarlatina }}</p>
+                    <p>{{ user.medicalInfo.scarletFever }}</p>
+                    <p>{{ user.medicalInfo.strokes }}</p>
+                    <p>{{ user.medicalInfo.syphilis }}</p>
+                    <p>{{ user.medicalInfo.tonsillitis }}</p>
+                    <p>{{ user.medicalInfo.tuberculosis }}</p>
+                    <p>{{ user.medicalInfo.whoopingCough }}</p>
+                    <!-- placeHolder for other field -->
+                </div>
+
+                <div id="profile">
+
+                </div>
+
+                <div id="medical">
+
+                </div>
             </div>
 
             <div id="medicalSection" class="col s12 valign-wrapper" style="width:100%;">
