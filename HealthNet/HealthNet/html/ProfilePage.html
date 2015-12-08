@@ -8,9 +8,9 @@
             <div class="col s12 z-depth-1" style="padding: 0px;">
                 <!-- Top bar nav links -->
                 <ul class="tabs">
-                    <li class="tab col s3 "><a href="#personalSection" class="active">Personal Information</a></li>
-                    <li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
-                    <li class="tab col s3"><a href="#calendarSection">Calendar</a></li>
+                  <li class="tab col s3 "><a href="#personalSection" class="active">Personal Information</a></li>
+                  <li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
+                  <li class="tab col s3"><a href="#calendarSection">Calendar</a></li>
                 </ul>
             </div>
 
@@ -18,138 +18,151 @@
                 <div id="account">
 
                     <!-- any non-required fields should have a if 'field' not null  block -->
-					
-					<div class = "col s12">
-					
-					<p>Name: {{ user.profileInfo.firstName }} {{ user.profileInfo.middleName }} {{ user.profileInfo.lastName }}</p>
-					<p>E-Mail: {{ user.profileInfo.email }}</p>
-					<p>Phone Number: {{ user.profileInfo.phoneNumber }}</p>
-					<p>Address: {{ user.profileInfo.address }}, {{ user.profileInfo.city }} {{ user.profileInfo.state }}</p>
-					<p>Current Hospital: {{ user.userInfo.hospital }}</p>
-					<p>Health Care Provider: {{ user.userInfo.provider }}</p>
-					<p>Insurance Policy Number: {{ user.userInfo.policyNumber }}</p>
-                    <p>Insurance Group Number: {{ user.userInfo.groupNumber }}</p>
-					<p>Emergency Contact: {{ user.profileInfo.eName }}, {{ user.profileInfo.ePhoneNumber }}</p>
-                    
-					
-					</div>
-					
-					<div class = "col s12">
-					
-					<p>Allergies</p>Medical History
-					
-					{%if user.medicalInfo.allergies%}
-						<p>Allergies</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.anemia %}
-						<p>Anemia</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.arthritis %}
-						<p>Arthritis</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.chickenpox %}
-						<p>Chicken Pox</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.coxsackie %}
-						<p>Coxsackie</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.diphtheria %}
-						<p>Diptheria</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.epilepsy %}
-						<p>Epilepsy</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.frequentColds %}
-						<p>Frequent Colds</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.germanMeasles %}
-						<p>German Measles</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.highBloodPressure %}
-						<p>High Blood Pressure</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.influenza %}
-						<p>Influenze</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.kidneyDisease %}
-						<p>Kidney Disease</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.measles %}
-						<p>Measles</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.migraines %}
-						<p>Migraines</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.mumps %}
-						<p>Mumps</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.obesity %}
-						<p>Obesity</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.pneumonia %}
-						<p>Pneumonia</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.polio %}
-						<p>Polio</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.rheumaticFever %}
-						<p>Rheumatic Fever</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.scarlatina %}
-						<p>Scarlatina</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.scarletFever %}
-						<p>Scarlet Fever</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.strokes %}
-						<p>Strokes</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.syphilis %}
-						<p>Syphilis</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.tonsillitis %}
-						<p>Tonsillitis</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.tuberculosis %}
-						<p>Tuberculosis</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.whoopingCough %}
-						<p>Whooping Cough</p>
-					{% endif %}
-					
-					{%if user.medicalInfo.otherText != null%}
-						<p>{{user.medicalInfo.otherText}}</p>
-					{% endif %}
-					
-					
-					</div>
-
-
+										<div class="z-depth-3 col s12">
+												<div class="col s12" style="text-align:center">
+														<h5 class="blue-text text-darken-2">Personal Information</h5>
+												</div>
+												<div class="col s3 left-align">
+														<p>Name: </p>
+														<p>E-Mail: </p>
+														<p>Phone Number: </p>
+														<p>Address: </p>
+												</div>
+												<div class="col s3 left-align">
+														<p>{{ user.profileInfo.firstName }} {{ user.profileInfo.middleName }} {{ user.profileInfo.lastName }}</p>
+														<p>{{ user.profileInfo.email }}</p>
+														<p>{{ user.profileInfo.phoneNumber }}</p>
+														<p>{{ user.profileInfo.address }}<br />{{ user.profileInfo.city }}, {{ user.profileInfo.state }}</p>
+												</div>
+												<div class="col s3 left-align">
+														<p>Hospital: </p>
+														<p>Health Provider: </p>
+														<p>Policy Number: </p>
+														<p>Group Number: </p>
+														<p>Emergency Contact: </p>
+												</div>
+												<div class="col s3 left-align">
+														<p>{{ user.userInfo.hospital }}</p>
+														<p>{{ user.userInfo.provider }}</p>
+														<p>{{ user.userInfo.policyNumber }}</p>
+														<p>{{ user.userInfo.groupNumber }}</p>
+														<p>{{ user.profileInfo.eName }}, {{ user.profileInfo.ePhoneNumber }}</p>
+												</div>
+										</div>
+										<div style="height: 10px;"></div>
+										<div class="z-depth-3 col s12" style="padding: 20px;">
+												<div class="col s12" style="text-align:center">
+														<h5 class="blue-text text-darken-2">Medical History</h5>
+												</div>
+												
+												{%if user.medicalInfo.allergies%}
+													<p>Allergies</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.anemia %}
+													<p>Anemia</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.arthritis %}
+													<p>Arthritis</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.chickenpox %}
+													<p>Chicken Pox</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.coxsackie %}
+													<p>Coxsackie</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.diphtheria %}
+													<p>Diptheria</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.epilepsy %}
+													<p>Epilepsy</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.frequentColds %}
+													<p>Frequent Colds</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.germanMeasles %}
+													<p>German Measles</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.highBloodPressure %}
+													<p>High Blood Pressure</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.influenza %}
+													<p>Influenze</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.kidneyDisease %}
+													<p>Kidney Disease</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.measles %}
+													<p>Measles</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.migraines %}
+													<p>Migraines</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.mumps %}
+													<p>Mumps</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.obesity %}
+													<p>Obesity</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.pneumonia %}
+													<p>Pneumonia</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.polio %}
+													<p>Polio</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.rheumaticFever %}
+													<p>Rheumatic Fever</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.scarlatina %}
+													<p>Scarlatina</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.scarletFever %}
+													<p>Scarlet Fever</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.strokes %}
+													<p>Strokes</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.syphilis %}
+													<p>Syphilis</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.tonsillitis %}
+													<p>Tonsillitis</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.tuberculosis %}
+													<p>Tuberculosis</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.whoopingCough %}
+													<p>Whooping Cough</p>
+												{% endif %}
+												
+												{%if user.medicalInfo.otherText != null%}
+													<p>{{user.medicalInfo.otherText}}</p>
+												{% endif %}
+										</div>
                 </div>
 
                 <div id="profile">
