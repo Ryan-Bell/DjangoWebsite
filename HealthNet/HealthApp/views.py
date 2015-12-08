@@ -114,6 +114,8 @@ def register(request):
             registered = True
 
             print("\nregister POST about to call profile")
+            userLogin(request)
+            print("\nThe following will not be reached but needs to be there to prevent errors:wq")
             return HttpResponseRedirect('/%s/profile' % patient.user.username)
         else:
             #these errors should be added into the registration.html so the user can see it
