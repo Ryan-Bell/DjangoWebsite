@@ -53,6 +53,7 @@ class MedicalForm(ModelForm):
     class Meta:
         model = MedicalInfo
         fields = (
+            #add cancer/diabetes
             'allergies',
             'anemia',
             'arthritis',

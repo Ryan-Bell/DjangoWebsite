@@ -130,26 +130,6 @@ def register(request):
         print("\nregister GET blank forms created")
     return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered})
 
-
-def profile(request, username):
-    #check that the user is actually logged in so they can't access someone's profile just
-    #by knowing the url. If they aren't authenticated they get redirected to the login page
-    #using the reverse lookup which searches the urls in urls.py for a name of 'login'
-    if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('login'))
-    else:
-        #capture the user object and run checks on the account type to determine where to send them
-        #In the future we may need to check for doctors and nurses and send them elsewhere.
-        activeUser = request.user
-    return render(request, 'ProfilePage.html')
-
-
-
-
-
-"""
-LEGACY BELOW
-
 @csrf_exempt
 def profile(request, username):
     #check that the user is actually logged in so they can't access someone's profile just
@@ -160,26 +140,5 @@ def profile(request, username):
     else:
         #capture the user object and run checks on the account type to determine where to send them
         #In the future we may need to check for doctors and nurses and send them elsewhere.
-        activeUser = request.user
-        name = activeUser.first_name
-        #show the user a rendered html page patientProfile.html and pass in the user object and name.
-        #The parameters are passed in to the html page with the name 'name' and 'user'.
-        return render(request, 'patientProfile.html', {'name': name, 'user':activeUser})
-@csrf_exempt
-def profileAppointments(request, username):
-    if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('login'))
-    else:
-        activeUser = request.user
-        name = activeUser.first_name
-        return render(request, 'patientAppointment.html', {'name': name, 'user':activeUser})
-@csrf_exempt
-def profileMedicalInfo(request, username):
-    if not request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('login'))
-    else:
-        activeUser = request.user
-        name = activeUser.first_name
-        return render(request, 'patientMedicalInfo.html', {'name': name, 'user':activeUser})
-
-"""
+        activeUser = Patient.objects.get(user=request.user)
+    return render(request, 'ProfilePage.html', {'user' : activeUser})

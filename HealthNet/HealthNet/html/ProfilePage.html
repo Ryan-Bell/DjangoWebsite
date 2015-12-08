@@ -1,37 +1,5 @@
 <!-- Server Side Includes to pull in head html file -->
 {% include 'headExtra.html' %}
-
-<!----------------------- OLD CODE __ ALL MOVED TO HEADER
-<script>
-$(document).ready(function () {
-		//initialize calendar
-		$('#calendar').fullCalendar({
-				//set header appearance
-				header: {
-            left: 'prev,today,next',
-						center: 'title',
-            right: 'month,basicWeek,basicDay'
-        },
-				
-				//set default view
-//				defaultView: 'agendaWeek'',
-				
-				//allow user to select datetime slots
-				selectable: true,
-//				selcertHelp: true,
-				
-        dayClick: function (date, jsEvent, view) {
-            $('#fullCalDayModal').modal();
-        },
-        weekends:false,
-				height: 100,
-    });
-    
-		//initialize material
-		$('#select').material_select();
-});
-    </script>
---------------------------------------------------------->
 	
 <div class="container white z-depth-2 " style="height: 100%;">
     <div class="row" style="padding: 0px; margin: 0px;">
