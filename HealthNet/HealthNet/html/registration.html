@@ -258,7 +258,7 @@
                 <!-- Drop Down for hospital select -->
                 <!-- TODO make the map refocus on the hospital selected -->
                 <div class="input-field col s12 m6">
-                    <select>
+                    <select name="hospital">
                         <option value="" disabled selected>Choose hospital:</option>
                         <option value="1">Highland General</option>
                         <option value="1">Highland Family</option>
@@ -661,7 +661,7 @@
 					</div>
                     
 					<div class="input-field s6 m4 l3" id="otherField" style="display: none;">
-                        <input placeholder="Please type the condition" id="otherText" name="otherText" type="text" class="validate" >
+                        <input placeholder="Please type the condition" id="otherText" name="otherText" type="text" class="validate" length="30">
                         <label for="otherText">Please Specify:</label>
 					</div>	
 

@@ -71,22 +71,21 @@ class UserInfo(models.Model):
     policyNumber = models.CharField(max_length=MAX_LENGTH)
     provider = models.CharField(max_length=MAX_LENGTH)
     groupNumber = models.CharField(max_length=MAX_LENGTH)
-    #hospital will need id in html and should be charfield
+    hospital = models.CharField(max_length=MAX_LENGTH, null=True)
 
 class ProfileInfo(models.Model):
     firstName = models.CharField(max_length=MAX_LENGTH)
     middleName = models.CharField(blank=True, max_length=MAX_LENGTH)
     lastName = models.CharField(max_length=MAX_LENGTH)
     address = models.CharField(max_length=MAX_LENGTH)
-    #city = models.CharField(max_length=MAX_LENGTH)
-    #state will probably need an id in the html
-    #state = models.CharField(max_length=MAX_LENGTH)
-    #dateOfBirth = models.DateField(blank=True)
+    city = models.CharField(max_length=MAX_LENGTH, default='none')
+    state = models.CharField(max_length=MAX_LENGTH, null=True)
+    dateOfBirth = models.DateField(blank=True, null=True)
     zipcode = models.CharField(max_length=5)
     phoneNumber = models.CharField(max_length=14)
     email = models.EmailField(blank=False)
-    eName = models.CharField(max_length=MAX_LENGTH)
-    ePhoneNumber = models.CharField(max_length=MAX_LENGTH)
+    eName = models.CharField(max_length=MAX_LENGTH, default='none')
+    ePhoneNumber = models.CharField(max_length=MAX_LENGTH, default='none')
 
 class MedicalInfo(models.Model):
     #add cancer
@@ -117,12 +116,11 @@ class MedicalInfo(models.Model):
     tonsillitis = models.BooleanField(default=False)
     tuberculosis = models.BooleanField(default=False)
     whoopingCough = models.BooleanField(default=False)
-    #add other
+    otherText = models.CharField(max_length=MAX_LENGTH, null=True)
 
 class Patient(models.Model):
     user = models.OneToOneField(User)
     userInfo = models.OneToOneField(UserInfo, null=True)
-    #userInfo = models.ForeignKey(UserInfo, null=True)
     profileInfo = models.OneToOneField(ProfileInfo, null=True)
     medicalInfo = models.OneToOneField(MedicalInfo, null=True)
     #prescriptions = models.ForeignKey(Prescription)
