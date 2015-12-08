@@ -161,4 +161,8 @@ def staffProfile(request, username):
         if not activeUser:
             activeUser = Nurse.objects.get(user=request.user)
             accountType = "Nurse"
-    return render(request, 'StaffProfile.html', {'user' : activeUser, 'accountType' : accountType})
+        try:
+            patients = Patient.objects.get(doctor=activeUser)
+        except Patient.DoesNotExist:
+            patients = None
+    return render(request, 'StaffProfile.html', {'user' : activeUser, 'accountType' : accountType, 'patients' : patients})

@@ -14,13 +14,17 @@
             </div>
 
             <form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
-                <!-- TODO -->
+                {% if accountType == "Doctor" %}
+                    <!-- show patients that have this doctor -->
+                    {% for patient in patients %}
+                        <p>{{patient.profileInfo.firstName}}</p>
+                    {% endfor %}
+                    <!-- else show for nurses show patients with same hospital -->
+                {% endif %}
             </form>
 
             <div id="informationSection" class="col s12 valign-wrapper" style="width:100%;">
-                {% if accountType == "Doctor" %}
-                    <p>DOCTOR!!!</p>
-                {% endif %}
+
             </div>
 
             <div id="medicalSection" class="col s12 valign-wrapper" style="width:100%;">
