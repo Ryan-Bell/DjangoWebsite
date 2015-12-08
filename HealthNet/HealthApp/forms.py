@@ -45,8 +45,8 @@ class ProfileForm(ModelForm):
             'zipcode',
             'phoneNumber',
             'email',
-            #'contactName',
-            #'contactPhoneNumber',
+            'eName',
+            'ePhoneNumber',
         )
 
 class MedicalForm(ModelForm):

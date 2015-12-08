@@ -85,8 +85,8 @@ class ProfileInfo(models.Model):
     zipcode = models.CharField(max_length=5)
     phoneNumber = models.CharField(max_length=14)
     email = models.EmailField(blank=False)
-    #contactName = models.CharField(max_length=MAX_LENGTH)
-    #contactPhoneNumber = models.CharField(max_length=MAX_LENGTH)
+    eName = models.CharField(max_length=MAX_LENGTH)
+    ePhoneNumber = models.CharField(max_length=MAX_LENGTH)
 
 class MedicalInfo(models.Model):
     #add cancer
