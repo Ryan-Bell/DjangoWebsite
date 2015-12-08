@@ -283,6 +283,10 @@
 						<!--Begin general information tab-->
             <div id="ProfileInfo" class="col s12">
 			
+			<div class="section">
+					<h5><p style="font-size:20px">Personal Info</h5>
+			</div>
+			
 			<!--Contatainer for left half of screen inputs-->
 			<div class="col s6">
 				
@@ -314,8 +318,12 @@
 				<div class="input-field col s12">
                    <input id="dateOfBirth" name="dateOfBirth" type="text" class="validate" pattern="[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}" length="40">
                    <label for="dateOfBirth">Birthdate MM/DD/YYYY</label>
-				</div>				
+				</div>	
+				
+				
 			</div>
+			
+			
 			
 			<div class="col s6">
 				
@@ -328,8 +336,7 @@
 						<input id="city" type="text" name="city" class="validate" pattern="[A-Za-z ]+"  length="40">
 						<label for="city">City</label>
 					</div>
-					
-					<div class="col s6">
+
 					
 						<div class="input-field col s12">
 						<select>
@@ -394,20 +401,35 @@
 							<label for="zipcode">Zipcode</label>
 						</div>
 					
-					</div>
 					
 					<div class="input-field col s12">
 						<input id="phoneNumber" name="phoneNumber" type="text" class="validate" pattern="[0-9]{7,10}" length="10">
 						<label for="phoneNumber">Phone Number</label>
 					</div>
 
-					
 				
 				</div>
 			
-
-
-                
+				<div class="col s12">
+				
+					<div class="divider"></div>
+					<div class="section">
+					<h5><p style="font-size:15px">Emergency Contact Info</h5>
+					
+					<div class="input-field col s6">
+                    <input id="eName" name="eName" type="text" class="validate" pattern="[A-Za-z]+"  length="40">
+                    <label for="eName">Name</label>
+					</div>
+					
+					<div class="input-field col s6">
+						<input id="ePhoneNumber" name="ePhoneNumber" type="text" class="validate" pattern="[0-9]{7,10}" length="10">
+						<label for="ePhoneNumber">Phone Number</label>
+					</div>
+					
+					</div>
+				
+				
+				</div>
 
             </div>
 
