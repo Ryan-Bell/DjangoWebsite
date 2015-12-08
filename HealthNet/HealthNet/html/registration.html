@@ -221,10 +221,12 @@
 </script>
 
 <div class="container white z-depth-2 " style="height: 100%;">
-    <div class="row" style="padding: 0px; margin: 0px;" >
-        <form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
 
-            <div class="col s12 z-depth-1" style="padding: 0px;">
+    <div class="row" style="padding: 0px; margin: 0px;" >
+
+				<form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
+        
+						<div class="col s12 z-depth-1" style="padding: 0px;">
                 <!-- Top bar nav links -->
                 <ul class="tabs ">
                     <li class="tab col s3 "><a href="#UserInfo" class="active">Account Info</a></li>
@@ -234,7 +236,6 @@
             </div>
 
             <div id="UserInfo" class="col s12" style="width:100%; height:100%;">
-
                 <div class="input-field col s12 m6">
                     <input id="username" name="username" type="text" class="validate" pattern="[A-Za-z]+"  length="20">
                     <label for="username">Username</label>
@@ -274,401 +275,394 @@
                 </div>
 								
                 <!-- This div is used to place the map in. Adjusting width/height will change it's size-->
-                <div id="hospitalMap" style="width100%; height:300px;" class="col s12"></div>
-
-
+                <div id="hospitalMap" style="width100%; height:300px;" class="col s12">
+								</div>
             </div>
 
 
 						<!--Begin general information tab-->
-            <div id="ProfileInfo" class="col s12">
+						<div id="ProfileInfo" class="col s12">
 			
-			<div>
-					<p style="font-size:15px">Personal Info</p>
-			</div>
+								<div>
+										<p style="font-size:15px">Personal Info</p>
+								</div>
 			
-			<!--Contatainer for left half of screen inputs-->
-			<div class="col m6 l6" style="height:100%">
-				
-				<!--Create input field for first name-->
-				<div class="input-field col s12">
-            <input id="first_name" name="firstName" type="text" class="validate" pattern="[A-Za-z]+"  length="40">
-            <label for="first_name">First Name</label>
-        </div>
+								<!--Contatainer for left half of screen inputs-->
+								<div class="col m6 l6" style="height:100%">
+									
+									<!--Create input field for first name-->
+									<div class="input-field col s12">
+											<input id="first_name" name="firstName" type="text" class="validate" pattern="[A-Za-z]+"  length="40">
+											<label for="first_name">First Name</label>
+									</div>
 
-				<!--Create input field for middle name-->
-        <div class="input-field col s12">
-            <input id="middle_name" name="middleName" type="text" class="validate" pattern="[A-Za-z]+"  length="40">
-            <label for="middle_name">Middle Name</label>
-        </div>
+									<!--Create input field for middle name-->
+									<div class="input-field col s12">
+											<input id="middle_name" name="middleName" type="text" class="validate" pattern="[A-Za-z]+"  length="40">
+											<label for="middle_name">Middle Name</label>
+									</div>
 
-				<!--Create input field for last name-->
-        <div class="input-field col s12">
-                    <input id="last_name" name="lastName" type="text" class="validate" pattern="[A-Za-z]+"  length="40">
-                    <label for="last_name">Last Name</label>
-        </div>
+									<!--Create input field for last name-->
+									<div class="input-field col s12">
+															<input id="last_name" name="lastName" type="text" class="validate" pattern="[A-Za-z]+"  length="40">
+															<label for="last_name">Last Name</label>
+									</div>
 
-				<!--Create input field for email address-->
-				<div class="input-field col s12">
-                    <input id="email" name="email" type="email" class="validate"  length="40">
-                    <label for="email">Email Address</label>
-        </div>
-				
-				<!--Create input field for date of birth-->
-				<div class="input-field col s12">
-                   <input id="dateOfBirth" name="dateOfBirth" type="text" class="validate" pattern="[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}" length="40">
-                   <label for="dateOfBirth">Birthdate MM/DD/YYYY</label>
-				</div>	
-			</div>
+									<!--Create input field for email address-->
+									<div class="input-field col s12">
+															<input id="email" name="email" type="email" class="validate"  length="40">
+											<label for="email">Email Address</label>
+									</div>
+									
+									<!--Create input field for date of birth-->
+									<div class="input-field col s12">
+														 <input id="dateOfBirth" name="dateOfBirth" type="text" class="validate" pattern="[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}" length="40">
+														 <label for="dateOfBirth">Birthdate MM/DD/YYYY</label>
+									</div>	
+								</div>
+
+
+								<!--Contatainer for right half of screen inputs-->
+								<div class="col m6 l6">
+									
+										<div class="input-field col s12">
+											<input id="address" type="text" name="address" class="validate" pattern="[A-Za-z0-9 ]+"  length="50">
+											<label for="address">Street Address</label>
+										</div>
+										
+										<div class="input-field col s12">
+											<input id="city" type="text" name="city" class="validate" pattern="[A-Za-z ]+"  length="40">
+											<label for="city">City</label>
+										</div>
+
+										<div class="input-field col s3">
+												<select name="state">
+														<option value="" disabled selected>State:</option>
+														<option value="Alabama">Alabama</option>
+														<option value="Alaska">Alaska</option>
+														<option value="Arizona">Arizona</option>
+														<option value="Arkansas">Arkansas</option>
+														<option value="California">California</option>
+														<option value="Colorado">Colorado</option>
+														<option value="Connecticut">Connecticut</option>
+														<option value="Delaware">Delaware</option>
+														<option value="Florida">Florida</option>
+														<option value="Georgia">Georgia</option>
+														<option value="Hawaii">Hawaii</option>
+														<option value="Idaho">Idaho</option>
+														<option value="Illinois">Illinois</option>
+														<option value="Indiana">Indiana</option>
+														<option value="Iowa">Iowa</option>
+														<option value="Kansas">Kansas</option>
+														<option value="Kentucky">Kentucky</option>
+														<option value="Louisiana">Louisiana</option>
+														<option value="Maine">Maine</option>
+														<option value="Maryland">Maryland</option>
+														<option value="Massachusetts">Massachusetts</option>
+														<option value="Michigan">Michigan</option>
+														<option value="Minnesota">Minnesota</option>
+														<option value="Mississippi">Mississippi</option>
+														<option value="Missouri">Missouri</option>
+														<option value="Montana">Montana</option>
+														<option value="Nebraska">Nebraska</option>
+														<option value="Nevada">Nevada</option>
+														<option value="New Hampshire">New Hampshire</option>
+														<option value="New Jersey">New Jersey</option>
+														<option value="New Mexico">New Mexico</option>
+														<option value="New York">New York</option>
+														<option value="North Carolina">North Carolina</option>
+														<option value="North Dakota">North Dakota</option>
+														<option value="Ohio">Ohio</option>
+														<option value="Oklahoma">Oklahoma</option>
+														<option value="Oregon">Oregon</option>
+														<option value="Pennsylvannia">Pennsylvannia</option>
+														<option value="Rhode Island">Rhode Island</option>
+														<option value="South Carolina">South Carolina</option>
+														<option value="South Dakota">South Dakota</option>
+														<option value="Tennessee">Tennessee</option>
+														<option value="Texas">Texas</option>
+														<option value="Utah">Utah</option>
+														<option value="Vermont">Vermont</option>
+														<option value="Virginia">Virginia</option>
+														<option value="Washington">Washington</option>
+														<option value="West Virginia">West Virginia</option>
+														<option value="Wisconsin">Wisconsin</option>
+														<option value="Wyoming">Wyoming</option>
+												</select>
+										</div>
+									
+										<div class="input-field col s3">
+												<input id="zipcode" name="zipcode" type="text" class="validate" pattern="[0-9]{5}"  length="5">
+												<label for="zipcode">Zipcode</label>
+										</div>
+									
+										<div class="input-field col s12">
+											<input id="phoneNumber" name="phoneNumber" type="text" class="validate" pattern="[0-9]{7,10}" length="10">
+											<label for="phoneNumber">Phone Number</label>
+										</div>
+									
+										<div class="input-field col s6">
+												<select name="Primary Doctor">
+<option value="Virginia">Virginia</option>
+<option value="Washington">Washington</option>
+<option value="West Virginia">West Virginia</option>
+<option value="Wisconsin">Wisconsin</option>
+<option value="Wyoming">Wyoming</option>
+												</select>
+<!------------- CREATE FOR LOOP FOR DOCTORS 
+------------
+-----------
+------------
+------->						
+										</div>
+								</div>
 			
-			
-			
-			<div class="col l6">
-				
-					<div class="input-field col s12">
-						<input id="address" type="text" name="address" class="validate" pattern="[A-Za-z0-9 ]+"  length="50">
-						<label for="address">Street Address</label>
-					</div>
-					
-					<div class="input-field col s12">
-						<input id="city" type="text" name="city" class="validate" pattern="[A-Za-z ]+"  length="40">
-						<label for="city">City</label>
-					</div>
-
-					
-						<div class="input-field col s3">
-						<select name="state">
-							<option value="" disabled selected>State:</option>
-							<option value="Alabama">Alabama</option>
-							<option value="Alaska">Alaska</option>
-							<option value="Arizona">Arizona</option>
-							<option value="Arkansas">Arkansas</option>
-							<option value="California">California</option>
-							<option value="Colorado">Colorado</option>
-							<option value="Connecticut">Connecticut</option>
-							<option value="Delaware">Delaware</option>
-							<option value="Florida">Florida</option>
-							<option value="Georgia">Georgia</option>
-							<option value="Hawaii">Hawaii</option>
-							<option value="Idaho">Idaho</option>
-							<option value="Illinois">Illinois</option>
-							<option value="Indiana">Indiana</option>
-							<option value="Iowa">Iowa</option>
-							<option value="Kansas">Kansas</option>
-							<option value="Kentucky">Kentucky</option>
-							<option value="Louisiana">Louisiana</option>
-							<option value="Maine">Maine</option>
-							<option value="Maryland">Maryland</option>
-							<option value="Massachusetts">Massachusetts</option>
-							<option value="Michigan">Michigan</option>
-							<option value="Minnesota">Minnesota</option>
-							<option value="Mississippi">Mississippi</option>
-							<option value="Missouri">Missouri</option>
-							<option value="Montana">Montana</option>
-							<option value="Nebraska">Nebraska</option>
-							<option value="Nevada">Nevada</option>
-							<option value="New Hampshire">New Hampshire</option>
-							<option value="New Jersey">New Jersey</option>
-							<option value="New Mexico">New Mexico</option>
-							<option value="New York">New York</option>
-							<option value="North Carolina">North Carolina</option>
-							<option value="North Dakota">North Dakota</option>
-							<option value="Ohio">Ohio</option>
-							<option value="Oklahoma">Oklahoma</option>
-							<option value="Oregon">Oregon</option>
-							<option value="Pennsylvannia">Pennsylvannia</option>
-							<option value="Rhode Island">Rhode Island</option>
-							<option value="South Carolina">South Carolina</option>
-							<option value="South Dakota">South Dakota</option>
-							<option value="Tennessee">Tennessee</option>
-							<option value="Texas">Texas</option>
-							<option value="Utah">Utah</option>
-							<option value="Vermont">Vermont</option>
-							<option value="Virginia">Virginia</option>
-							<option value="Washington">Washington</option>
-							<option value="West Virginia">West Virginia</option>
-							<option value="Wisconsin">Wisconsin</option>
-							<option value="Wyoming">Wyoming</option>
-							</select>
-							<label>State Selection</label>
+								<div class="col s12">
+										<div>
+												<p style="font-size:15px">Emergency Contact Info</p>
+										
+												<div class="input-field col s6">
+																	<input id="eName" name="eName" type="text" class="validate" pattern="[A-Za-z]+"  length="40">
+																	<label for="eName">Name</label>
+												</div>
+										
+												<div class="input-field col s6">
+													<input id="ePhoneNumber" name="ePhoneNumber" type="text" class="validate" pattern="[0-9]{7,10}" length="10">
+													<label for="ePhoneNumber">Phone Number</label>
+												</div>
+										
+										</div>
+								</div>
 						</div>
-					
-						<div class="input-field col s3">
-							<input id="zipcode" name="zipcode" type="text" class="validate" pattern="[0-9]{5}"  length="5">
-							<label for="zipcode">Zipcode</label>
-						</div>
-					
-					
-					<div class="input-field col s12">
-						<input id="phoneNumber" name="phoneNumber" type="text" class="validate" pattern="[0-9]{7,10}" length="10">
-						<label for="phoneNumber">Phone Number</label>
-					</div>
-				</div>
-			
-				<div class="col s12">
-					<div>
-					<p style="font-size:15px">Emergency Contact Info</p>
-					
-					<div class="input-field col s6">
-                    <input id="eName" name="eName" type="text" class="validate" pattern="[A-Za-z]+"  length="40">
-                    <label for="eName">Name</label>
-					</div>
-					
-					<div class="input-field col s6">
-						<input id="ePhoneNumber" name="ePhoneNumber" type="text" class="validate" pattern="[0-9]{7,10}" length="10">
-						<label for="ePhoneNumber">Phone Number</label>
-					</div>
-					
-					</div>
-				
-				
-				</div>
-
-            </div>
 
 
+						<div id="MedicalInfo" class="col s12 center-align">
 
-            <div id="MedicalInfo" class="col s12 center-align">
-                <!--
-                #possible fields such as last checkup etc.
-                -->
-                <!--TODO make the list responsive for mobile devices -->
-                <div class="card-title" style="width:100%;"><h5>Please select any conditions you've had</h5></div>
+                <div class="card-title" style="width:100%;">
+										<h5>Please select any conditions you've had</h5>
+								</div>
 
-                <hr />
-
-                <div >
-				
-				<!-- Other field that is visible if the other checkbox is checked. Not in a column-->
-                    
+								<div class="input-field col s12 m6">
+										<select multiple>
+												<option value="1"  selected>None</option>
+												<option value="2">Skin</option>
+												<option value="3">Lung</option>
+												<option value="4">Prostate</option>
+												<option value="5">Breast</option>
+												<option value="6">Colorectal</option>
+												<option value="7">Kidney</option>
+												<option value="8">Bladder</option>
+												<option value="9">Thyroid</option>
+												<option value="10">Other</option>
+										</select>
+										<label>Cancer</label>
+								</div>
 					
-					<div class="input-field col s12 m6">
-                            <select multiple>
-                                <option value="1"  selected>None</option>
-                                <option value="2">Skin</option>
-                                <option value="3">Lung</option>
-                                <option value="4">Prostate</option>
-                                <option value="5">Breast</option>
-                                <option value="6">Colorectal</option>
-                                <option value="7">Kidney</option>
-                                <option value="8">Bladder</option>
-                                <option value="9">Thyroid</option>
-                                <option value="10">Other</option>
-                            </select>
-                            <label>Cancer</label>
-                    </div>
-					
-					<div class="input-field col s12 m6">
-                            <select >
-                                <option value="1"  selected>None</option>
-                                <option value="2">Type 1</option>
-                                <option value="3">Type 2</option>
-                            </select>
-                            <label>Diabetes</label>
-                    </div>
+								<div class="input-field col s12 m6">
+										<select >
+												<option value="1"  selected>None</option>
+												<option value="2">Type 1</option>
+												<option value="3">Type 2</option>
+										</select>
+										<label>Diabetes</label>
+								</div>
 					
 					
 
-                    <div class="row">
+								<div class="row">
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Allergies" name="allergies"/>
+													<label for="Allergies">Allergies</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Arthritis" name="arthritis"/>
+													<label for="Arthritis">Arthritis</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Chickenpox" name="chickenpox"/>
+													<label for="Chickenpox">Chickenpox</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Coxsackie" name="coxsackie"/>
+													<label for="Coxsackie">Coxsackie</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Diphtheria" name="diphtheria"/>
+													<label for="Diphtheria">Diphtheria</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Epilipsy" name="epilipsy"/>
+													<label for="Epilipsy">Epilipsy</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Frequent Colds" name="frequentColds"/>
+													<label for="Frequent Colds">Frequent Colds</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="German Measles" name="germanMeasles"/>
+													<label for="German Measles">German Measles</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="High Blood Pressure" name="highBloodPressure"/>
+													<label for="High Blood Pressure">High Blood Pressure</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Influenza" name="influenza"/>
+													<label for="Influenza">Influenza</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Kidney Disease" name="kidneyDisease"/>
+													<label for="Kidney Disease">Kidney Disease</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Measles" name="measles"/>
+													<label for="Measles">Measles</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Migraines" name="migraines"/>
+													<label for="Migraines">Migraines</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Mumps" name="mumps"/>
+													<label for="Mumps">Mumps</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Obesity" name="obesity"/>
+													<label for="Obesity">Obesity</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Pneumonia" name="pneumonia"/>
+													<label for="Pneumonia">Pneumonia</label>
+												</p>
+										</div>
+										
+								
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Polio" name="polio"/>
+													<label for="Polio">Polio</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Rheumatic Fever" name="rheumaticFever"/>
+													<label for="Rheumatic Fever">Rheumatic Fever</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Scarlatina" name="scarlatina"/>
+													<label for="Scarlatina">Scarlatina</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Scarlet Fever" name="scarletFever"/>
+													<label for="Scarlet Fever">Scarlet Fever</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Strokes" name="strokes"/>
+													<label for="Strokes">Strokes</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Syphilis" name="syphilis"/>
+													<label for="Syphilis">Syphilis</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Tonsillitis" name="tonsillitis"/>
+													<label for="Tonsillitis">Tonsillitis</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Tuberculosis" name="tuberculosis"/>
+													<label for="Tuberculosis">Tuberculosis</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="Whooping Cough" name="whoopingCough"/>
+													<label for="Whooping Cough">Whooping Cough</label>
+												</p>
+										</div>
+										
+										<div class="col s6 m4 l3">
+												<p>
+													<input type="checkbox" id="other" name="other" onchange="hideOther();"  />
+													<label for="other">Other</label>
+												</p>
+										</div>
+							
+														
+								</div>
+														
+								<div class="input-field s6 m4 l3" id="otherField" style="display: none;">
+										<input placeholder="Please type the condition" id="otherText" name="otherText" type="text" class="validate" length="30">
+										<label for="otherText">Please Specify:</label>
+								</div>
 
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Allergies" name="allergies"/>
-								<label for="Allergies">Allergies</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Arthritis" name="arthritis"/>
-								<label for="Arthritis">Arthritis</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Chickenpox" name="chickenpox"/>
-								<label for="Chickenpox">Chickenpox</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Coxsackie" name="coxsackie"/>
-								<label for="Coxsackie">Coxsackie</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Diphtheria" name="diphtheria"/>
-								<label for="Diphtheria">Diphtheria</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Epilipsy" name="epilipsy"/>
-								<label for="Epilipsy">Epilipsy</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Frequent Colds" name="frequentColds"/>
-								<label for="Frequent Colds">Frequent Colds</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="German Measles" name="germanMeasles"/>
-								<label for="German Measles">German Measles</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="High Blood Pressure" name="highBloodPressure"/>
-								<label for="High Blood Pressure">High Blood Pressure</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Influenza" name="influenza"/>
-								<label for="Influenza">Influenza</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Kidney Disease" name="kidneyDisease"/>
-								<label for="Kidney Disease">Kidney Disease</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Measles" name="measles"/>
-								<label for="Measles">Measles</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Migraines" name="migraines"/>
-								<label for="Migraines">Migraines</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Mumps" name="mumps"/>
-								<label for="Mumps">Mumps</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Obesity" name="obesity"/>
-								<label for="Obesity">Obesity</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Pneumonia" name="pneumonia"/>
-								<label for="Pneumonia">Pneumonia</label>
-							</p>
-						</div>
-						
-				
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Polio" name="polio"/>
-								<label for="Polio">Polio</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Rheumatic Fever" name="rheumaticFever"/>
-								<label for="Rheumatic Fever">Rheumatic Fever</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Scarlatina" name="scarlatina"/>
-								<label for="Scarlatina">Scarlatina</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Scarlet Fever" name="scarletFever"/>
-								<label for="Scarlet Fever">Scarlet Fever</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Strokes" name="strokes"/>
-								<label for="Strokes">Strokes</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Syphilis" name="syphilis"/>
-								<label for="Syphilis">Syphilis</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Tonsillitis" name="tonsillitis"/>
-								<label for="Tonsillitis">Tonsillitis</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Tuberculosis" name="tuberculosis"/>
-								<label for="Tuberculosis">Tuberculosis</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-								<input type="checkbox" id="Whooping Cough" name="whoopingCough"/>
-								<label for="Whooping Cough">Whooping Cough</label>
-							</p>
-						</div>
-						
-						<div class="col s6 m4 l3">
-							<p>
-                            <input type="checkbox" id="other" name="other" onchange="hideOther();"  />
-                            <label for="other">Other</label>
-                        </p>
-						</div>
-			
-                    
-					</div>
-                    
-					<div class="input-field s6 m4 l3" id="otherField" style="display: none;">
-                        <input placeholder="Please type the condition" id="otherText" name="otherText" type="text" class="validate" length="30">
-                        <label for="otherText">Please Specify:</label>
-					</div>	
-
-
-
-                </div>
-
-                <button type="submit" class="btn waves-effect waves-light" >Submit</button>
-
+								<button type="submit" class="btn waves-effect waves-light" >Submit</button>
             </div>
         </form>
     </div>
