@@ -18,53 +18,138 @@
                 <div id="account">
 
                     <!-- any non-required fields should have a if 'field' not null  block -->
+					
+					<div class = "col s12">
+					
+					<p>Name: {{ user.profileInfo.firstName }} {{ user.profileInfo.middleName }} {{ user.profileInfo.lastName }}</p>
+					<p>E-Mail: {{ user.profileInfo.email }}</p>
+					<p>Phone Number: {{ user.profileInfo.phoneNumber }}</p>
+					<p>Address: {{ user.profileInfo.address }}, {{ user.profileInfo.city }} {{ user.profileInfo.city }}</p>
+					<p>Current Hospital: {{ user.userInfo.hospital }}</p>
+					<p>Health Care Provider: {{ user.userInfo.provider }}</p>
+					<p>Insurance Policy Number: {{ user.userInfo.policyNumber }}</p>
+                    <p>Insurance Group Number: {{ user.userInfo.groupNumber }}</p>
+					<p>Emergency Contact: {{ user.profileInfo.eName }}, {{ user.profileInfo.ePhoneNumber }}</p>
+                    
+					
+					</div>
+					
+					<div class = "col s12">
+					
+					<p>Allergies</p>Medical History
+					
+					{%if user.medicalInfo.allergies%}
+						<p>Allergies</p>
+					{% endif %}
+					
+					{%if user.medicalInfo.anemia %}
+						<p>Anemia</p>
+					{% endif %}
+					
+					{%if user.medicalInfo.arthritis %}
+						<p>Arthritis</p>
+					{% endif %}
+					
+					{%if user.medicalInfo.chickenpox %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.coxsackie %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.diphtheria %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.epilepsy %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.frequentColds %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.germanMeasles %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.highBloodPressure %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.influenza %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.kidneyDisease %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.measles %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.migraines %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.mumps %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.obesity %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.pneumonia %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.polio %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.rheumaticFever %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.scarlatina %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.scarletFever %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.strokes %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.syphilis %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.tonsillitis %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.tuberculosis %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.whoopingCough %}
+						<p></p>
+					{% endif %}
+					
+					{%if user.medicalInfo.otherText %}
+						<p></p>
+					{% endif %}
+					
+					
+					</div>
 
-                    <p>{{ user.user.username }}</p>
-                    <p>{{ user.userInfo.policyNumber }}</p>
-                    <p>{{ user.userInfo.provider }}</p>
-                    <p>{{ user.userInfo.groupNumber }}</p>
-                    <p>{{ user.userInfo.hospital }}</p>
 
-                    <p>{{ user.profileInfo.firstName }}</p>
-                    <p>{{ user.profileInfo.middleName }}</p>
-                    <p>{{ user.profileInfo.lastName }}</p>
-                    <p>{{ user.profileInfo.address }}</p>
-                    <p>{{ user.profileInfo.city }}</p>
-                    <p>{{ user.profileInfo.state }}</p>
-                    <p>{{ user.profileInfo.dateOfBirth }}</p>
-                    <p>{{ user.profileInfo.zipcode }}</p>
-                    <p>{{ user.profileInfo.phoneNumber }}</p>
-                    <p>{{ user.profileInfo.email }}</p>
-                    <p>{{ user.profileInfo.eName }}</p>
-                    <p>{{ user.profileInfo.ePhoneNumber }}</p>
-
-                    <p>{{ user.medicalInfo.allergies }}</p>
-                    <p>{{ user.medicalInfo.anemia }}</p>
-                    <p>{{ user.medicalInfo.arthritis }}</p>
-                    <p>{{ user.medicalInfo.chickenpox }}</p>
-                    <p>{{ user.medicalInfo.coxsackie }}</p>
-                    <p>{{ user.medicalInfo.diphtheria }}</p>
-                    <p>{{ user.medicalInfo.epilepsy }}</p>
-                    <p>{{ user.medicalInfo.frequentColds }}</p>
-                    <p>{{ user.medicalInfo.germanMeasles }}</p>
-                    <p>{{ user.medicalInfo.highBloodPressure }}</p>
-                    <p>{{ user.medicalInfo.influenza }}</p>
-                    <p>{{ user.medicalInfo.kidneyDisease }}</p>
-                    <p>{{ user.medicalInfo.measles }}</p>
-                    <p>{{ user.medicalInfo.migraines }}</p>
-                    <p>{{ user.medicalInfo.mumps }}</p>
-                    <p>{{ user.medicalInfo.obesity }}</p>
-                    <p>{{ user.medicalInfo.pneumonia }}</p>
-                    <p>{{ user.medicalInfo.polio }}</p>
-                    <p>{{ user.medicalInfo.rheumaticFever }}</p>
-                    <p>{{ user.medicalInfo.scarlatina }}</p>
-                    <p>{{ user.medicalInfo.scarletFever }}</p>
-                    <p>{{ user.medicalInfo.strokes }}</p>
-                    <p>{{ user.medicalInfo.syphilis }}</p>
-                    <p>{{ user.medicalInfo.tonsillitis }}</p>
-                    <p>{{ user.medicalInfo.tuberculosis }}</p>
-                    <p>{{ user.medicalInfo.whoopingCough }}</p>
-                    <p>{{ user.medicalInfo.otherText }}</p>
                 </div>
 
                 <div id="profile">
