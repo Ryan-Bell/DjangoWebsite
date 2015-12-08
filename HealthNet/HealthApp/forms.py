@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import User
-from .models import Patient, UserInfo, MedicalInfo, ProfileInfo, Prescription
+from .models import Patient, UserInfo, MedicalInfo, ProfileInfo, Prescription, MedTest
 
 
 class LoginForm(forms.Form):
@@ -80,4 +80,27 @@ class MedicalForm(ModelForm):
             'tonsillitis',
             'tuberculosis',
             'whoopingCough',
+        )
+
+class MedTestForm(ModelForm):
+    class Meta:
+        model = MedTest
+        fields = (
+            'name',
+            'doctor',
+            'released',
+            'dateIssued',
+            'result',
+        )
+
+class PrescriptionForm(ModelForm):
+    class Meta:
+        model = Prescription
+        fields = (
+            'medicationCategory',
+            'medication',
+            'dosage',
+            'frequency',
+            'directions',
+            'comments',
         )
