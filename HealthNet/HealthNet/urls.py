@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^login/$', views.userLogin, name='login'),
     url(r'^register/$', views.register, name='register'),
     url(r'^(?P<username>\w+)/profile/$', views.profile, name='profile'),
+    url(r'^(?P<username>\w+)/staffProfile/$', views.staffProfile, name='staffProfile'),
     url(r'^logout/$', views.userLogout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
 ]
