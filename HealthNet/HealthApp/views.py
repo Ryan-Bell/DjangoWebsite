@@ -42,7 +42,10 @@ def userLogin(request):
             if user.is_active:
                 login(request, user)
                 auth = 0
-                return HttpResponseRedirect('/%s/profile' % username)
+                if user.is_staff:
+                    return HttpResponseRedirect('/%s/staffProfile' % username)
+                else:
+                    return HttpResponseRedirect('/%s/profile' % username)
             else:
                 auth = 1
                 #all users have a is_valid field that can be toggled for expiration or transfers etc.
