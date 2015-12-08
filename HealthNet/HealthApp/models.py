@@ -133,6 +133,17 @@ class Patient(models.Model):
     def getName(self):
         return self.userInfo.firstName + " " + self.userInfo.lastName
 
+class Doctor(models.Model):
+    user = models.OneToOneField(User)
+    profileInfo = models.OneToOneField(ProfileInfo, null=True)
+
+
+class Nurse(models.Model):
+    user = models.OneToOneField(User)
+    profileInfo = models.OneToOneField(ProfileInfo, null=True)
+
+
+
 
 
 #class Logmanager? with many methods?
