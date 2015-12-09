@@ -74,7 +74,7 @@
 										</div>
 																						
                 </div>
-<!------------------------------------
+
                 <div id="profile" class="z-depth-3 col s12">
 										<div class="col s12" style="text-align:center">
 												<h5 class="blue-text text-darken-2">Personal Information</h5>
@@ -86,7 +86,6 @@
 												<p>Address: {{ user.profileInfo.address }}<br />{{ user.profileInfo.city }}, {{ user.profileInfo.state }}</p>
 										</div>
 										<div class="col s12">
-												<p>
 													<p>
 														<b1 class="red-text text-lighten-2">Hospital:</b1> {{ user.userInfo.hospital }}</p>
 													<p>
@@ -98,23 +97,22 @@
 													<p>
 														<b>Emergency Contact:</b> {{ user.profileInfo.eName }}, {{ user.profileInfo.ePhoneNumber }}</p>
 										</div>
-								</div>
+								</div>						
             </div>
 
-            <div id="medicalSection" class="col s12 valign-wrapper" style="width:100%;">
+          <div id="medicalSection" class="col s12 valign-wrapper" style="width:100%;">
 								<div class="z-depth-3 col s12" style="padding: 20px;">
 										<div class="col s12" style="text-align:center">
 												<h5 class="blue-text text-darken-2">Medical History</h5>
-										</div>
-------------------------->										
-<!------------------										{% for singledoctor in doctorlist %}
+										</div>							
+								{% for singledoctor in doctorlist %}
 												<option value="{{ singledoctor.user.username }}">
 														<div class="col s2" style="text-align:center">
 																{{ singledoctor.profileInfo.firstName }}
 																{{ singledoctor.profileInfo.lastName }}
 														</div>
 												</option>
----------------------->
+
 										{% empty %}
 												<option value="">
 														There are no doctors in the system
@@ -228,11 +226,12 @@
 											<p>{{user.medicalInfo.otherText}}</p>
 										{% endif %}
 								</div>
-            </div>
+          </div>
 
-            <div id="calendarSection">
-                <div id='calendar' ></div>
-            </div>
+					<div id="calendarSection">
+							<div id='calendar' >
+							</div>
+					</div>
         </form>
     </div>
 </div>
