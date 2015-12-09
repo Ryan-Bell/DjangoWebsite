@@ -72,6 +72,7 @@ def register(request):
         print("\nregister entered with POST")
         #this is where all of the data the user input is gathered.
         baseUserForm = BaseUserForm(data=request.POST)
+
         print("\nregister POST baseUserFormCreated")
         userForm = UserForm(data=request.POST)
         print("\nregister POST userFormCreated")
@@ -176,3 +177,9 @@ def staffProfile(request, username):
                 patients = None
 
     return render(request, 'StaffProfile.html', {'user' : activeUser, 'accountType' : accountType, 'patients' : patients})
+
+@csrf_exempt
+def fillDB():
+    userone = User.objects.create_user("userone", "nomail@rit.edu", "qwerty")
+    print(userone)
+    userone.save()
