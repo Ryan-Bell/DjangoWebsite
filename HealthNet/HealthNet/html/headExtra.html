@@ -11,20 +11,20 @@
 		<link type="text/css" rel="stylesheet" href="../../static/materialize/css/materialize.min.css"  media="screen,projection"/>
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 			
 		<!--Import jQuery before materialize.js-->
-
+		<script type="text/javascript" src="../../static/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="../../static/materialize/js/materialize.min.js"></script>
 
 		<!--Import FullCalendar-->
 		<link href="../../static/fullcalendar-2.5.0/fullcalendar.min.css" type="text/css"  rel="stylesheet" />
 		<link href="../../static/fullcalendar-2.5.0/fullcalendar.css" type="text/css"  rel="stylesheet" />
 		<link href="../../static/fullcalendar-2.5.0/fullcalendar.print.css" media="print" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="../../static/jquery-2.1.4.min.js"></script>
 		<script src="../../static/fullcalendar-2.5.0/lib/jquery.min.js"></script>
 		<script src="../../static/fullcalendar-2.5.0/lib/moment.min.js"></script>
 		<script src="../../static/fullcalendar-2.5.0/fullcalendar.min.js"></script>
-		<script type="text/javascript" src="../../static/materialize/js/materialize.min.js"></script>
-		
+		<script src="../../static/fullcalendar-2.5.0/lib/jquery-ui.custom.min.js"></script>
 			
 		<script>
 				/*
@@ -53,46 +53,119 @@
 					
 					var calendar = $('#calendar').fullCalendar(
 					{	
+						//set height to width ratio for screen resizing
 						aspectRatio: 1.5,
+						
+						/*
+							header option will define our calendar header.
+							left define what will be at left position in calendar
+							center define what will be at center position in calendar
+							right define what will be at right position in calendar
+						*/
 						header:
 						{
 							left: 'prev,next today',
 							center: 'title',
 							right: 'month,agendaWeek,agendaDay'
 						},
-						dayClick: function(date, jsEvent, view){
-						
-								$("#id_date").attr("value", date.toISOString().slice(0,10));
-								
-								if (view.name != 'month')
-									$("#id_time").attr("value", date.toISOString().slice(11,16));
-								
-								$("#newAppointment").openModal();
+						/*
+							defaultView option used to define which view to show by default,
+							for example we have used agendaWeek.
+						*/
+						defaultView: 'agendaWeek',
+						/*
+							selectable:true will enable user to select datetime slot
+							selectHelper will add helpers for selectable.
+						*/
+						selectable: true,
+						selectHelper: true,
+						/*
+							when user select timeslot this option code will execute.
+							It has three arguments. Start,end and allDay.
+							Start means starting time of event.
+							End means ending time of event.
+							allDay means if events is for entire day or not.
+						*/
+						select: function(start, end, allDay)
+						{
+							/*
+								after selection user will be promted for enter title for event.
+							*/
+							var title = prompt('Event Title:');
+							/*
+								if title is enterd calendar will add title and event into fullCalendar.
+							*/
+							if (title)
+							{
+								calendar.fullCalendar('renderEvent',
+									{
+										title: title,
+										start: start,
+										end: end,
+										allDay: allDay
+									},
+									true // make the event "stick"
+								);
+							}
+							calendar.fullCalendar('unselect');
 						},
-						eventClick: function(calEvent, jsEvent, view){
-						
-							{% for apt in appointments %}
-								if (calEvent.pk == "{{ apt.pk }}") {
-										document.getElementById("deleteApt").action = "/deleteAppForm/{{ apt.pk }}";
-								}
-							{% endfor %}
-							
-							$("#deleteAppointment").openModal();
-						}
+						/*
+							editable: true allow user to edit events.
+						*/
+						editable: true,
+						/*
+							events is the main option for calendar.
+							for demo we have added predefined events in json object.
+						*/
+						events: [
+							{
+								title: 'All Day Event',
+								start: new Date(y, m, 1)
+							},
+							{
+								title: 'Long Event',
+								start: new Date(y, m, d-5),
+								end: new Date(y, m, d-2)
+							},
+							{
+								id: 999,
+								title: 'Repeating Event',
+								start: new Date(y, m, d-3, 16, 0),
+								allDay: false
+							},
+							{
+								id: 999,
+								title: 'Repeating Event',
+								start: new Date(y, m, d+4, 16, 0),
+								allDay: false
+							},
+							{
+								title: 'Meeting',
+								start: new Date(y, m, d, 10, 30),
+								allDay: false
+							},
+							{
+								title: 'Lunch',
+								start: new Date(y, m, d, 12, 0),
+								end: new Date(y, m, d, 14, 0),
+								allDay: false
+							},
+							{
+								title: 'Birthday Party',
+								start: new Date(y, m, d+1, 19, 0),
+								end: new Date(y, m, d+1, 22, 30),
+								allDay: false
+							},
+							{
+								title: 'Click for Google',
+								start: new Date(y, m, 28),
+								end: new Date(y, m, 29),
+								url: 'http://google.com/'
+							}
+						]
 						
 					});
 					
-						{% for apt in appointments %}
-							var newEvent = {
-								title: "Apt",
-								start: "{{ apt.date|escapejs }}".slice(0,16),
-								end: "{{ apt.date|escapejs }}".slice(0,16),
-								doctor: "{{ apt.doctor }}",
-								patient: "{{ apt.userName }}",
-								pk: "{{ apt.pk }}",
-							}
-							calendar.fullCalendar('renderEvent', newEvent, true)
-						{% endfor %}
 
 
 						//initialize material

@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template import Context
 from django.template.loader import get_template
-from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest, LogItem, Appointment
-from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm, AppointmentForm
+from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest, LogItem
+from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm
 from django.views.decorators.csrf import csrf_exempt
 import datetime
 import itertools
@@ -27,46 +27,6 @@ These @csrf_exempt lines above each view is a workaround solution for csrf missi
 errors. The error has something to do with a csrf tag not being placed properly in the
 html files.
 """
-
-@csrf_exempt
-def createApp(request):
-		if not request.user.is_authenticated():
-			return redirect('/login/')
-			
-		if request.method == 'POST':
-			form = AppointmentForm(request.POST)
-			if form.is_valid():
-				cleanData = form.cleaned_data
-				apt = Appointment(
-						doctor=cleanData['doctor'],
-						userName = request.user.username,
-						date=cleanData['date'] + "T" + cleanData['time'],
-						description=cleanData['description']
-				)
-				apt.save()
-				
-		print("failed")
-		return HttpResponseRedirect('/%s/profile' % request.user.username)
-		
-@csrf_exempt
-def deleteApp(request, id):
-    if not request.user.is_authenticated():
-      return redirect('/login/')
-			
-    Appointment.objects.filter(pk=id).delete()
-
-    return HttpResponseRedirect('/%s/profile' % request.user.username)
-		
-		
-def editApp(request, id):
-    if not request.user.is_authenticated():
-      return redirect('/login/')
-			
-    apt = Appointment.objects.filter(pk=id)
-    apt.description = "newdesc"
-    apt.save()
-
-    return HttpResponseRedirect('/%s/profile' % request.user.username)
 
 @csrf_exempt
 def userLogin(request):
@@ -270,11 +230,7 @@ def profile(request, username):
         #print(newchecklist)
         iterator = itertools.count()
         #print(iterator)
-
-    user = request.user
-    appointments = Appointment.objects.filter(userName = user.username)
-		
-    return render(request, 'ProfilePage.html', {'user' : activeUser, 'checklist' : checklist, 'newchecklist' : newchecklist, 'iterator':iterator, 'appointments': appointments, 'appform': AppointmentForm })
+    return render(request, 'ProfilePage.html', {'user' : activeUser, 'checklist' : checklist, 'newchecklist' : newchecklist, 'iterator':iterator })
 
 @csrf_exempt
 def staffProfile(request, username):

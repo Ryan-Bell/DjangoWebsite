@@ -67,12 +67,6 @@ STATE_CHOICES = (
 MAX_LENGTH = 50
 
 
-class Appointment(models.Model):
-		doctor = models.CharField(max_length=MAX_LENGTH)
-		userName = models.CharField(max_length=MAX_LENGTH)
-		date = models.DateTimeField()
-		description = models.CharField(max_length="200")
-
 class UserInfo(models.Model):
     policyNumber = models.CharField(max_length=MAX_LENGTH)
     provider = models.CharField(max_length=MAX_LENGTH)
