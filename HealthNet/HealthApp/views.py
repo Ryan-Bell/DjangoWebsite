@@ -185,6 +185,83 @@ def staffProfile(request, username):
                 patients = None
 
     return render(request, 'StaffProfile.html', {'user' : activeUser, 'accountType' : accountType, 'patients' : patients})
+@csrf_exempt
+def profileEdit(request, username):
+    registered = False
+    print("\nEdit profile view entered")
+    if request.method == 'POST':
+        print("\nregister entered with POST")
+        #this is where all of the data the user input is gathered.
+        baseUserForm = BaseUserForm(data=request.POST)
+
+        print("\nregister POST baseUserFormCreated")
+        userForm = UserForm(data=request.POST)
+        print("\nregister POST userFormCreated")
+        profileForm = ProfileForm(data=request.POST)
+        print("\nregister POST profileFormCreated")
+        medicalForm = MedicalForm(data=request.POST)
+        print("\nregister POST medicalFormCreated")
+
+        print("\nregister POST outside is_valid if")
+        #The forms are checked to determine if they are valid. This is where required fields are checked.
+        if  userForm.is_valid() and profileForm.is_valid() and medicalForm.is_valid():
+
+            print("\nregister POST inside is_valid if")
+
+            #creating the user object
+            user = baseUserForm.save()
+            user.set_password(user.password)
+
+            #all adjusted values must be followed by a save call.
+            user.save()
+            print("\nregister POST user object created")
+
+            patientUserInfo = userForm.save()
+            patientProfileInfo = profileForm.save()
+            patientMedicalInfo = medicalForm.save()
+            print("\nregister POST 3 info objects created")
+
+            patient = Patient(user=user, userInfo = patientUserInfo, profileInfo=patientProfileInfo, medicalInfo=patientMedicalInfo)
+            print("\nregister POST patient created")
+
+            patient.user.save()
+            patient.userInfo.save()
+            patient.profileInfo.save()
+            patient.medicalInfo.save()
+
+            patient.save()
+            print("\nregister POST patient info objects assigned")
+
+            print("\nAttempting to add hospital and doctor object to patient with lookups")
+            patient.hospital = Hospital.objects.get(name=request.POST['hospital'])
+            userDoctor = User.objects.get(username=request.POST['doctor'])
+            patient.doctor = Doctor.objects.get(user=userDoctor)
+            patient.save()
+
+            patient.user.first_name = patient.profileInfo.firstName
+            patient.user.last_name = patient.profileInfo.lastName
+            patient.user.email = patient.profileInfo.email
+            patient.user.save()
+            print("\nregister POST user first/last name updated")
+
+            registered = True
+
+            print("\nregister POST about to call profile")
+            userLogin(request)
+            print("\nThe following will not be reached but needs to be there to prevent errors:wq")
+            return HttpResponseRedirect('/%s/profile' % patient.user.username)
+        else:
+            #these errors should be added into the registration.html so the user can see it
+            print(baseUserForm.errors, userForm.errors, profileForm.errors, medicalForm.errors)
+    else:
+        print("\nregister GET creating blank forms")
+        #if the request is get, show blank forms.
+        userForm = UserForm()
+        profileForm = ProfileForm()
+        print(Doctor.objects.all())
+        print(Hospital.objects.all())
+        print("\nregister GET blank forms created")
+    return render(request, 'ProfileEdit.html', {'userForm':userForm, 'profileForm':profileForm, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all()})
 
 @csrf_exempt
 def fillDB():
