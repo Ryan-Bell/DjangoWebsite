@@ -78,6 +78,7 @@ def userLogout(request):
 def register(request):
     registered = False
     print("\nregister view entered")
+
     if request.method == 'POST':
         print("\nregister entered with POST")
         #this is where all of the data the user input is gathered.
@@ -92,6 +93,7 @@ def register(request):
         print("\nregister POST medicalFormCreated")
 
         print("\nregister POST outside is_valid if")
+
         #The forms are checked to determine if they are valid. This is where required fields are checked.
         if  userForm.is_valid() and profileForm.is_valid() and medicalForm.is_valid():
 
@@ -136,12 +138,16 @@ def register(request):
             registered = True
 
             print("\nregister POST about to call profile")
+            newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="New Patient registered")
+            newlogitem.save()
             userLogin(request)
             print("\nThe following will not be reached but needs to be there to prevent errors:wq")
             return HttpResponseRedirect('/%s/profile' % patient.user.username)
         else:
             #these errors should be added into the registration.html so the user can see it
             print(baseUserForm.errors, userForm.errors, profileForm.errors, medicalForm.errors)
+            newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Registration POST data invalid")
+            newlogitem.save()
     else:
         print("\nregister GET creating blank forms")
         #if the request is get, show blank forms.
@@ -152,6 +158,8 @@ def register(request):
         print(Doctor.objects.all())
         print(Hospital.objects.all())
         print("\nregister GET blank forms created")
+        newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Registration page accessed")
+        newlogitem.save()
     return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all()})
 
 @csrf_exempt
@@ -160,6 +168,8 @@ def profile(request, username):
     #by knowing the url. If they aren't authenticated they get redirected to the login page
     #using the reverse lookup which searches the urls in urls.py for a name of 'login'
     if not request.user.is_authenticated():
+        newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Patient profile page access attempt by unathenticated user")
+        newlogitem.save()
         return HttpResponseRedirect(reverse('login'))
     else:
         #capture the user object and run checks on the account type to determine where to send them
@@ -167,7 +177,8 @@ def profile(request, username):
         activeUser = Patient.objects.get(user=request.user)
         checklist = activeUser.medicalInfo._meta.get_fields()
         newchecklist = []
-
+        newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Patient profile page accessed")
+        newlogitem.save()
         print (activeUser.doctor)
         for check in checklist:
             newchecklist.append(getattr(activeUser.medicalInfo, check.name))
@@ -183,6 +194,8 @@ def staffProfile(request, username):
     #by knowing the url. If they aren't authenticated they get redirected to the login page
     #using the reverse lookup which searches the urls in urls.py for a name of 'login'
     if not request.user.is_authenticated():
+        newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Staff profile page access attempt by unathenticated user")
+        newlogitem.save()
         return HttpResponseRedirect(reverse('login'))
     else:
         #capture the user object and run checks on the account type to determine where to send them
@@ -190,12 +203,16 @@ def staffProfile(request, username):
         accountType = "Doctor"
         activeUser = Doctor.objects.get(user=request.user)
         if activeUser:
+            newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Staff profile page accessed by Doctor")
+            newlogitem.save()
             try:
                 patients = Patient.objects.get(doctor=activeUser)
             except Patient.DoesNotExist:
                 patients = None
 
         else:
+            newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Staff profile page accessed by Nurse")
+            newlogitem.save()
             activeUser = Nurse.objects.get(user=request.user)
             accountType = "Nurse"
             try:
