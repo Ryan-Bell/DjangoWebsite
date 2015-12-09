@@ -71,7 +71,6 @@ class UserInfo(models.Model):
     policyNumber = models.CharField(max_length=MAX_LENGTH)
     provider = models.CharField(max_length=MAX_LENGTH)
     groupNumber = models.CharField(max_length=MAX_LENGTH)
-    hospital = models.CharField(max_length=MAX_LENGTH, null=True)
 
 class ProfileInfo(models.Model):
     firstName = models.CharField(max_length=MAX_LENGTH)

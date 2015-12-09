@@ -111,6 +111,12 @@ def register(request):
             patient.save()
             print("\nregister POST patient info objects assigned")
 
+            print("\nAttempting to add hospital and doctor object to patient with lookups")
+            patient.hospital = Hospital.objects.get(name=request.POST['hospital'])
+            userDoctor = User.objects.get(username=request.POST['doctor'])
+            patient.doctor = Doctor.objects.get(user=userDoctor)
+            patient.save()
+
             patient.user.first_name = patient.profileInfo.firstName
             patient.user.last_name = patient.profileInfo.lastName
             patient.user.email = patient.profileInfo.email
@@ -134,8 +140,9 @@ def register(request):
         profileForm = ProfileForm()
         medicalForm = MedicalForm()
         print(Doctor.objects.all())
+        print(Hospital.objects.all())
         print("\nregister GET blank forms created")
-    return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered, 'doctorlist' : Doctor.objects.all()})
+    return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all()})
 
 @csrf_exempt
 def profile(request, username):
