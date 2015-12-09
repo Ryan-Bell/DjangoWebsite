@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template import Context
 from django.template.loader import get_template
-from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest
+from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest, LogItem
 from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm
 from django.views.decorators.csrf import csrf_exempt
 import datetime
@@ -42,28 +42,38 @@ def userLogin(request):
         if user:
             if user.is_active:
                 login(request, user)
-				
                 auth = 0
                 if user.is_staff:
+                    newlogitem = LogItem(user=user, datetime=datetime.datetime.now(), action="Staff has logged in")
+                    newlogitem.save()
                     return HttpResponseRedirect('/%s/staffProfile' % username)
                 else:
+                    newlogitem = LogItem(user=user, datetime=datetime.datetime.now(), action="User has logged in")
+                    newlogitem.save()
                     return HttpResponseRedirect('/%s/profile' % username)
             else:
                 auth = 1
+                newlogitem = LogItem(user=user, datetime=datetime.datetime.now(), action="User has attemtped to log in with expired account")
+                newlogitem.save()
                 #all users have a is_valid field that can be toggled for expiration or transfers etc.
                 return render(request, 'login.html', {'authenticated': auth , 'username' : username, 'password' : password})
         else:
             auth = 2
+            newlogitem = LogItem(user=user, datetime=datetime.datetime.now(), action="Invalid user has attempted to log in")
+            newlogitem.save()
             return render(request, 'login.html', {'authenticated': auth , 'username' : username, 'password' : password})
     else:
+        newlogitem = LogItem(user=None, datetime=datetime.datetime.now(), action="Login page accessed")
+        newlogitem.save()
         return render(request, "login.html", {'authenticated':auth})
 
 @csrf_exempt
 def userLogout(request):
     logout(request)
+    newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="User has logged out")
+    newlogitem.save()
     return HttpResponseRedirect('/')
 
-#TODO adjust the entire register method so that it works with the new html page
 @csrf_exempt
 def register(request):
     registered = False

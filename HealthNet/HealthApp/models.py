@@ -163,9 +163,9 @@ class Patient(models.Model):
 
 
 class LogItem(models.Model):
-    user = models.OneToOneField(User)
-    datetime = models.DateField(null = True)
-    action = models.CharField(max_length=MAX_LENGTH, null = True)
+    user = models.OneToOneField(User, null = True)
+    datetime = models.DateField(null=True)
+    action = models.CharField(max_length=100, null = True)
 
 #class for medication categories that each hold a list of medications
 class Z_adamantane_antivirals(models.Model):
