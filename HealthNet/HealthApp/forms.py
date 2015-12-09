@@ -1,19 +1,12 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import User
-from .models import Patient, UserInfo, MedicalInfo, ProfileInfo, Prescription, MedTest
+from .models import Patient, UserInfo, MedicalInfo, ProfileInfo, Prescription, MedTest, LogItem
 
 
 class LoginForm(forms.Form):
     username = forms.CharField(label="Username", max_length=50)
     password = forms.CharField(label="Password", max_length=50, widget=forms.PasswordInput)
-
-"""
-class LogItemForm(forms.ModelForm):
-    class Meta:
-        model = LogItem
-        fields = ('username',)
-"""
 
 class BaseUserForm(ModelForm):
     class Meta:
@@ -103,4 +96,13 @@ class PrescriptionForm(ModelForm):
             'frequency',
             'directions',
             'comments',
+        )
+
+class LogItemForm(ModelForm):
+    class Meta:
+        model = LogItem
+        fields = (
+            'user',
+            'datetime',
+            'action'
         )
