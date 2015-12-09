@@ -227,6 +227,52 @@
 						<div id='calendar' >
 						</div>
 				</div>
+				
+				<div id="newAppointment" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<form action="/createAppForm/" method="POST">
+										<div class="modal-header">
+												<h4>New Appointment</h4>
+										</div>
+										<div class="modal-body">
+												<div class="col s6 input-field">
+														<label for="id_doctor">Doctor</label>
+															{{ appform.doctor }}
+														<label for="id_date">Date</label>
+															{{ appform.date }}
+														<label for="id_time">Time</label>
+															{{ appform.time }}
+														<label for="id_description">Description</label>
+															{{ appform.description }}
+												</div>
+										</div>
+										<div class="modal-footer">
+												<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Submit<i class="material-icons right">send</i></button>	
+										</div>
+								</form>
+						</div>
+				</div>
+				</div>
+				
+			<div id="deleteAppointment" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+								<form id="deleteApt" action="/deleteAppForm/" method="POST">
+										<div class="modal-header">
+												<h4>Delete Appointment</h4>
+										</div>
+										<div class="modal-body">
+											stuff
+										</div>
+										<div class="modal-footer">
+												<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Delete Appointment<i class="material-icons right">send</i></button>	
+										</div>
+								</form>
+						</div>
+				</div>
+				</div>
+			</div>			
     </div>
 </div>
 

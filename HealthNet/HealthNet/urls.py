@@ -30,4 +30,6 @@ urlpatterns = [
     url(r'^logout/$', views.userLogout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^(?P<username>\w+)/ProfileEdit/$', views.profileEdit, name='profileEdit'),
+		url(r'^createAppForm/', views.createApp, name='createAppForm'),
+		url(r'^deleteAppForm/(\d+)$', views.deleteApp, name='deleteAppForm'),
 ]
