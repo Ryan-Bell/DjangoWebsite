@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest
+from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest, LogItem
 
 #This is how to control what models are visible to the admin.
 admin.site.register(Patient)
@@ -11,3 +11,4 @@ admin.site.register(Nurse)
 admin.site.register(Hospital)
 admin.site.register(Prescription)
 admin.site.register(MedTest)
+admin.site.register(LogItem)
