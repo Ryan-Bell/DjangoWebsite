@@ -130,8 +130,9 @@ def register(request):
         userForm = UserForm()
         profileForm = ProfileForm()
         medicalForm = MedicalForm()
+        print(Doctor.objects.all())
         print("\nregister GET blank forms created")
-    return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered})
+    return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered, 'doctorlist' : Doctor.objects.all()})
 
 @csrf_exempt
 def profile(request, username):

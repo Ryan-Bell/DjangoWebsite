@@ -162,12 +162,6 @@ class Patient(models.Model):
         return self.userInfo.firstName + " " + self.userInfo.lastName
 
 
-
-
-
-
-
-
 class LogItem(models.Model):
     user = models.OneToOneField(User)
     datetime = models.DateField(null = True)

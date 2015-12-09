@@ -402,12 +402,12 @@
 										</div>
 									
 										<div class="input-field col s6">
-												<select name="Primary Doctor">
-<option value="Virginia">Virginia</option>
-<option value="Washington">Washington</option>
-<option value="West Virginia">West Virginia</option>
-<option value="Wisconsin">Wisconsin</option>
-<option value="Wyoming">Wyoming</option>
+												<select name="doctor">
+                                                    {% for singledoctor in doctorlist %}
+                                                        <option value="{{ singledoctor.user.username }}">{{ singledoctor.profileInfo.firstName }}</option>
+                                                    {% empty %}
+                                                        <option value="">There are no doctors in the system</option>
+                                                    {% endfor %}
 												</select>
 <!------------- CREATE FOR LOOP FOR DOCTORS 
 ------------

@@ -8,13 +8,6 @@ class LoginForm(forms.Form):
     username = forms.CharField(label="Username", max_length=50)
     password = forms.CharField(label="Password", max_length=50, widget=forms.PasswordInput)
 
-"""
-class LogItemForm(forms.ModelForm):
-    class Meta:
-        model = LogItem
-        fields = ('username',)
-"""
-
 class BaseUserForm(ModelForm):
     class Meta:
         model = User
