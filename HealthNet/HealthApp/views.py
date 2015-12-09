@@ -159,11 +159,18 @@ def staffProfile(request, username):
         #In the future we may need to check for doctors and nurses and send them elsewhere.
         accountType = "Doctor"
         activeUser = Doctor.objects.get(user=request.user)
-        if not activeUser:
+        if activeUser:
+            try:
+                patients = Patient.objects.get(doctor=activeUser)
+            except Patient.DoesNotExist:
+                patients = None
+
+        else:
             activeUser = Nurse.objects.get(user=request.user)
             accountType = "Nurse"
-        try:
-            patients = Patient.objects.get(doctor=activeUser)
-        except Patient.DoesNotExist:
-            patients = None
+            try:
+                patients = Patient.objects.get(hospital=activeUser.hospital)
+            except Patient.DoesNotExist:
+                patients = None
+
     return render(request, 'StaffProfile.html', {'user' : activeUser, 'accountType' : accountType, 'patients' : patients})
