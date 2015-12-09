@@ -93,114 +93,124 @@
 													<div class="col s12" style="text-align:center">
 															<h5 class="blue-text text-darken-2">Medical History</h5>
 													</div>							
-									
+													<!-- The following loop does not work
+													but it doesn't cause errors on the profile page and
+													is on the right track so it stays
+													{% for ncheck in newchecklist %}
+														{% if ncheck %}
+															<p>{{ checklist..name }}</p>
+														{% endif %}
+														<p>{{ iterator.next }}</p>
+													{% endfor %} -->
+
 													{%if user.medicalInfo.allergies%}
 														<p>Allergies</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.anemia %}
 														<p>Anemia</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.arthritis %}
 														<p>Arthritis</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.chickenpox %}
 														<p>Chicken Pox</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.coxsackie %}
 														<p>Coxsackie</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.diphtheria %}
 														<p>Diptheria</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.epilepsy %}
 														<p>Epilepsy</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.frequentColds %}
 														<p>Frequent Colds</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.germanMeasles %}
 														<p>German Measles</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.highBloodPressure %}
 														<p>High Blood Pressure</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.influenza %}
-														<p>Influenze</p>
+														<p>Influenza</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.kidneyDisease %}
 														<p>Kidney Disease</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.measles %}
 														<p>Measles</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.migraines %}
 														<p>Migraines</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.mumps %}
 														<p>Mumps</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.obesity %}
 														<p>Obesity</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.pneumonia %}
 														<p>Pneumonia</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.polio %}
 														<p>Polio</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.rheumaticFever %}
 														<p>Rheumatic Fever</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.scarlatina %}
 														<p>Scarlatina</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.scarletFever %}
 														<p>Scarlet Fever</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.strokes %}
 														<p>Strokes</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.syphilis %}
 														<p>Syphilis</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.tonsillitis %}
 														<p>Tonsillitis</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.tuberculosis %}
 														<p>Tuberculosis</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.whoopingCough %}
 														<p>Whooping Cough</p>
 													{% endif %}
-													
+
 													{%if user.medicalInfo.otherText != null%}
 														<p>{{user.medicalInfo.otherText}}</p>
 													{% endif %}
+
 											</div>
 								</div>
 

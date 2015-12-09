@@ -10,7 +10,7 @@ from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, 
 from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm
 from django.views.decorators.csrf import csrf_exempt
 import datetime
-
+import itertools
 """
 The views are essentially the intermediary step between the logic of the models and
 database and the front facing html pages. These are what is being called in the urls.py
@@ -155,8 +155,17 @@ def profile(request, username):
         #capture the user object and run checks on the account type to determine where to send them
         #In the future we may need to check for doctors and nurses and send them elsewhere.
         activeUser = Patient.objects.get(user=request.user)
+        checklist = activeUser.medicalInfo._meta.get_fields()
+        newchecklist = []
+
         print (activeUser.doctor)
-    return render(request, 'ProfilePage.html', {'user' : activeUser, 'medicalList' : MedicalInfo._meta.get_all_field_names()})
+        for check in checklist:
+            newchecklist.append(getattr(activeUser.medicalInfo, check.name))
+
+        #print(newchecklist)
+        iterator = itertools.count()
+        #print(iterator)
+    return render(request, 'ProfilePage.html', {'user' : activeUser, 'checklist' : checklist, 'newchecklist' : newchecklist, 'iterator':iterator })
 
 @csrf_exempt
 def staffProfile(request, username):
