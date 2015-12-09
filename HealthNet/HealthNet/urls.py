@@ -29,4 +29,5 @@ urlpatterns = [
     url(r'^(?P<username>\w+)/staffProfile/$', views.staffProfile, name='staffProfile'),
     url(r'^logout/$', views.userLogout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^(?P<username>\w+)/ProfileEdit/$', views.profileEdit, name='profileEdit'),
 ]
