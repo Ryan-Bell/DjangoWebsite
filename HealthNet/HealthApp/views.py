@@ -9,6 +9,7 @@ from django.template.loader import get_template
 from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest
 from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm
 from django.views.decorators.csrf import csrf_exempt
+import datetime
 
 """
 The views are essentially the intermediary step between the logic of the models and
@@ -41,6 +42,7 @@ def userLogin(request):
         if user:
             if user.is_active:
                 login(request, user)
+				
                 auth = 0
                 if user.is_staff:
                     return HttpResponseRedirect('/%s/staffProfile' % username)
