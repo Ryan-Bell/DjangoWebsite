@@ -1,0 +1,77 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Profile{% endblock %}
+{% block side_block %}
+{% endblock %}
+{% block body_block %}
+    {% csrf_token %}
+
+    <script>
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay'
+                },
+                dayClick: function (date, jsEvent, view) {
+                    $('#fullCalDayModal').modal();
+                },
+                weekends:false,
+                fixedWeekCount: false,
+                aspectRatio: 1,
+            });
+        });
+    </script>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-10">
+
+                <div class="page-header" style="">
+                    <h1>Welcome to your page, {{ user.profile.getName }}</h1>
+                </div>
+                <div class="profile-tabs">
+                    <ul class="nav nav-tabs" style="">
+                        <li role="presentation" class="active"><a href="{% url 'profile' username=user.username %}">User Details</a> </li>
+                        <!-- note to self, role="presentation" may be prohibiting the creation of appointments -->
+                        <li role="presentation" class="active"><a href="{% url 'calendar' username=user.username %}">Appointments</a> </li>
+                        <li role="presentation" class="active"><a href="{% url 'medical' username=user.username %}">Medical Info</a></li>
+                    </ul>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>{{ user.profile.getName }}</strong></h3>
+                        </div>
+                        <div class="col-md-6 col-md-offset-3" id='calendar'></div>
+                        <div id="fullCalDayModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Schedule Appointment</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <p>Doctor Name: <input type="text" name="Doctor"></p>
+                                        <p>Patient Name: <input type="text" name="Patient"></p>
+                                        <p>Time: <input type="text" name="Doctor"></p>
+                                        <p>Room Number: <input type="text" name="Patient"></p>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</html>

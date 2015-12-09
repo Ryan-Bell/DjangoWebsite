@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Profile{% endblock %}
+{% block side_block %}
+{% endblock %}
+{% block body_block %}
+    {% csrf_token %}
+    <div class="container-fluid">
+        {% if user.is_authenticated %}
+        <div class="row">
+            <div class="col-md-10">
+
+            <script>
+                $(document).ready(function () {
+                    $('#calendar').fullCalendar({
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,basicWeek,basicDay'
+                        },
+                        dayClick: function (date, jsEvent, view) {
+                            $('#fullCalDayModal').modal();
+                        },
+                        weekends:false,
+                        fixedWeekCount: false,
+                        aspectRatio: 2,
+                    });
+                });
+            </script>
+
+                <div class="page-header" style="">
+                    <h1>Welcome to your page, {{ name }}</h1>
+                </div>
+                <div class="profile-tabs">
+                    <ul class="nav nav-tabs" style="">
+                        <li role="presentation" class="active"><a href="{% url 'profile' username=user.username %}">User Details</a> </li>
+                        <!-- note to self, role="presentation" may be prohibiting the creation of appointments -->
+                        <li role="presentation" class="active"><a href="{% url 'calendar' username=user.username %}">Appointments</a> </li>
+                        <li role="presentation" class="active"><a href="{% url 'medical' username=user.username %}">Medical Info</a></li>
+                    </ul>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>{{ user.profile.getName }}</strong></h3>
+                        </div>
+                        <ul class="list-group">
+                            <form class="form-horizontal">
+
+                                <li class="list-group-item" role="tablist" style="max-height: 50px">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Username:</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static">{{ user.username }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item" role="tablist" style="max-height: 50px">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">First Name:</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static">{{ user.patient.firstName }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% if user.profile.middleName != "" %}
+                                <li class="list-group-item" role="tablist" style="max-height: 50px">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Middle Name:</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static">{{ user.patient.middleName }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endif %}
+
+                                <li class="list-group-item" role="tablist" style="max-height: 50px">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Last Name:</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static">{{ user.patient.lastName }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item" role="tablist" style="max-height: 50px">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Date of Birth:</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static">{{ user.patient.dateOfBirth }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item" role="tablist" style="max-height: 50px">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Email:</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static">{{ user.patient.email }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item" role="tablist" style="max-height: 50px">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Address:</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static">{{ user.patient.address }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item" role="tablist" style="max-height: 50px">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Phone Number:</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static">{{ user.patient.phoneNumber }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </form>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% endblock %}
+    </html>
+
+
+
+
+
+<!---
+                        <div class="col-md-1 col-md-offset-10 col-xs-offset-4">
+                            <a type="button" class="btn btn-default" href="{% url 'edit' username=user.username %}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Edit</a>
+                        </div>
+                        --->
