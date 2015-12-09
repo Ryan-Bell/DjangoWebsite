@@ -66,16 +66,12 @@ STATE_CHOICES = (
 #This is used to limit the entry boxes
 MAX_LENGTH = 50
 
-
-<<<<<<< HEAD
 class Appointment(models.Model):
 		doctor = models.CharField(max_length=MAX_LENGTH)
 		userName = models.CharField(max_length=MAX_LENGTH)
 		date = models.DateTimeField()
 		description = models.CharField(max_length="200")
 
-=======
->>>>>>> 734e0354649f156159a5548045f0613b85f55701
 class UserInfo(models.Model):
     policyNumber = models.CharField(max_length=MAX_LENGTH)
     provider = models.CharField(max_length=MAX_LENGTH)

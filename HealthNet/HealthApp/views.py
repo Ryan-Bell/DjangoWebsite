@@ -6,13 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template import Context
 from django.template.loader import get_template
-<<<<<<< HEAD
 from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest, LogItem, Appointment
 from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm, AppointmentForm
-=======
 from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest, LogItem
 from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm
->>>>>>> 734e0354649f156159a5548045f0613b85f55701
 from django.views.decorators.csrf import csrf_exempt
 import datetime
 import itertools
@@ -34,7 +31,6 @@ html files.
 """
 
 @csrf_exempt
-<<<<<<< HEAD
 def createApp(request):
 		if not request.user.is_authenticated():
 			return redirect('/login/')
@@ -75,8 +71,6 @@ def editApp(request, id):
     return HttpResponseRedirect('/%s/profile' % request.user.username)
 
 @csrf_exempt
-=======
->>>>>>> 734e0354649f156159a5548045f0613b85f55701
 def userLogin(request):
     auth = 3
     if request.method == 'POST':
@@ -278,15 +272,12 @@ def profile(request, username):
         #print(newchecklist)
         iterator = itertools.count()
         #print(iterator)
-<<<<<<< HEAD
 
     user = request.user
     appointments = Appointment.objects.filter(userName = user.username)
 		
     return render(request, 'ProfilePage.html', {'user' : activeUser, 'checklist' : checklist, 'newchecklist' : newchecklist, 'iterator':iterator, 'appointments': appointments, 'appform': AppointmentForm })
-=======
     return render(request, 'ProfilePage.html', {'user' : activeUser, 'checklist' : checklist, 'newchecklist' : newchecklist, 'iterator':iterator })
->>>>>>> 734e0354649f156159a5548045f0613b85f55701
 
 @csrf_exempt
 def staffProfile(request, username):
