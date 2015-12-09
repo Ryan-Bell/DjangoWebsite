@@ -1,7 +1,11 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import User
+<<<<<<< HEAD
 from .models import Patient, UserInfo, MedicalInfo, ProfileInfo, Prescription, MedTest, LogItem, Appointment
+=======
+from .models import Patient, UserInfo, MedicalInfo, ProfileInfo, Prescription, MedTest, LogItem
+>>>>>>> 734e0354649f156159a5548045f0613b85f55701
 
 
 class LoginForm(forms.Form):
@@ -13,6 +17,7 @@ class BaseUserForm(ModelForm):
         model = User
         fields = ('username', 'password')
 
+<<<<<<< HEAD
 class AppointmentForm(forms.Form):
 		
 		doctor = forms.CharField(max_length=50)
@@ -34,6 +39,9 @@ class AppointmentForm(forms.Form):
 			self.fields['date'].widget.attrs['value'] = '2015-03-14'
 		
 		
+=======
+
+>>>>>>> 734e0354649f156159a5548045f0613b85f55701
 class UserForm(ModelForm):
     class Meta:
         model = UserInfo
