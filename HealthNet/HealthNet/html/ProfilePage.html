@@ -15,20 +15,66 @@
             </div>
 
             <div id="personalSection" class="col s12" style="width:100%;">
-                <div id="account" class="z-depth-3 col s12">
-										<div class="col s12" style="text-align:center">
+								<div id="accountInfo" class="z-depth-3 col s12">
+										
+										<div class="col s12" style="text-align:center;">
 												<h5 class="blue-text text-darken-2">Account Information</h5>
 										</div>
-<!-- any non-required fields should have a if 'field' not null  block -->
-										<div class="col s6 left-align">
-												<p>
-													<b>Username:</b> {{user.user.username}}<br/>
-													<b>Hospital:</b> <br/>
-													<b>Doctor:</b>
-												</p>
-										</div>
-                </div>
 
+										<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+													<b>Username:</b><br/>
+													<b>Phone:</b><br/>
+													<b>Email:</b><br/>
+										</div>
+										
+										<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+													{{ user.user.username}}<br/>
+													{{ user.profileInfo.phoneNumber }}<br/>
+													{{ user.profileInfo.email }}<br/>
+										</div>											
+										
+										<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+													<b>Hospital:</b> <br/>
+													<b>Doctor:</b>	
+										</div>
+										
+										<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+													{{ user.hospital.name }}<br/>
+													{{ user.doctor.profileInfo.firstName}}
+										</div>		
+								</div>
+								
+                <div id="personalInfo" class="z-depth-3 col s12">
+								
+										<div class="col s12" style="text-align:center;">
+												<h5 class="blue-text text-darken-2">Personal Information</h5>
+										</div>
+										<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+													<b>Name:</b><br/>
+													<b>Address:</b><br/>
+										</div>
+										
+										<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+													{{ user.profileInfo.firstName }} {{ user.profileInfo.middleName }} {{ user.profileInfo.lastName }}<br/>
+													{{ user.profileInfo.address }}<br />{{ user.profileInfo.city }}, {{ user.profileInfo.state }}<br/>
+										</div>
+										
+										<div class="col s12" style="text-align:center; font-size 20">
+												<h5 class="blue-text text-darken-2">Emergency Contact</h5>
+										</div>
+										
+										<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+													<br/>
+													<br/>
+										</div>
+										
+										<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+													<b>Name:</b><br/>
+													<b>Phone:</b><br/>
+										</div>
+																						
+                </div>
+<!------------------------------------
                 <div id="profile" class="z-depth-3 col s12">
 										<div class="col s12" style="text-align:center">
 												<h5 class="blue-text text-darken-2">Personal Information</h5>
@@ -60,7 +106,20 @@
 										<div class="col s12" style="text-align:center">
 												<h5 class="blue-text text-darken-2">Medical History</h5>
 										</div>
-										
+------------------------->										
+<!------------------										{% for singledoctor in doctorlist %}
+												<option value="{{ singledoctor.user.username }}">
+														<div class="col s2" style="text-align:center">
+																{{ singledoctor.profileInfo.firstName }}
+																{{ singledoctor.profileInfo.lastName }}
+														</div>
+												</option>
+---------------------->
+										{% empty %}
+												<option value="">
+														There are no doctors in the system
+												</option>
+										{% endfor %}
 										{%if user.medicalInfo.allergies%}
 											<p>Allergies</p>
 										{% endif %}

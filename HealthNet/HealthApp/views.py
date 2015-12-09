@@ -148,6 +148,7 @@ def profile(request, username):
         #capture the user object and run checks on the account type to determine where to send them
         #In the future we may need to check for doctors and nurses and send them elsewhere.
         activeUser = Patient.objects.get(user=request.user)
+        print (activeUser.doctor)
     return render(request, 'ProfilePage.html', {'user' : activeUser, 'medicalList' : MedicalInfo._meta.get_all_field_names()})
 
 @csrf_exempt
