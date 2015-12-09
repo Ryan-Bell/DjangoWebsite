@@ -1,1 +1,3 @@
 *.pyc
+
+HealthNet/db.sqlite3

@@ -11,35 +11,28 @@
 		<link type="text/css" rel="stylesheet" href="../../static/materialize/css/materialize.min.css"  media="screen,projection"/>
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<<<<<<< HEAD
 			
 		<!--Import jQuery before materialize.js-->
-
-=======
 
 			
 		<!--Import jQuery before materialize.js-->
 		<script type="text/javascript" src="../../static/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="../../static/materialize/js/materialize.min.js"></script>
->>>>>>> 734e0354649f156159a5548045f0613b85f55701
 
 		<!--Import FullCalendar-->
 		<link href="../../static/fullcalendar-2.5.0/fullcalendar.min.css" type="text/css"  rel="stylesheet" />
 		<link href="../../static/fullcalendar-2.5.0/fullcalendar.css" type="text/css"  rel="stylesheet" />
 		<link href="../../static/fullcalendar-2.5.0/fullcalendar.print.css" media="print" rel="stylesheet" type="text/css" />
-<<<<<<< HEAD
 		<script type="text/javascript" src="../../static/jquery-2.1.4.min.js"></script>
 		<script src="../../static/fullcalendar-2.5.0/lib/jquery.min.js"></script>
 		<script src="../../static/fullcalendar-2.5.0/lib/moment.min.js"></script>
 		<script src="../../static/fullcalendar-2.5.0/fullcalendar.min.js"></script>
 		<script type="text/javascript" src="../../static/materialize/js/materialize.min.js"></script>
 		
-=======
 		<script src="../../static/fullcalendar-2.5.0/lib/jquery.min.js"></script>
 		<script src="../../static/fullcalendar-2.5.0/lib/moment.min.js"></script>
 		<script src="../../static/fullcalendar-2.5.0/fullcalendar.min.js"></script>
 		<script src="../../static/fullcalendar-2.5.0/lib/jquery-ui.custom.min.js"></script>
->>>>>>> 734e0354649f156159a5548045f0613b85f55701
 			
 		<script>
 				/*
@@ -68,9 +61,7 @@
 					
 					var calendar = $('#calendar').fullCalendar(
 					{	
-<<<<<<< HEAD
 						aspectRatio: 1.5,
-=======
 						//set height to width ratio for screen resizing
 						aspectRatio: 1.5,
 						
@@ -80,14 +71,12 @@
 							center define what will be at center position in calendar
 							right define what will be at right position in calendar
 						*/
->>>>>>> 734e0354649f156159a5548045f0613b85f55701
 						header:
 						{
 							left: 'prev,next today',
 							center: 'title',
 							right: 'month,agendaWeek,agendaDay'
 						},
-<<<<<<< HEAD
 						dayClick: function(date, jsEvent, view){
 						
 								$("#id_date").attr("value", date.toISOString().slice(0,10));
@@ -121,7 +110,6 @@
 							}
 							calendar.fullCalendar('renderEvent', newEvent, true)
 						{% endfor %}
-=======
 						/*
 							defaultView option used to define which view to show by default,
 							for example we have used agendaWeek.
@@ -219,8 +207,6 @@
 						]
 						
 					});
-					
->>>>>>> 734e0354649f156159a5548045f0613b85f55701
 
 
 						//initialize material
