@@ -3,213 +3,215 @@
 
 <div class="container white z-depth-2 " style="height: 100%;">
     <div class="row" style="padding: 0px; margin: 0px;">
-        <form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
-
-            <div class="col s12 z-depth-1" style="padding: 0px;">
-                <!-- Top bar nav links -->
-                <ul class="tabs">
-                  <li class="tab col s3 "><a href="#personalSection" class="active">Personal Information</a></li>
-                  <li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
-                  <li class="tab col s3"><a href="#calendarSection">Calendar</a></li>
-                </ul>
-            </div>
-
-						<div class="">
-								<div id="personalSection" class="col s12" style="width:100%;">
-										<div id="accountInfo" class="z-depth-3 col s12" style="padding: 5px;">
-												<div class="col s12" style="text-align:center;">
-														<h5 class="blue-text text-darken-2">Account Information</h5>
-												</div>
-
-												<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
-															<b>Username:</b><br/>
-															<b>Phone:</b><br/>
-															<b>Email:</b><br/>
-												</div>
-												
-												<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
-															{{ user.user.username}}<br/>
-															{{ user.profileInfo.phoneNumber }}<br/>
-															{{ user.profileInfo.email }}<br/>
-												</div>											
-												
-												<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
-															<b>Hospital:</b> <br/>
-															<b>Doctor:</b>	
-												</div>
-												
-												<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
-															{{ user.hospital.name }}<br/>
-															{{ user.doctor.profileInfo.firstName}}
-												</div>		
-										</div>
-										
-										<div id="personalInfo" class="valign z-depth-3 col s12" style="padding: 20px;">
-												<div class="col s12" style="text-align:center;">
-														<h5 class="blue-text text-darken-2">Personal Information</h5>
-												</div>
-												<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
-															<b>Name:</b><br/>
-															<b>Address:</b>
-												</div>
-												<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
-															{{ user.profileInfo.firstName }} {{ user.profileInfo.middleName }} {{ user.profileInfo.lastName }}<br/>
-															{{ user.profileInfo.address }}<br />{{ user.profileInfo.city }}, {{ user.profileInfo.state }}<br/>
-												</div>
-												<div class="col s3 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
-															<b>Insurance Provider:</b><br/>
-															<b>Policy Number:</b><br/>
-															<b>Policy Number:</b><br/>
-												</div>
-												<div class="col s3 left-align" style="font-size: 18px; padding:0px;">
-															{{ user.userInfo.provider }}<br/>
-															{{ user.userInfo.policyNumber }}<br/>
-															{{ user.userInfo.groupNumber }}
-												</div>										
-										</div>
-										
-										<div id="emergencyInfo" class="valign z-depth-3 col s12" style="padding: 20px;">
-												<div class="col s12" style="text-align:center; font-size 20px">
-														<h5 class="blue-text text-darken-2">Emergency Contact</h5>
-												</div>
-												<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
-															<b>Name:</b>
-												</div>
-												<div class="col s4 left-align " style="font-size: 18px; padding:0px;">
-															{{ user.profileInfo.eName }}
-												</div>
-												<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
-														<b>Phone:</b>
-												</div>
-												<div class="col s4 left-align " style="font-size: 18px; padding:0px;">
-															{{ user.profileInfo.ePhoneNumber }}
-												</div>										
-										</div>												
+				
+				<!-- MENU BAR -->
+				<div class="col s12 z-depth-1" style="padding: 0px;">
+						<!-- Top bar nav links -->
+						<ul class="tabs">
+							<li class="tab col s3 "><a href="#personalSection" class="active">Personal Information</a></li>
+							<li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
+							<li class="tab col s3"><a href="#calendarSection">Calendar</a></li>
+						</ul>
+				</div>
+				
+				<!-- Personal Information-->
+				<div id="personalSection" class="col s12" style="width:100%;">
+						<div id="accountInfo" class="z-depth-3 col s12" style="padding: 5px;">
+								<div class="col s12" style="text-align:center;">
+										<h5 class="blue-text text-darken-2">Account Information</h5>
 								</div>
 
-											
-								<div id="medicalSection" class="col s12" style="width:100%;">
-											<div class="z-depth-3 col s12" style="padding: 20px;">
-													<div class="col s12" style="text-align:center">
-															<h5 class="blue-text text-darken-2">Medical History</h5>
-													</div>							
-									
-													{%if user.medicalInfo.allergies%}
-														<p>Allergies</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.anemia %}
-														<p>Anemia</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.arthritis %}
-														<p>Arthritis</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.chickenpox %}
-														<p>Chicken Pox</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.coxsackie %}
-														<p>Coxsackie</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.diphtheria %}
-														<p>Diptheria</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.epilepsy %}
-														<p>Epilepsy</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.frequentColds %}
-														<p>Frequent Colds</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.germanMeasles %}
-														<p>German Measles</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.highBloodPressure %}
-														<p>High Blood Pressure</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.influenza %}
-														<p>Influenze</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.kidneyDisease %}
-														<p>Kidney Disease</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.measles %}
-														<p>Measles</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.migraines %}
-														<p>Migraines</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.mumps %}
-														<p>Mumps</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.obesity %}
-														<p>Obesity</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.pneumonia %}
-														<p>Pneumonia</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.polio %}
-														<p>Polio</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.rheumaticFever %}
-														<p>Rheumatic Fever</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.scarlatina %}
-														<p>Scarlatina</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.scarletFever %}
-														<p>Scarlet Fever</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.strokes %}
-														<p>Strokes</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.syphilis %}
-														<p>Syphilis</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.tonsillitis %}
-														<p>Tonsillitis</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.tuberculosis %}
-														<p>Tuberculosis</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.whoopingCough %}
-														<p>Whooping Cough</p>
-													{% endif %}
-													
-													{%if user.medicalInfo.otherText != null%}
-														<p>{{user.medicalInfo.otherText}}</p>
-													{% endif %}
-											</div>
+								<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+											<b>Username:</b><br/>
+											<b>Phone:</b><br/>
+											<b>Email:</b><br/>
 								</div>
-
-								<div id="calendarSection">
-										<div id='calendar' >
-										</div>
+								
+								<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+											{{ user.user.username}}<br/>
+											{{ user.profileInfo.phoneNumber }}<br/>
+											{{ user.profileInfo.email }}<br/>
+								</div>											
+								
+								<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+											<b>Hospital:</b> <br/>
+											<b>Doctor:</b>	
 								</div>
+								
+								<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+											{{ user.hospital.name }}<br/>
+											{{ user.doctor.profileInfo.firstName}}
+								</div>		
 						</div>
-        </form>
+						
+						<div id="personalInfo" class="valign z-depth-3 col s12" style="padding: 20px;">
+								<div class="col s12" style="text-align:center;">
+										<h5 class="blue-text text-darken-2">Personal Information</h5>
+								</div>
+								<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+											<b>Name:</b><br/>
+											<b>Address:</b>
+								</div>
+								<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+											{{ user.profileInfo.firstName }} {{ user.profileInfo.middleName }} {{ user.profileInfo.lastName }}<br/>
+											{{ user.profileInfo.address }}<br />{{ user.profileInfo.city }}, {{ user.profileInfo.state }}<br/>
+								</div>
+								<div class="col s3 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+											<b>Insurance Provider:</b><br/>
+											<b>Policy Number:</b><br/>
+											<b>Group Number:</b><br/>
+								</div>
+								<div class="col s3 left-align" style="font-size: 18px; padding:0px;">
+											{{ user.userInfo.provider }}<br/>
+											{{ user.userInfo.policyNumber }}<br/>
+											{{ user.userInfo.groupNumber }}
+								</div>										
+						</div>
+						
+						<div id="emergencyInfo" class="z-depth-3 col s12" style="padding: 20px;">
+								<div class="col s12" style="text-align:center; font-size 20px">
+										<h5 class="blue-text text-darken-2">Emergency Contact</h5>
+								</div>
+								<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+											<b>Name:</b>
+								</div>
+								<div class="col s4 left-align " style="font-size: 18px; padding:0px;">
+											{{ user.profileInfo.eName }}
+								</div>
+								<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+										<b>Phone:</b>
+								</div>
+								<div class="col s4 left-align " style="font-size: 18px; padding:0px;">
+											{{ user.profileInfo.ePhoneNumber }}
+								</div>										
+						</div>	
+
+						<div class="card-action right-align">
+								<a class="btn waves-effect waves-light white-text blue darken-1"	href="/editPerson">Edit<i class="material-icons right">send</i></a>
+						</div>
+				</div>
+
+							
+				<div id="medicalSection" class="col s12" style="width:100%;">
+							<div class="z-depth-3 col s12" style="padding: 20px;">
+									<div class="col s12" style="text-align:center">
+											<h5 class="blue-text text-darken-2">Medical History</h5>
+									</div>							
+					
+									{%if user.medicalInfo.allergies%}
+										<p>Allergies</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.anemia %}
+										<p>Anemia</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.arthritis %}
+										<p>Arthritis</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.chickenpox %}
+										<p>Chicken Pox</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.coxsackie %}
+										<p>Coxsackie</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.diphtheria %}
+										<p>Diptheria</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.epilepsy %}
+										<p>Epilepsy</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.frequentColds %}
+										<p>Frequent Colds</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.germanMeasles %}
+										<p>German Measles</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.highBloodPressure %}
+										<p>High Blood Pressure</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.influenza %}
+										<p>Influenze</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.kidneyDisease %}
+										<p>Kidney Disease</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.measles %}
+										<p>Measles</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.migraines %}
+										<p>Migraines</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.mumps %}
+										<p>Mumps</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.obesity %}
+										<p>Obesity</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.pneumonia %}
+										<p>Pneumonia</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.polio %}
+										<p>Polio</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.rheumaticFever %}
+										<p>Rheumatic Fever</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.scarlatina %}
+										<p>Scarlatina</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.scarletFever %}
+										<p>Scarlet Fever</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.strokes %}
+										<p>Strokes</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.syphilis %}
+										<p>Syphilis</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.tonsillitis %}
+										<p>Tonsillitis</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.tuberculosis %}
+										<p>Tuberculosis</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.whoopingCough %}
+										<p>Whooping Cough</p>
+									{% endif %}
+									
+									{%if user.medicalInfo.otherText != null%}
+										<p>{{user.medicalInfo.otherText}}</p>
+									{% endif %}
+							</div>
+				</div>
+
+				<div id="calendarSection">
+						<div id='calendar' >
+						</div>
+				</div>
     </div>
 </div>
 
