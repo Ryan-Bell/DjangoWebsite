@@ -147,6 +147,7 @@ def profile(request, username):
         #capture the user object and run checks on the account type to determine where to send them
         #In the future we may need to check for doctors and nurses and send them elsewhere.
         activeUser = Patient.objects.get(user=request.user)
+        print (activeUser.doctor)
     return render(request, 'ProfilePage.html', {'user' : activeUser, 'medicalList' : MedicalInfo._meta.get_all_field_names()})
 
 @csrf_exempt
@@ -161,11 +162,18 @@ def staffProfile(request, username):
         #In the future we may need to check for doctors and nurses and send them elsewhere.
         accountType = "Doctor"
         activeUser = Doctor.objects.get(user=request.user)
-        if not activeUser:
+        if activeUser:
+            try:
+                patients = Patient.objects.get(doctor=activeUser)
+            except Patient.DoesNotExist:
+                patients = None
+
+        else:
             activeUser = Nurse.objects.get(user=request.user)
             accountType = "Nurse"
-        try:
-            patients = Patient.objects.get(doctor=activeUser)
-        except Patient.DoesNotExist:
-            patients = None
+            try:
+                patients = Patient.objects.get(hospital=activeUser.hospital)
+            except Patient.DoesNotExist:
+                patients = None
+
     return render(request, 'StaffProfile.html', {'user' : activeUser, 'accountType' : accountType, 'patients' : patients})

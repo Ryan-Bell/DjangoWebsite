@@ -125,6 +125,7 @@ class Doctor(models.Model):
 
 class Nurse(models.Model):
     user = models.OneToOneField(User)
+    hospital = models.CharField(max_length=MAX_LENGTH, null=True)
     profileInfo = models.OneToOneField(ProfileInfo, null=True)
 
 class Hospital(models.Model):
