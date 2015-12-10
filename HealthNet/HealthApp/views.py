@@ -28,8 +28,18 @@ errors. The error has something to do with a csrf tag not being placed properly 
 html files.
 """
 
-'''
-TO BE USED WITH EXPORTING PATIENT INFORMATION. Needs patient object
+@csrf_exempt
+def export(request):
+    if not request.user.is_authenticated():
+            try:
+                newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Export access attempt by unathenticated user")
+                newlogitem.save()
+            except:
+                newlogitem = LogItem(datetime=datetime.datetime.now(), action="Export access attempt by unathenticated user")
+                newlogitem.save()
+            return HttpResponseRedirect(reverse('login'))
+    else:
+            patient = Patient.objects.get(user=request.user)
 
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="exportedInformation.csv"'
@@ -41,7 +51,7 @@ TO BE USED WITH EXPORTING PATIENT INFORMATION. Needs patient object
 
 
     return response
-'''
+
 
 
 @csrf_exempt
