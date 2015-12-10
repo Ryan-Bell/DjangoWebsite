@@ -117,6 +117,7 @@ def userLogin(request):
                     except:
                         newlogitem = LogItem(datetime=datetime.datetime.now(), action="Staff has logged in")
                         newlogitem.save()
+
                     return HttpResponseRedirect('/%s/staffProfile' % username)
                 else:
                     try:
@@ -330,7 +331,7 @@ def staffProfile(request, username):
                 newlogitem.save()
             try:
                 patients = Patient.objects.get(doctor=activeUser)
-            except Patient.DoesNotExist:
+            except:
                 patients = None
 
         else:
@@ -344,7 +345,7 @@ def staffProfile(request, username):
             accountType = "Nurse"
             try:
                 patients = Patient.objects.get(hospital=activeUser.hospital)
-            except Patient.DoesNotExist:
+            except:
                 patients = None
 
     return render(request, 'StaffProfile.html', {'user' : activeUser, 'accountType' : accountType, 'patients' : patients})
