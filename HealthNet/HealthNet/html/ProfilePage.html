@@ -2,7 +2,7 @@
 {% include 'headExtra.html' %}
 {% include 'calendarScript.html' %}
 {% include 'chTango.html' %}
-	<div class=" z-depth-2 col s10 " style="width: 75%; height: 100%; float: right; margin-right: 10%">
+	<div class=" z-depth-2 col s10 white " style="width: 75%; height: 100%; float: right; margin-right: 10%">
 			<div class="row" style="padding: 0px; margin: 0px;">
 
 					<!-- MENU BAR -->
@@ -19,13 +19,7 @@
 					<div id="personalSection" class="col s12" style="width:100%;">
 							<div id="accountInfo" class="z-depth-3 col s12" style="padding: 5px;">
 									<div class="col s12" style="text-align:center;">
-											<div class="col s2 right-align">
-													<a class="col s2 white-text">PLACEHOLDER</a>
-											</div>								
-											<h5 class="col s8 blue-text text-darken-2">Account Information</h5>
-											<div class="col s2 right-align" style="margin-top: 5px">
-													<a class="btn waves-effect waves-light white-text blue lighten-4"	href="/{{user.user.username}}/ProfileEdit">Edit<i class="material-icons right">send</i></a>
-											</div>
+											<h5 class="col s12 blue-text text-darken-2">Account Information</h5>
 									</div>
 
 									<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
@@ -93,7 +87,9 @@
 												{{ user.profileInfo.ePhoneNumber }}
 									</div>										
 							</div>
-
+							<div class="col s12 right-align" style="margin-top: 5px">
+									<a class="btn waves-effect waves-light white-text blue darken-1"	href="/{{user.user.username}}/ProfileEdit">Edit<i class="material-icons right">send</i></a>
+							</div>
 
 					</div>
 
