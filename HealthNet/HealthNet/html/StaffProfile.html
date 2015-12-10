@@ -17,13 +17,13 @@
 				</div>
 						
 				<div>
-						<form class="col transparent" method="post" href="/updateUser" style="width: 100%; height: 100%; padding: 0px;">
+						<form class="col transparent" method="post" action="/updateUser/" style="width: 100%; height: 100%; padding: 0px;">
 								<div class="input-field col s10 text-centered">
 										<select name="patient">
 												<option value="" style="">Choose Patient:</option>
 														{% for patient in patients %}
 																		<option value="{{ singlehospital.name }}" style="float:right; margin-right:20%; 10px">
-																					{% spaceless %}	{{ patient.profileInfo.firstName }}{% endspaceless %}
+																					{% spaceless %}	{{ patient.profileInfo.firstName }}{{patient.profileInfo.lastname}}{% endspaceless %}
 																		</option>
 														{% empty %}
 																		<option value="">
@@ -33,7 +33,7 @@
 										</select>
 								</div>
 								<div >
-										<a class="btn waves-effect waves-light white-text blue darken-1" href="updateUser" style="margin-top: 2%">Submit</a>	
+										<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Submit</button>
 								</div>
 						</form>
 				</div>
