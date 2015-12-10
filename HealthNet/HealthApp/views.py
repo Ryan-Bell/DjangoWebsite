@@ -50,7 +50,7 @@ def export(request):
     writer.writerow(['Medical Info:', 'Allergies', patient.medicalInfo.allergies, 'Anemia', patient.medicalInfo.anemia, 'Arthritis', patient.medicalInfo.arthritis, 'Chickenpox', patient.medicalInfo.chickenpox, 'Coxsackie', patient.medicalInfo.coxsackie, 'Diphtheria', patient.medicalInfo.diphtheria, 'Epilepsy', patient.medicalInfo.epilepsy, 'Frequent Colds', patient.medicalInfo.frequentColds, 'German Measeles', patient.medicalInfo.germanMeasles, 'High Blood Pressure', patient.medicalInfo.highBloodPressure, 'Influenza', patient.medicalInfo.influenza, 'Kidney Disease', patient.medicalInfo.kidneyDisease, 'Measles', patient.medicalInfo.measles, 'Migraines', patient.medicalInfo.migraines, 'Mumps', patient.medicalInfo.mumps, 'Obesity', patient.medicalInfo.obesity, 'Pneumonia', patient.medicalInfo.pneumonia, 'Polio', patient.medicalInfo.polio, 'Rheumatic Fever', patient.medicalInfo.rheumaticFever, 'Scarlatina', patient.medicalInfo.scarlatina, 'Scarlet Fever', patient.medicalInfo.scarletFever, 'Strokes', patient.medicalInfo.strokes, 'Syphilis', patient.medicalInfo.syphilis, 'Tonsillitis', patient.medicalInfo.tonsillitis, 'Tuberculosis', patient.medicalInfo.tuberculosis, 'Whooping Cough', patient.medicalInfo.whoopingCough, 'Other', patient.medicalInfo.otherText])
 
 
-    return response
+    return HttpResponseRedirect('/%s/profile' % request.user.username)
 
 
 
