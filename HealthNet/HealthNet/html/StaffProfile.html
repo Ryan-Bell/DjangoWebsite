@@ -17,9 +17,9 @@
 				</div>
 						
 				<div>
-						<form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
+						<form class="col transparent" method="post" href="/updateUser" style="width: 100%; height: 100%; padding: 0px;">
 								<div class="input-field col s10 text-centered">
-										<select name="patient" onchange="pupulatePatient()">
+										<select name="patient">
 												<option value="" style="">Choose Patient:</option>
 														{% for patient in patients %}
 																		<option value="{{ singlehospital.name }}" style="float:right; margin-right:20%; 10px">
@@ -33,16 +33,88 @@
 										</select>
 								</div>
 								<div >
-										<button type="submit" class="btn waves-effect waves-light blue darken-1" style="margin-top: 2%">Submit</button>	
+										<a class="btn waves-effect waves-light white-text blue darken-1" href="updateUser" style="margin-top: 2%">Submit</a>	
 								</div>
 						</form>
 				</div>
 						
-					
+											
+						<div id="calendarSection">
+								<div id='calendar' ></div>
+						</div>
 						
 				<div>
             <div id="informationSection" class="col s12" style="width:100%;">
+								<div id="accountInfo" class="z-depth-3 col s12" style="padding: 5px;">
+													<div class="col s12" style="text-align:center;">
+															<h5 class="col s12 blue-text text-darken-2">Account Information</h5>
+													</div>
 
+													<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+																<b>Username:</b><br/>
+																<b>Phone:</b><br/>
+																<b>Email:</b><br/>
+													</div>
+
+
+													<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+																{{ patient.user.username}}<br/>
+																{{ patient.profileInfo.phoneNumber }}<br/>
+																{{ patient.profileInfo.email }}<br/>
+													</div>											
+													
+													<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+																<b>Hospital:</b> <br/>
+																<b>Doctor:</b>	
+													</div>
+													
+													<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+																{{ patient.hospital.name }}<br/>
+																{{ patient.doctor.profileInfo.firstName }} {{ patient.doctor.profileInfo.lastName  }}
+													</div>		
+								</div>
+											
+								<div id="personalInfo" class="valign z-depth-3 col s12" style="padding: 20px;">
+										<div class="col s12" style="text-align:center;">
+												<h5 class="blue-text text-darken-2">Personal Information</h5>
+										</div>
+										<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+													<b>Name:</b><br/>
+													<b>Address:</b>
+										</div>
+										<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+													{{ patient.profileInfo.firstName }} {{ patient.profileInfo.middleName }} {{ patient.profileInfo.lastName }}<br/>
+													{{ patient.profileInfo.address }}<br />{{ patient.profileInfo.city }} {{ patient.profileInfo.state }}<br/>
+										</div>
+										<div class="col s3 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+													<b>Insurance Provider:</b><br/>
+													<b>Policy Number:</b><br/>
+													<b>Group Number:</b><br/>
+										</div>
+										<div class="col s3 left-align" style="font-size: 18px; padding:0px;">
+													{{ patient.userInfo.provider }}<br/>
+													{{ patient.userInfo.policyNumber }}<br/>
+													{{ patient.userInfo.groupNumber }}
+										</div>										
+								</div>
+								
+								<div id="emergencyInfo" class="z-depth-3 col s12" style="padding: 20px;">
+										<div class="col s12" style="text-align:center; font-size 20px">
+												<h5 class="blue-text text-darken-2">Emergency Contact</h5>
+										</div>
+										<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+													<b>Name:</b>
+										</div>
+										<div class="col s4 left-align " style="font-size: 18px; padding:0px;">
+													{{ patient.profileInfo.eName }}
+										</div>
+										<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+												<b>Phone:</b>
+										</div>
+										<div class="col s4 left-align " style="font-size: 18px; padding:0px;">
+													{{ patient.profileInfo.ePhoneNumber }}
+										</div>										
+								</div>
             </div>
 
             <div id="medicalSection" class="col s12" style="width:100%;">
@@ -61,120 +133,117 @@
 																<p>{{ iterator.next }}</p>
 															{% endfor %} -->
 
-															{%if user.medicalInfo.allergies%}
+															{%if patient.medicalInfo.allergies%}
 																<p>Allergies</p>
 															{% endif %}
 
-															{%if user.medicalInfo.anemia %}
+															{%if patient.medicalInfo.anemia %}
 																<p>Anemia</p>
 															{% endif %}
 
-															{%if user.medicalInfo.arthritis %}
+															{%if patient.medicalInfo.arthritis %}
 																<p>Arthritis</p>
 															{% endif %}
 
-															{%if user.medicalInfo.chickenpox %}
+															{%if patient.medicalInfo.chickenpox %}
 																<p>Chicken Pox</p>
 															{% endif %}
 
-															{%if user.medicalInfo.coxsackie %}
+															{%if patient.medicalInfo.coxsackie %}
 																<p>Coxsackie</p>
 															{% endif %}
 
-															{%if user.medicalInfo.diphtheria %}
+															{%if patient.medicalInfo.diphtheria %}
 																<p>Diptheria</p>
 															{% endif %}
 
-															{%if user.medicalInfo.epilepsy %}
+															{%if patient.medicalInfo.epilepsy %}
 																<p>Epilepsy</p>
 															{% endif %}
 
-															{%if user.medicalInfo.frequentColds %}
+															{%if patient.medicalInfo.frequentColds %}
 																<p>Frequent Colds</p>
 															{% endif %}
 
-															{%if user.medicalInfo.germanMeasles %}
+															{%if patient.medicalInfo.germanMeasles %}
 																<p>German Measles</p>
 															{% endif %}
 
-															{%if user.medicalInfo.highBloodPressure %}
+															{%if patient.medicalInfo.highBloodPressure %}
 																<p>High Blood Pressure</p>
 															{% endif %}
 
-															{%if user.medicalInfo.influenza %}
+															{%if patient.medicalInfo.influenza %}
 																<p>Influenza</p>
 															{% endif %}
 
-															{%if user.medicalInfo.kidneyDisease %}
+															{%if patient.medicalInfo.kidneyDisease %}
 																<p>Kidney Disease</p>
 															{% endif %}
 
-															{%if user.medicalInfo.measles %}
+															{%if patient.medicalInfo.measles %}
 																<p>Measles</p>
 															{% endif %}
 
-															{%if user.medicalInfo.migraines %}
+															{%if patient.medicalInfo.migraines %}
 																<p>Migraines</p>
 															{% endif %}
 
-															{%if user.medicalInfo.mumps %}
+															{%if patient.medicalInfo.mumps %}
 																<p>Mumps</p>
 															{% endif %}
 
-															{%if user.medicalInfo.obesity %}
+															{%if patient.medicalInfo.obesity %}
 																<p>Obesity</p>
 															{% endif %}
 
-															{%if user.medicalInfo.pneumonia %}
+															{%if patient.medicalInfo.pneumonia %}
 																<p>Pneumonia</p>
 															{% endif %}
 
-															{%if user.medicalInfo.polio %}
+															{%if patient.medicalInfo.polio %}
 																<p>Polio</p>
 															{% endif %}
 
-															{%if user.medicalInfo.rheumaticFever %}
+															{%if patient.medicalInfo.rheumaticFever %}
 																<p>Rheumatic Fever</p>
 															{% endif %}
 
-															{%if user.medicalInfo.scarlatina %}
+															{%if patient.medicalInfo.scarlatina %}
 																<p>Scarlatina</p>
 															{% endif %}
 
-															{%if user.medicalInfo.scarletFever %}
+															{%if patient.medicalInfo.scarletFever %}
 																<p>Scarlet Fever</p>
 															{% endif %}
 
-															{%if user.medicalInfo.strokes %}
+															{%if patient.medicalInfo.strokes %}
 																<p>Strokes</p>
 															{% endif %}
 
-															{%if user.medicalInfo.syphilis %}
+															{%if patient.medicalInfo.syphilis %}
 																<p>Syphilis</p>
 															{% endif %}
 
-															{%if user.medicalInfo.tonsillitis %}
+															{%if patient.medicalInfo.tonsillitis %}
 																<p>Tonsillitis</p>
 															{% endif %}
 
-															{%if user.medicalInfo.tuberculosis %}
+															{%if patient.medicalInfo.tuberculosis %}
 																<p>Tuberculosis</p>
 															{% endif %}
 
-															{%if user.medicalInfo.whoopingCough %}
+															{%if patient.medicalInfo.whoopingCough %}
 																<p>Whooping Cough</p>
 															{% endif %}
 
-															{%if user.medicalInfo.otherText != null%}
-																<p>{{user.medicalInfo.otherText}}</p>
+															{%if patient.medicalInfo.otherText != null%}
+																<p>{{patient.medicalInfo.otherText}}</p>
 															{% endif %}
 
 													</div>
             </div>
-						
-						<div id="calendarSection">
-								<div id='calendar' ></div>
-						</div>
+
 			
 						<div id="newAppointment" class="modal fade" role="dialog" style="height: 80%;">
 							<div class="modal-dialog">
