@@ -371,10 +371,9 @@ def profileEdit(request):
         userForm = UserForm(data=request.POST)
         profileForm = ProfileForm(data=request.POST)
 
-
         #The forms are checked to determine if they are valid. This is where required fields are checked.
         if  userForm.is_valid() and profileForm.is_valid():
-
+            print("valid")
             patientUserInfo = userForm.save()
             patientProfileInfo = profileForm.save()
 
@@ -402,7 +401,6 @@ def profileEdit(request):
             patient.user.save()
 
             registered = True
-            userLogin(request)
             return HttpResponseRedirect('/%s/profile' % patient.user.username)
     else:
         #if the request is get, show blank forms.
@@ -411,3 +409,17 @@ def profileEdit(request):
 
     return HttpResponseRedirect('/%s/profile' % request.user.username, {'userForm':userForm, 'profileForm':profileForm, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all()})
     return render(request, '/%s/profile' % request.user.username, {'userForm':userForm, 'profileForm':profileForm, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all()})
+
+@csrf_exempt
+def handler404(request):
+    response = render_to_response('404.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
+
+@csrf_exempt
+def handler500(request):
+    response = render_to_response('500.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 500
+    return response
