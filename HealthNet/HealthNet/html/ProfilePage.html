@@ -15,9 +15,9 @@
 									<div class="col s12 z-depth-2" style="padding: 0px;">
 											<!-- Top bar nav links -->
 											<ul class="tabs">
+												<li class="tab col s3"><a href="#calendarSection" class="active">Calendar</a></li>
 												<li class="tab col s3 "><a href="#personalSection" class="active">Personal Information</a></li>
 												<li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
-												<li class="tab col s3"><a href="#calendarSection">Calendar</a></li>
 											</ul>
 									</div>
 									
@@ -240,6 +240,12 @@
 																	<h4>New Appointment</h4>
 															</div>
 															<div class="modal-body">
+																	
+																	<div class="col s6 input-field">
+																			<label style="margin-left: 75%;" for="id_date">Date</label>
+																				{{ appform.date }}
+																	</div>
+																	
 																	<div class="col s6 input-field">
 																	
 																					<select name="doctor">
@@ -258,18 +264,13 @@
 																	</div>
 																	
 																	<div class="col s6 input-field">
+																			<label style="margin-left: 75%; float:right" for="id_time">Time</label>
+																				{{ appform.time }}
+																	</div>
+																																		
+																	<div class="col s6 input-field">
 																			<label for="id_description">Description</label>
 																				{{ appform.description }}
-																	</div>																	
-																	
-																	<div class="col s6 input-field">
-																			<label style="margin-left: 100px;" for="id_date">Date</label>
-																				{{ appform.date }}
-																	</div>
-																	
-																	<div class="col s6 input-field">
-																			<label style="margin-left: 50px; float:right" for="id_time">Time</label>
-																				{{ appform.time }}
 																	</div>
 
 															</div>

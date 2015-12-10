@@ -6,51 +6,123 @@
 <a class="btn waves-effect waves-light white-text blue darken-1"  style="width: 10%; float: right;"	href="/logout">Logout<i class="material-icons right">assignment</i></a>
 
 <div class=" white z-depth-2 " style="height: 100%; width: 75%; float: right;">
-    <div class="row" style="padding: 0px; margin: 0px;">
-            <div class="col s12 z-depth-1" style="padding: 0px;">
-                <!-- Top bar nav links -->
-                <ul class="tabs">
-                    <li class="tab col s3 "><a href="#informationSection" class="active">Patient Profile</a></li>
-                    <li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
-                    <li class="tab col s3"><a href="#calendarSection">Calendar</a></li>
-                </ul>
+   <div class="row" style="padding: 0px; margin: 0px;">
+				<div class="col s12 z-depth-1" style="padding: 0px;">
+						<!-- Top bar nav links -->
+						<ul class="tabs">
+								<li class="tab col s3"><a href="#calendarSection" class="active">Calendar</a></li>
+								<li class="tab col s3 "><a href="#informationSection" class="active">Patient Profile</a></li>
+								<li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
+						</ul>
+				</div>
+						
+				<div>
+						<form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
+								<div class="input-field col s10 text-centered">
+										<select name="patient" onchange="pupulatePatient()">
+												<option value="" style="">Choose Patient:</option>
+														{% for patient in patients %}
+																		<option value="{{ singlehospital.name }}" style="float:right; margin-right:20%; 10px">
+																					{% spaceless %}	{{ patient.profileInfo.firstName }}{% endspaceless %}
+																		</option>
+														{% empty %}
+																		<option value="">
+																						There are no patients loaded
+																		</option>
+														{% endfor %}
+										</select>
+								</div>
+								<div >
+										<button type="submit" class="btn waves-effect waves-light blue darken-1" style="margin-top: 2%">Submit</button>	
+								</div>
+						</form>
+				</div>
+						
+					
+						
+				<div>
+            <div id="informationSection" class="col s12" style="width:100%;">
+
             </div>
-						<div>
-								<form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
-										<div class="input-field col s6">
-												<select name="patient" onchange="pupulatePatient()">
-														<option value="" disabled selected>Choose Hospital:</option>
-																{% for patient in patients %}
-																				<option value="{{ singlehospital.name }}">
-																								{{ patient.profileInfo.firstName }}
-																				</option>
-																{% empty %}
-																				<option value="">
-																								There are no hospitals
-																				</option>
-																{% endfor %}
-												</select>
-										</div>
-										<div >
-												<button type="submit" class="btn waves-effect waves-light" >Submit</button>	
-										<
-								</form>
+
+            <div id="medicalSection" class="col s12" style="width:100%;">
+
+            </div>
+						
+						<div id="calendarSection">
+								<div id='calendar' ></div>
 						</div>
-
-            <div id="informationSection" class="col s12 valign-wrapper" style="width:100%;">
-
-            </div>
-
-            <div id="medicalSection" class="col s12 valign-wrapper" style="width:100%;">
-
-            </div>
-
-            <div id="calendarSection">
-                <div id='calendar' ></div>
-            </div>
-    </div>
+			
+						<div id="newAppointment" class="modal fade" role="dialog" style="height: 80%;">
+							<div class="modal-dialog">
+									<div class="modal-content">
+											<form action="/createAppForm/" method="POST">
+													<div class="modal-header">
+															<h4>New Appointment</h4>
+													</div>
+													<div class="modal-body">
+															<div class="col s6">
+																	<div class="col s6 input-field">	
+																			<select name="doctor">
+																					<option value="" disabled selected>Choose Doctor:</option>
+																					{% for singledoctor in doctorlist %}
+																							<option value="{{ singledoctor.user.username }}">
+																									{{ singledoctor.profileInfo.firstName }}
+																							</option>
+																					{% empty %}
+																							<option value="">
+																									There are no doctors in the system
+																							</option>
+																					{% endfor %}
+																			</select>	
+																	</div>			
+																	<div class="col s6 input-field">
+																			<label for="id_description">Description</label>
+																				{{ appform.description }}
+																	</div>
+															</div>
+																			
+															<div class="col s6">
+																<div class="col s6 input-field">
+																		<label style="" for="id_date">Date</label>
+																			{{ appform.date }}
+																</div>
+																
+																<div class="col s6 input-field">
+																		<label style="" for="id_time">Time</label>
+																			{{ appform.time }}
+																</div>
+															</div>
+													</div>	
+													<div class="modal-footer col s12">
+															<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+													</div>
+											</form>
+									</div>
+							</div>
+						</div>
+							
+						<div id="deleteAppointment" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<div class="modal-content">
+											<form id="deleteApt" action="/deleteAppForm/" method="POST">
+													<div class="modal-header">
+															<h4>Delete Appointment</h4>
+													</div>
+													<div class="modal-body">
+														Are you sure you want to delete?
+													</div>
+													<div class="modal-footer">
+															<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Delete Appointment<i class="material-icons right">delete</i></button>	
+													</div>
+											</form>
+									</div>
+							</div>
+						</div>
+				</div>
+	</div>
 </div>
-
+								
 
 <!-- Close the tags opened in head.html -->
 </body>
