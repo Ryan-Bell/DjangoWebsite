@@ -301,7 +301,7 @@ def profile(request, username):
     user = request.user
     appointments = Appointment.objects.filter(userName = user.username)
 		
-    return render(request, 'ProfilePage.html', {'user' : activeUser, 'checklist' : checklist, 'newchecklist' : newchecklist, 'iterator':iterator, 'appointments': appointments, 'appform': AppointmentForm })
+    return render(request, 'ProfilePage.html', {'user' : activeUser, 'checklist' : checklist, 'newchecklist' : newchecklist, 'iterator':iterator, 'appointments': appointments, 'appform': AppointmentForm,  'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all()})
 
 @csrf_exempt
 def staffProfile(request, username):
