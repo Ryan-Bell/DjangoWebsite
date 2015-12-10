@@ -11,6 +11,7 @@ from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm, Appointment
 from django.views.decorators.csrf import csrf_exempt
 import datetime
 import itertools
+import csv
 """
 The views are essentially the intermediary step between the logic of the models and
 database and the front facing html pages. These are what is being called in the urls.py
@@ -26,6 +27,22 @@ These @csrf_exempt lines above each view is a workaround solution for csrf missi
 errors. The error has something to do with a csrf tag not being placed properly in the
 html files.
 """
+
+'''
+TO BE USED WITH EXPORTING PATIENT INFORMATION. Needs patient object
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="exportedInformation.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['User Info:', 'Usename', patient.user.username, 'Policy Number', patient.userInfo.policyNumber, 'Provider', patient.userInfo.provider, 'Group Number', patient.userInfo.groupNumber])
+    writer.writerow(['Profile Info:', 'Firstname', patient.profileInfo.firstName, 'Middlename', patient.profileInfo.middleName, 'LastName', patient.profileInfo.lastName, 'Address', patient.profileInfo.address, 'City', patient.profileInfo.city, 'State', patient.profileInfo.state, 'Date of Birth', patient.profileInfo.dateOfBirth, 'Zipcode', patient.profileInfo.zipcode, 'Phone Number', patient.profileInfo.phoneNumber, 'Email', patient.profileInfo.email, 'Emergency contact', patient.profileInfo.eName, 'Emergency Phone', patient.profileInfo.ePhoneNumber ])
+    writer.writerow(['Medical Info:', 'Allergies', patient.medicalInfo.allergies, 'Anemia', patient.medicalInfo.anemia, 'Arthritis', patient.medicalInfo.arthritis, 'Chickenpox', patient.medicalInfo.chickenpox, 'Coxsackie', patient.medicalInfo.coxsackie, 'Diphtheria', patient.medicalInfo.diphtheria, 'Epilepsy', patient.medicalInfo.epilepsy, 'Frequent Colds', patient.medicalInfo.frequentColds, 'German Measeles', patient.medicalInfo.germanMeasles, 'High Blood Pressure', patient.medicalInfo.highBloodPressure, 'Influenza', patient.medicalInfo.influenza, 'Kidney Disease', patient.medicalInfo.kidneyDisease, 'Measles', patient.medicalInfo.measles, 'Migraines', patient.medicalInfo.migraines, 'Mumps', patient.medicalInfo.mumps, 'Obesity', patient.medicalInfo.obesity, 'Pneumonia', patient.medicalInfo.pneumonia, 'Polio', patient.medicalInfo.polio, 'Rheumatic Fever', patient.medicalInfo.rheumaticFever, 'Scarlatina', patient.medicalInfo.scarlatina, 'Scarlet Fever', patient.medicalInfo.scarletFever, 'Strokes', patient.medicalInfo.strokes, 'Syphilis', patient.medicalInfo.syphilis, 'Tonsillitis', patient.medicalInfo.tonsillitis, 'Tuberculosis', patient.medicalInfo.tuberculosis, 'Whooping Cough', patient.medicalInfo.whoopingCough, 'Other', patient.medicalInfo.otherText])
+
+
+    return response
+'''
+
 
 @csrf_exempt
 def createApp(request):
