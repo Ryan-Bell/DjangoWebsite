@@ -19,11 +19,11 @@
 				<div>
 						<form class="col transparent" method="post" action="/updateUser/" style="width: 100%; height: 100%; padding: 0px;">
 								<div class="input-field col s10 text-centered">
-										<select name="patient">
+										<select name="patientSelect" id="patientSelect" onchange="changeDetails()">
 												<option value="" style="">Choose Patient:</option>
 														{% for patient in patients %}
 																		<option value="{{ singlehospital.name }}" style="float:right; margin-right:20%; 10px">
-																					{% spaceless %}	{{ patient.profileInfo.firstName }}{{patient.profileInfo.lastname}}{% endspaceless %}
+																			{{ patient.profileInfo.firstName }}  ({{patient.user.username}})
 																		</option>
 														{% empty %}
 																		<option value="">
@@ -34,6 +34,7 @@
 								</div>
 								<div >
 										<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Submit</button>
+
 								</div>
 						</form>
 				</div>

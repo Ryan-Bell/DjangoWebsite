@@ -27,11 +27,12 @@ urlpatterns = [
     url(r'^register/$', views.register, name='register'),
     url(r'^(?P<username>\w+)/profile/$', views.profile, name='profile'),
     url(r'^(?P<username>\w+)/staffProfile/$', views.staffProfile, name='staffProfile'),
+    url(r'^(?P<username>\w+)/staffProfile/(?P<patient>\w+)$', views.updateUser, name='updateUser'),
     url(r'^logout/$', views.userLogout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^profileEdit/$', views.profileEdit, name='profileEdit'),
 		url(r'^createAppForm/', views.createApp, name='createAppForm'),
 		url(r'^deleteAppForm/(\d+)$', views.deleteApp, name='deleteAppForm'),
 		url(r'^export/$', views.export, name='export'),
-		url(r'^updateUser/$', views.updateUser, name='updateUser'),
+		#url(r'^updateUser/$', views.updateUser, name='updateUser'),
 ]
