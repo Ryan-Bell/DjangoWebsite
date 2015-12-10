@@ -338,7 +338,11 @@ def staffProfile(request, username):
             try:
                 patients = Patient.objects.filter(doctor=Doctor.objects.get(user=request.user))
             except:
-                patients = None
+                accountType = "Nurse"
+                try:
+                    patients = Patient.objects.filter(hospital= Hospital.objects.get(name=activeUser.hospital))
+                except:
+                    patients = None
 
         else:
             try:
@@ -347,17 +351,8 @@ def staffProfile(request, username):
             except:
                 newlogitem = LogItem(datetime=datetime.datetime.now(), action="Staff profile page accessed by Nurse")
                 newlogitem.save()
-            activeUser = Nurse.objects.get(user=request.user)
-            accountType = "Nurse"
-            try:
-                patients = Patient.objects.filter(hospital= Hospital.objects.get(name=activeUser.hospital))
-            except:
-                patients = None
-    print(patients)
-    print(activeUser.hospital)
-    print(Hospital.objects.get(name=activeUser.hospital))
-    print(Patient.objects.get(user = User.objects.get(username='patient1')).hospital)
-    print(Patient.objects.get(user = User.objects.get(username='patient1')).hospital == Hospital.objects.get(name=activeUser.hospital))
+
+    
     return render(request, 'StaffProfile.html', {'user' : activeUser, 'accountType' : accountType, 'patients' : patients})
 @csrf_exempt
 def profileEdit(request, username):
