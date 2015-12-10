@@ -366,10 +366,9 @@ def profileEdit(request):
         userForm = UserForm(data=request.POST)
         profileForm = ProfileForm(data=request.POST)
 
-
         #The forms are checked to determine if they are valid. This is where required fields are checked.
         if  userForm.is_valid() and profileForm.is_valid():
-
+            print("valid")
             patientUserInfo = userForm.save()
             patientProfileInfo = profileForm.save()
 
@@ -397,7 +396,6 @@ def profileEdit(request):
             patient.user.save()
 
             registered = True
-            userLogin(request)
             return HttpResponseRedirect('/%s/profile' % patient.user.username)
     else:
         #if the request is get, show blank forms.
