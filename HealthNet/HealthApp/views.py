@@ -8,8 +8,6 @@ from django.template import Context
 from django.template.loader import get_template
 from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest, LogItem, Appointment
 from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm, AppointmentForm
-from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest, LogItem
-from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm
 from django.views.decorators.csrf import csrf_exempt
 import datetime
 import itertools
@@ -24,7 +22,6 @@ Post is when they have entered some information and are submitting it to our sid
 dealing with a page that requires the user to input information, the general flow is to first
 check what method the request is, displaying the blank forms if it is get, or pulling in the data
 and using it somehow.
-
 These @csrf_exempt lines above each view is a workaround solution for csrf missing token
 errors. The error has something to do with a csrf tag not being placed properly in the
 html files.
@@ -48,7 +45,8 @@ def createApp(request):
 				apt.save()
 				
 		print("failed")
-		return HttpResponseRedirect('/%s/profile' % request.user.username)
+		
+		return HttpResponseRedirect('/%s/profile/#calendarSection' % request.user.username)
 		
 @csrf_exempt
 def deleteApp(request, id):
@@ -277,7 +275,6 @@ def profile(request, username):
     appointments = Appointment.objects.filter(userName = user.username)
 		
     return render(request, 'ProfilePage.html', {'user' : activeUser, 'checklist' : checklist, 'newchecklist' : newchecklist, 'iterator':iterator, 'appointments': appointments, 'appform': AppointmentForm })
-    return render(request, 'ProfilePage.html', {'user' : activeUser, 'checklist' : checklist, 'newchecklist' : newchecklist, 'iterator':iterator })
 
 @csrf_exempt
 def staffProfile(request, username):

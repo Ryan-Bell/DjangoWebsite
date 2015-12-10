@@ -66,6 +66,7 @@ STATE_CHOICES = (
 #This is used to limit the entry boxes
 MAX_LENGTH = 50
 
+
 class Appointment(models.Model):
 		doctor = models.CharField(max_length=MAX_LENGTH)
 		userName = models.CharField(max_length=MAX_LENGTH)
@@ -639,4 +640,3 @@ MEDICINE_CATEGORIES = (('adrenal_cortical_steroids', Z_adrenal_cortical_steroids
                        ('thrombolytics', Z_thrombolytics),
                        ('uterotonic_agents', Z_uterotonic_agents),
                        ('vasodilators', Z_vasodilators))
-
