@@ -29,6 +29,11 @@ html files.
 """
 
 @csrf_exempt
+def updateUser(request):
+    return
+
+
+@csrf_exempt
 def export(request):
     if not request.user.is_authenticated():
             try:
