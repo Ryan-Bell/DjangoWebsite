@@ -2,7 +2,9 @@
 {% include 'headExtra.html' %}
 {% include 'calendarScript.html' %}
 {% include 'chTango.html' %}
-	<div class=" z-depth-2 col s10 white " style="width: 75%; height: 100%; float: right; margin-right: 10%">
+
+<a class="btn waves-effect waves-light white-text blue darken-1"  style="width: 10%; float: right;"	href="/logout">Logout<i class="material-icons right">assignment</i></a>
+	<div class=" z-depth-2 col s10 white " style="width: 75%; height: 100%; float: right;">
 			<div class="row" style="padding: 0px; margin: 0px;">
 
 					<!-- MENU BAR -->
@@ -89,7 +91,7 @@
 							</div>
 							
 							<div class="col s12 right-align" style="margin-top: 5px">
-									<a class="btn waves-effect waves-light white-text blue darken-1 modal-trigger" href="editProfile">Edit<i class="material-icons right">swap_horiz</i></a>
+									<button class="btn modal-trigger waves-effect waves-light white-text blue darken-1" data-toggle="modal" data-target="editProfile">Edit<i class="material-icons right">swap_horiz</i></button>
 							</div>
 
 					</div>
@@ -261,7 +263,7 @@
 													<h4>Delete Appointment</h4>
 											</div>
 											<div class="modal-body">
-												stuff
+												Are you sure you want to delete?
 											</div>
 											<div class="modal-footer">
 													<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Delete Appointment<i class="material-icons right">delete</i></button>	
@@ -271,18 +273,22 @@
 					</div>
 				</div>
 				
-				<div id="editProfile" class="modal fade" role="dialog">
-						<div class="modal-dialog">
+				<div id="editProfile" class="modal fade white" role="dialog">
+						<div class="modal-dialog white">
 							<div class="modal-content">
-									<form id="deleteApt" action="/deleteAppForm/" method="POST">
+									<form id="editProfile" action="/editProfileForm/" method="POST">
 											<div class="modal-header">
+											<!-----------------------------------------
+													<a style="float:right"><i class="material-icons waves-effect waves-light text-blue-darken-1">cancel</i></a>
+											------------------------------------------->		
 													<h4>Edit Profile</h4>
 											</div>
 											<div class="modal-body">
 											
+											<div class="input-field col s6">
+												
 											
-											
-											
+											<div class="input-field col s6">
 													<select name="hospital">
 														<option value="" disabled selected>Choose Hospital:</option>
 																{% for singlehospital in hospitallist %}
@@ -295,7 +301,7 @@
 																				</option>
 																{% endfor %}
 													</select>
-													
+											</div>	
 													
 													
 													
@@ -330,7 +336,7 @@
 											
 											</div>
 											<div class="modal-footer">
-													<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Delete Appointment<i class="material-icons right">delete</i></button>	
+													<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Confirm<i class="material-icons right">swap_horiz</i></button>	
 											</div>
 									</form>
 							</div>
