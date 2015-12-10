@@ -1,223 +1,22 @@
 <!-- Server Side Includes to pull in head html file -->
 {% include 'head.html' %}
+{% include 'gMap.html' %}
 
-<script>
-    function initMap(){
-        var mapcenter = {lat: 43.1856307, lng: -77.6865509};
-        var map = new google.maps.Map(document.getElementById('hospitalMap'), {
-            zoom: 11,
-            center: mapcenter,
-            mapTypId: google.maps.MapTypeId.ROADMAP
-        });
-
-        var hospitalLocationHighland = {lat: 43.135475, lng: -77.606110};
-        var hospitalLocationHighlandFamily = {lat: 43.142106, lng: -77.599179};
-        var hospitalLocationRochesterGeneral = {lat: 43.153636, lng: -77.560190};
-        var hospitalLocationUnity = {lat: 43.193421, lng: -77.705872};
-
-        //The content for each hospital is the html that is injected in the window that pops up when the markers
-        //are clicked.
-				
-				//information for Highland General
-        var contentHighland =
-						'<div id="content">' +
-						'<div id="siteNotice">' +
-            '</div>' +
-            '<h5 id="firstHeading" class="firstHeading">Highland General Hospital' +
-						'<img src="../../static/images/highlandGeneral.png" alt="Load Error"></h3>'+
-            '<div id="bodyContent">' +
-            '<p>210 E Highland Dr, Rochester, NY 14610</p>' + 
-						'<p>(585) 244-958</p>' +
-            '</div>' +
-            '</div>';
-				
-				//information for Highland Family
-				var contentHighlandFamily =
-						'<div id="content">' +
-            '<div id="siteNotice">' +
-            '</div>' +
-            '<h5 id="firstHeading" class="firstHeading">Highland Family Hospital' +
-						'<img src="../../static/images/highlandGeneral.png" alt="Load Error"></h3>'+
-            '<div id="bodyContent">' +
-            '<p>777 S Clinton Ave, Rochester, NY 14620</p>' +
-						'<p>(585) 279-4800</p>' +
-            '</div>' +
-            '</div>';
-						
-				//information for Rochester General Hospital
-        var contentRochesterGeneral =
-						'<div id="content">' +
-            '<div id="siteNotice">' +
-            '</div>' +
-            '<h5 id="firstHeading" class="firstHeading">Rochester General Hospital' +
-						'<img src="../../static/images/highlandGeneral.png" alt="Load Error"></h3>'+
-            '<div id="bodyContent">' +
-            '<p>777 S Clinton Ave, Rochester, NY 14620</p>' + 
-						'<p> (585) 279-4800</p>' +
-            '</div>' +
-            '</div>';
-						
-				//information for Unity Hospital		
-        var contentUnity = 					
-						'<div id="content">' +
-						'<div id="siteNotice">' +
-						'</div>' +
-						'<h5 id="firstHeading" class="firstHeading">Unity Hospital' +
-						'<img src="../../static/images/highlandGeneral.png" alt="Load Error"></h3>'+
-						'<div id="bodyContent">' +
-						'<p>1555 Long Pond Road, Rochester, NY 14610</p>' + 
-						'<p>(585) 723-7000</p>' +
-            '</div>' +
-            '</div>';
-
-
-        //The following can be used to toggle a bounce animation on the markers
-        //This may be useful for when the user is selecting the hospital from a
-        //drop down menu.
-        //if(markerHighland.getAnimation() !== null){
-        //    markerHighland.setAnimation(null);
-        //} else {
-        //    markerHighland.setAnimation(google.maps.Animation.BOUNCE);
-        //}
-
-        //----------------------------------
-        //    content window, marker, and listener
-        //    for Highland General
-        //----------------------------------
-
-        //create content window and pass in content string
-        var infoWindowHighland = new google.maps.InfoWindow({
-            content: contentHighland
-        });
-
-        //create marker
-        var markerHighland = new google.maps.Marker({
-            animation: google.maps.Animation.DROP,
-            position: hospitalLocationHighland,
-            map: map,
-            title: 'Highland General'
-        });
-
-        //add click listener that closes out of other windows opens correct content window
-        markerHighland.addListener('click', function() {
-            infoWindowHighlandFamily.close();
-            infoWindowRochesterGeneral.close();
-            infoWindowUnity.close();
-            infoWindowHighland.open(map, markerHighland);
-        });
-
-        //----------------------------------
-        //    content window, marker, and listener
-        //    for Highland Family
-        //----------------------------------
-
-        //create content window and pass in content string
-        var infoWindowHighlandFamily = new google.maps.InfoWindow({
-            content: contentHighlandFamily
-        });
-
-        //create marker
-        var markerHighlandFamily = new google.maps.Marker({
-            animation: google.maps.Animation.DROP,
-            position: hospitalLocationHighlandFamily,
-            map: map,
-            title: 'Highland Family'
-        });
-
-        //add click listener that closes out of other windows opens correct content window
-        markerHighlandFamily.addListener('click', function() {
-            infoWindowHighland.close();
-            infoWindowRochesterGeneral.close();
-            infoWindowUnity.close();
-            infoWindowHighlandFamily.open(map, markerHighlandFamily);
-        });
-
-        //----------------------------------
-        //    content window, marker, and listener
-        //    for Rochester General
-        //----------------------------------
-
-        //create content window and pass in content string
-        var infoWindowRochesterGeneral = new google.maps.InfoWindow({
-            content: contentRochesterGeneral
-        });
-
-        //create marker
-        var markerRochesterGeneral = new google.maps.Marker({
-            animation: google.maps.Animation.DROP,
-            position: hospitalLocationRochesterGeneral,
-            map: map,
-            title: 'Rochester General'
-        });
-
-        //add click listener that closes out of other windows opens correct content window
-        markerRochesterGeneral.addListener('click', function() {
-            infoWindowHighland.close();
-            infoWindowHighlandFamily.close();
-            infoWindowUnity.close();
-            infoWindowRochesterGeneral.open(map, markerRochesterGeneral);
-        });
-
-        //----------------------------------
-        //    content window, marker, and listener
-        //    for Unity
-        //----------------------------------
-
-        //create content window and pass in content string
-        var infoWindowUnity = new google.maps.InfoWindow({
-            content: contentUnity
-        });
-
-        //create marker
-        var markerUnity = new google.maps.Marker({
-            animation: google.maps.Animation.DROP,
-            position: hospitalLocationUnity,
-            map: map,
-            title: 'Unity'
-        });
-
-        //add click listener that closes out of other windows opens correct content window
-        markerUnity.addListener('click', function() {
-            infoWindowHighland.close();
-            infoWindowHighlandFamily.close();
-            infoWindowRochesterGeneral.close();
-            infoWindowUnity.open(map, markerUnity);
-        });
-
-        //add click listener to the map so that it closes all info windows
-        map.addListener('click', function() {
-            infoWindowHighland.close();
-            infoWindowHighlandFamily.close();
-            infoWindowRochesterGeneral.close();
-            infoWindowUnity.close();
-        });
-    }
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAxZ5sO9tX-mrFU1gH3I5p__VSGO0wjKs&signed_in=true&callback=initMap">
-</script>
 <script>
     //Handles toggling the visibility of the other field in medical information
-    function hideOther(){
-        if(document.getElementById('other').checked){
+    function hideOther()
+		{
+        if(document.getElementById('other').checked)
+				{
             document.getElementById('otherField').style.display = "block";
-        } else {
+        } 
+				else
+				{
             document.getElementById('otherField').style.display = "none";
         }
     }
 
-    //The following function loads the javascript for materialize so various js functions work
-    $(document).ready(function() {
-		 $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15 // Creates a dropdown of 15 years to control year
-    });
-		
         $('select').material_select();
-    });
-
-   
-
 </script>
 
 <div class="container white z-depth-2 " style="height: 100%;">
@@ -406,7 +205,7 @@
 									
 										<div class="input-field col s6">
 												<select name="doctor">
-                                                    <option value="" disabled selected>Choose Doctor:</option>
+                            <option value="" disabled selected>Choose Doctor:</option>
 														{% for singledoctor in doctorlist %}
 																<option value="{{ singledoctor.user.username }}">
 																		{{ singledoctor.profileInfo.firstName }}

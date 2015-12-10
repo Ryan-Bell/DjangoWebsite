@@ -73,7 +73,7 @@ def createApp(request):
 				
 		print("failed")
 		
-		return HttpResponseRedirect('/%s/profile/#calendarSection' % request.user.username)
+		return HttpResponseRedirect('/%s/profile/' % request.user.username)
 		
 @csrf_exempt
 def deleteApp(request, id):

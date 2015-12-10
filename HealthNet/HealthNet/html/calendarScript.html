@@ -1,0 +1,71 @@
+<script>
+				/*
+					jQuery document ready
+				*/
+				
+				$(document).ready(function()
+				{
+					/*
+						date store today date.
+						d store today date.
+						m store current month.
+						y store current year.
+					*/
+					var date = new Date();
+					var d = date.getDate();
+					var m = date.getMonth();
+					var y = date.getFullYear();
+					
+					/*
+						Initialize fullCalendar and store into variable.
+						Why in variable?
+						Because doing so we can use it inside other function.
+						In order to modify its option later.
+					*/
+					
+					var calendar = $('#calendar').fullCalendar(
+					{	
+						aspectRatio: 2,
+						header:
+						{
+							left: 'prev,next today',
+							center: 'title',
+							right: 'month,agendaWeek,agendaDay'
+						},
+						dayClick: function(date, jsEvent, view){
+						
+								$("#id_date").attr("value", date.toISOString().slice(0,10));
+								
+								if (view.name != 'month')
+									$("#id_time").attr("value", date.toISOString().slice(11,16));
+								
+								$("#newAppointment").openModal();
+						},
+						eventClick: function(calEvent, jsEvent, view){
+						
+							{% for apt in appointments %}
+								if (calEvent.pk == "{{ apt.pk }}") {
+										document.getElementById("deleteApt").action = "/deleteAppForm/{{ apt.pk }}";
+								}
+							{% endfor %}
+							
+							$("#deleteAppointment").openModal();
+						}
+						
+					});
+					
+						{% for apt in appointments %}
+							var newEvent = {
+								title: "Apt",
+								start: "{{ apt.date|escapejs }}".slice(0,16),
+								end: "{{ apt.date|escapejs }}".slice(0,16),
+								doctor: "{{ apt.doctor }}",
+								patient: "{{ apt.userName }}",
+								pk: "{{ apt.pk }}",
+							}
+							calendar.fullCalendar('renderEvent', newEvent, true)
+						{% endfor %}
+						//initialize material
+						$('#select').material_select();
+				});			
+</script>	
