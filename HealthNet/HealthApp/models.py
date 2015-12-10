@@ -68,15 +68,23 @@ MAX_LENGTH = 50
 
 
 class Appointment(models.Model):
-		doctor = models.CharField(max_length=MAX_LENGTH)
-		userName = models.CharField(max_length=MAX_LENGTH)
-		date = models.DateTimeField()
-		description = models.CharField(max_length="200")
+    doctor = models.CharField(max_length=MAX_LENGTH)
+    userName = models.CharField(max_length=MAX_LENGTH)
+    date = models.DateTimeField()
+    description = models.CharField(max_length="200")
+
+    def __str__(self):
+        return self.userName
+
 
 class UserInfo(models.Model):
     policyNumber = models.CharField(max_length=MAX_LENGTH)
     provider = models.CharField(max_length=MAX_LENGTH)
     groupNumber = models.CharField(max_length=MAX_LENGTH)
+
+    def __str__(self):
+        return self.policyNumber
+
 
 class ProfileInfo(models.Model):
     firstName = models.CharField(max_length=MAX_LENGTH)
@@ -91,6 +99,10 @@ class ProfileInfo(models.Model):
     email = models.EmailField(blank=False)
     eName = models.CharField(max_length=MAX_LENGTH, default='none')
     ePhoneNumber = models.CharField(max_length=MAX_LENGTH, default='none')
+
+    def __str__(self):
+        return self.firstName + " " + self.lastName
+
 
 class MedicalInfo(models.Model):
     #add cancer
@@ -123,9 +135,15 @@ class MedicalInfo(models.Model):
     whoopingCough = models.BooleanField(default=False)
     otherText = models.CharField(max_length=MAX_LENGTH, null=True)
 
+
+
 class Doctor(models.Model):
     user = models.OneToOneField(User)
     profileInfo = models.OneToOneField(ProfileInfo, null=True)
+
+    def __str__(self):
+        return self.user.username
+
 
 
 class Nurse(models.Model):
@@ -133,8 +151,15 @@ class Nurse(models.Model):
     hospital = models.CharField(max_length=MAX_LENGTH, null=True)
     profileInfo = models.OneToOneField(ProfileInfo, null=True)
 
+    def __str__(self):
+        return self.user.username
+
 class Hospital(models.Model):
     name = models.CharField(max_length=MAX_LENGTH)
+
+    def __str__(self):
+        return self.name
+
 
 class Prescription(models.Model):
     medicationCategory = models.CharField(max_length=MAX_LENGTH)
@@ -144,12 +169,20 @@ class Prescription(models.Model):
     directions = models.TextField(max_length=MAX_LENGTH)
     comments = models.TextField(max_length=MAX_LENGTH)
 
+    def __str__(self):
+        return self.medication
+
+
 class MedTest(models.Model):
     name = models.CharField(max_length=MAX_LENGTH)
     doctor = models.ForeignKey(Doctor)
     released = models.BooleanField(default = False)
     dateIssued = models.DateField()
     result = models.TextField()
+
+    def __str__(self):
+        return self.name
+
 
 class Patient(models.Model):
     user = models.OneToOneField(User)
@@ -172,6 +205,11 @@ class LogItem(models.Model):
     user = models.OneToOneField(User, null = True)
     datetime = models.DateField(null=True)
     action = models.CharField(max_length=100, null = True)
+
+    def __str__(self):
+        return self.action
+
+
 
 #class for medication categories that each hold a list of medications
 class Z_adamantane_antivirals(models.Model):
