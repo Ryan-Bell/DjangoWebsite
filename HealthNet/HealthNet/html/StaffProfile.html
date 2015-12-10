@@ -15,12 +15,27 @@
                     <li class="tab col s3"><a href="#calendarSection">Calendar</a></li>
                 </ul>
             </div>
-
-            <form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
-                {% for patient in patients %}
-                        <p>{{ patient.profileInfo.firstName }}</p>
-                {% endfor %}
-            </form>
+						<div>
+								<form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
+										<div class="input-field col s6">
+												<select name="patient" onchange="pupulatePatient()">
+														<option value="" disabled selected>Choose Hospital:</option>
+																{% for patient in patients %}
+																				<option value="{{ singlehospital.name }}">
+																								{{ patient.profileInfo.firstName }}
+																				</option>
+																{% empty %}
+																				<option value="">
+																								There are no hospitals
+																				</option>
+																{% endfor %}
+												</select>
+										</div>
+										<div >
+												<button type="submit" class="btn waves-effect waves-light" >Submit</button>	
+										<
+								</form>
+						</div>
 
             <div id="informationSection" class="col s12 valign-wrapper" style="width:100%;">
 
