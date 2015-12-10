@@ -29,8 +29,16 @@ html files.
 """
 
 @csrf_exempt
-def updateUser(request):
-    return
+def updateUser(request, id):
+    if not request.user.is_authenticated():
+      return redirect('/login/')
+
+    requestedPatient = Patient.objects.filter(pk=id)
+    print(requestedPatient)
+
+    return HttpResponseRedirect('/%s/profile' % request.user.username, {'patient': requestedPatient})
+
+
 
 
 @csrf_exempt
