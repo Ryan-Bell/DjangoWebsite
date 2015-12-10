@@ -42,7 +42,7 @@ def export(request):
             patient = Patient.objects.get(user=request.user)
 
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="exportedInformation.csv"'
+    response['Content-Disposition'] = 'attachment; filename="MedicalInformation.csv"'
 
     writer = csv.writer(response)
     writer.writerow(['User Info:', 'Usename', patient.user.username, 'Policy Number', patient.userInfo.policyNumber, 'Provider', patient.userInfo.provider, 'Group Number', patient.userInfo.groupNumber])
@@ -157,6 +157,7 @@ def userLogin(request):
 
 @csrf_exempt
 def userLogout(request):
+
     logout(request)
     try:
         newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="User has logged out")

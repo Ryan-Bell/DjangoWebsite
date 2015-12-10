@@ -3,348 +3,520 @@
 {% include 'calendarScript.html' %}
 {% include 'chTango.html' %}
 
-<a class="btn waves-effect waves-light white-text blue darken-1"  style="width: 10%; float: right;"	href="/logout">Logout<i class="material-icons right">assignment</i></a>
-	<div class=" z-depth-2 col s10 white " style="width: 75%; height: 100%; float: right;">
-			<div class="row" style="padding: 0px; margin: 0px;">
 
-					<!-- MENU BAR -->
-					<div class="col s12 z-depth-2" style="padding: 0px;">
-							<!-- Top bar nav links -->
-							<ul class="tabs">
-								<li class="tab col s3 "><a href="#personalSection" class="active">Personal Information</a></li>
-								<li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
-								<li class="tab col s3"><a href="#calendarSection">Calendar</a></li>
-							</ul>
-					</div>
-					
-					<!-- Personal Information-->
-					<div id="personalSection" class="col s12" style="width:100%;">
-							<div id="accountInfo" class="z-depth-3 col s12" style="padding: 5px;">
-									<div class="col s12" style="text-align:center;">
-											<h5 class="col s12 blue-text text-darken-2">Account Information</h5>
-									</div>
+			<div style="width: 10%; height:100%; float: right">
+					<a class="btn waves-effect waves-light white-text blue darken-1"  style="width: 100%;"	href="/logout">Logout<i class="material-icons white right">assignment</i></a>				
+					<a class="btn waves-effect waves-light white-text blue darken-1" style="margin-top: 425%;" href="/export/">Export Profile<i class="material-icons right">input</i></a>
+			</div>
+				<div class=" z-depth-2 white " style="width: 75%; height: 100%; float: right;">
+							<div class="row" style="padding: 0px; margin: 0px;">
 
-									<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
-												<b>Username:</b><br/>
-												<b>Phone:</b><br/>
-												<b>Email:</b><br/>
-									</div>
-
-
-									<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
-												{{ user.user.username}}<br/>
-												{{ user.profileInfo.phoneNumber }}<br/>
-												{{ user.profileInfo.email }}<br/>
-									</div>											
-									
-									<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
-												<b>Hospital:</b> <br/>
-												<b>Doctor:</b>	
+									<!-- MENU BAR -->
+									<div class="col s12 z-depth-2" style="padding: 0px;">
+											<!-- Top bar nav links -->
+											<ul class="tabs">
+												<li class="tab col s3 "><a href="#personalSection" class="active">Personal Information</a></li>
+												<li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
+												<li class="tab col s3"><a href="#calendarSection">Calendar</a></li>
+											</ul>
 									</div>
 									
-									<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
-												{{ user.hospital.name }}<br/>
-												{{ user.doctor.profileInfo.firstName}}
-									</div>		
-							</div>
-							
-							<div id="personalInfo" class="valign z-depth-3 col s12" style="padding: 20px;">
-									<div class="col s12" style="text-align:center;">
-											<h5 class="blue-text text-darken-2">Personal Information</h5>
-									</div>
-									<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
-												<b>Name:</b><br/>
-												<b>Address:</b>
-									</div>
-									<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
-												{{ user.profileInfo.firstName }} {{ user.profileInfo.middleName }} {{ user.profileInfo.lastName }}<br/>
-												{{ user.profileInfo.address }}<br />{{ user.profileInfo.city }}, {{ user.profileInfo.state }}<br/>
-									</div>
-									<div class="col s3 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
-												<b>Insurance Provider:</b><br/>
-												<b>Policy Number:</b><br/>
-												<b>Group Number:</b><br/>
-									</div>
-									<div class="col s3 left-align" style="font-size: 18px; padding:0px;">
-												{{ user.userInfo.provider }}<br/>
-												{{ user.userInfo.policyNumber }}<br/>
-												{{ user.userInfo.groupNumber }}
-									</div>										
-							</div>
-							
-							<div id="emergencyInfo" class="z-depth-3 col s12" style="padding: 20px;">
-									<div class="col s12" style="text-align:center; font-size 20px">
-											<h5 class="blue-text text-darken-2">Emergency Contact</h5>
-									</div>
-									<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
-												<b>Name:</b>
-									</div>
-									<div class="col s4 left-align " style="font-size: 18px; padding:0px;">
-												{{ user.profileInfo.eName }}
-									</div>
-									<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
-											<b>Phone:</b>
-									</div>
-									<div class="col s4 left-align " style="font-size: 18px; padding:0px;">
-												{{ user.profileInfo.ePhoneNumber }}
-									</div>										
-							</div>
-							
-							<div class="col s12 right-align" style="margin-top: 5px">
-									<button class="btn modal-trigger waves-effect waves-light white-text blue darken-1" data-toggle="modal" data-target="editProfile">Edit<i class="material-icons right">swap_horiz</i></button>
-							</div>
-
-					</div>
-
-							<div id="medicalSection" class="col s12 valign-wrapper" style="width:100%;">
-									<div class="z-depth-3 col s12" style="padding: 20px;">
-											<div class="col s12" style="text-align:center">
-													<h5 class="blue-text text-darken-2">Medical History</h5>
-											</div>
-
-											<!-- The following loop does not work
-											but it doesn't cause errors on the profile page and
-											is on the right track so it stays
-											{% for ncheck in newchecklist %}
-												{% if ncheck %}
-													<p>{{ checklist..name }}</p>
-												{% endif %}
-												<p>{{ iterator.next }}</p>
-											{% endfor %} -->
-
-											{%if user.medicalInfo.allergies%}
-												<p>Allergies</p>
-											{% endif %}
-
-											{%if user.medicalInfo.anemia %}
-												<p>Anemia</p>
-											{% endif %}
-
-											{%if user.medicalInfo.arthritis %}
-												<p>Arthritis</p>
-											{% endif %}
-
-											{%if user.medicalInfo.chickenpox %}
-												<p>Chicken Pox</p>
-											{% endif %}
-
-											{%if user.medicalInfo.coxsackie %}
-												<p>Coxsackie</p>
-											{% endif %}
-
-											{%if user.medicalInfo.diphtheria %}
-												<p>Diptheria</p>
-											{% endif %}
-
-											{%if user.medicalInfo.epilepsy %}
-												<p>Epilepsy</p>
-											{% endif %}
-
-											{%if user.medicalInfo.frequentColds %}
-												<p>Frequent Colds</p>
-											{% endif %}
-
-											{%if user.medicalInfo.germanMeasles %}
-												<p>German Measles</p>
-											{% endif %}
-
-											{%if user.medicalInfo.highBloodPressure %}
-												<p>High Blood Pressure</p>
-											{% endif %}
-
-											{%if user.medicalInfo.influenza %}
-												<p>Influenza</p>
-											{% endif %}
-
-											{%if user.medicalInfo.kidneyDisease %}
-												<p>Kidney Disease</p>
-											{% endif %}
-
-											{%if user.medicalInfo.measles %}
-												<p>Measles</p>
-											{% endif %}
-
-											{%if user.medicalInfo.migraines %}
-												<p>Migraines</p>
-											{% endif %}
-
-											{%if user.medicalInfo.mumps %}
-												<p>Mumps</p>
-											{% endif %}
-
-											{%if user.medicalInfo.obesity %}
-												<p>Obesity</p>
-											{% endif %}
-
-											{%if user.medicalInfo.pneumonia %}
-												<p>Pneumonia</p>
-											{% endif %}
-
-											{%if user.medicalInfo.polio %}
-												<p>Polio</p>
-											{% endif %}
-
-											{%if user.medicalInfo.rheumaticFever %}
-												<p>Rheumatic Fever</p>
-											{% endif %}
-
-											{%if user.medicalInfo.scarlatina %}
-												<p>Scarlatina</p>
-											{% endif %}
-
-											{%if user.medicalInfo.scarletFever %}
-												<p>Scarlet Fever</p>
-											{% endif %}
-
-											{%if user.medicalInfo.strokes %}
-												<p>Strokes</p>
-											{% endif %}
-
-											{%if user.medicalInfo.syphilis %}
-												<p>Syphilis</p>
-											{% endif %}
-
-											{%if user.medicalInfo.tonsillitis %}
-												<p>Tonsillitis</p>
-											{% endif %}
-
-											{%if user.medicalInfo.tuberculosis %}
-												<p>Tuberculosis</p>
-											{% endif %}
-
-											{%if user.medicalInfo.whoopingCough %}
-												<p>Whooping Cough</p>
-											{% endif %}
-
-											{%if user.medicalInfo.otherText != null%}
-												<p>{{user.medicalInfo.otherText}}</p>
-											{% endif %}
-
-									</div>
-					</div>
-
-					<div id="calendarSection">
-							<div id='calendar' >
-							</div>
-					</div>
-					
-					<div id="newAppointment" class="modal fade" role="dialog">
-						<div class="modal-dialog">
-							<div class="modal-content">
-									<form action="/createAppForm/" method="POST">
-											<div class="modal-header">
-													<h4>New Appointment</h4>
-											</div>
-											<div class="modal-body">
-													<div class="col s6 input-field">
-															<label for="id_doctor">Doctor</label>
-																{{ appform.doctor }}
-															<label for="id_date">Date</label>
-																{{ appform.date }}
-															<label for="id_time">Time</label>
-																{{ appform.time }}
-															<label for="id_description">Description</label>
-																{{ appform.description }}
+									<!-- Personal Information-->
+									<div id="personalSection" class="col s12" style="width:100%;">
+											<div id="accountInfo" class="z-depth-3 col s12" style="padding: 5px;">
+													<div class="col s12" style="text-align:center;">
+															<h5 class="col s12 blue-text text-darken-2">Account Information</h5>
 													</div>
+
+													<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+																<b>Username:</b><br/>
+																<b>Phone:</b><br/>
+																<b>Email:</b><br/>
+													</div>
+
+
+													<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+																{{ user.user.username}}<br/>
+																{{ user.profileInfo.phoneNumber }}<br/>
+																{{ user.profileInfo.email }}<br/>
+													</div>											
+													
+													<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+																<b>Hospital:</b> <br/>
+																<b>Doctor:</b>	
+													</div>
+													
+													<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+																{{ user.hospital.name }}<br/>
+																{{ user.doctor.profileInfo.firstName}}
+													</div>		
 											</div>
-											<div class="modal-footer">
-													<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+											
+											<div id="personalInfo" class="valign z-depth-3 col s12" style="padding: 20px;">
+													<div class="col s12" style="text-align:center;">
+															<h5 class="blue-text text-darken-2">Personal Information</h5>
+													</div>
+													<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+																<b>Name:</b><br/>
+																<b>Address:</b>
+													</div>
+													<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+																{{ user.profileInfo.firstName }} {{ user.profileInfo.middleName }} {{ user.profileInfo.lastName }}<br/>
+																{{ user.profileInfo.address }}<br />{{ user.profileInfo.city }}, {{ user.profileInfo.state }}<br/>
+													</div>
+													<div class="col s3 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+																<b>Insurance Provider:</b><br/>
+																<b>Policy Number:</b><br/>
+																<b>Group Number:</b><br/>
+													</div>
+													<div class="col s3 left-align" style="font-size: 18px; padding:0px;">
+																{{ user.userInfo.provider }}<br/>
+																{{ user.userInfo.policyNumber }}<br/>
+																{{ user.userInfo.groupNumber }}
+													</div>										
 											</div>
-									</form>
-							</div>
-					</div>
-					</div>
-					
-				<div id="deleteAppointment" class="modal fade" role="dialog">
-						<div class="modal-dialog">
-							<div class="modal-content">
-									<form id="deleteApt" action="/deleteAppForm/" method="POST">
-											<div class="modal-header">
-													<h4>Delete Appointment</h4>
+											
+											<div id="emergencyInfo" class="z-depth-3 col s12" style="padding: 20px;">
+													<div class="col s12" style="text-align:center; font-size 20px">
+															<h5 class="blue-text text-darken-2">Emergency Contact</h5>
+													</div>
+													<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+																<b>Name:</b>
+													</div>
+													<div class="col s4 left-align " style="font-size: 18px; padding:0px;">
+																{{ user.profileInfo.eName }}
+													</div>
+													<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+															<b>Phone:</b>
+													</div>
+													<div class="col s4 left-align " style="font-size: 18px; padding:0px;">
+																{{ user.profileInfo.ePhoneNumber }}
+													</div>										
 											</div>
-											<div class="modal-body">
-												Are you sure you want to delete?
+											
+											<div class="col s12 right-align" style="margin-top: 5px">
+													<button class="btn modal-trigger waves-effect waves-light white-text blue darken-1" data-toggle="modal" data-target="editProfile">Edit<i class="material-icons right">swap_horiz</i></button>
 											</div>
-											<div class="modal-footer">
-													<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Delete Appointment<i class="material-icons right">delete</i></button>	
+
+									</div>
+
+											<div id="medicalSection" class="col s12 valign-wrapper" style="width:100%;">
+													<div class="z-depth-3 col s12" style="padding: 20px;">
+															<div class="col s12" style="text-align:center">
+																	<h5 class="blue-text text-darken-2">Medical History</h5>
+															</div>
+
+															<!-- The following loop does not work
+															but it doesn't cause errors on the profile page and
+															is on the right track so it stays
+															{% for ncheck in newchecklist %}
+																{% if ncheck %}
+																	<p>{{ checklist..name }}</p>
+																{% endif %}
+																<p>{{ iterator.next }}</p>
+															{% endfor %} -->
+
+															{%if user.medicalInfo.allergies%}
+																<p>Allergies</p>
+															{% endif %}
+
+															{%if user.medicalInfo.anemia %}
+																<p>Anemia</p>
+															{% endif %}
+
+															{%if user.medicalInfo.arthritis %}
+																<p>Arthritis</p>
+															{% endif %}
+
+															{%if user.medicalInfo.chickenpox %}
+																<p>Chicken Pox</p>
+															{% endif %}
+
+															{%if user.medicalInfo.coxsackie %}
+																<p>Coxsackie</p>
+															{% endif %}
+
+															{%if user.medicalInfo.diphtheria %}
+																<p>Diptheria</p>
+															{% endif %}
+
+															{%if user.medicalInfo.epilepsy %}
+																<p>Epilepsy</p>
+															{% endif %}
+
+															{%if user.medicalInfo.frequentColds %}
+																<p>Frequent Colds</p>
+															{% endif %}
+
+															{%if user.medicalInfo.germanMeasles %}
+																<p>German Measles</p>
+															{% endif %}
+
+															{%if user.medicalInfo.highBloodPressure %}
+																<p>High Blood Pressure</p>
+															{% endif %}
+
+															{%if user.medicalInfo.influenza %}
+																<p>Influenza</p>
+															{% endif %}
+
+															{%if user.medicalInfo.kidneyDisease %}
+																<p>Kidney Disease</p>
+															{% endif %}
+
+															{%if user.medicalInfo.measles %}
+																<p>Measles</p>
+															{% endif %}
+
+															{%if user.medicalInfo.migraines %}
+																<p>Migraines</p>
+															{% endif %}
+
+															{%if user.medicalInfo.mumps %}
+																<p>Mumps</p>
+															{% endif %}
+
+															{%if user.medicalInfo.obesity %}
+																<p>Obesity</p>
+															{% endif %}
+
+															{%if user.medicalInfo.pneumonia %}
+																<p>Pneumonia</p>
+															{% endif %}
+
+															{%if user.medicalInfo.polio %}
+																<p>Polio</p>
+															{% endif %}
+
+															{%if user.medicalInfo.rheumaticFever %}
+																<p>Rheumatic Fever</p>
+															{% endif %}
+
+															{%if user.medicalInfo.scarlatina %}
+																<p>Scarlatina</p>
+															{% endif %}
+
+															{%if user.medicalInfo.scarletFever %}
+																<p>Scarlet Fever</p>
+															{% endif %}
+
+															{%if user.medicalInfo.strokes %}
+																<p>Strokes</p>
+															{% endif %}
+
+															{%if user.medicalInfo.syphilis %}
+																<p>Syphilis</p>
+															{% endif %}
+
+															{%if user.medicalInfo.tonsillitis %}
+																<p>Tonsillitis</p>
+															{% endif %}
+
+															{%if user.medicalInfo.tuberculosis %}
+																<p>Tuberculosis</p>
+															{% endif %}
+
+															{%if user.medicalInfo.whoopingCough %}
+																<p>Whooping Cough</p>
+															{% endif %}
+
+															{%if user.medicalInfo.otherText != null%}
+																<p>{{user.medicalInfo.otherText}}</p>
+															{% endif %}
+
+													</div>
+									</div>
+
+									<div id="calendarSection">
+											<div id='calendar' >
 											</div>
-									</form>
-							</div>
+									</div>
+									
+									<div id="newAppointment" class="modal fade" role="dialog">
+										<div class="modal-dialog">
+											<div class="modal-content">
+													<form action="/createAppForm/" method="POST">
+															<div class="modal-header">
+																	<h4>New Appointment</h4>
+															</div>
+															<div class="modal-body">
+																	<div class="col s6 input-field">
+																	
+																					<select name="doctor">
+																							<option value="" disabled selected>Choose Doctor:</option>
+																							{% for singledoctor in doctorlist %}
+																									<option value="{{ singledoctor.user.username }}">
+																											{{ singledoctor.profileInfo.firstName }}
+																									</option>
+																							{% empty %}
+																									<option value="">
+																											There are no doctors in the system
+																									</option>
+																							{% endfor %}
+																					</select>																		
+
+																	</div>
+																	
+																	<div class="col s6 input-field">
+																			<label for="id_description">Description</label>
+																				{{ appform.description }}
+																	</div>																	
+																	
+																	<div class="col s6 input-field">
+																			<label style="margin-left: 100px;" for="id_date">Date</label>
+																				{{ appform.date }}
+																	</div>
+																	
+																	<div class="col s6 input-field">
+																			<label style="margin-left: 50px; float:right" for="id_time">Time</label>
+																				{{ appform.time }}
+																	</div>
+
+															</div>
+															<div class="modal-footer">
+																	<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+															</div>
+													</form>
+											</div>
+									</div>
+									</div>
+									
+								<div id="deleteAppointment" class="modal fade" role="dialog">
+										<div class="modal-dialog">
+											<div class="modal-content">
+													<form id="deleteApt" action="/deleteAppForm/" method="POST">
+															<div class="modal-header">
+																	<h4>Delete Appointment</h4>
+															</div>
+															<div class="modal-body">
+																Are you sure you want to delete?
+															</div>
+															<div class="modal-footer">
+																	<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Delete Appointment<i class="material-icons right">delete</i></button>	
+															</div>
+													</form>
+											</div>
+									</div>
+								</div>
+								
+								<div id="editProfile" class="modal fade white" role="dialog">
+										<div class="modal-dialog white">
+											<div class="modal-content">
+													<form id="editProfile" action="/profileEdit/" method="POST">
+															<div class="modal-header">
+															<!-----------------------------------------
+																	<a style="float:right"><i class="material-icons waves-effect waves-light text-blue-darken-1">cancel</i></a>
+															------------------------------------------->		
+																	<h4>Edit Profile</h4>
+															</div>
+															<div class="modal-body">
+															
+														 <div id="UserInfo" class="col s12" style="width:100%; height:100%;">
+
+																	<div>
+																			<p style="font-size:15px">Insurance Info</p>
+																	</div>					 
+														 
+																	<div class="input-field col s12 m6">
+																			<input id="policyNumber" name="policyNumber" type="text" class="validate"  length="20">
+																			<label for="policyNumber">Policy Number</label>
+																	</div>
+																	
+																	<div class="input-field col s12 m6">
+																			<input id="provider" name="provider" type="text" class="validate"  length="40">
+																			<label for="provider">Provider</label>
+																	</div>
+
+																	<div class="input-field col s6">
+																			<select name="hospital">
+																					<option value="" disabled selected>Choose Hospital:</option>
+																							{% for singlehospital in hospitallist %}
+																											<option value="{{ singlehospital.name }}">
+																															{{ singlehospital.name }}
+																											</option>
+																							{% empty %}
+																											<option value="">
+																															There are no hospitals
+																											</option>
+																							{% endfor %}
+																			</select>
+																	</div>
+
+
+																	<div class="input-field col s12 m6">
+																			<input id="groupNumber" name="groupNumber" type="text" class="validate"  length="20">
+																			<label for="groupNumber">Group Number</label>
+																	</div>
+
+															<!--Begin general information tab-->
+															<div id="Personal Information" class="col s12" style="width:100%; height:100%;">
+												
+																	<!--Contatainer for left half of screen inputs-->
+																	<div class="col m6 l6" style="height:100%">
+
+																		<div class="col s12" style="width: 100%">
+																				<p style="font-size:15px">Personal Info</p>
+																		</div>
+																		
+																		<!--Create input field for first name-->
+																		<div class="input-field col s12">
+																				<input id="first_name" name="firstName" type="text" class="validate" pattern="[A-Za-z]+"  length="40">
+																				<label for="first_name">First Name</label>
+																		</div>
+
+																		<!--Create input field for middle name-->
+																		<div class="input-field col s12">
+																				<input id="middle_name" name="middleName" type="text" class="validate" pattern="[A-Za-z]+"  length="40">
+																				<label for="middle_name">Middle Name</label>
+																		</div>
+
+																		<!--Create input field for last name-->
+																		<div class="input-field col s12">
+																								<input id="last_name" name="lastName" type="text" class="validate" pattern="[A-Za-z]+"  length="40">
+																								<label for="last_name">Last Name</label>
+																		</div>
+
+																		<!--Create input field for email address-->
+																		<div class="input-field col s12">
+																								<input id="email" name="email" type="email" class="validate"  length="40">
+																				<label for="email">Email Address</label>
+																		</div>
+																		
+																		<!--Create input field for date of birth-->
+																		<div class="input-field col s12">
+																							 <input id="dateOfBirth" name="dateOfBirth" type="text" class="validate" pattern="[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}" length="40">
+																							 <label for="dateOfBirth">Birthdate MM/DD/YYYY</label>
+																		</div>	
+																	</div>
+
+
+																	<!--Contatainer for right half of screen inputs-->
+																	<div class="col m6 l6">
+																		
+																			<div class="input-field col s12">
+																				<input id="address" type="text" name="address" class="validate" pattern="[A-Za-z0-9 ]+"  length="50">
+																				<label for="address">Street Address</label>
+																			</div>
+																			
+																			<div class="input-field col s12">
+																				<input id="city" type="text" name="city" class="validate" pattern="[A-Za-z ]+"  length="40">
+																				<label for="city">City</label>
+																			</div>
+
+																			<div class="input-field col s3">
+																					<select name="state">
+																							<option value="" disabled selected>State:</option>
+																							<option value="Alabama">Alabama</option>
+																							<option value="Alaska">Alaska</option>
+																							<option value="Arizona">Arizona</option>
+																							<option value="Arkansas">Arkansas</option>
+																							<option value="California">California</option>
+																							<option value="Colorado">Colorado</option>
+																							<option value="Connecticut">Connecticut</option>
+																							<option value="Delaware">Delaware</option>
+																							<option value="Florida">Florida</option>
+																							<option value="Georgia">Georgia</option>
+																							<option value="Hawaii">Hawaii</option>
+																							<option value="Idaho">Idaho</option>
+																							<option value="Illinois">Illinois</option>
+																							<option value="Indiana">Indiana</option>
+																							<option value="Iowa">Iowa</option>
+																							<option value="Kansas">Kansas</option>
+																							<option value="Kentucky">Kentucky</option>
+																							<option value="Louisiana">Louisiana</option>
+																							<option value="Maine">Maine</option>
+																							<option value="Maryland">Maryland</option>
+																							<option value="Massachusetts">Massachusetts</option>
+																							<option value="Michigan">Michigan</option>
+																							<option value="Minnesota">Minnesota</option>
+																							<option value="Mississippi">Mississippi</option>
+																							<option value="Missouri">Missouri</option>
+																							<option value="Montana">Montana</option>
+																							<option value="Nebraska">Nebraska</option>
+																							<option value="Nevada">Nevada</option>
+																							<option value="New Hampshire">New Hampshire</option>
+																							<option value="New Jersey">New Jersey</option>
+																							<option value="New Mexico">New Mexico</option>
+																							<option value="New York">New York</option>
+																							<option value="North Carolina">North Carolina</option>
+																							<option value="North Dakota">North Dakota</option>
+																							<option value="Ohio">Ohio</option>
+																							<option value="Oklahoma">Oklahoma</option>
+																							<option value="Oregon">Oregon</option>
+																							<option value="Pennsylvannia">Pennsylvannia</option>
+																							<option value="Rhode Island">Rhode Island</option>
+																							<option value="South Carolina">South Carolina</option>
+																							<option value="South Dakota">South Dakota</option>
+																							<option value="Tennessee">Tennessee</option>
+																							<option value="Texas">Texas</option>
+																							<option value="Utah">Utah</option>
+																							<option value="Vermont">Vermont</option>
+																							<option value="Virginia">Virginia</option>
+																							<option value="Washington">Washington</option>
+																							<option value="West Virginia">West Virginia</option>
+																							<option value="Wisconsin">Wisconsin</option>
+																							<option value="Wyoming">Wyoming</option>
+																					</select>
+																			</div>
+																		
+																			<div class="input-field col s3">
+																					<input id="zipcode" name="zipcode" type="text" class="validate" pattern="[0-9]{5}"  length="5">
+																					<label for="zipcode">Zipcode</label>
+																			</div>
+																		
+																			<div class="input-field col s12">
+																				<input id="phoneNumber" name="phoneNumber" type="text" class="validate" pattern="[0-9]{7,10}" length="10">
+																				<label for="phoneNumber">Phone Number</label>
+																			</div>
+																		
+																			<div class="input-field col s6">
+																					<select name="doctor">
+																							<option value="" disabled selected>Choose Doctor:</option>
+																							{% for singledoctor in doctorlist %}
+																									<option value="{{ singledoctor.user.username }}">
+																											{{ singledoctor.profileInfo.firstName }}
+																									</option>
+																							{% empty %}
+																									<option value="">
+																											There are no doctors in the system
+																									</option>
+																							{% endfor %}
+																					</select>	
+																			</div>
+																	</div>
+												
+																	<div class="col s12">
+																			<div>
+																					<p style="font-size:15px">Emergency Contact Info</p>
+																			
+																					<div class="input-field col s6">
+																										<input id="eName" name="eName" type="text" class="validate" pattern="[ A-Za-z]+"  length="40">
+																										<label for="eName">Name</label>
+																					</div>
+																			
+																					<div class="input-field col s6">
+																						<input id="ePhoneNumber" name="ePhoneNumber" type="text" class="validate" pattern="[0-9]{7,10}" length="10">
+																						<label for="ePhoneNumber">Phone Number</label>
+																					</div>
+																			
+																			</div>
+																	</div>
+															</div>
+
+															
+																	
+																	
+															</div>
+															<div class="modal-footer">
+																	<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Confirm<i class="material-icons right">swap_horiz</i></button>	
+															</div>
+													</form>
+											</div>
+									</div>
+								</div>				
+							</div>			
 					</div>
 				</div>
-				
-				<div id="editProfile" class="modal fade white" role="dialog">
-						<div class="modal-dialog white">
-							<div class="modal-content">
-									<form id="editProfile" action="/editProfileForm/" method="POST">
-											<div class="modal-header">
-											<!-----------------------------------------
-													<a style="float:right"><i class="material-icons waves-effect waves-light text-blue-darken-1">cancel</i></a>
-											------------------------------------------->		
-													<h4>Edit Profile</h4>
-											</div>
-											<div class="modal-body">
-											
-											<div class="input-field col s6">
-												
-											
-											<div class="input-field col s6">
-													<select name="hospital">
-														<option value="" disabled selected>Choose Hospital:</option>
-																{% for singlehospital in hospitallist %}
-																				<option value="{{ singlehospital.name }}">
-																								{{ singlehospital.name }}
-																				</option>
-																{% empty %}
-																				<option value="">
-																								There are no hospitals
-																				</option>
-																{% endfor %}
-													</select>
-											</div>	
-													
-													
-													
-													
-													
-													
-													
-													
-													<div class="input-field col s6">
-														<select name="doctor">
-																<option value="" disabled selected>Choose Doctor:</option>
-																{% for singledoctor in doctorlist %}
-																		<option value="{{ singledoctor.user.username }}">
-																				{{ singledoctor.profileInfo.firstName }}
-																		</option>
-																{% empty %}
-																		<option value="">
-																				There are no doctors in the system
-																		</option>
-																{% endfor %}
-														</select>	
-													</div>
-											
-											
-											
-											
-											
-											
-											
-											
-											
-											
-											</div>
-											<div class="modal-footer">
-													<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Confirm<i class="material-icons right">swap_horiz</i></button>	
-											</div>
-									</form>
-							</div>
-					</div>
-				</div>				
-			</div>			
-	</div>
-</div>
 
 <!-- Close the tags opened in head.html -->
 </body>
