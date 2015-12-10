@@ -32,5 +32,5 @@ urlpatterns = [
     url(r'^(?P<username>\w+)/profileEdit/$', views.profileEdit, name='profileEdit'),
 		url(r'^createAppForm/', views.createApp, name='createAppForm'),
 		url(r'^deleteAppForm/(\d+)$', views.deleteApp, name='deleteAppForm'),
-		url(r'^(?P<username>\w+)/profile/$', views.export, name='exportForm'),
+		url(r'^export/$', views.export, name='export'),
 ]
