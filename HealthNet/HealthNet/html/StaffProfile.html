@@ -1,10 +1,11 @@
 <!-- Server Side Includes to pull in head html file -->
 {% include 'headExtra.html' %}
 {% include 'calendarScript.html' %}
+{% include 'chTango.html' %}
 
 <a class="btn waves-effect waves-light white-text blue darken-1"  style="width: 10%; float: right;"	href="/logout">Logout<i class="material-icons right">assignment</i></a>
 
-<div class="container white z-depth-2 " style="height: 100%;">
+<div class=" white z-depth-2 " style="height: 100%; width: 75%; float: right;">
     <div class="row" style="padding: 0px; margin: 0px;">
             <div class="col s12 z-depth-1" style="padding: 0px;">
                 <!-- Top bar nav links -->
@@ -16,13 +17,14 @@
             </div>
 
             <form class="col transparent" method="post" action="." style="width: 100%; height: 100%; padding: 0px;">
-
+                {% for patient in patients %}
+                        <p>{{ patient.profileInfo.firstName }}</p>
+                        <p>{{ patient.name }}</p>
+                {% endfor %}
             </form>
 
             <div id="informationSection" class="col s12 valign-wrapper" style="width:100%;">
-                    {% for patient in patients %}
-                        <p>{{patient.profileInfo.firstName}}</p>
-                    {% endfor %}
+
             </div>
 
             <div id="medicalSection" class="col s12 valign-wrapper" style="width:100%;">

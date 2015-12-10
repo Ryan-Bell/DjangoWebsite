@@ -56,24 +56,24 @@ def export(request):
 
 @csrf_exempt
 def createApp(request):
-		if not request.user.is_authenticated():
-			return redirect('/login/')
+        if not request.user.is_authenticated():
+            return redirect('/login/')
 			
-		if request.method == 'POST':
-			form = AppointmentForm(request.POST)
-			if form.is_valid():
-				cleanData = form.cleaned_data
-				apt = Appointment(
+        if request.method == 'POST':
+            form = AppointmentForm(request.POST)
+            if form.is_valid():
+                cleanData = form.cleaned_data
+                apt = Appointment(
 						doctor=cleanData['doctor'],
 						userName = request.user.username,
 						date=cleanData['date'] + "T" + cleanData['time'],
 						description=cleanData['description']
 				)
-				apt.save()
+                apt.save()
 				
-		print("failed")
+        print("failed")
 		
-		return HttpResponseRedirect('/%s/profile/' % request.user.username)
+        return HttpResponseRedirect('/%s/profile/' % request.user.username)
 		
 @csrf_exempt
 def deleteApp(request, id):
@@ -321,7 +321,13 @@ def staffProfile(request, username):
         #capture the user object and run checks on the account type to determine where to send them
         #In the future we may need to check for doctors and nurses and send them elsewhere.
         accountType = "Doctor"
-        activeUser = Doctor.objects.get(user=request.user)
+        try:
+            activeUser = Doctor.objects.get(user=request.user)
+        except:
+            try:
+                activeUser = Nurse.objects.get(user=request.user)
+            except:
+                activeUser = None
         if activeUser:
             try:
                 newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Staff profile page accessed by Doctor")
@@ -330,7 +336,7 @@ def staffProfile(request, username):
                 newlogitem = LogItem(datetime=datetime.datetime.now(), action="Staff profile page accessed by Doctor")
                 newlogitem.save()
             try:
-                patients = Patient.objects.get(doctor=activeUser)
+                patients = Patient.objects.filter(doctor=Doctor.objects.get(user=request.user))
             except:
                 patients = None
 
@@ -344,10 +350,14 @@ def staffProfile(request, username):
             activeUser = Nurse.objects.get(user=request.user)
             accountType = "Nurse"
             try:
-                patients = Patient.objects.get(hospital=activeUser.hospital)
+                patients = Patient.objects.filter(hospital= Hospital.objects.get(name=activeUser.hospital))
             except:
                 patients = None
-
+    print(patients)
+    print(activeUser.hospital)
+    print(Hospital.objects.get(name=activeUser.hospital))
+    print(Patient.objects.get(user = User.objects.get(username='patient1')).hospital)
+    print(Patient.objects.get(user = User.objects.get(username='patient1')).hospital == Hospital.objects.get(name=activeUser.hospital))
     return render(request, 'StaffProfile.html', {'user' : activeUser, 'accountType' : accountType, 'patients' : patients})
 @csrf_exempt
 def profileEdit(request, username):
