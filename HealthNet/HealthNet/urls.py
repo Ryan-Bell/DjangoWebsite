@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^(?P<username>\w+)/staffProfile/$', views.staffProfile, name='staffProfile'),
     url(r'^logout/$', views.userLogout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^(?P<username>\w+)/profileEdit/$', views.profileEdit, name='profileEdit'),
+    url(r'^profileEdit/$', views.profileEdit, name='profileEdit'),
 		url(r'^createAppForm/', views.createApp, name='createAppForm'),
 		url(r'^deleteAppForm/(\d+)$', views.deleteApp, name='deleteAppForm'),
 		url(r'^export/$', views.export, name='export'),
