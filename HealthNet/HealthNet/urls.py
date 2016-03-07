@@ -33,6 +33,5 @@ urlpatterns = [
     url(r'^profileEdit/$', views.profileEdit, name='profileEdit'),
 		url(r'^createAppForm/', views.createApp, name='createAppForm'),
 		url(r'^deleteAppForm/(\d+)$', views.deleteApp, name='deleteAppForm'),
-		url(r'^export/$', views.export, name='export'),
-		#url(r'^updateUser/$', views.updateUser, name='updateUser'),
+		url(r'^export/$', views.export, name='export')
 ]
