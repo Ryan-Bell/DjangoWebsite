@@ -83,6 +83,35 @@ STATE_CHOICES = (
     ('WY', 'Wyoming'),
 )
 
+diseaseChecks = [
+    'Allergies',
+    'Anemia',
+    'Arthritis',
+    'Chickenpox',
+    'Coxsackie',
+    'Diphtheria',
+    'Epilepsy',
+    'Frequent Colds',
+    'German Measles',
+    'High Blood Pressure',
+    'Influenza',
+    'Kidney Disease',
+    'Measles',
+    'Migraines',
+    'Mumps',
+    'Obesity',
+    'Pneumonia',
+    'Polio',
+    'Rheumatic Fever',
+    'Scarlatina',
+    'Scarlet Fever',
+    'Strokes',
+    'Syphilis',
+    'Tonsillitis',
+    'Tuberculosis',
+    'Whooping Cough'
+]
+
 @csrf_exempt
 def updateUser(request, username):
     if not request.user.is_authenticated():
@@ -333,7 +362,7 @@ def register(request):
         except:
             newlogitem = LogItem(datetime=datetime.datetime.now(), action="Registration page accessed")
             newlogitem.save()
-    return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all(), 'states' : STATE_CHOICES})
+    return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all(), 'states' : STATE_CHOICES, 'diseases' : diseaseChecks})
 
 @csrf_exempt
 def profile(request, username):
