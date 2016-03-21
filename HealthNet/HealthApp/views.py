@@ -338,7 +338,7 @@ def register(request):
             print("\nThe following will not be reached but needs to be there to prevent errors:wq")
             return HttpResponseRedirect('/%s/profile' % patient.user.username)
         else:
-            #these errors should be added into the registration.html so the user can see it
+            #TODO - these errors should be added into the registration.html so the user can see it
             print(baseUserForm.errors, userForm.errors, profileForm.errors, medicalForm.errors)
             try:
                 newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Registration POST data invalid")
@@ -346,6 +346,12 @@ def register(request):
             except:
                 newlogitem = LogItem(datetime=datetime.datetime.now(), action="Registration POST data invalid")
                 newlogitem.save()
+            baseUserForm = BaseUserForm(data=request.POST.copy())
+            userForm = UserForm(data=request.POST.copy())
+            profileForm = ProfileForm(data=request.POST.copy())
+            medicalForm = MedicalForm(data=request.POST.copy())
+            return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all(), 'states' : STATE_CHOICES, 'diseases' : diseaseChecks})
+
     else:
         print("\nregister GET creating blank forms")
         #if the request is get, show blank forms.
