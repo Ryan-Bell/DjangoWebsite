@@ -147,7 +147,7 @@
                             <!-- create a doctor option for each doc in the database -->
                             {% for singledoctor in doctorlist %}
                                 <option value="{{ singledoctor.user.username }}">
-                                    {{ singledoctor.profileInfo.firstName }}
+                                    {{ singledoctor }}
                                 </option>
                             {% empty %}
                                 <!-- displays if there aren't any doctors in the db -->

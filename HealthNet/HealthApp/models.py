@@ -52,8 +52,8 @@ class ProfileInfo(models.Model):
 
 
 class MedicalInfo(models.Model):
-    #add cancer
-    #add diabetes
+    #TODO - add cancer
+    #TODO - add diabetes
     allergies = models.BooleanField(default=False)
     anemia = models.BooleanField(default=False)
     arthritis = models.BooleanField(default=False)
@@ -85,10 +85,9 @@ class MedicalInfo(models.Model):
 
 class Doctor(models.Model):
     user = models.OneToOneField(User)
-    profileInfo = models.OneToOneField(ProfileInfo, null=True)
 
     def __str__(self):
-        return self.user.username
+        return self.user.first_name + " " + self.user.last_name
 
 
 
