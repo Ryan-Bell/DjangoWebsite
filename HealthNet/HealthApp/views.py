@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -112,17 +112,16 @@ diseaseChecks = [
     'Whooping Cough'
 ]
 
+
 @csrf_exempt
 def updateUser(request, username):
     if not request.user.is_authenticated():
-      return redirect('/login/')
+        return redirect('/login/')
 
     requestedPatient = Patient.objects.get(user=User.objects.get(username=patientusername))
     print(requestedPatient)
 
     return HttpResponseRedirect('/%s/profile' % request.user.username, {'patient': requestedPatient})
-
-
 
 
 @csrf_exempt
@@ -146,51 +145,49 @@ def export(request):
     writer.writerow(['Profile Info:', 'Firstname', patient.profileInfo.firstName, 'Middlename', patient.profileInfo.middleName, 'LastName', patient.profileInfo.lastName, 'Address', patient.profileInfo.address, 'City', patient.profileInfo.city, 'State', patient.profileInfo.state, 'Date of Birth', patient.profileInfo.dateOfBirth, 'Zipcode', patient.profileInfo.zipcode, 'Phone Number', patient.profileInfo.phoneNumber, 'Email', patient.profileInfo.email, 'Emergency contact', patient.profileInfo.eName, 'Emergency Phone', patient.profileInfo.ePhoneNumber ])
     writer.writerow(['Medical Info:', 'Allergies', patient.medicalInfo.allergies, 'Anemia', patient.medicalInfo.anemia, 'Arthritis', patient.medicalInfo.arthritis, 'Chickenpox', patient.medicalInfo.chickenpox, 'Coxsackie', patient.medicalInfo.coxsackie, 'Diphtheria', patient.medicalInfo.diphtheria, 'Epilepsy', patient.medicalInfo.epilepsy, 'Frequent Colds', patient.medicalInfo.frequentColds, 'German Measeles', patient.medicalInfo.germanMeasles, 'High Blood Pressure', patient.medicalInfo.highBloodPressure, 'Influenza', patient.medicalInfo.influenza, 'Kidney Disease', patient.medicalInfo.kidneyDisease, 'Measles', patient.medicalInfo.measles, 'Migraines', patient.medicalInfo.migraines, 'Mumps', patient.medicalInfo.mumps, 'Obesity', patient.medicalInfo.obesity, 'Pneumonia', patient.medicalInfo.pneumonia, 'Polio', patient.medicalInfo.polio, 'Rheumatic Fever', patient.medicalInfo.rheumaticFever, 'Scarlatina', patient.medicalInfo.scarlatina, 'Scarlet Fever', patient.medicalInfo.scarletFever, 'Strokes', patient.medicalInfo.strokes, 'Syphilis', patient.medicalInfo.syphilis, 'Tonsillitis', patient.medicalInfo.tonsillitis, 'Tuberculosis', patient.medicalInfo.tuberculosis, 'Whooping Cough', patient.medicalInfo.whoopingCough, 'Other', patient.medicalInfo.otherText])
 
-
     return response
-
 
 
 @csrf_exempt
 def createApp(request):
-        if not request.user.is_authenticated():
-            return redirect('/login/')
-			
-        if request.method == 'POST':
-            form = AppointmentForm(request.POST)
-            if form.is_valid():
-                cleanData = form.cleaned_data
-                apt = Appointment(
-						doctor=cleanData['doctor'],
-						userName = request.user.username,
-						date=cleanData['date'] + "T" + cleanData['time'],
-						description=cleanData['description']
-				)
-                apt.save()
-				
-        print("failed")
-		
-        return HttpResponseRedirect('/%s/profile/' % request.user.username)
-		
+    if not request.user.is_authenticated():
+        return redirect('/login/')
+
+    if request.method == 'POST':
+        form = AppointmentForm(request.POST)
+        if form.is_valid():
+            cleanData = form.cleaned_data
+            apt = Appointment(
+				doctor=cleanData['doctor'],
+				userName = request.user.username,
+				date=cleanData['date'] + "T" + cleanData['time'],
+				description=cleanData['description']
+			)
+            apt.save()
+
+    return HttpResponseRedirect('/%s/profile/' % request.user.username)
+
+
 @csrf_exempt
 def deleteApp(request, id):
     if not request.user.is_authenticated():
-      return redirect('/login/')
-			
+        return redirect('/login/')
+
     Appointment.objects.filter(pk=id).delete()
 
     return HttpResponseRedirect('/%s/profile' % request.user.username)
-		
-		
+
+
 def editApp(request, id):
     if not request.user.is_authenticated():
-      return redirect('/login/')
-			
+        return redirect('/login/')
+
     apt = Appointment.objects.filter(pk=id)
     apt.description = "newdesc"
     apt.save()
 
     return HttpResponseRedirect('/%s/profile' % request.user.username)
+
 
 @csrf_exempt
 def userLogin(request):
@@ -252,6 +249,7 @@ def userLogin(request):
             newlogitem.save()
         return render(request, "login.html", {'authenticated':auth})
 
+
 @csrf_exempt
 def userLogout(request):
 
@@ -264,30 +262,21 @@ def userLogout(request):
         newlogitem.save()
     return HttpResponseRedirect('/')
 
+
 @csrf_exempt
 def register(request):
     registered = False
-    print("\nregister view entered")
 
     if request.method == 'POST':
-        print("\nregister entered with POST")
         #this is where all of the data the user input is gathered.
         baseUserForm = BaseUserForm(data=request.POST)
 
-        print("\nregister POST baseUserFormCreated")
         userForm = UserForm(data=request.POST)
-        print("\nregister POST userFormCreated")
         profileForm = ProfileForm(data=request.POST)
-        print("\nregister POST profileFormCreated")
         medicalForm = MedicalForm(data=request.POST)
-        print("\nregister POST medicalFormCreated")
-
-        print("\nregister POST outside is_valid if")
 
         #The forms are checked to determine if they are valid. This is where required fields are checked.
         if  userForm.is_valid() and profileForm.is_valid() and medicalForm.is_valid():
-
-            print("\nregister POST inside is_valid if")
 
             #creating the user object
             user = baseUserForm.save()
@@ -295,15 +284,12 @@ def register(request):
 
             #all adjusted values must be followed by a save call.
             user.save()
-            print("\nregister POST user object created")
 
             patientUserInfo = userForm.save()
             patientProfileInfo = profileForm.save()
             patientMedicalInfo = medicalForm.save()
-            print("\nregister POST 3 info objects created")
 
             patient = Patient(user=user, userInfo = patientUserInfo, profileInfo=patientProfileInfo, medicalInfo=patientMedicalInfo)
-            print("\nregister POST patient created")
 
             patient.user.save()
             patient.userInfo.save()
@@ -311,9 +297,7 @@ def register(request):
             patient.medicalInfo.save()
 
             patient.save()
-            print("\nregister POST patient info objects assigned")
 
-            print("\nAttempting to add hospital and doctor object to patient with lookups")
             patient.hospital = Hospital.objects.get(name=request.POST['hospital'])
             userDoctor = User.objects.get(username=request.POST['doctor'])
             patient.doctor = Doctor.objects.get(user=userDoctor)
@@ -323,11 +307,9 @@ def register(request):
             patient.user.last_name = patient.profileInfo.lastName
             patient.user.email = patient.profileInfo.email
             patient.user.save()
-            print("\nregister POST user first/last name updated")
 
             registered = True
 
-            print("\nregister POST about to call profile")
             try:
                 newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="New Patient registered")
                 newlogitem.save()
@@ -335,7 +317,6 @@ def register(request):
                 newlogitem = LogItem(datetime=datetime.datetime.now(), action="New Patient registered")
                 newlogitem.save()
             userLogin(request)
-            print("\nThe following will not be reached but needs to be there to prevent errors:wq")
             return HttpResponseRedirect('/%s/profile' % patient.user.username)
         else:
             #TODO - these errors should be added into the registration.html so the user can see it
@@ -353,15 +334,11 @@ def register(request):
             return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all(), 'states' : STATE_CHOICES, 'diseases' : diseaseChecks})
 
     else:
-        print("\nregister GET creating blank forms")
         #if the request is get, show blank forms.
         baseUserForm = BaseUserForm()
         userForm = UserForm()
         profileForm = ProfileForm()
         medicalForm = MedicalForm()
-        print(Doctor.objects.all())
-        print(Hospital.objects.all())
-        print("\nregister GET blank forms created")
         try:
             newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Registration page accessed")
             newlogitem.save()
@@ -369,6 +346,7 @@ def register(request):
             newlogitem = LogItem(datetime=datetime.datetime.now(), action="Registration page accessed")
             newlogitem.save()
     return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all(), 'states' : STATE_CHOICES, 'diseases' : diseaseChecks})
+
 
 @csrf_exempt
 def profile(request, username):
@@ -399,14 +377,13 @@ def profile(request, username):
         for check in checklist:
             newchecklist.append(getattr(activeUser.medicalInfo, check.name))
 
-        #print(newchecklist)
         iterator = itertools.count()
-        #print(iterator)
 
     user = request.user
     appointments = Appointment.objects.filter(userName = user.username)
-		
+
     return render(request, 'ProfilePage.html', {'user' : activeUser, 'checklist' : checklist, 'newchecklist' : newchecklist, 'iterator':iterator, 'appointments': appointments, 'appform': AppointmentForm,  'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all()})
+
 
 @csrf_exempt
 def staffProfile(request, username):
@@ -456,21 +433,20 @@ def staffProfile(request, username):
                 newlogitem = LogItem(datetime=datetime.datetime.now(), action="Staff profile page accessed by Nurse")
                 newlogitem.save()
 
-    
     return render(request, 'StaffProfile.html', {'user' : activeUser, 'accountType' : accountType, 'patients' : patients})
+
 
 @csrf_exempt
 def profileEdit(request):
     registered = False
 
     if request.method == 'POST':
-        print("POOOST")
         #this is where all of the data the user input is gathered.
         userForm = UserForm(data=request.POST)
         profileForm = ProfileForm(data=request.POST)
 
         #The forms are checked to determine if they are valid. This is where required fields are checked.
-        if  userForm.is_valid() and profileForm.is_valid():
+        if userForm.is_valid() and profileForm.is_valid():
             print("valid")
             patientUserInfo = userForm.save()
             patientProfileInfo = profileForm.save()
@@ -506,7 +482,7 @@ def profileEdit(request):
         profileForm = ProfileForm()
 
     return HttpResponseRedirect('/%s/profile' % request.user.username, {'userForm':userForm, 'profileForm':profileForm, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all()})
-    return render(request, '/%s/profile' % request.user.username, {'userForm':userForm, 'profileForm':profileForm, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all()})
+
 
 @csrf_exempt
 def handler404(request):
@@ -514,6 +490,7 @@ def handler404(request):
                                   context_instance=RequestContext(request))
     response.status_code = 404
     return response
+
 
 @csrf_exempt
 def handler500(request):
