@@ -1,17 +1,14 @@
-from django.shortcuts import render, get_object_or_404, redirect, render_to_response
-from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.shortcuts import render, redirect, render_to_response
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template import Context
-from django.template.loader import get_template
-from .models import Patient, UserInfo, ProfileInfo, MedicalInfo, Doctor, Nurse, Hospital, Prescription, MedTest, LogItem, Appointment
+from .models import Patient, Doctor, Nurse, Hospital, Appointment
 from .forms import BaseUserForm, UserForm, ProfileForm, MedicalForm, AppointmentForm
 from django.views.decorators.csrf import csrf_exempt
-import datetime
-import itertools
-import csv
+import datetime, itertools, csv
+
 """
 The views are essentially the intermediary step between the logic of the models and
 database and the front facing html pages. These are what is being called in the urls.py
@@ -118,7 +115,7 @@ def updateUser(request, username):
     if not request.user.is_authenticated():
         return redirect('/login/')
 
-    requestedPatient = Patient.objects.get(user=User.objects.get(username=patientusername))
+    requestedPatient = Patient.objects.get(user=User.objects.get(username=username))
     print(requestedPatient)
 
     return HttpResponseRedirect('/%s/profile' % request.user.username, {'patient': requestedPatient})
@@ -127,15 +124,9 @@ def updateUser(request, username):
 @csrf_exempt
 def export(request):
     if not request.user.is_authenticated():
-            try:
-                newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Export access attempt by unathenticated user")
-                newlogitem.save()
-            except:
-                newlogitem = LogItem(datetime=datetime.datetime.now(), action="Export access attempt by unathenticated user")
-                newlogitem.save()
-            return HttpResponseRedirect(reverse('login'))
+        return HttpResponseRedirect(reverse('login'))
     else:
-            patient = Patient.objects.get(user=request.user)
+        patient = Patient.objects.get(user=request.user)
 
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="MedicalInformation.csv"'
@@ -205,61 +196,23 @@ def userLogin(request):
                 login(request, user)
                 auth = 0
                 if user.is_staff:
-                    try:
-                        newlogitem = LogItem(user=user, datetime=datetime.datetime.now(), action="Staff has logged in")
-                        newlogitem.save()
-                    except:
-                        newlogitem = LogItem(datetime=datetime.datetime.now(), action="Staff has logged in")
-                        newlogitem.save()
-
                     return HttpResponseRedirect('/%s/staffProfile' % username)
                 else:
-                    try:
-                        newlogitem = LogItem(user=user, datetime=datetime.datetime.now(), action="User has logged in")
-                        newlogitem.save()
-                    except:
-                        newlogitem = LogItem(datetime=datetime.datetime.now(), action="User has logged in")
-                        newlogitem.save()
                     return HttpResponseRedirect('/%s/profile' % username)
             else:
                 auth = 1
-                try:
-                    newlogitem = LogItem(user=user, datetime=datetime.datetime.now(), action="User has attemtped to log in with expired account")
-                    newlogitem.save()
-                except:
-                    newlogitem = LogItem(datetime=datetime.datetime.now(), action="User has attemtped to log in with expired account")
-                    newlogitem.save()
                 #all users have a is_valid field that can be toggled for expiration or transfers etc.
                 return render(request, 'login.html', {'authenticated': auth , 'username' : username, 'password' : password})
         else:
             auth = 2
-            try:
-                newlogitem = LogItem(user=user, datetime=datetime.datetime.now(), action="Invalid user has attempted to log in")
-                newlogitem.save()
-            except:
-                newlogitem = LogItem(datetime=datetime.datetime.now(), action="Invalid user has attempted to log in")
-                newlogitem.save()
             return render(request, 'login.html', {'authenticated': auth , 'username' : username, 'password' : password})
     else:
-        try:
-            newlogitem = LogItem(user=None, datetime=datetime.datetime.now(), action="Login page accessed")
-            newlogitem.save()
-        except:
-            newlogitem = LogItem(datetime=datetime.datetime.now(), action="Login page accessed")
-            newlogitem.save()
         return render(request, "login.html", {'authenticated':auth})
 
 
 @csrf_exempt
 def userLogout(request):
-
     logout(request)
-    try:
-        newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="User has logged out")
-        newlogitem.save()
-    except:
-        newlogitem = LogItem(datetime=datetime.datetime.now(), action="User has logged out")
-        newlogitem.save()
     return HttpResponseRedirect('/')
 
 
@@ -309,24 +262,12 @@ def register(request):
             patient.user.save()
 
             registered = True
-
-            try:
-                newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="New Patient registered")
-                newlogitem.save()
-            except:
-                newlogitem = LogItem(datetime=datetime.datetime.now(), action="New Patient registered")
-                newlogitem.save()
             userLogin(request)
             return HttpResponseRedirect('/%s/profile' % patient.user.username)
         else:
             #TODO - these errors should be added into the registration.html so the user can see it
             print(baseUserForm.errors, userForm.errors, profileForm.errors, medicalForm.errors)
-            try:
-                newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Registration POST data invalid")
-                newlogitem.save()
-            except:
-                newlogitem = LogItem(datetime=datetime.datetime.now(), action="Registration POST data invalid")
-                newlogitem.save()
+
             baseUserForm = BaseUserForm(data=request.POST.copy())
             userForm = UserForm(data=request.POST.copy())
             profileForm = ProfileForm(data=request.POST.copy())
@@ -339,12 +280,6 @@ def register(request):
         userForm = UserForm()
         profileForm = ProfileForm()
         medicalForm = MedicalForm()
-        try:
-            newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Registration page accessed")
-            newlogitem.save()
-        except:
-            newlogitem = LogItem(datetime=datetime.datetime.now(), action="Registration page accessed")
-            newlogitem.save()
     return render(request, 'registration.html', {'baseUserForm':baseUserForm, 'userForm':userForm, 'profileForm':profileForm, 'medicalForm':medicalForm, 'registered': registered, 'doctorlist' : Doctor.objects.all(), 'hospitallist': Hospital.objects.all(), 'states' : STATE_CHOICES, 'diseases' : diseaseChecks})
 
 
@@ -354,12 +289,6 @@ def profile(request, username):
     #by knowing the url. If they aren't authenticated they get redirected to the login page
     #using the reverse lookup which searches the urls in urls.py for a name of 'login'
     if not request.user.is_authenticated():
-        try:
-            newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Patient profile page access attempt by unathenticated user")
-            newlogitem.save()
-        except:
-            newlogitem = LogItem(datetime=datetime.datetime.now(), action="Patient profile page access attempt by unathenticated user")
-            newlogitem.save()
         return HttpResponseRedirect(reverse('login'))
     else:
         #capture the user object and run checks on the account type to determine where to send them
@@ -367,13 +296,6 @@ def profile(request, username):
         activeUser = Patient.objects.get(user=request.user)
         checklist = activeUser.medicalInfo._meta.get_fields()
         newchecklist = []
-        try:
-            newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Patient profile page accessed")
-            newlogitem.save()
-        except:
-            newlogitem = LogItem(datetime=datetime.datetime.now(), action="Patient profile page accessed")
-            newlogitem.save()
-        print (activeUser.doctor)
         for check in checklist:
             newchecklist.append(getattr(activeUser.medicalInfo, check.name))
 
@@ -391,12 +313,6 @@ def staffProfile(request, username):
     #by knowing the url. If they aren't authenticated they get redirected to the login page
     #using the reverse lookup which searches the urls in urls.py for a name of 'login'
     if not request.user.is_authenticated():
-        try:
-            newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Staff profile page access attempt by unathenticated user")
-            newlogitem.save()
-        except:
-            newlogitem = LogItem(datetime=datetime.datetime.now(), action="Staff profile page access attempt by unathenticated user")
-            newlogitem.save()
         return HttpResponseRedirect(reverse('login'))
     else:
         #capture the user object and run checks on the account type to determine where to send them
@@ -411,12 +327,6 @@ def staffProfile(request, username):
                 activeUser = None
         if activeUser:
             try:
-                newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Staff profile page accessed by Doctor")
-                newlogitem.save()
-            except:
-                newlogitem = LogItem(datetime=datetime.datetime.now(), action="Staff profile page accessed by Doctor")
-                newlogitem.save()
-            try:
                 patients = Patient.objects.filter(doctor=Doctor.objects.get(user=request.user))
             except:
                 accountType = "Nurse"
@@ -424,14 +334,6 @@ def staffProfile(request, username):
                     patients = Patient.objects.filter(hospital= Hospital.objects.get(name=activeUser.hospital))
                 except:
                     patients = None
-
-        else:
-            try:
-                newlogitem = LogItem(user=request.user, datetime=datetime.datetime.now(), action="Staff profile page accessed by Nurse")
-                newlogitem.save()
-            except:
-                newlogitem = LogItem(datetime=datetime.datetime.now(), action="Staff profile page accessed by Nurse")
-                newlogitem.save()
 
     return render(request, 'StaffProfile.html', {'user' : activeUser, 'accountType' : accountType, 'patients' : patients})
 
@@ -451,22 +353,13 @@ def profileEdit(request):
             patientUserInfo = userForm.save()
             patientProfileInfo = profileForm.save()
 
-
             patient = Patient.objects.get(user=User.objects.get(username=request.user.username))
 
             patient.userInfo = patientUserInfo
             patient.profileInfo = patientProfileInfo
 
-
             patient.userInfo.save()
             patient.profileInfo.save()
-
-
-            patient.save()
-
-            #patient.hospital = Hospital.objects.get(name=request.POST['hospital'])
-            #userDoctor = User.objects.get(username=request.POST['doctor'])
-            #patient.doctor = Doctor.objects.get(user=userDoctor)
             patient.save()
 
             patient.user.first_name = patient.profileInfo.firstName

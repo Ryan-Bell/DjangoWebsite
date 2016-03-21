@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import User
-from .models import Patient, UserInfo, MedicalInfo, ProfileInfo, Prescription, MedTest, LogItem, Appointment
+from .models import Patient, UserInfo, MedicalInfo, ProfileInfo, Prescription, MedTest, Appointment
 
 
 class LoginForm(forms.Form):
@@ -122,14 +122,4 @@ class PrescriptionForm(ModelForm):
             'frequency',
             'directions',
             'comments',
-        )
-
-
-class LogItemForm(ModelForm):
-    class Meta:
-        model = LogItem
-        fields = (
-            'user',
-            'datetime',
-            'action'
         )
