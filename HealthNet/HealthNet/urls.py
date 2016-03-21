@@ -1,10 +1,6 @@
 from django.conf.urls import include, url, patterns
 from django.contrib import admin
-from django.conf.urls import include, url, patterns
-from django.contrib import admin
 from HealthApp import views
-from django.conf.urls.static import static
-from django.conf import settings
 
 """
 The urlpatterns is how we map the site urls to specific views in the views.py. The first part is
@@ -31,7 +27,7 @@ urlpatterns = [
     url(r'^logout/$', views.userLogout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^profileEdit/$', views.profileEdit, name='profileEdit'),
-		url(r'^createAppForm/', views.createApp, name='createAppForm'),
-		url(r'^deleteAppForm/(\d+)$', views.deleteApp, name='deleteAppForm'),
-		url(r'^export/$', views.export, name='export')
+    url(r'^createAppForm/', views.createApp, name='createAppForm'),
+    url(r'^deleteAppForm/(\d+)$', views.deleteApp, name='deleteAppForm'),
+    url(r'^export/$', views.export, name='export')
 ]
