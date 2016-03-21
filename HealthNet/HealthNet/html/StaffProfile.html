@@ -21,7 +21,7 @@
                    <select name="patientSelect" id="patientSelect" onchange="changeDetails()">
                        <option value="" style="">Choose Patient:</option>
                             {% for patient in patients %}
-                                <option value="{{ singlehospital.name }}" style="float:right; margin-right:20%; 10px">
+                                <option value="{{ singlehospital.name }}" style="float:right; margin-right:20%;">
                                     {{ patient.profileInfo.firstName }}  ({{patient.user.username}})
                                 </option>
                             {% empty %}
