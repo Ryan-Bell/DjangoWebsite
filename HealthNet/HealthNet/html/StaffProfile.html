@@ -6,315 +6,306 @@
 
 <div class=" white z-depth-2 " style="height: 100%; width: 75%; float: right;">
    <div class="row" style="padding: 0px; margin: 0px;">
-				<div class="col s12 z-depth-1" style="padding: 0px;">
-						<!-- Top bar nav links -->
-						<ul class="tabs">
-								<li class="tab col s3"><a href="#calendarSection" class="active">Calendar</a></li>
-								<li class="tab col s3 "><a href="#informationSection" >Patient Profile</a></li>
-								<li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
-						</ul>
-				</div>
+       <div class="col s12 z-depth-1" style="padding: 0px;">
+           <!-- Top bar nav links -->
+           <ul class="tabs">
+               <li class="tab col s3"><a href="#calendarSection" class="active">Calendar</a></li>
+               <li class="tab col s3 "><a href="#informationSection" >Patient Profile</a></li>
+               <li class="tab col s3"><a href="#medicalSection">Medical Information</a></li>
+           </ul>
+       </div>
 						
-				<div>
-						<form class="col transparent" method="post" action="/updateUser/" style="width: 100%; height: 100%; padding: 0px;">
-								<div class="input-field col s10 text-centered">
-										<select name="patientSelect" id="patientSelect" onchange="changeDetails()">
-												<option value="" style="">Choose Patient:</option>
-														{% for patient in patients %}
-																		<option value="{{ singlehospital.name }}" style="float:right; margin-right:20%; 10px">
-																			{{ patient.profileInfo.firstName }}  ({{patient.user.username}})
-																		</option>
-														{% empty %}
-																		<option value="">
-																						There are no patients loaded
-																		</option>
-														{% endfor %}
-										</select>
-								</div>
-								<div >
-										<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Submit</button>
-
-								</div>
-						</form>
-				</div>
-						
+       <div>
+           <form class="col transparent" method="post" action="/updateUser/" style="width: 100%; height: 100%; padding: 0px;">
+               <div class="input-field col s10 text-centered">
+                   <select name="patientSelect" id="patientSelect" onchange="changeDetails()">
+                       <option value="" style="">Choose Patient:</option>
+                            {% for patient in patients %}
+                                <option value="{{ singlehospital.name }}" style="float:right; margin-right:20%; 10px">
+                                    {{ patient.profileInfo.firstName }}  ({{patient.user.username}})
+                                </option>
+                            {% empty %}
+                                <option value="">
+                                    There are no patients loaded
+                                </option>
+                            {% endfor %}
+                   </select>
+               </div>
+               <div >
+                   <button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Submit</button>
+               </div>
+           </form>
+       </div>
 											
-						<div id="calendarSection">
-								<div id='calendar' ></div>
-						</div>
-						
-				<div>
+       <div id="calendarSection">
+           <div id='calendar' ></div>
+       </div>
+       <div>
             <div id="informationSection" class="col s12" style="width:100%;">
-								<div id="accountInfo" class="z-depth-3 col s12" style="padding: 5px;">
-													<div class="col s12" style="text-align:center;">
-															<h5 class="col s12 blue-text text-darken-2">Account Information</h5>
-													</div>
+                <div id="accountInfo" class="z-depth-3 col s12" style="padding: 5px;">
+                    <div class="col s12" style="text-align:center;">
+                        <h5 class="col s12 blue-text text-darken-2">Account Information</h5>
+                    </div>
+                    <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+                        <b>Username:</b><br/>
+                        <b>Phone:</b><br/>
+                        <b>Email:</b><br/>
+                    </div>
 
-													<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
-																<b>Username:</b><br/>
-																<b>Phone:</b><br/>
-																<b>Email:</b><br/>
-													</div>
+                    <div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+                        {{ patient.user.username}}<br/>
+                        {{ patient.profileInfo.phoneNumber }}<br/>
+                        {{ patient.profileInfo.email }}<br/>
+                    </div>
 
+                    <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+                        <b>Hospital:</b> <br/>
+                        <b>Doctor:</b>
+                    </div>
 
-													<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
-																{{ patient.user.username}}<br/>
-																{{ patient.profileInfo.phoneNumber }}<br/>
-																{{ patient.profileInfo.email }}<br/>
-													</div>											
-													
-													<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
-																<b>Hospital:</b> <br/>
-																<b>Doctor:</b>	
-													</div>
-													
-													<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
-																{{ patient.hospital.name }}<br/>
-																{{ patient.doctor.profileInfo.firstName }} {{ patient.doctor.profileInfo.lastName  }}
-													</div>		
-								</div>
-											
-								<div id="personalInfo" class="valign z-depth-3 col s12" style="padding: 20px;">
-										<div class="col s12" style="text-align:center;">
-												<h5 class="blue-text text-darken-2">Personal Information</h5>
-										</div>
-										<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
-													<b>Name:</b><br/>
-													<b>Address:</b>
-										</div>
-										<div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
-													{{ patient.profileInfo.firstName }} {{ patient.profileInfo.middleName }} {{ patient.profileInfo.lastName }}<br/>
-													{{ patient.profileInfo.address }}<br />{{ patient.profileInfo.city }} {{ patient.profileInfo.state }}<br/>
-										</div>
-										<div class="col s3 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
-													<b>Insurance Provider:</b><br/>
-													<b>Policy Number:</b><br/>
-													<b>Group Number:</b><br/>
-										</div>
-										<div class="col s3 left-align" style="font-size: 18px; padding:0px;">
-													{{ patient.userInfo.provider }}<br/>
-													{{ patient.userInfo.policyNumber }}<br/>
-													{{ patient.userInfo.groupNumber }}
-										</div>										
-								</div>
-								
-								<div id="emergencyInfo" class="z-depth-3 col s12" style="padding: 20px;">
-										<div class="col s12" style="text-align:center; font-size 20px">
-												<h5 class="blue-text text-darken-2">Emergency Contact</h5>
-										</div>
-										<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
-													<b>Name:</b>
-										</div>
-										<div class="col s4 left-align " style="font-size: 18px; padding:0px;">
-													{{ patient.profileInfo.eName }}
-										</div>
-										<div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
-												<b>Phone:</b>
-										</div>
-										<div class="col s4 left-align " style="font-size: 18px; padding:0px;">
-													{{ patient.profileInfo.ePhoneNumber }}
-										</div>										
-								</div>
+                    <div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+                        {{ patient.hospital.name }}<br/>
+                        {{ patient.doctor.profileInfo.firstName }} {{ patient.doctor.profileInfo.lastName  }}
+                    </div>
+                </div>
+
+                <div id="personalInfo" class="valign z-depth-3 col s12" style="padding: 20px;">
+                    <div class="col s12" style="text-align:center;">
+                        <h5 class="blue-text text-darken-2">Personal Information</h5>
+                    </div>
+                    <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+                        <b>Name:</b><br/>
+                        <b>Address:</b>
+                    </div>
+                    <div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+                        {{ patient.profileInfo.firstName }} {{ patient.profileInfo.middleName }} {{ patient.profileInfo.lastName }}<br/>
+                        {{ patient.profileInfo.address }}<br />{{ patient.profileInfo.city }} {{ patient.profileInfo.state }}<br/>
+                    </div>
+                    <div class="col s3 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+                        <b>Insurance Provider:</b><br/>
+                        <b>Policy Number:</b><br/>
+                        <b>Group Number:</b><br/>
+                    </div>
+                    <div class="col s3 left-align" style="font-size: 18px; padding:0px;">
+                        {{ patient.userInfo.provider }}<br/>
+                        {{ patient.userInfo.policyNumber }}<br/>
+                        {{ patient.userInfo.groupNumber }}
+                    </div>
+                </div>
+
+                <div id="emergencyInfo" class="z-depth-3 col s12" style="padding: 20px;">
+                    <div class="col s12" style="text-align:center; font-size 20px">
+                        <h5 class="blue-text text-darken-2">Emergency Contact</h5>
+                    </div>
+                    <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+                        <b>Name:</b>
+                    </div>
+                    <div class="col s4 left-align " style="font-size: 18px; padding:0px;">
+                        {{ patient.profileInfo.eName }}
+                    </div>
+                    <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+                        <b>Phone:</b>
+                    </div>
+                    <div class="col s4 left-align " style="font-size: 18px; padding:0px;">
+                        {{ patient.profileInfo.ePhoneNumber }}
+                    </div>
+                </div>
             </div>
 
             <div id="medicalSection" class="col s12" style="width:100%;">
-											<div class="z-depth-3 col s12" style="padding: 20px;">
-															<div class="col s12" style="text-align:center">
-																	<h5 class="blue-text text-darken-2">Medical History</h5>
-															</div>
+                <div class="z-depth-3 col s12" style="padding: 20px;">
+                    <div class="col s12" style="text-align:center">
+                        <h5 class="blue-text text-darken-2">Medical History</h5>
+                    </div>
+                    <!-- The following loop does not work
+					but it doesn't cause errors on the profile page and
+    				is on the right track so it stays-->
+                    {% for ncheck in newchecklist %}
+                        {% if ncheck %}
+                            <p>{{ checklist..name }}</p>
+                        {% endif %}
+                        <p>{{ iterator.next }}</p>
+                    {% endfor %} -->
 
-															<!-- The following loop does not work
-															but it doesn't cause errors on the profile page and
-															is on the right track so it stays
-															{% for ncheck in newchecklist %}
-																{% if ncheck %}
-																	<p>{{ checklist..name }}</p>
-																{% endif %}
-																<p>{{ iterator.next }}</p>
-															{% endfor %} -->
+                    {%if patient.medicalInfo.allergies%}
+                        <p>Allergies</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.allergies%}
-																<p>Allergies</p>
-															{% endif %}
+                    {%if patient.medicalInfo.anemia %}
+                        <p>Anemia</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.anemia %}
-																<p>Anemia</p>
-															{% endif %}
+                    {%if patient.medicalInfo.arthritis %}
+                        <p>Arthritis</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.arthritis %}
-																<p>Arthritis</p>
-															{% endif %}
+                    {%if patient.medicalInfo.chickenpox %}
+                        <p>Chicken Pox</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.chickenpox %}
-																<p>Chicken Pox</p>
-															{% endif %}
+                    {%if patient.medicalInfo.coxsackie %}
+                        <p>Coxsackie</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.coxsackie %}
-																<p>Coxsackie</p>
-															{% endif %}
+                    {%if patient.medicalInfo.diphtheria %}
+                        <p>Diptheria</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.diphtheria %}
-																<p>Diptheria</p>
-															{% endif %}
+                    {%if patient.medicalInfo.epilepsy %}
+                        <p>Epilepsy</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.epilepsy %}
-																<p>Epilepsy</p>
-															{% endif %}
+                    {%if patient.medicalInfo.frequentColds %}
+                        <p>Frequent Colds</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.frequentColds %}
-																<p>Frequent Colds</p>
-															{% endif %}
+                    {%if patient.medicalInfo.germanMeasles %}
+                        <p>German Measles</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.germanMeasles %}
-																<p>German Measles</p>
-															{% endif %}
+                    {%if patient.medicalInfo.highBloodPressure %}
+                        <p>High Blood Pressure</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.highBloodPressure %}
-																<p>High Blood Pressure</p>
-															{% endif %}
+                    {%if patient.medicalInfo.influenza %}
+                        <p>Influenza</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.influenza %}
-																<p>Influenza</p>
-															{% endif %}
+                    {%if patient.medicalInfo.kidneyDisease %}
+                        <p>Kidney Disease</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.kidneyDisease %}
-																<p>Kidney Disease</p>
-															{% endif %}
+                    {%if patient.medicalInfo.measles %}
+                        <p>Measles</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.measles %}
-																<p>Measles</p>
-															{% endif %}
+                    {%if patient.medicalInfo.migraines %}
+                        <p>Migraines</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.migraines %}
-																<p>Migraines</p>
-															{% endif %}
+                    {%if patient.medicalInfo.mumps %}
+                        <p>Mumps</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.mumps %}
-																<p>Mumps</p>
-															{% endif %}
+                    {%if patient.medicalInfo.obesity %}
+                        <p>Obesity</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.obesity %}
-																<p>Obesity</p>
-															{% endif %}
+                    {%if patient.medicalInfo.pneumonia %}
+                        <p>Pneumonia</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.pneumonia %}
-																<p>Pneumonia</p>
-															{% endif %}
+                    {%if patient.medicalInfo.polio %}
+                        <p>Polio</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.polio %}
-																<p>Polio</p>
-															{% endif %}
+                    {%if patient.medicalInfo.rheumaticFever %}
+                        <p>Rheumatic Fever</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.rheumaticFever %}
-																<p>Rheumatic Fever</p>
-															{% endif %}
+                    {%if patient.medicalInfo.scarlatina %}
+                        <p>Scarlatina</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.scarlatina %}
-																<p>Scarlatina</p>
-															{% endif %}
+                    {%if patient.medicalInfo.scarletFever %}
+                        <p>Scarlet Fever</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.scarletFever %}
-																<p>Scarlet Fever</p>
-															{% endif %}
+                    {%if patient.medicalInfo.strokes %}
+                        <p>Strokes</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.strokes %}
-																<p>Strokes</p>
-															{% endif %}
+                    {%if patient.medicalInfo.syphilis %}
+                        <p>Syphilis</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.syphilis %}
-																<p>Syphilis</p>
-															{% endif %}
+                    {%if patient.medicalInfo.tonsillitis %}
+                        <p>Tonsillitis</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.tonsillitis %}
-																<p>Tonsillitis</p>
-															{% endif %}
+                    {%if patient.medicalInfo.tuberculosis %}
+                        <p>Tuberculosis</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.tuberculosis %}
-																<p>Tuberculosis</p>
-															{% endif %}
+                    {%if patient.medicalInfo.whoopingCough %}
+                        <p>Whooping Cough</p>
+                    {% endif %}
 
-															{%if patient.medicalInfo.whoopingCough %}
-																<p>Whooping Cough</p>
-															{% endif %}
-
-															{%if patient.medicalInfo.otherText != null%}
-																<p>{{patient.medicalInfo.otherText}}</p>
-															{% endif %}
-
-													</div>
+                    {%if patient.medicalInfo.otherText != null%}
+                        <p>{{patient.medicalInfo.otherText}}</p>
+                    {% endif %}
+                </div>
             </div>
 
-			
-						<div id="newAppointment" class="modal fade" role="dialog" style="height: 80%;">
-							<div class="modal-dialog">
-									<div class="modal-content">
-											<form action="/createAppForm/" method="POST">
-													<div class="modal-header">
-															<h4>New Appointment</h4>
-													</div>
-													<div class="modal-body">
-															<div class="col s6">
-																	<div class="col s6 input-field">	
-																			<select name="doctor">
-																					<option value="" disabled selected>Choose Doctor:</option>
-																					{% for singledoctor in doctorlist %}
-																							<option value="{{ singledoctor.user.username }}">
-																									{{ singledoctor.profileInfo.firstName }}
-																							</option>
-																					{% empty %}
-																							<option value="">
-																									There are no doctors in the system
-																							</option>
-																					{% endfor %}
-																			</select>	
-																	</div>			
-																	<div class="col s6 input-field">
-																			<label for="id_description">Description</label>
-																				{{ appform.description }}
-																	</div>
-															</div>
-																			
-															<div class="col s6">
-																<div class="col s6 input-field">
-																		<label style="" for="id_date">Date</label>
-																			{{ appform.date }}
-																</div>
-																
-																<div class="col s6 input-field">
-																		<label style="" for="id_time">Time</label>
-																			{{ appform.time }}
-																</div>
-															</div>
-													</div>	
-													<div class="modal-footer col s12">
-															<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
-													</div>
-											</form>
-									</div>
-							</div>
-						</div>
+            <div id="newAppointment" class="modal fade" role="dialog" style="height: 80%;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="/createAppForm/" method="POST">
+                            <div class="modal-header">
+                                <h4>New Appointment</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col s6">
+                                    <div class="col s6 input-field">
+                                        <select name="doctor">
+                                            <option value="" disabled selected>Choose Doctor:</option>
+                                            {% for singledoctor in doctorlist %}
+                                                <option value="{{ singledoctor.user.username }}">
+                                                    {{ singledoctor.profileInfo.firstName }}
+                                                </option>
+                                            {% empty %}
+                                                <option value="">
+                                                    There are no doctors in the system
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col s6 input-field">
+                                        <label for="id_description">Description</label>
+                                        {{ appform.description }}
+                                    </div>
+                                </div>
+
+                                <div class="col s6">
+                                    <div class="col s6 input-field">
+                                        <label style="" for="id_date">Date</label>
+                                        {{ appform.date }}
+                                    </div>
+
+                                    <div class="col s6 input-field">
+                                        <label style="" for="id_time">Time</label>
+                                        {{ appform.time }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer col s12">
+                                <button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 							
-						<div id="deleteAppointment" class="modal fade" role="dialog">
-								<div class="modal-dialog">
-									<div class="modal-content">
-											<form id="deleteApt" action="/deleteAppForm/" method="POST">
-													<div class="modal-header">
-															<h4>Delete Appointment</h4>
-													</div>
-													<div class="modal-body">
-														Are you sure you want to delete?
-													</div>
-													<div class="modal-footer">
-															<button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Delete Appointment<i class="material-icons right">delete</i></button>	
-													</div>
-											</form>
-									</div>
-							</div>
-						</div>
-				</div>
+           <div id="deleteAppointment" class="modal fade" role="dialog">
+               <div class="modal-dialog">
+                   <div class="modal-content">
+                       <form id="deleteApt" action="/deleteAppForm/" method="POST">
+                           <div class="modal-header">
+                               <h4>Delete Appointment</h4>
+                           </div>
+                           <div class="modal-body">
+                               Are you sure you want to delete?
+                           </div>
+                           <div class="modal-footer">
+                               <button class="btn waves-effect waves-light white-text blue darken-1" type="submit" name="action">Delete Appointment<i class="material-icons right">delete</i></button>
+                           </div>
+                       </form>
+                   </div>
+               </div>
+           </div>
+       </div>
 	</div>
 </div>
-								
 
 <!-- Close the tags opened in head.html -->
 </body>
