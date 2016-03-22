@@ -11,10 +11,10 @@
     <a class="btn waves-effect waves-light white-text blue darken-1" style="margin-top: 420%;" href="/export/">Export Profile<i class="material-icons right">input</i></a>
 </div>
 <div class=" z-depth-1 white " style="width: 75%; height: 100%; float: right;">
-    <div class="row" style="padding: 0px; margin: 0px;">
+    <div class="row" style="padding: 0; margin: 0;">
 
         <!-- MENU BAR -->
-        <div class="col s12 z-depth-1" style="padding: 0px;">
+        <div class="col s12 z-depth-1" style="padding: 0;">
             <!-- Top bar nav links -->
             <ul class="tabs">
                 <li class="tab col s3"><a href="#calendarSection" class="active">Calendar</a></li>
@@ -30,26 +30,26 @@
                     <h5 class="col s12 blue-text text-darken-2">Account Information</h5>
                 </div>
 
-                <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
-                    <b>Username:</b><br/>
+                <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0;">
+                    <b>Username: </b><br/>
                     <b>Phone:</b><br/>
                     <b>Email:</b><br/>
                 </div>
 
-                <div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+                <div class="col s4 left-align" style="font-size: 18px; padding:0;">
                     {{ user.user.username}}<br/>
                     {{ user.profileInfo.phoneNumber }}<br/>
                     {{ user.profileInfo.email }}<br/>
                 </div>
 
-                <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px; text-align:top;">
+                <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0;">
                     <b>Hospital:</b> <br/>
                     <b>Doctor:</b>
                 </div>
 
-                <div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+                <div class="col s4 left-align" style="font-size: 18px; padding:0;">
                     {{ user.hospital.name }}<br/>
-                    {{ user.doctor.profileInfo.firstName}}
+                    {{ user.doctor.user.first_name}} {{user.doctor.user.last_name}}
                 </div>
             </div>
             <hr>
@@ -57,22 +57,22 @@
                 <div class="col s12" style="text-align:center;">
                     <h5 class="blue-text text-darken-2">Personal Information</h5>
                 </div>
-                <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+                <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0;">
                     <b>Name:</b><br/>
                     <b>Address:</b><br/><br/>
                     <b>Date of Birth:</b>
                 </div>
-                <div class="col s4 left-align" style="font-size: 18px; padding:0px; text-align:top;">
+                <div class="col s4 left-align" style="font-size: 18px; padding:0;">
                     {{ user.profileInfo.firstName }} {{ user.profileInfo.middleName }} {{ user.profileInfo.lastName }}<br/>
                     {{ user.profileInfo.address }}<br />{{ user.profileInfo.city }}, {{ user.profileInfo.state }}<br/>
                     {{ user.profileInfo.dateOfBirth }}<br/>
                 </div>
-                <div class="col s3 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+                <div class="col s3 left-align red-text text-lighten-2" style="font-size: 18px; padding:0;">
                     <b>Insurance Provider:</b><br/>
                     <b>Policy Number:</b><br/>
                     <b>Group Number:</b><br/>
                 </div>
-                <div class="col s3 left-align" style="font-size: 18px; padding:0px;">
+                <div class="col s3 left-align" style="font-size: 18px; padding:0;">
                     {{ user.userInfo.provider }}<br/>
                     {{ user.userInfo.policyNumber }}<br/>
                     {{ user.userInfo.groupNumber }}
@@ -80,19 +80,19 @@
             </div>
             <hr>
             <div id="emergencyInfo" class=" col s12" style="padding: 20px;">
-                <div class="col s12" style="text-align:center; font-size 20px">
+                <div class="col s12" style="text-align:center; font-size: 20px">
                     <h5 class="blue-text text-darken-2">Emergency Contact</h5>
                 </div>
-                <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+                <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0;">
                     <b>Name:</b>
                 </div>
-                <div class="col s4 left-align " style="font-size: 18px; padding:0px;">
+                <div class="col s4 left-align " style="font-size: 18px; padding:0;">
                     {{ user.profileInfo.eName }}
                 </div>
-                <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0px;">
+                <div class="col s2 left-align red-text text-lighten-2" style="font-size: 18px; padding:0;">
                     <b>Phone:</b>
                 </div>
-                <div class="col s4 left-align " style="font-size: 18px; padding:0px;">
+                <div class="col s4 left-align " style="font-size: 18px; padding:0;">
                     {{ user.profileInfo.ePhoneNumber }}
                 </div>
             </div>
