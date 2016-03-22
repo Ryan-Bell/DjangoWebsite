@@ -254,7 +254,7 @@
                                     <option value="" disabled selected>Choose Doctor:</option>
                                     {% for singledoctor in doctorlist %}
                                         <option value="{{ singledoctor.user.username }}">
-                                            {{ singledoctor.profileInfo.firstName }}
+                                            {{ singledoctor.user.first_name }} {{ singledoctor.user.last_name }}
                                         </option>
                                     {% empty %}
                                         <option value="">

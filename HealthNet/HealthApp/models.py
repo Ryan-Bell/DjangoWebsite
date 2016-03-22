@@ -90,7 +90,6 @@ class Doctor(models.Model):
         return self.user.first_name + " " + self.user.last_name
 
 
-
 class Nurse(models.Model):
     user = models.OneToOneField(User)
     hospital = models.CharField(max_length=MAX_LENGTH, null=True)

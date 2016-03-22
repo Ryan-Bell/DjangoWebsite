@@ -69,7 +69,7 @@ class MedicalForm(ModelForm):
     class Meta:
         model = MedicalInfo
 
-        #TODO - add cancer/diabetes
+        # TODO - add cancer/diabetes
         fields = (
             'allergies',
             'anemia',
