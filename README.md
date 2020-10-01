@@ -1,2 +1,2 @@
-# DjangoWebsite
-Dynamic website for hospital employee and patient management system
+# Django Website
+Dynamic website for Hospital Employee and Patient management staff...
